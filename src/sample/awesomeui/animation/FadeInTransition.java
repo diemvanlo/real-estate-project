@@ -8,20 +8,20 @@ import javafx.util.Duration;
 
 /**
  * Animate a fade in effect on a node
- * 
+ * <p>
  * Port of FadeIn from Animate.css http://daneden.me/animate by Dan Eden
- * 
+ * <p>
  * {@literal @}keyframes fadeIn {
- * 	0% {opacity: 0;}	
- * 	100% {opacity: 1;}
+ * 0% {opacity: 0;}
+ * 100% {opacity: 1;}
  * }
- * 
+ *
  * @author Jasper Potts
  */
 public class FadeInTransition extends CachedTimelineTransition {
     /**
      * Create new FadeInTransition
-     * 
+     *
      * @param node The node to affect
      */
     public FadeInTransition(final Node node) {

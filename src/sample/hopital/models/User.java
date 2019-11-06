@@ -6,12 +6,11 @@
 package sample.hopital.models;
 
 /**
- *
  * @author danml
  */
 public class User {
-    public String username;  
-    
+    public String username;
+
 
     public String getUsername() {
         return username;
@@ -20,7 +19,6 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
-   
-    
-    
+
+
 }

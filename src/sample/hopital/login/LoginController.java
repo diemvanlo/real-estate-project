@@ -12,11 +12,13 @@ import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
 import sample.hopital.helpers.Routes;
 import sample.hopital.hospitalfx.*;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -80,7 +82,7 @@ public class LoginController implements Initializable {
         loggingProgress.setVisible(false);
         if (isValidInput()) {
             try {
-                User user=new User();
+                User user = new User();
                 user.setUsername(txtUsername.getText());
                 Stage stage = new Stage();
                 Parent root = FXMLLoader.load(getClass().getResource(Routes.MAINVIEW));

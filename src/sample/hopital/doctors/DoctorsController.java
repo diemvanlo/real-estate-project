@@ -6,8 +6,10 @@
 package sample.hopital.doctors;
 
 import com.jfoenix.controls.JFXComboBox;
+
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ToggleGroup;
@@ -28,19 +30,20 @@ public class DoctorsController implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Populate Comboboxe with static options,
-        comboSpecialization.getItems().addAll("Pychologist","Psychiatric","Gynaecologist"
-        +"Pathologist","Cardiologist","Orginologist","unspecified");
+        comboSpecialization.getItems().addAll("Pychologist", "Psychiatric", "Gynaecologist"
+                + "Pathologist", "Cardiologist", "Orginologist", "unspecified");
         comboSpecialization.getSelectionModel().selectLast();
-        
-        comboDepartment.getItems().addAll("Pychology","Maternity","OutPatient"
-        + "Mourtuary","Others");
+
+        comboDepartment.getItems().addAll("Pychology", "Maternity", "OutPatient"
+                + "Mourtuary", "Others");
         comboDepartment.getSelectionModel().selectLast();
-    }    
-    
+    }
+
 }

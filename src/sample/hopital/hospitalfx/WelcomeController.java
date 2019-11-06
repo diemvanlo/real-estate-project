@@ -6,8 +6,10 @@
 package sample.hopital.hospitalfx;
 
 import com.jfoenix.controls.JFXButton;
+
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,17 +30,18 @@ public class WelcomeController implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // display logged user
-        
-    }    
+
+    }
 
     @FXML
     private void logOut(ActionEvent event) {
     }
-    
+
 }

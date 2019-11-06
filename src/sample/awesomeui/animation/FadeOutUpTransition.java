@@ -8,26 +8,26 @@ import javafx.util.Duration;
 
 /**
  * Animate a fade in Out effect on a node
- * 
+ * <p>
  * Port of FadeInOut from Animate.css http://daneden.me/animate by Dan Eden
- * 
+ * <p>
  * {@literal @}keyframes fadeOutUp {
- * 	0% {
- * 		opacity: 1;
- * 		transform: translateY(0);
- * 	}
- * 	100% {
- * 		opacity: 0;
- * 		transform: translateY(-20px);
- * 	}
+ * 0% {
+ * opacity: 1;
+ * transform: translateY(0);
  * }
- * 
+ * 100% {
+ * opacity: 0;
+ * transform: translateY(-20px);
+ * }
+ * }
+ *
  * @author Jasper Potts
  */
 public class FadeOutUpTransition extends CachedTimelineTransition {
     /**
      * Create new FadeOutUpTransition
-     * 
+     *
      * @param node The node to affect
      */
     public FadeOutUpTransition(final Node node) {
@@ -48,7 +48,8 @@ public class FadeOutUpTransition extends CachedTimelineTransition {
         setDelay(Duration.seconds(0.2));
     }
 
-    @Override protected void stopping() {
+    @Override
+    protected void stopping() {
         super.stopping();
         node.setTranslateY(0); // restore default
     }

@@ -281,7 +281,7 @@ public class ptviewer extends Applet implements Runnable {
         this.inited = true;
         this.repaint();
         byte[] var1;
-        if ((var1 = this.file_read("PTDefault.html", (int[])null)) != null) {
+        if ((var1 = this.file_read("PTDefault.html", (int[]) null)) != null) {
             this.PTViewer_Properties = new String(var1);
         }
 
@@ -290,12 +290,12 @@ public class ptviewer extends Applet implements Runnable {
             this.ReadParameters(this.PTViewer_Properties);
         }
 
-        this.ReadParameters((String)null);
+        this.ReadParameters((String) null);
         if (this.filename != null && this.filename.startsWith("ptviewer:")) {
             int var2 = Integer.parseInt(this.filename.substring(this.filename.indexOf(58) + 1));
-            if (this.myGetParameter((String)null, "pano" + var2) != null) {
+            if (this.myGetParameter((String) null, "pano" + var2) != null) {
                 this.filename = null;
-                this.ReadParameters(this.myGetParameter((String)null, "pano" + var2));
+                this.ReadParameters(this.myGetParameter((String) null, "pano" + var2));
             }
         }
 
@@ -376,10 +376,10 @@ public class ptviewer extends Applet implements Runnable {
         if (Thread.currentThread() == this.preloadthread && this.preload != null) {
             int var8;
             if ((var8 = this.getNumArgs(this.preload, ',')) > 0) {
-                for(int var2 = 0; var2 < var8; ++var2) {
+                for (int var2 = 0; var2 < var8; ++var2) {
                     String var3;
                     if ((var3 = this.getArg(var2, this.preload, ',')) != null && this.file_cachefiles && this.file_Cache != null && this.file_Cache.get(var3) == null && var3 != this.filename) {
-                        this.file_read(var3, (int[])null);
+                        this.file_read(var3, (int[]) null);
                     }
                 }
             }
@@ -402,7 +402,7 @@ public class ptviewer extends Applet implements Runnable {
                 }
 
                 if (this.filename != null && this.filename.toLowerCase().endsWith(".mov")) {
-                    this.pdata = this.im_loadPano((String)null, this.pdata, this.pwidth, this.pheight);
+                    this.pdata = this.im_loadPano((String) null, this.pdata, this.pwidth, this.pheight);
                 } else {
                     this.pdata = this.im_loadPano(this.filename, this.pdata, this.pwidth, this.pheight);
                 }
@@ -427,7 +427,7 @@ public class ptviewer extends Applet implements Runnable {
                         }
 
                         Applet var4;
-                        (var4 = (Applet)Class.forName("ptmviewer").getConstructor(Class.forName("ptviewer"), class$java$lang$String == null ? (class$java$lang$String = class$("java.lang.String")) : class$java$lang$String).newInstance(this, var1)).init();
+                        (var4 = (Applet) Class.forName("ptmviewer").getConstructor(Class.forName("ptviewer"), class$java$lang$String == null ? (class$java$lang$String = class$("java.lang.String")) : class$java$lang$String).newInstance(this, var1)).init();
                         var4.start();
                         System.gc();
                     } catch (Exception var6) {
@@ -437,7 +437,7 @@ public class ptviewer extends Applet implements Runnable {
                 this.pheight = this.pdata.length;
                 this.pwidth = this.pdata[0].length;
                 if (this.pheight != this.pwidth >> 1) {
-                    double var7 = (double)this.pheight / (double)this.pwidth * 180.0D;
+                    double var7 = (double) this.pheight / (double) this.pwidth * 180.0D;
                     if (this.pitch_max > var7) {
                         this.pitch_max = var7;
                     }
@@ -487,7 +487,7 @@ public class ptviewer extends Applet implements Runnable {
         if (this.inits != null) {
             int var2;
             if ((var2 = this.inits.indexOf(42)) == -1) {
-                this.JumpToLink(this.inits, (String)null);
+                this.JumpToLink(this.inits, (String) null);
             } else {
                 this.JumpToLink(this.inits.substring(0, var2), this.inits.substring(var2 + 1));
             }
@@ -577,7 +577,7 @@ public class ptviewer extends Applet implements Runnable {
         if (this.hsready) {
             int var4;
             if (this.curshs >= 0) {
-                for(var4 = 0; var4 < this.numshs; ++var4) {
+                for (var4 = 0; var4 < this.numshs; ++var4) {
                     if (this.shs_active[var4]) {
                         this.gotoSHS(var4);
                     }
@@ -585,7 +585,7 @@ public class ptviewer extends Applet implements Runnable {
             } else if (this.curhs >= 0) {
                 this.gotoHS(this.curhs);
 
-                for(var4 = this.curhs + 1; var4 < this.numhs && this.curhs != -1; ++var4) {
+                for (var4 = this.curhs + 1; var4 < this.numhs && this.curhs != -1; ++var4) {
                     if (this.hs_link[var4] == this.curhs) {
                         this.gotoHS(var4);
                     }
@@ -623,12 +623,12 @@ public class ptviewer extends Applet implements Runnable {
         if (!this.ready) {
             return true;
         } else {
-            switch(var2) {
+            switch (var2) {
                 case 10:
                     if (this.hsready) {
                         int var3;
                         if (this.curshs >= 0) {
-                            for(var3 = 0; var3 < this.numshs; ++var3) {
+                            for (var3 = 0; var3 < this.numshs; ++var3) {
                                 if (this.shs_active[var3]) {
                                     this.gotoSHS(var3);
                                 }
@@ -636,7 +636,7 @@ public class ptviewer extends Applet implements Runnable {
                         } else if (!this.panning && this.curhs >= 0) {
                             this.gotoHS(this.curhs);
 
-                            for(var3 = this.curhs + 1; var3 < this.numhs && this.curhs != -1; ++var3) {
+                            for (var3 = this.curhs + 1; var3 < this.numhs && this.curhs != -1; ++var3) {
                                 if (this.hs_link[var3] == this.curhs) {
                                     this.gotoHS(var3);
                                 }
@@ -684,7 +684,7 @@ public class ptviewer extends Applet implements Runnable {
                     this.showStatus("Click Mouse to display X/Y Coordinates");
                     break;
                 case 118:
-                    this.showStatus("pan = " + (double)((int)(this.yaw * 100.0D)) / 100.0D + "deg; tilt = " + (double)((int)(this.pitch * 100.0D)) / 100.0D + "deg; fov = " + (double)((int)(this.hfov * 100.0D)) / 100.0D + "deg");
+                    this.showStatus("pan = " + (double) ((int) (this.yaw * 100.0D)) / 100.0D + "deg; tilt = " + (double) ((int) (this.pitch * 100.0D)) / 100.0D + "deg; fov = " + (double) ((int) (this.hfov * 100.0D)) / 100.0D + "deg");
                     break;
                 case 1004:
                     this.panUp();
@@ -729,7 +729,7 @@ public class ptviewer extends Applet implements Runnable {
                 this.curshs = var3;
                 if (this.curshs >= 0) {
                     try {
-                        ((Frame)this.getParent()).setCursor(12);
+                        ((Frame) this.getParent()).setCursor(12);
                     } catch (Exception var5) {
                     }
 
@@ -766,7 +766,7 @@ public class ptviewer extends Applet implements Runnable {
                     }
 
                     try {
-                        ((Frame)this.getParent()).setCursor(12);
+                        ((Frame) this.getParent()).setCursor(12);
                         if (this.hsready) {
                             this.showStatus(this.hs_name[this.curhs]);
                             this.hs_exec_popup(this.curhs);
@@ -791,16 +791,16 @@ public class ptviewer extends Applet implements Runnable {
         try {
             if (this.mouseInViewer) {
                 if (!this.ready) {
-                    ((Frame)this.getParent()).setCursor(3);
+                    ((Frame) this.getParent()).setCursor(3);
                     return;
                 }
 
-                if (((Frame)this.getParent()).getCursorType() != this.ptcursor) {
-                    ((Frame)this.getParent()).setCursor(this.ptcursor);
+                if (((Frame) this.getParent()).getCursorType() != this.ptcursor) {
+                    ((Frame) this.getParent()).setCursor(this.ptcursor);
                     return;
                 }
-            } else if (((Frame)this.getParent()).getCursorType() != 0) {
-                ((Frame)this.getParent()).setCursor(0);
+            } else if (((Frame) this.getParent()).getCursorType() != 0) {
+                ((Frame) this.getParent()).setCursor(0);
                 return;
             }
         } catch (Exception var2) {
@@ -861,7 +861,7 @@ public class ptviewer extends Applet implements Runnable {
                         this.WaitDisplayed = true;
                     }
 
-                    this.offGraphics.drawImage(this.dwait, this.offwidth - this.dwait.getWidth((ImageObserver)null) >> 1, this.offheight - this.dwait.getHeight((ImageObserver)null) >> 1, this);
+                    this.offGraphics.drawImage(this.dwait, this.offwidth - this.dwait.getWidth((ImageObserver) null) >> 1, this.offheight - this.dwait.getHeight((ImageObserver) null) >> 1, this);
                     this.pb_draw(this.offGraphics, this.offwidth, this.offheight);
                     var1.drawImage(this.offImage, 0, 0, this);
                     if (this.ready) {
@@ -902,7 +902,7 @@ public class ptviewer extends Applet implements Runnable {
                     this.vheight = this.size().height;
                 }
 
-                while(this.math_fovy(this.hfov, this.vwidth, this.vheight) > this.pitch_max - this.pitch_min) {
+                while (this.math_fovy(this.hfov, this.vwidth, this.vheight) > this.pitch_max - this.pitch_min) {
                     this.hfov /= 1.03D;
                 }
 
@@ -918,11 +918,11 @@ public class ptviewer extends Applet implements Runnable {
                 this.vdata = new int[this.vwidth * this.vheight];
                 this.hs_vdata = new byte[this.vwidth * this.vheight];
                 if (this.filename != null && this.filename.toLowerCase().endsWith(".mov")) {
-                    for(var4 = 0; var4 < this.hs_vdata.length; ++var4) {
+                    for (var4 = 0; var4 < this.hs_vdata.length; ++var4) {
                         this.hs_vdata[var4] = 0;
                     }
                 } else {
-                    for(int var5 = 0; var5 < this.hs_vdata.length; ++var5) {
+                    for (int var5 = 0; var5 < this.hs_vdata.length; ++var5) {
                         this.hs_vdata[var5] = -1;
                     }
                 }
@@ -938,9 +938,9 @@ public class ptviewer extends Applet implements Runnable {
                     this.scaledPanos = new Vector();
                     this.scaledPanos.addElement(this.pdata);
                     int[][] var6 = this.pdata;
-                    double var7 = this.hfov_max / ((double)this.vwidth * 360.0D * this.max_oversampling);
+                    double var7 = this.hfov_max / ((double) this.vwidth * 360.0D * this.max_oversampling);
 
-                    for(int var9 = 0; var6 != null && (double)var6[0].length * var7 > 1.0D; ++var9) {
+                    for (int var9 = 0; var6 != null && (double) var6[0].length * var7 > 1.0D; ++var9) {
                         var6 = this.im_halfsize(var6);
                         this.scaledPanos.addElement(var6);
                     }
@@ -949,10 +949,10 @@ public class ptviewer extends Applet implements Runnable {
 
             double var17;
             if (this.panning) {
-                var2 = 5.0E-4D * this.hfov / 70.0D * 320.0D / (double)this.vwidth;
-                var17 = ((double)((this.newx - this.oldx) * (this.newx - this.oldx)) * (this.newx > this.oldx ? 1.0D : -1.0D) + this.MASS * this.oldspeedx) / (1.0D + this.MASS);
+                var2 = 5.0E-4D * this.hfov / 70.0D * 320.0D / (double) this.vwidth;
+                var17 = ((double) ((this.newx - this.oldx) * (this.newx - this.oldx)) * (this.newx > this.oldx ? 1.0D : -1.0D) + this.MASS * this.oldspeedx) / (1.0D + this.MASS);
                 this.oldspeedx = var17;
-                double var21 = ((double)((this.oldy - this.newy) * (this.oldy - this.newy)) * (this.oldy > this.newy ? 1.0D : -1.0D) + this.MASS * this.oldspeedy) / (1.0D + this.MASS);
+                double var21 = ((double) ((this.oldy - this.newy) * (this.oldy - this.newy)) * (this.oldy > this.newy ? 1.0D : -1.0D) + this.MASS * this.oldspeedy) / (1.0D + this.MASS);
                 this.oldspeedy = var21;
                 this.gotoView(this.yaw + var2 * var17, this.pitch + var2 * var21, this.hfov * this.zoom);
             }
@@ -966,29 +966,29 @@ public class ptviewer extends Applet implements Runnable {
             }
 
             if (this.dirty) {
-                for(int var13 = 0; var13 < this.vdata.length; ++var13) {
+                for (int var13 = 0; var13 < this.vdata.length; ++var13) {
                     this.vdata[var13] = 0;
                 }
 
                 if (this.app_properties.size() == 6 && this.filename != null && this.filename.toLowerCase().endsWith(".mov")) {
-                    int[] var15 = this.get_cube_order((int)this.yaw, (int)this.pitch);
+                    int[] var15 = this.get_cube_order((int) this.yaw, (int) this.pitch);
 
-                    for(var4 = 0; var4 < 6; ++var4) {
+                    for (var4 = 0; var4 < 6; ++var4) {
                         Applet var20;
-                        if ((var20 = (Applet)this.applets.get(this.app_properties.elementAt(var15[var4]))) != null && this.sender != null && this.sender.get(var20) != null) {
+                        if ((var20 = (Applet) this.applets.get(this.app_properties.elementAt(var15[var4]))) != null && this.sender != null && this.sender.get(var20) != null) {
                             String var23 = var20.getAppletInfo();
                             if (this.dirty && var23 != null && var23.equals("topFrame")) {
-                                var20.paint((Graphics)null);
+                                var20.paint((Graphics) null);
                             }
                         }
                     }
                 } else {
-                    for(int var3 = 0; var3 < this.app_properties.size(); ++var3) {
+                    for (int var3 = 0; var3 < this.app_properties.size(); ++var3) {
                         Applet var18;
-                        if ((var18 = (Applet)this.applets.get(this.app_properties.elementAt(var3))) != null && this.sender != null && this.sender.get(var18) != null) {
+                        if ((var18 = (Applet) this.applets.get(this.app_properties.elementAt(var3))) != null && this.sender != null && this.sender.get(var18) != null) {
                             String var19 = var18.getAppletInfo();
                             if (this.dirty && var19 != null && var19.equals("topFrame")) {
-                                var18.paint((Graphics)null);
+                                var18.paint((Graphics) null);
                             }
                         }
                     }
@@ -997,20 +997,20 @@ public class ptviewer extends Applet implements Runnable {
                 if (this.dirty && this.show_pdata) {
                     int[][] var16 = this.pdata;
                     if (this.antialias && this.scaledPanos != null) {
-                        var17 = this.hfov / ((double)this.vwidth * 360.0D * this.max_oversampling);
+                        var17 = this.hfov / ((double) this.vwidth * 360.0D * this.max_oversampling);
                         int var24 = 0;
 
-                        for(int var25 = this.pdata[0].length; (double)var25 * var17 > 1.0D; var25 >>= 1) {
+                        for (int var25 = this.pdata[0].length; (double) var25 * var17 > 1.0D; var25 >>= 1) {
                             ++var24;
                         }
 
                         if (this.scaledPanos.elementAt(var24) != null) {
-                            var16 = (int[][])this.scaledPanos.elementAt(var24);
+                            var16 = (int[][]) this.scaledPanos.elementAt(var24);
                             this.math_updateLookUp(var16[0].length);
                         }
                     }
 
-                    switch(this.quality) {
+                    switch (this.quality) {
                         case 0:
                             this.math_extractview(var16, this.vdata, this.hs_vdata, this.vwidth, this.hfov, this.yaw, this.pitch, false);
                             this.dirty = false;
@@ -1055,7 +1055,7 @@ public class ptviewer extends Applet implements Runnable {
             }
 
             if (this.frame != null) {
-                this.offGraphics.drawImage(this.frame, this.offwidth - this.frame.getWidth((ImageObserver)null), this.offheight - this.frame.getHeight((ImageObserver)null), this);
+                this.offGraphics.drawImage(this.frame, this.offwidth - this.frame.getWidth((ImageObserver) null), this.offheight - this.frame.getHeight((ImageObserver) null), this);
             }
 
             if (this.ready) {
@@ -1064,10 +1064,10 @@ public class ptviewer extends Applet implements Runnable {
 
             Enumeration var14 = this.sender.elements();
 
-            while(var14.hasMoreElements()) {
+            while (var14.hasMoreElements()) {
                 try {
                     Applet var22;
-                    if ((var22 = (Applet)var14.nextElement()).getAppletInfo() != "topFrame") {
+                    if ((var22 = (Applet) var14.nextElement()).getAppletInfo() != "topFrame") {
                         var22.paint(this.offGraphics);
                     }
                 } catch (Exception var12) {
@@ -1080,7 +1080,7 @@ public class ptviewer extends Applet implements Runnable {
     }
 
     public void loadROI(int var1, int var2) {
-        for(int var3 = var1; var3 <= var2; ++var3) {
+        for (int var3 = var1; var3 <= var2; ++var3) {
             this.loadROI(var3);
         }
 
@@ -1091,13 +1091,13 @@ public class ptviewer extends Applet implements Runnable {
         if (var1 < this.numroi && !this.roi_loaded[var1] && (var2 = this.loadImage(this.roi_im[var1])) != null) {
             this.ptinsertImage(this.pdata, this.roi_xp[var1], this.roi_yp[var1], var2, (this.pheight + 99) / 100);
             if (this.hsready) {
-                for(int var3 = 0; var3 < this.numhs; ++var3) {
+                for (int var3 = 0; var3 < this.numhs; ++var3) {
                     if ((this.hs_imode[var3] & 4) > 0) {
-                        int var4 = (int)this.hs_up[var3];
-                        int var5 = (int)this.hs_vp[var3];
-                        int var6 = (int)this.hs_xp[var3] - (var4 >> 1);
-                        int var7 = (int)this.hs_yp[var3] - (var5 >> 1);
-                        this.im_extractRect(this.pdata, var6, var7, (int[])this.hs_him[var3], var4, 0, var5, var4, var5);
+                        int var4 = (int) this.hs_up[var3];
+                        int var5 = (int) this.hs_vp[var3];
+                        int var6 = (int) this.hs_xp[var3] - (var4 >> 1);
+                        int var7 = (int) this.hs_yp[var3] - (var5 >> 1);
+                        this.im_extractRect(this.pdata, var6, var7, (int[]) this.hs_him[var3], var4, 0, var5, var4, var5);
                     }
                 }
             }
@@ -1109,8 +1109,8 @@ public class ptviewer extends Applet implements Runnable {
 
     String DisplayHSCoordinates(int var1, int var2) {
         double[] var3;
-        (var3 = this.math_view2pano(var1, var2, this.vwidth, this.vheight, this.pwidth, this.pheight, this.yaw, this.pitch, this.hfov))[0] = Math.rint(var3[0] * 100000.0D / (double)this.pwidth) / 1000.0D;
-        var3[1] = Math.rint(var3[1] * 100000.0D / (double)this.pheight) / 1000.0D;
+        (var3 = this.math_view2pano(var1, var2, this.vwidth, this.vheight, this.pwidth, this.pheight, this.yaw, this.pitch, this.hfov))[0] = Math.rint(var3[0] * 100000.0D / (double) this.pwidth) / 1000.0D;
+        var3[1] = Math.rint(var3[1] * 100000.0D / (double) this.pheight) / 1000.0D;
         return "X = " + var3[0] + "; Y = " + var3[1];
     }
 
@@ -1124,7 +1124,7 @@ public class ptviewer extends Applet implements Runnable {
             } else if (this.hs_image != null) {
                 return -1;
             } else {
-                for(var3 = 0; var3 < this.numhs; ++var3) {
+                for (var3 = 0; var3 < this.numhs; ++var3) {
                     if (this.hs_visible[var3] && this.hs_mask[var3] == null && this.hs_link[var3] == -1 && this.hs_up[var3] == -200.0D && this.hs_vp[var3] == -200.0D && var1 < this.hs_xv[var3] + 12 && var1 > this.hs_xv[var3] - 12 && var2 < this.hs_yv[var3] + 12 && var2 > this.hs_yv[var3] - 12) {
                         return var3;
                     }
@@ -1138,7 +1138,7 @@ public class ptviewer extends Applet implements Runnable {
     }
 
     public void waitWhilePanning() {
-        while(this.lastframe > this.frames) {
+        while (this.lastframe > this.frames) {
             try {
                 Thread.sleep(200L);
             } catch (Exception var2) {
@@ -1214,20 +1214,20 @@ public class ptviewer extends Applet implements Runnable {
 
     public void moveFromTo(double var1, double var3, double var5, double var7, double var9, double var11, int var13) {
         double var14 = 0.0D;
-        double var16 = (var7 - var5) / (double)var13;
-        double var18 = Math.pow(var11 / var9, 1.0D / (double)var13);
+        double var16 = (var7 - var5) / (double) var13;
+        double var18 = Math.pow(var11 / var9, 1.0D / (double) var13);
         if (Math.abs(var3 - var1) >= 180.0D && this.yaw_max == 180.0D && this.yaw_min == -180.0D) {
             if (var3 > var1) {
-                var14 = (var3 - var1 - 360.0D) / (double)var13;
+                var14 = (var3 - var1 - 360.0D) / (double) var13;
             } else if (var3 < var1) {
-                var14 = (var3 - var1 + 360.0D) / (double)var13;
+                var14 = (var3 - var1 + 360.0D) / (double) var13;
             }
         } else {
-            var14 = (var3 - var1) / (double)var13;
+            var14 = (var3 - var1) / (double) var13;
         }
 
         this.gotoView(var1, var5, var9);
-        this.lastframe = this.frames + (long)var13;
+        this.lastframe = this.frames + (long) var13;
         this.startAutoPan(var14, var16, var18);
     }
 
@@ -1265,11 +1265,11 @@ public class ptviewer extends Applet implements Runnable {
 
     public void gotoView(double var1, double var3, double var5) {
         if (var1 != this.yaw || var3 != this.pitch || var5 != this.hfov) {
-            while(var1 > 180.0D) {
+            while (var1 > 180.0D) {
                 var1 -= 360.0D;
             }
 
-            while(var1 < -180.0D) {
+            while (var1 < -180.0D) {
                 var1 += 360.0D;
             }
 
@@ -1287,24 +1287,24 @@ public class ptviewer extends Applet implements Runnable {
             if (this.yaw_max != 180.0D || this.yaw_min != -180.0D) {
                 double var10 = this.math_view2pano(0, this.pitch > 0.0D ? 0 : this.vheight - 1, this.vwidth, this.vheight, this.pwidth, this.pheight, var1, var3, var5)[0];
                 double var12;
-                if ((var12 = this.math_view2pano(this.vwidth - 1, this.pitch > 0.0D ? 0 : this.vheight - 1, this.vwidth, this.vheight, this.pwidth, this.pheight, var1, var3, var5)[0]) - var10 > (this.yaw_max - this.yaw_min) / 360.0D * (double)this.pwidth) {
+                if ((var12 = this.math_view2pano(this.vwidth - 1, this.pitch > 0.0D ? 0 : this.vheight - 1, this.vwidth, this.vheight, this.pwidth, this.pheight, var1, var3, var5)[0]) - var10 > (this.yaw_max - this.yaw_min) / 360.0D * (double) this.pwidth) {
                     return;
                 }
 
-                if (var10 < (this.yaw_min + 180.0D) / 360.0D * (double)this.pwidth) {
+                if (var10 < (this.yaw_min + 180.0D) / 360.0D * (double) this.pwidth) {
                     if (this.lastframe > this.frames) {
                         this.autopan *= -1.0D;
                     }
 
-                    var1 += this.yaw_min - (var10 / (double)this.pwidth * 360.0D - 180.0D);
+                    var1 += this.yaw_min - (var10 / (double) this.pwidth * 360.0D - 180.0D);
                 }
 
-                if (var12 > (this.yaw_max + 180.0D) / 360.0D * (double)this.pwidth) {
+                if (var12 > (this.yaw_max + 180.0D) / 360.0D * (double) this.pwidth) {
                     if (this.lastframe > this.frames) {
                         this.autopan *= -1.0D;
                     }
 
-                    var1 -= var12 / (double)this.pwidth * 360.0D - 180.0D - this.yaw_max;
+                    var1 -= var12 / (double) this.pwidth * 360.0D - 180.0D - this.yaw_max;
                 }
             }
 
@@ -1379,7 +1379,7 @@ public class ptviewer extends Applet implements Runnable {
 
     void loadPanoFromList(int var1) {
         String var2;
-        if ((var2 = this.myGetParameter((String)null, "pano" + var1)) != null) {
+        if ((var2 = this.myGetParameter((String) null, "pano" + var1)) != null) {
             this.stop();
             this.PV_reset();
             this.initialize();
@@ -1566,7 +1566,7 @@ public class ptviewer extends Applet implements Runnable {
         }
 
         if ((var2 = this.myGetParameter(var1, "waittime")) != null) {
-            this.waittime = (long)Integer.parseInt(var2);
+            this.waittime = (long) Integer.parseInt(var2);
         }
 
         if ((var2 = this.myGetParameter(var1, "hsimage")) != null) {
@@ -1598,7 +1598,7 @@ public class ptviewer extends Applet implements Runnable {
         }
 
         int var3;
-        for(var3 = 0; var3 <= this.hotspots.size(); ++var3) {
+        for (var3 = 0; var3 <= this.hotspots.size(); ++var3) {
             if ((var2 = this.myGetParameter(var1, "hotspot" + var3)) != null) {
                 if (var3 < this.hotspots.size()) {
                     this.hotspots.setSize(var3);
@@ -1611,20 +1611,20 @@ public class ptviewer extends Applet implements Runnable {
         this.numroi = 0;
 
         int var4;
-        for(var4 = 0; this.myGetParameter(var1, "roi" + var4) != null; ++var4) {
+        for (var4 = 0; this.myGetParameter(var1, "roi" + var4) != null; ++var4) {
         }
 
         if (var4 > 0) {
             this.roi_allocate(var4);
 
-            for(var3 = 0; var3 < this.numroi; ++var3) {
+            for (var3 = 0; var3 < this.numroi; ++var3) {
                 if ((var2 = this.myGetParameter(var1, "roi" + var3)) != null) {
                     this.ParseROILine(var2, var3);
                 }
             }
         }
 
-        for(var3 = 0; var3 <= this.shotspots.size(); ++var3) {
+        for (var3 = 0; var3 <= this.shotspots.size(); ++var3) {
             if ((var2 = this.myGetParameter(var1, "shotspot" + var3)) != null) {
                 if (var3 < this.shotspots.size()) {
                     this.shotspots.setSize(var3);
@@ -1634,7 +1634,7 @@ public class ptviewer extends Applet implements Runnable {
             }
         }
 
-        for(var3 = 0; var3 <= this.sounds.size(); ++var3) {
+        for (var3 = 0; var3 <= this.sounds.size(); ++var3) {
             if ((var2 = this.myGetParameter(var1, "sound" + var3)) != null) {
                 if (var3 < this.sounds.size()) {
                     this.sounds.setSize(var3);
@@ -1644,7 +1644,7 @@ public class ptviewer extends Applet implements Runnable {
             }
         }
 
-        for(var3 = 0; var3 <= this.app_properties.size(); ++var3) {
+        for (var3 = 0; var3 <= this.app_properties.size(); ++var3) {
             if ((var2 = this.myGetParameter(var1, "applet" + var3)) != null) {
                 if (var3 < this.app_properties.size()) {
                     this.stopApplets(var3);
@@ -1680,7 +1680,7 @@ public class ptviewer extends Applet implements Runnable {
     void PTViewerScript(String var1) {
         int var2;
         if ((var2 = this.getNumArgs(var1, ';')) > 0) {
-            for(int var3 = 0; var3 < var2; ++var3) {
+            for (int var3 = 0; var3 < var2; ++var3) {
                 String var4;
                 if ((var4 = this.stripWhiteSpace(this.getArg(var3, var1, ';'))).equals("loop()")) {
                     var3 = -1;
@@ -1896,7 +1896,7 @@ public class ptviewer extends Applet implements Runnable {
     public double get_x() {
         double var2 = -1.0D;
         if (this.click_x >= 0 && this.click_y >= 0) {
-            var2 = (double)this.math_int_view2pano(this.click_x - this.vx, this.click_y - this.vy, this.vwidth, this.vheight, this.pwidth, this.pheight, this.yaw, this.pitch, this.hfov)[0] * 100.0D / (double)this.pwidth;
+            var2 = (double) this.math_int_view2pano(this.click_x - this.vx, this.click_y - this.vy, this.vwidth, this.vheight, this.pwidth, this.pheight, this.yaw, this.pitch, this.hfov)[0] * 100.0D / (double) this.pwidth;
         }
 
         return var2;
@@ -1905,7 +1905,7 @@ public class ptviewer extends Applet implements Runnable {
     public double get_y() {
         double var2 = -1.0D;
         if (this.click_x >= 0 && this.click_y >= 0) {
-            var2 = (double)this.math_int_view2pano(this.click_x - this.vx, this.click_y - this.vy, this.vwidth, this.vheight, this.pwidth, this.pheight, this.yaw, this.pitch, this.hfov)[1] * 100.0D / (double)this.pheight;
+            var2 = (double) this.math_int_view2pano(this.click_x - this.vx, this.click_y - this.vy, this.vwidth, this.vheight, this.pwidth, this.pheight, this.yaw, this.pitch, this.hfov)[1] * 100.0D / (double) this.pheight;
         }
 
         this.click_x = -1;
@@ -1918,7 +1918,7 @@ public class ptviewer extends Applet implements Runnable {
     }
 
     public void startCommunicating(Applet var1) {
-        synchronized(this.sender) {
+        synchronized (this.sender) {
             if (var1 != null) {
                 this.sender.put(var1, var1);
             } else {
@@ -1932,7 +1932,7 @@ public class ptviewer extends Applet implements Runnable {
 
     public void stopCommunicating(Applet var1) {
         if (var1 != null) {
-            synchronized(this.sender) {
+            synchronized (this.sender) {
                 this.sender.remove(var1);
             }
 
@@ -1967,8 +1967,8 @@ public class ptviewer extends Applet implements Runnable {
 
     void ptinsertImage(int[][] var1, int var2, int var3, Image var4, int var5) {
         if (var4 != null) {
-            int var6 = var4.getWidth((ImageObserver)null);
-            int var7 = var4.getHeight((ImageObserver)null);
+            int var6 = var4.getWidth((ImageObserver) null);
+            int var7 = var4.getHeight((ImageObserver) null);
             if (var5 > var7) {
                 var5 = var7;
             }
@@ -1976,7 +1976,7 @@ public class ptviewer extends Applet implements Runnable {
             int var8 = (var7 + var5 - 1) / var5;
             int[] var9 = new int[var6 * var8];
 
-            for(int var10 = 0; var10 < var5; ++var10) {
+            for (int var10 = 0; var10 < var5; ++var10) {
                 int var11 = var8 + var10 * var8 > var7 ? var7 - var10 * var8 : var8;
                 PixelGrabber var12 = new PixelGrabber(var4, 0, var10 * var8, var6, var11, var9, 0, var6);
 
@@ -2008,7 +2008,7 @@ public class ptviewer extends Applet implements Runnable {
         var3[5] = 5;
         if (var2 > 45) {
             var3[0] = 4;
-            switch(var1 / 45) {
+            switch (var1 / 45) {
                 case -3:
                     var3[1] = 1;
                     var3[2] = 0;
@@ -2067,7 +2067,7 @@ public class ptviewer extends Applet implements Runnable {
             }
         } else if (var2 < -45) {
             var3[0] = 5;
-            switch(var1 / 45) {
+            switch (var1 / 45) {
                 case -3:
                     var3[1] = 1;
                     var3[2] = 0;
@@ -2125,7 +2125,7 @@ public class ptviewer extends Applet implements Runnable {
                     var3[5] = 4;
             }
         } else {
-            switch(var1 / 45) {
+            switch (var1 / 45) {
                 case -3:
                     var3[0] = 1;
                     var3[1] = 0;
@@ -2198,7 +2198,7 @@ public class ptviewer extends Applet implements Runnable {
     public Image loadImage(String var1) {
         Image var2;
         byte[] var3;
-        if ((var3 = this.file_read(var1, (int[])null)) != null && (var2 = this.bufferToImage(var3)) != null) {
+        if ((var3 = this.file_read(var1, (int[]) null)) != null && (var2 = this.bufferToImage(var3)) != null) {
             return var2;
         } else {
             try {
@@ -2207,7 +2207,7 @@ public class ptviewer extends Applet implements Runnable {
                 MediaTracker var5;
                 (var5 = new MediaTracker(this)).addImage(var2, 0);
                 var5.waitForAll();
-                return var2 != null && var2.getWidth((ImageObserver)null) > 0 ? var2 : null;
+                return var2 != null && var2.getWidth((ImageObserver) null) > 0 ? var2 : null;
             } catch (Exception var7) {
                 return null;
             }
@@ -2267,8 +2267,8 @@ public class ptviewer extends Applet implements Runnable {
 
             int var4;
             int var5;
-            for(var5 = 0; var5 < var10; ++var5) {
-                for(var4 = 0; var4 < var11; ++var4) {
+            for (var5 = 0; var5 < var10; ++var5) {
+                for (var4 = 0; var4 < var11; ++var4) {
                     var1[var5][var4] = var8;
                 }
             }
@@ -2277,10 +2277,10 @@ public class ptviewer extends Applet implements Runnable {
 
             int var6;
             int var7;
-            for(var6 = 36 * var10 / var11; var6 >= 0; --var6) {
+            for (var6 = 36 * var10 / var11; var6 >= 0; --var6) {
                 var7 = var5 + 1;
 
-                for(var4 = 0; var4 < var11; ++var4) {
+                for (var4 = 0; var4 < var11; ++var4) {
                     var1[var5][var4] = var9;
                     var1[var7][var4] = var9;
                 }
@@ -2292,22 +2292,22 @@ public class ptviewer extends Applet implements Runnable {
 
             var4 = 0;
 
-            for(var6 = 36; var6 >= 0; --var6) {
+            for (var6 = 36; var6 >= 0; --var6) {
                 if (var4 == 0) {
-                    for(var5 = 0; var5 < var10; ++var5) {
+                    for (var5 = 0; var5 < var10; ++var5) {
                         var1[var5][var4] = var9;
                     }
                 } else if (var4 >= var11 - 1) {
                     var4 = var11 - 1;
                     var6 = 0;
 
-                    for(var5 = 0; var5 < var10; ++var5) {
+                    for (var5 = 0; var5 < var10; ++var5) {
                         var1[var5][var4] = var9;
                     }
                 } else {
                     var7 = var4 + 1;
 
-                    for(var5 = 0; var5 < var10; ++var5) {
+                    for (var5 = 0; var5 < var10; ++var5) {
                         var1[var5][var4] = var9;
                         var1[var5][var7] = var9;
                     }
@@ -2354,19 +2354,19 @@ public class ptviewer extends Applet implements Runnable {
         int var7;
         int var8;
         if (var3 >= var1) {
-            for(var8 = var12; var8 <= var13; ++var8) {
-                for(var7 = var1; var7 <= var3; ++var7) {
+            for (var8 = var12; var8 <= var13; ++var8) {
+                for (var7 = var1; var7 <= var3; ++var7) {
                     var6[var8][var7] &= var9;
                 }
             }
 
         } else {
-            for(var8 = var12; var8 <= var13; ++var8) {
-                for(var7 = 0; var7 <= var3; ++var7) {
+            for (var8 = var12; var8 <= var13; ++var8) {
+                for (var7 = 0; var7 <= var3; ++var7) {
                     var6[var8][var7] &= var9;
                 }
 
-                for(var7 = var1; var7 < var11; ++var7) {
+                for (var7 = var1; var7 < var11; ++var7) {
                     var6[var8][var7] &= var9;
                 }
             }
@@ -2386,7 +2386,7 @@ public class ptviewer extends Applet implements Runnable {
             int var23 = -var19 * var2 / var5 + var21;
             int var24 = var2 - 1;
 
-            for(int var7 = var4 - 1; var7 >= 0; --var7) {
+            for (int var7 = var4 - 1; var7 >= 0; --var7) {
                 int var9;
                 int var13 = (var9 = ((var7 << 8) - var20) * var2 / var5 + var22) & 255;
                 int var16;
@@ -2401,7 +2401,7 @@ public class ptviewer extends Applet implements Runnable {
                     var17 = var9;
                 }
 
-                for(int var6 = var5 - 1; var6 >= 0; --var6) {
+                for (int var6 = var5 - 1; var6 >= 0; --var6) {
                     int var8;
                     int var12 = (var8 = var6 * var18 + var23) & 255;
                     int var14;
@@ -2427,15 +2427,15 @@ public class ptviewer extends Applet implements Runnable {
     void ptImageTo2DArray(int[][] var1, Image var2) {
         if (var2 != null && var1 != null) {
             int var3;
-            if ((var3 = var2.getHeight((ImageObserver)null)) * var2.getWidth((ImageObserver)null) > this.im_maxarray) {
-                var3 = this.im_maxarray / var2.getWidth((ImageObserver)null);
+            if ((var3 = var2.getHeight((ImageObserver) null)) * var2.getWidth((ImageObserver) null) > this.im_maxarray) {
+                var3 = this.im_maxarray / var2.getWidth((ImageObserver) null);
             }
 
-            int[] var4 = new int[var3 * var2.getWidth((ImageObserver)null)];
+            int[] var4 = new int[var3 * var2.getWidth((ImageObserver) null)];
 
-            for(int var5 = 0; var5 < var2.getHeight((ImageObserver)null); var5 += var3) {
-                int var10 = var3 < var2.getHeight((ImageObserver)null) - var5 ? var3 : var2.getHeight((ImageObserver)null) - var5;
-                PixelGrabber var9 = new PixelGrabber(var2, 0, var5, var2.getWidth((ImageObserver)null), var10, var4, 0, var2.getWidth((ImageObserver)null));
+            for (int var5 = 0; var5 < var2.getHeight((ImageObserver) null); var5 += var3) {
+                int var10 = var3 < var2.getHeight((ImageObserver) null) - var5 ? var3 : var2.getHeight((ImageObserver) null) - var5;
+                PixelGrabber var9 = new PixelGrabber(var2, 0, var5, var2.getWidth((ImageObserver) null), var10, var4, 0, var2.getWidth((ImageObserver) null));
 
                 try {
                     var9.grabPixels();
@@ -2443,10 +2443,10 @@ public class ptviewer extends Applet implements Runnable {
                     return;
                 }
 
-                for(int var8 = 0; var8 < var10; ++var8) {
-                    int var6 = var8 * var2.getWidth((ImageObserver)null);
+                for (int var8 = 0; var8 < var10; ++var8) {
+                    int var6 = var8 * var2.getWidth((ImageObserver) null);
 
-                    for(int var7 = 0; var7 < var2.getWidth((ImageObserver)null); ++var7) {
+                    for (int var7 = 0; var7 < var2.getWidth((ImageObserver) null); ++var7) {
                         var1[var8 + var5][var7] = var4[var6 + var7] | -16777216;
                     }
                 }
@@ -2459,15 +2459,15 @@ public class ptviewer extends Applet implements Runnable {
     void ptImageToAlpha(int[][] var1, Image var2) {
         if (var2 != null && var1 != null) {
             int var3;
-            if ((var3 = var2.getHeight((ImageObserver)null)) * var2.getWidth((ImageObserver)null) > this.im_maxarray) {
-                var3 = this.im_maxarray / var2.getWidth((ImageObserver)null);
+            if ((var3 = var2.getHeight((ImageObserver) null)) * var2.getWidth((ImageObserver) null) > this.im_maxarray) {
+                var3 = this.im_maxarray / var2.getWidth((ImageObserver) null);
             }
 
-            int[] var4 = new int[var3 * var2.getWidth((ImageObserver)null)];
+            int[] var4 = new int[var3 * var2.getWidth((ImageObserver) null)];
 
-            for(int var6 = 0; var6 < var2.getHeight((ImageObserver)null); var6 += var3) {
-                int var11 = var3 < var2.getHeight((ImageObserver)null) - var6 ? var3 : var2.getHeight((ImageObserver)null) - var6;
-                PixelGrabber var10 = new PixelGrabber(var2, 0, var6, var2.getWidth((ImageObserver)null), var11, var4, 0, var2.getWidth((ImageObserver)null));
+            for (int var6 = 0; var6 < var2.getHeight((ImageObserver) null); var6 += var3) {
+                int var11 = var3 < var2.getHeight((ImageObserver) null) - var6 ? var3 : var2.getHeight((ImageObserver) null) - var6;
+                PixelGrabber var10 = new PixelGrabber(var2, 0, var6, var2.getWidth((ImageObserver) null), var11, var4, 0, var2.getWidth((ImageObserver) null));
 
                 try {
                     var10.grabPixels();
@@ -2475,10 +2475,10 @@ public class ptviewer extends Applet implements Runnable {
                     return;
                 }
 
-                for(int var9 = 0; var9 < var11; ++var9) {
-                    int var7 = var9 * var2.getWidth((ImageObserver)null);
+                for (int var9 = 0; var9 < var11; ++var9) {
+                    int var7 = var9 * var2.getWidth((ImageObserver) null);
 
-                    for(int var8 = 0; var8 < var2.getWidth((ImageObserver)null); ++var8) {
+                    for (int var8 = 0; var8 < var2.getWidth((ImageObserver) null); ++var8) {
                         int var5 = ((var4[var7 + var8] & 255) << 24) + 16777215;
                         var1[var9 + var6][var8] &= var5;
                     }
@@ -2493,10 +2493,10 @@ public class ptviewer extends Applet implements Runnable {
         try {
             int var11 = 0;
 
-            for(int var13 = var3; var11 < var9; ++var13) {
+            for (int var13 = var3; var11 < var9; ++var13) {
                 int var10 = 0;
 
-                for(int var14 = (var7 + var11) * var5 + var6; var10 < var8; ++var14) {
+                for (int var14 = (var7 + var11) * var5 + var6; var10 < var8; ++var14) {
                     int var15;
                     if (((var15 = var4[var14]) & -16777216) != 0) {
                         int var12 = var10 + var2;
@@ -2518,10 +2518,10 @@ public class ptviewer extends Applet implements Runnable {
         try {
             int var11 = 0;
 
-            for(int var12 = var3; var11 < var9; ++var12) {
+            for (int var12 = var3; var11 < var9; ++var12) {
                 int var10 = 0;
 
-                for(int var13 = (var7 + var11) * var5 + var6; var10 < var8; ++var13) {
+                for (int var13 = (var7 + var11) * var5 + var6; var10 < var8; ++var13) {
                     var4[var13] = this.pdata[var12][var10 + var2] | -16777216;
                     ++var10;
                 }
@@ -2541,21 +2541,21 @@ public class ptviewer extends Applet implements Runnable {
             if ((var6 = this.loadImageProgress(var1)) == null) {
                 return null;
             } else {
-                if (var3 > var6.getWidth((ImageObserver)null)) {
+                if (var3 > var6.getWidth((ImageObserver) null)) {
                     if (var4 == 0) {
                         var4 = var3 >> 1;
                     }
                 } else {
-                    var3 = var6.getWidth((ImageObserver)null);
-                    var4 = var6.getHeight((ImageObserver)null);
+                    var3 = var6.getWidth((ImageObserver) null);
+                    var4 = var6.getHeight((ImageObserver) null);
                 }
 
                 if ((var5 = this.im_allocate_pano(var2, var3, var4)) == null) {
                     return null;
                 } else {
                     this.ptImageTo2DArray(var5, var6);
-                    if (var3 != var6.getWidth((ImageObserver)null)) {
-                        this.scaleImage(var5, var6.getWidth((ImageObserver)null), var6.getHeight((ImageObserver)null));
+                    if (var3 != var6.getWidth((ImageObserver) null)) {
+                        this.scaleImage(var5, var6.getWidth((ImageObserver) null), var6.getHeight((ImageObserver) null));
                     }
 
                     return var5;
@@ -2584,14 +2584,14 @@ public class ptviewer extends Applet implements Runnable {
             int var7 = 0;
             int var8 = 0;
 
-            for(int var9 = 1; var7 < var4; var9 += 2) {
+            for (int var9 = 1; var7 < var4; var9 += 2) {
                 int[] var10 = var1[var8];
                 int[] var11 = var1[var9];
                 int[] var12 = var6[var7];
                 int var13 = 0;
                 int var14 = 0;
 
-                for(int var15 = 1; var13 < var5; var15 += 2) {
+                for (int var15 = 1; var13 < var5; var15 += 2) {
                     var12[var13] = im_pixelaverage(var10[var14], var10[var15], var11[var14], var11[var15]);
                     ++var13;
                     var14 += 2;
@@ -2616,12 +2616,12 @@ public class ptviewer extends Applet implements Runnable {
         } else {
             int var7 = 0;
 
-            for(int var8 = 0; var7 < var4; var8 += 2) {
+            for (int var8 = 0; var7 < var4; var8 += 2) {
                 byte[] var9 = var1[var8];
                 byte[] var10 = var6[var7];
                 int var11 = 0;
 
-                for(int var12 = 0; var11 < var5; var12 += 2) {
+                for (int var12 = 0; var11 < var5; var12 += 2) {
                     var10[var11] = var9[var12];
                     ++var11;
                 }
@@ -2675,7 +2675,7 @@ public class ptviewer extends Applet implements Runnable {
                 StringBuffer var4 = new StringBuffer(0);
 
                 int var2;
-                for(var2 = 0; var2 < var3 - 5; ++var2) {
+                for (var2 = 0; var2 < var3 - 5; ++var2) {
                     if (var1.substring(var2, var2 + 6).equalsIgnoreCase("&quot;")) {
                         var4.append('"');
                         var2 += 5;
@@ -2698,13 +2698,13 @@ public class ptviewer extends Applet implements Runnable {
 
             int var3;
             int var4;
-            for(var4 = (var3 = var1.length()) - 1; var2 < var3 && (var1.charAt(var2) == ' ' || var1.charAt(var2) == '\r' || var1.charAt(var2) == '\n' || var1.charAt(var2) == '\t'); ++var2) {
+            for (var4 = (var3 = var1.length()) - 1; var2 < var3 && (var1.charAt(var2) == ' ' || var1.charAt(var2) == '\r' || var1.charAt(var2) == '\n' || var1.charAt(var2) == '\t'); ++var2) {
             }
 
             if (var2 == var3) {
                 return null;
             } else {
-                while(var4 >= 0 && (var1.charAt(var4) == ' ' || var1.charAt(var4) == '\r' || var1.charAt(var4) == '\n' || var1.charAt(var4) == '\t')) {
+                while (var4 >= 0 && (var1.charAt(var4) == ' ' || var1.charAt(var4) == '\r' || var1.charAt(var4) == '\n' || var1.charAt(var4) == '\t')) {
                     --var4;
                 }
 
@@ -2721,7 +2721,7 @@ public class ptviewer extends Applet implements Runnable {
         int var5;
         int var7;
         int var8;
-        for(var7 = 0; (var5 = var2.indexOf(124, var4)) != -1 && var5 < var2.length() - 1; var4 = var5 + 1) {
+        for (var7 = 0; (var5 = var2.indexOf(124, var4)) != -1 && var5 < var2.length() - 1; var4 = var5 + 1) {
             if ((var8 = var3.stringWidth(var2.substring(var4, var5))) > var7) {
                 var7 = var8;
             }
@@ -2749,13 +2749,13 @@ public class ptviewer extends Applet implements Runnable {
 
         int var10;
         int var11;
-        for(var11 = 1; (var10 = var6.indexOf(124, var9)) != -1 && var10 < var6.length() - 1; var9 = var10 + 1) {
+        for (var11 = 1; (var10 = var6.indexOf(124, var9)) != -1 && var10 < var6.length() - 1; var9 = var10 + 1) {
             var1.drawString(var6.substring(var9, var10), var2 + 5, var3 + var11 * var8.getHeight());
             ++var11;
         }
 
         var1.drawString(var6.substring(var9), var2 + 5, var3 + var11 * var8.getHeight());
-        switch(var7) {
+        switch (var7) {
             case 1:
                 var1.fillRect(var2, var3 + var4.height - 2, 2, 2);
                 return;
@@ -2788,7 +2788,7 @@ public class ptviewer extends Applet implements Runnable {
         int var4 = 0;
         if (var1 != null && var2 != null) {
             int var3;
-            while((var3 = var1.indexOf(123, var4)) >= 0 && (var4 = var1.indexOf(125, var3)) >= 0) {
+            while ((var3 = var1.indexOf(123, var4)) >= 0 && (var4 = var1.indexOf(125, var3)) >= 0) {
                 String var5;
                 if ((var5 = this.stripWhiteSpace(var1.substring(var3 + 1, var4))).startsWith(var2 + "=")) {
                     return this.resolveQuotes(this.stripWhiteSpace(var5.substring(var5.indexOf(61) + 1)));
@@ -2812,7 +2812,7 @@ public class ptviewer extends Applet implements Runnable {
                 var3.setLength(0);
                 return var1;
             } else {
-                for(var4 = var1; var1 < var5 && var2.charAt(var1) != '\''; ++var1) {
+                for (var4 = var1; var1 < var5 && var2.charAt(var1) != '\''; ++var1) {
                 }
 
                 if (var1 < var5) {
@@ -2837,7 +2837,7 @@ public class ptviewer extends Applet implements Runnable {
                     var3.setLength(0);
                     return var1;
                 } else {
-                    for(var4 = var1; var1 < var5 && var2.charAt(var1) != var6; ++var1) {
+                    for (var4 = var1; var1 < var5 && var2.charAt(var1) != var6; ++var1) {
                     }
 
                     if (var1 < var5) {
@@ -2852,7 +2852,7 @@ public class ptviewer extends Applet implements Runnable {
                 }
             }
         } else {
-            while(var1 < var5 && var2.charAt(var1) != ' ' && var2.charAt(var1) != '\r' && var2.charAt(var1) != '\n' && var2.charAt(var1) != '\t') {
+            while (var1 < var5 && var2.charAt(var1) != ' ' && var2.charAt(var1) != '\r' && var2.charAt(var1) != '\n' && var2.charAt(var1) != '\t') {
                 ++var1;
             }
 
@@ -2873,7 +2873,7 @@ public class ptviewer extends Applet implements Runnable {
         if (var2 == null) {
             return null;
         } else {
-            for(int var4 = 0; var4 < var1; ++var4) {
+            for (int var4 = 0; var4 < var1; ++var4) {
                 if ((var5 = var2.indexOf(var3, var5)) == -1) {
                     return null;
                 }
@@ -2900,7 +2900,7 @@ public class ptviewer extends Applet implements Runnable {
             return 0;
         } else {
             int var3;
-            for(var3 = 1; (var4 = var1.indexOf(var2, var4)) != -1; ++var3) {
+            for (var3 = 1; (var4 = var1.indexOf(var2, var4)) != -1; ++var3) {
                 ++var4;
             }
 
@@ -2923,7 +2923,7 @@ public class ptviewer extends Applet implements Runnable {
 
     byte[] file_read(String var1, int[] var2) {
         byte[] var3;
-        if ((var3 = (byte[])this.file_Cache.get(var1)) != null) {
+        if ((var3 = (byte[]) this.file_Cache.get(var1)) != null) {
             if (var2 != null) {
                 var2[0] = 80;
                 this.repaint();
@@ -2949,7 +2949,7 @@ public class ptviewer extends Applet implements Runnable {
                 if (var3 != null) {
                     this.m3(var3, var1);
                     if (this.file_cachefiles) {
-                        synchronized(this.file_Cache) {
+                        synchronized (this.file_Cache) {
                             this.file_Cache.put(var1, var3);
                         }
                     }
@@ -2974,7 +2974,7 @@ public class ptviewer extends Applet implements Runnable {
                 if (var3 != null) {
                     this.m3(var3, var1);
                     if (this.file_cachefiles) {
-                        synchronized(this.file_Cache) {
+                        synchronized (this.file_Cache) {
                             this.file_Cache.put(var1, var3);
                         }
                     }
@@ -2986,14 +2986,14 @@ public class ptviewer extends Applet implements Runnable {
 
             try {
                 if ((var5 = Class.forName("ptviewer").getResourceAsStream(var1)) != null) {
-                    var3 = this.file_read(var5, 0, (int[])null);
+                    var3 = this.file_read(var5, 0, (int[]) null);
                     var5.close();
                 }
 
                 if (var3 != null) {
                     this.m3(var3, var1);
                     if (this.file_cachefiles) {
-                        synchronized(this.file_Cache) {
+                        synchronized (this.file_Cache) {
                             this.file_Cache.put(var1, var3);
                         }
                     }
@@ -3015,7 +3015,7 @@ public class ptviewer extends Applet implements Runnable {
 
         try {
             byte[] var9;
-            while(var6 != -1) {
+            while (var6 != -1) {
                 int var5 = 0;
                 if (var8.length < var4 + var7) {
                     var9 = new byte[var4 + var7];
@@ -3023,7 +3023,7 @@ public class ptviewer extends Applet implements Runnable {
                     var8 = var9;
                 }
 
-                while(var5 < var7 && (var6 = var1.read(var8, var4, var7 - var5)) != -1) {
+                while (var5 < var7 && (var6 = var1.read(var8, var4, var7 - var5)) != -1) {
                     var5 += var6;
                     var4 += var6;
                     if (var2 > 0 && var3 != null) {
@@ -3053,7 +3053,7 @@ public class ptviewer extends Applet implements Runnable {
         int var3 = 0;
 
         int var4;
-        for(var4 = 0; var3 < var1.length; ++var4) {
+        for (var4 = 0; var3 < var1.length; ++var4) {
             if (var4 >= var2.length) {
                 var4 = 0;
             }
@@ -3066,10 +3066,10 @@ public class ptviewer extends Applet implements Runnable {
         int var6 = var1.length - var5.length;
         byte[] var7 = new byte[var5.length];
 
-        for(var3 = 0; var3 < var6; var3 += var5.length) {
+        for (var3 = 0; var3 < var6; var3 += var5.length) {
             System.arraycopy(var1, var3, var7, 0, var5.length);
 
-            for(var4 = 0; var4 < var5.length; ++var4) {
+            for (var4 = 0; var4 < var5.length; ++var4) {
                 var1[var4 + var3] = var7[var5[var4]];
             }
         }
@@ -3146,8 +3146,8 @@ public class ptviewer extends Applet implements Runnable {
         if (this.shotspots.size() > 0) {
             this.shs_allocate(this.shotspots.size());
 
-            for(int var1 = 0; var1 < this.numshs; ++var1) {
-                this.ParseStaticHotspotLine((String)this.shotspots.elementAt(var1), var1);
+            for (int var1 = 0; var1 < this.numshs; ++var1) {
+                this.ParseStaticHotspotLine((String) this.shotspots.elementAt(var1), var1);
             }
         }
 
@@ -3171,7 +3171,7 @@ public class ptviewer extends Applet implements Runnable {
     }
 
     void shs_dispose() {
-        for(int var1 = 0; var1 < this.numshs; ++var1) {
+        for (int var1 = 0; var1 < this.numshs; ++var1) {
             if (this.shs_him[var1] != null) {
                 this.shs_him[var1] = null;
             }
@@ -3194,9 +3194,9 @@ public class ptviewer extends Applet implements Runnable {
         this.shs_imode[var2] = 0;
         this.shs_active[var2] = false;
 
-        while(true) {
-            while(var3 < var5) {
-                switch(var1.charAt(var3++)) {
+        while (true) {
+            while (var3 < var5) {
+                switch (var1.charAt(var3++)) {
                     case 'a':
                         var3 = this.getNextWord(var3, var1, var6);
                         this.shs_x2[var2] = Integer.parseInt(var6.toString());
@@ -3260,14 +3260,14 @@ public class ptviewer extends Applet implements Runnable {
     }
 
     final void shs_draw(Graphics var1) {
-        for(int var2 = 0; var2 < this.numshs; ++var2) {
+        for (int var2 = 0; var2 < this.numshs; ++var2) {
             if (this.shs_him[var2] != null) {
                 if (((this.shs_imode[var2] & 2) > 0 || this.shs_active[var2] && (this.shs_imode[var2] & 1) > 0) && this.shs_him[var2] instanceof Image) {
-                    var1.drawImage((Image)this.shs_him[var2], this.shs_x1[var2], this.shs_y1[var2], this);
+                    var1.drawImage((Image) this.shs_him[var2], this.shs_x1[var2], this.shs_y1[var2], this);
                 }
 
                 if (this.shs_him[var2] instanceof String && this.shs_active[var2]) {
-                    this.JumpToLink((String)this.shs_him[var2], (String)null);
+                    this.JumpToLink((String) this.shs_him[var2], (String) null);
                 }
             }
         }
@@ -3277,7 +3277,7 @@ public class ptviewer extends Applet implements Runnable {
     final int OverStaticHotspot(int var1, int var2) {
         int var4 = -1;
 
-        for(int var3 = 0; var3 < this.numshs; ++var3) {
+        for (int var3 = 0; var3 < this.numshs; ++var3) {
             if (this.shs_url[var3] == null || var1 < this.shs_x1[var3] || var1 > this.shs_x2[var3] || (var2 < this.shs_y1[var3] || var2 > this.shs_y2[var3]) && (var2 < this.shs_y2[var3] || var2 > this.shs_y1[var3])) {
                 this.shs_active[var3] = false;
             } else {
@@ -3313,16 +3313,16 @@ public class ptviewer extends Applet implements Runnable {
                 double var4 = 0.0D;
 
                 int var2;
-                for(var2 = 0; var2 < 4096; var4 += var6) {
-                    this.sqrt_LU[var2] = (int)(Math.sqrt(1.0D + var4 * var4) * 4096.0D);
+                for (var2 = 0; var2 < 4096; var4 += var6) {
+                    this.sqrt_LU[var2] = (int) (Math.sqrt(1.0D + var4 * var4) * 4096.0D);
                     ++var2;
                 }
 
-                this.sqrt_LU[4096] = (int)(Math.sqrt(2.0D) * 4096.0D);
+                this.sqrt_LU[4096] = (int) (Math.sqrt(2.0D) * 4096.0D);
                 var6 = 2.44140625E-4D;
                 var4 = 0.0D;
 
-                for(var2 = 0; var2 < 4097; var4 += var6) {
+                for (var2 = 0; var2 < 4097; var4 += var6) {
                     if (var2 < 4096) {
                         this.atan_LU[var2] = Math.atan(var4 / (1.0D - var4)) * 256.0D;
                     } else {
@@ -3341,12 +3341,12 @@ public class ptviewer extends Applet implements Runnable {
     final void math_updateLookUp(int var1) {
         int var2 = var1 << 6;
         if (this.PV_atan0_HR != var2) {
-            double var3 = (double)var1 / 6.283185307179586D;
+            double var3 = (double) var1 / 6.283185307179586D;
             this.PV_atan0_HR = var2;
             this.PV_pi_HR = 128 * var1;
 
-            for(int var5 = 0; var5 < 4097; ++var5) {
-                this.atan_LU_HR[var5] = (int)(var3 * this.atan_LU[var5] + 0.5D);
+            for (int var5 = 0; var5 < 4097; ++var5) {
+                this.atan_LU_HR[var5] = (int) (var3 * this.atan_LU[var5] + 0.5D);
             }
         }
 
@@ -3381,8 +3381,8 @@ public class ptviewer extends Applet implements Runnable {
     }
 
     final void matrix_matrix_mult(double[][] var1, double[][] var2, double[][] var3) {
-        for(int var4 = 0; var4 < 3; ++var4) {
-            for(int var5 = 0; var5 < 3; ++var5) {
+        for (int var4 = 0; var4 < 3; ++var4) {
+            for (int var5 = 0; var5 < 3; ++var5) {
                 var3[var4][var5] = var1[var4][0] * var2[0][var5] + var1[var4][1] * var2[1][var5] + var1[var4][2] * var2[2][var5];
             }
         }
@@ -3427,7 +3427,7 @@ public class ptviewer extends Applet implements Runnable {
 
     final void math_set_int_matrix(double var1, double var3, double var5, int var7) {
         double var8 = var1 * 2.0D * 3.141592653589793D / 360.0D;
-        double var10 = (double)var7 / (2.0D * Math.tan(var8 / 2.0D));
+        double var10 = (double) var7 / (2.0D * Math.tan(var8 / 2.0D));
         this.SetMatrix(var5 * 2.0D * 3.141592653589793D / 360.0D, var3 * 2.0D * 3.141592653589793D / 360.0D, this.f1, 1);
         double[] var10000 = this.f1[0];
         var10000[0] /= var10;
@@ -3443,9 +3443,9 @@ public class ptviewer extends Applet implements Runnable {
         var10000[2] /= var10;
         double var12 = var8 > 0.3D ? 131072.0D / var8 : 436906.6666666667D;
 
-        for(int var14 = 0; var14 < 3; ++var14) {
-            for(int var15 = 0; var15 < 3; ++var15) {
-                this.f2[var14][var15] = (int)(var12 * this.f1[var14][var15] + 0.5D);
+        for (int var14 = 0; var14 < 3; ++var14) {
+            for (int var15 = 0; var15 < 3; ++var15) {
+                this.f2[var14][var15] = (int) (var12 * this.f1[var14][var15] + 0.5D);
             }
         }
 
@@ -3498,7 +3498,7 @@ public class ptviewer extends Applet implements Runnable {
                     var58 = false;
                 }
 
-                for(var10 = var31; var10 < var32; var15 += this.f2[1][2]) {
+                for (var10 = var31; var10 < var32; var15 += this.f2[1][2]) {
                     var27 = var14;
                     int var56;
                     if (!var58) {
@@ -3538,7 +3538,7 @@ public class ptviewer extends Applet implements Runnable {
                             }
 
                             var4[var12] = var35 | -16777216;
-                            var5[var12] = (byte)(var35 >> 24);
+                            var5[var12] = (byte) (var35 >> 24);
                         }
 
                         var56 = var12++ - 1;
@@ -3547,7 +3547,7 @@ public class ptviewer extends Applet implements Runnable {
                     var26 = var13 + var36;
                     var28 = var15 + var37;
 
-                    for(var9 = 1; var9 < var30; var28 += var37) {
+                    for (var9 = 1; var9 < var30; var28 += var37) {
                         int var45 = var4[var12];
                         int var57 = var4[var56];
                         if (var45 == 0 || var57 == 0) {
@@ -3583,7 +3583,7 @@ public class ptviewer extends Applet implements Runnable {
 
                             if (var45 == 0) {
                                 var4[var12] = var35 | -16777216;
-                                var5[var12] = (byte)(var35 >> 24);
+                                var5[var12] = (byte) (var35 >> 24);
                             }
 
                             if (var57 == 0) {
@@ -3602,7 +3602,7 @@ public class ptviewer extends Applet implements Runnable {
                                 }
 
                                 var4[var56] = var35 | -16777216;
-                                var5[var56] = (byte)(var35 >> 24);
+                                var5[var56] = (byte) (var35 >> 24);
                             }
                         }
 
@@ -3619,13 +3619,13 @@ public class ptviewer extends Applet implements Runnable {
                 }
 
             } else {
-                for(var10 = var31; var10 < var32; var15 += this.f2[1][2]) {
+                for (var10 = var31; var10 < var32; var15 += this.f2[1][2]) {
                     var12 = var11;
                     var26 = var13 + var29 * var36;
                     var27 = var14;
                     var28 = var15 + var29 * var37;
 
-                    for(var9 = var29; var9 < var30; var28 += var37) {
+                    for (var9 = var29; var9 < var30; var28 += var37) {
                         if (var4[var12] == 0) {
                             var16 = this.PV_atan2_HR(var26, var28);
                             var17 = this.PV_atan2_HR(var27, this.PV_sqrt(Math.abs(var28), Math.abs(var26)));
@@ -3657,7 +3657,7 @@ public class ptviewer extends Applet implements Runnable {
                             }
 
                             var4[var12] = var35 | -16777216;
-                            var5[var12] = (byte)(var35 >> 24);
+                            var5[var12] = (byte) (var35 >> 24);
                         }
 
                         ++var9;
@@ -3691,7 +3691,7 @@ public class ptviewer extends Applet implements Runnable {
                     var46 = false;
                 }
 
-                for(var10 = var31; var10 < var32; var15 += this.f2[1][2]) {
+                for (var10 = var31; var10 < var32; var15 += this.f2[1][2]) {
                     var27 = var14;
                     int var48;
                     int var50;
@@ -3763,7 +3763,7 @@ public class ptviewer extends Applet implements Runnable {
                             }
 
                             var4[var12] = bil(var33, var34, var35, var36, var37, var38);
-                            var5[var12] = (byte)(var33 >> 24);
+                            var5[var12] = (byte) (var33 >> 24);
                         }
 
                         var50 = var12++ - 1;
@@ -3772,7 +3772,7 @@ public class ptviewer extends Applet implements Runnable {
                     var26 = var13 + var42;
                     var28 = var15 + var43;
 
-                    for(var9 = 1; var9 < var30; var28 += var43) {
+                    for (var9 = 1; var9 < var30; var28 += var43) {
                         int var51 = var4[var12];
                         int var52 = var4[var50];
                         if (var51 == 0 || var52 == 0) {
@@ -3842,7 +3842,7 @@ public class ptviewer extends Applet implements Runnable {
 
                             if (var51 == 0) {
                                 var4[var12] = bil(var33, var34, var35, var36, var37, var38);
-                                var5[var12] = (byte)(var33 >> 24);
+                                var5[var12] = (byte) (var33 >> 24);
                             }
 
                             if (var52 == 0) {
@@ -3878,7 +3878,7 @@ public class ptviewer extends Applet implements Runnable {
                                 }
 
                                 var4[var50] = bil(var33, var34, var35, var36, var37, var38);
-                                var5[var50] = (byte)(var33 >> 24);
+                                var5[var50] = (byte) (var33 >> 24);
                             }
                         }
 
@@ -3895,13 +3895,13 @@ public class ptviewer extends Applet implements Runnable {
                 }
 
             } else {
-                for(var10 = var31; var10 < var32; var15 += this.f2[1][2]) {
+                for (var10 = var31; var10 < var32; var15 += this.f2[1][2]) {
                     var12 = var11;
                     var26 = var13 + var29 * var42;
                     var27 = var14;
                     var28 = var15 + var29 * var43;
 
-                    for(var9 = var29; var9 < var30; var28 += var43) {
+                    for (var9 = var29; var9 < var30; var28 += var43) {
                         if (var4[var12] == 0) {
                             var16 = this.PV_atan2_HR(var26, var28);
                             var17 = this.PV_atan2_HR(var27, this.PV_sqrt(Math.abs(var28), Math.abs(var26)));
@@ -3967,7 +3967,7 @@ public class ptviewer extends Applet implements Runnable {
                             }
 
                             var4[var12] = bil(var33, var34, var35, var36, var37, var38);
-                            var5[var12] = (byte)(var33 >> 24);
+                            var5[var12] = (byte) (var33 >> 24);
                         }
 
                         ++var9;
@@ -3986,18 +3986,18 @@ public class ptviewer extends Applet implements Runnable {
     }
 
     final double[] math_view2pano(int var1, int var2, int var3, int var4, int var5, int var6, double var7, double var9, double var11) {
-        double var27 = (double)var5 / 6.283185307179586D;
+        double var27 = (double) var5 / 6.283185307179586D;
         double var13 = var11 * 2.0D * 3.141592653589793D / 360.0D;
-        double var17 = (double)((int)((double)var3 / (2.0D * Math.tan(var13 / 2.0D)) + 0.5D));
+        double var17 = (double) ((int) ((double) var3 / (2.0D * Math.tan(var13 / 2.0D)) + 0.5D));
         this.SetMatrix(var9 * 2.0D * 3.141592653589793D / 360.0D, var7 * 2.0D * 3.141592653589793D / 360.0D, this.f1, 1);
         var1 -= var3 >> 1;
         var2 -= var4 >> 1;
-        double var21 = this.f1[0][0] * (double)var1 + this.f1[1][0] * (double)var2 + this.f1[2][0] * var17;
-        double var23 = this.f1[0][1] * (double)var1 + this.f1[1][1] * (double)var2 + this.f1[2][1] * var17;
-        double var25 = this.f1[0][2] * (double)var1 + this.f1[1][2] * (double)var2 + this.f1[2][2] * var17;
+        double var21 = this.f1[0][0] * (double) var1 + this.f1[1][0] * (double) var2 + this.f1[2][0] * var17;
+        double var23 = this.f1[0][1] * (double) var1 + this.f1[1][1] * (double) var2 + this.f1[2][1] * var17;
+        double var25 = this.f1[0][2] * (double) var1 + this.f1[1][2] * (double) var2 + this.f1[2][2] * var17;
         double[] var29;
-        (var29 = new double[2])[0] = var27 * Math.atan2(var21, var25) + (double)var5 / 2.0D;
-        var29[1] = var27 * Math.atan2(var23, Math.sqrt(var25 * var25 + var21 * var21)) + (double)var6 / 2.0D;
+        (var29 = new double[2])[0] = var27 * Math.atan2(var21, var25) + (double) var5 / 2.0D;
+        var29[1] = var27 * Math.atan2(var23, Math.sqrt(var25 * var25 + var21 * var21)) + (double) var6 / 2.0D;
         return var29;
     }
 
@@ -4007,26 +4007,26 @@ public class ptviewer extends Applet implements Runnable {
             var13[0] = 0.0D;
         }
 
-        if (var13[0] >= (double)var5) {
-            var13[0] = (double)(var5 - 1);
+        if (var13[0] >= (double) var5) {
+            var13[0] = (double) (var5 - 1);
         }
 
         if (var13[1] < 0.0D) {
             var13[1] = 0.0D;
         }
 
-        if (var13[1] >= (double)var6) {
-            var13[1] = (double)(var6 - 1);
+        if (var13[1] >= (double) var6) {
+            var13[1] = (double) (var6 - 1);
         }
 
         int[] var14;
-        (var14 = new int[2])[0] = (int)var13[0];
-        var14[1] = (int)var13[1];
+        (var14 = new int[2])[0] = (int) var13[0];
+        var14[1] = (int) var13[1];
         return var14;
     }
 
     final double math_fovy(double var1, int var3, int var4) {
-        return 114.59155902616465D * Math.atan((double)var4 / (double)var3 * Math.tan(var1 / 2.0D * 3.141592653589793D / 180.0D));
+        return 114.59155902616465D * Math.atan((double) var4 / (double) var3 * Math.tan(var1 / 2.0D * 3.141592653589793D / 180.0D));
     }
 
     void roi_allocate(int var1) {
@@ -4042,7 +4042,7 @@ public class ptviewer extends Applet implements Runnable {
     }
 
     void roi_dispose() {
-        for(int var1 = 0; var1 < this.numroi; ++var1) {
+        for (int var1 = 0; var1 < this.numroi; ++var1) {
             this.roi_im[var1] = null;
         }
 
@@ -4062,8 +4062,8 @@ public class ptviewer extends Applet implements Runnable {
         this.roi_yp[var2] = 0;
         this.roi_loaded[var2] = false;
 
-        while(var3 < var5) {
-            switch(var1.charAt(var3++)) {
+        while (var3 < var5) {
+            switch (var1.charAt(var3++)) {
                 case 'i':
                     var3 = this.getNextWord(var3, var1, var6);
                     this.roi_im[var2] = var6.toString();
@@ -4090,15 +4090,15 @@ public class ptviewer extends Applet implements Runnable {
 
     public synchronized void PlaySound(int var1) {
         if (var1 < this.sounds.size() && this.sounds.elementAt(var1) != null && this.sounds.elementAt(var1) instanceof AudioClip) {
-            ((AudioClip)this.sounds.elementAt(var1)).play();
+            ((AudioClip) this.sounds.elementAt(var1)).play();
         }
 
     }
 
     void SetupSounds() {
-        for(int var1 = 0; var1 < this.sounds.size(); ++var1) {
+        for (int var1 = 0; var1 < this.sounds.size(); ++var1) {
             if (this.sounds.elementAt(var1) != null && this.sounds.elementAt(var1) instanceof String) {
-                String var2 = (String)this.sounds.elementAt(var1);
+                String var2 = (String) this.sounds.elementAt(var1);
 
                 try {
                     URL var3 = new URL(this.getDocumentBase(), var2);
@@ -4108,7 +4108,7 @@ public class ptviewer extends Applet implements Runnable {
                         URL var5 = Class.forName("ptviewer").getResource(var2);
                         this.sounds.setElementAt(this.getAudioClip(var5), var1);
                     } catch (Exception var7) {
-                        this.sounds.setElementAt((Object)null, var1);
+                        this.sounds.setElementAt((Object) null, var1);
                     }
                 }
             }
@@ -4129,16 +4129,16 @@ public class ptviewer extends Applet implements Runnable {
 
             try {
                 String var2;
-                Applet var5 = (Applet)Class.forName((var2 = this.myGetParameter((String)this.app_properties.elementAt(var1), "code")).substring(0, var2.lastIndexOf(".class"))).getConstructor(Class.forName("ptviewer"), class$java$lang$String == null ? (class$java$lang$String = class$("java.lang.String")) : class$java$lang$String).newInstance(this, this.app_properties.elementAt(var1));
+                Applet var5 = (Applet) Class.forName((var2 = this.myGetParameter((String) this.app_properties.elementAt(var1), "code")).substring(0, var2.lastIndexOf(".class"))).getConstructor(Class.forName("ptviewer"), class$java$lang$String == null ? (class$java$lang$String = class$("java.lang.String")) : class$java$lang$String).newInstance(this, this.app_properties.elementAt(var1));
                 this.applets.put(this.app_properties.elementAt(var1), var5);
                 var5.init();
                 var5.start();
             } catch (Exception var12) {
                 try {
                     String var3;
-                    Applet var6 = (Applet)Class.forName((var3 = this.myGetParameter((String)this.app_properties.elementAt(var1), "code")).substring(0, var3.lastIndexOf(".class"))).getConstructor().newInstance();
+                    Applet var6 = (Applet) Class.forName((var3 = this.myGetParameter((String) this.app_properties.elementAt(var1), "code")).substring(0, var3.lastIndexOf(".class"))).getConstructor().newInstance();
                     this.applets.put(this.app_properties.elementAt(var1), var6);
-                    AppletStub var9 = (AppletStub)Class.forName("ptstub").getConstructor(Class.forName("ptviewer"), class$java$lang$String == null ? (class$java$lang$String = class$("java.lang.String")) : class$java$lang$String).newInstance(this, this.app_properties.elementAt(var1));
+                    AppletStub var9 = (AppletStub) Class.forName("ptstub").getConstructor(Class.forName("ptviewer"), class$java$lang$String == null ? (class$java$lang$String = class$("java.lang.String")) : class$java$lang$String).newInstance(this, this.app_properties.elementAt(var1));
                     var6.setStub(var9);
                     var6.init();
                     var6.start();
@@ -4151,7 +4151,7 @@ public class ptviewer extends Applet implements Runnable {
     public void stopApplet(int var1) {
         if (var1 >= 0 && this.app_properties != null && var1 < this.app_properties.size() && this.app_properties.elementAt(var1) != null) {
             Applet var2;
-            if ((var2 = (Applet)this.applets.get(this.app_properties.elementAt(var1))) != null) {
+            if ((var2 = (Applet) this.applets.get(this.app_properties.elementAt(var1))) != null) {
                 var2.stop();
                 this.applets.remove(this.app_properties.elementAt(var1));
             }
@@ -4160,7 +4160,7 @@ public class ptviewer extends Applet implements Runnable {
     }
 
     void stopApplets(int var1) {
-        for(int var2 = var1; var2 < this.app_properties.size(); ++var2) {
+        for (int var2 = var1; var2 < this.app_properties.size(); ++var2) {
             this.stopApplet(var2);
         }
 
@@ -4194,7 +4194,7 @@ public class ptviewer extends Applet implements Runnable {
     }
 
     void hs_dispose() {
-        for(int var1 = 0; var1 < this.numhs; ++var1) {
+        for (int var1 = 0; var1 < this.numhs; ++var1) {
             if (this.hs_him[var1] != null) {
                 this.hs_him[var1] = null;
             }
@@ -4246,9 +4246,9 @@ public class ptviewer extends Applet implements Runnable {
         this.hs_mask[var2] = null;
         this.hs_link[var2] = -1;
 
-        while(var3 < var4) {
+        while (var3 < var4) {
             int[] var10000;
-            switch(var1.charAt(var3++)) {
+            switch (var1.charAt(var3++)) {
                 case 'A':
                     var3 = this.getNextWord(var3, var1, var5);
                     this.hs_up[var2] = -Double.valueOf(var5.toString());
@@ -4369,8 +4369,8 @@ public class ptviewer extends Applet implements Runnable {
         if (this.hotspots.size() != 0) {
             this.hs_allocate(this.hotspots.size());
 
-            for(int var1 = 0; var1 < this.numhs; ++var1) {
-                this.ParseHotspotLine((String)this.hotspots.elementAt(var1), var1);
+            for (int var1 = 0; var1 < this.numhs; ++var1) {
+                this.ParseHotspotLine((String) this.hotspots.elementAt(var1), var1);
             }
 
             this.hs_setLinkedHotspots();
@@ -4385,16 +4385,16 @@ public class ptviewer extends Applet implements Runnable {
             this.hs_read();
 
             int var5;
-            for(var5 = 0; var5 < this.numhs; ++var5) {
+            for (var5 = 0; var5 < this.numhs; ++var5) {
                 String var10;
-                if (this.hs_him[var5] != null && (this.hs_imode[var5] & 16) == 0 && !(var10 = (String)this.hs_him[var5]).startsWith("ptviewer:") && !var10.startsWith("javascript:")) {
+                if (this.hs_him[var5] != null && (this.hs_imode[var5] & 16) == 0 && !(var10 = (String) this.hs_him[var5]).startsWith("ptviewer:") && !var10.startsWith("javascript:")) {
                     this.hs_him[var5] = this.loadImage(var10);
                 }
             }
 
             this.hs_rel2abs(var3, var2);
             if (this.hs_image != null) {
-                this.hs_image = this.loadImage((String)this.hs_image);
+                this.hs_image = this.loadImage((String) this.hs_image);
             }
 
             PixelGrabber var4;
@@ -4403,33 +4403,33 @@ public class ptviewer extends Applet implements Runnable {
             int var13;
             int var14;
             Image var19;
-            if (this.hs_image != null && this.hs_image instanceof Image && var3 == ((Image)this.hs_image).getWidth((ImageObserver)null) && var2 == ((Image)this.hs_image).getHeight((ImageObserver)null)) {
-                this.ptImageToAlpha(var1, (Image)this.hs_image);
+            if (this.hs_image != null && this.hs_image instanceof Image && var3 == ((Image) this.hs_image).getWidth((ImageObserver) null) && var2 == ((Image) this.hs_image).getHeight((ImageObserver) null)) {
+                this.ptImageToAlpha(var1, (Image) this.hs_image);
             } else {
-                for(var5 = 0; var5 < this.numhs && var5 < 255; ++var5) {
+                for (var5 = 0; var5 < this.numhs && var5 < 255; ++var5) {
                     if (this.hs_link[var5] == -1) {
                         double[] var10000;
                         if (this.hs_up[var5] != -200.0D && this.hs_vp[var5] != -200.0D) {
-                            this.SetPAlpha((int)this.hs_xp[var5], (int)this.hs_yp[var5], (int)this.hs_up[var5], (int)this.hs_vp[var5], var5, var1);
+                            this.SetPAlpha((int) this.hs_xp[var5], (int) this.hs_yp[var5], (int) this.hs_up[var5], (int) this.hs_vp[var5], var5, var1);
                             if (this.hs_up[var5] >= this.hs_xp[var5]) {
                                 var10000 = this.hs_xp;
                                 var10000[var5] += (this.hs_up[var5] - this.hs_xp[var5]) / 2.0D;
                                 this.hs_up[var5] -= this.hs_xp[var5];
                             } else {
                                 var10000 = this.hs_xp;
-                                var10000[var5] += (this.hs_up[var5] + (double)var3 - this.hs_xp[var5]) / 2.0D;
-                                this.hs_up[var5] = this.hs_up[var5] + (double)var3 - this.hs_xp[var5];
+                                var10000[var5] += (this.hs_up[var5] + (double) var3 - this.hs_xp[var5]) / 2.0D;
+                                this.hs_up[var5] = this.hs_up[var5] + (double) var3 - this.hs_xp[var5];
                             }
 
                             this.hs_yp[var5] = (this.hs_yp[var5] + this.hs_vp[var5]) / 2.0D;
                             this.hs_vp[var5] = Math.abs(this.hs_yp[var5] - this.hs_vp[var5]);
                         } else if ((this.hs_imode[var5] & 4) > 0 && this.hs_him[var5] != null && this.hs_him[var5] instanceof Image && this.hs_mask[var5] == null) {
-                            this.hs_up[var5] = (double)((Image)this.hs_him[var5]).getWidth((ImageObserver)null);
-                            this.hs_vp[var5] = (double)((Image)this.hs_him[var5]).getHeight((ImageObserver)null);
-                            this.SetPAlpha((int)(this.hs_xp[var5] - this.hs_up[var5] / 2.0D), (int)(this.hs_yp[var5] - this.hs_vp[var5] / 2.0D), (int)(this.hs_xp[var5] + this.hs_up[var5] / 2.0D), (int)(this.hs_yp[var5] + this.hs_vp[var5] / 2.0D), var5, var1);
+                            this.hs_up[var5] = (double) ((Image) this.hs_him[var5]).getWidth((ImageObserver) null);
+                            this.hs_vp[var5] = (double) ((Image) this.hs_him[var5]).getHeight((ImageObserver) null);
+                            this.SetPAlpha((int) (this.hs_xp[var5] - this.hs_up[var5] / 2.0D), (int) (this.hs_yp[var5] - this.hs_vp[var5] / 2.0D), (int) (this.hs_xp[var5] + this.hs_up[var5] / 2.0D), (int) (this.hs_yp[var5] + this.hs_vp[var5] / 2.0D), var5, var1);
                         } else if (this.hs_mask[var5] != null && (var19 = this.loadImage(this.hs_mask[var5])) != null) {
-                            int[] var9 = new int[var19.getWidth((ImageObserver)null) * var19.getHeight((ImageObserver)null)];
-                            var4 = new PixelGrabber(var19, 0, 0, var19.getWidth((ImageObserver)null), var19.getHeight((ImageObserver)null), var9, 0, var19.getWidth((ImageObserver)null));
+                            int[] var9 = new int[var19.getWidth((ImageObserver) null) * var19.getHeight((ImageObserver) null)];
+                            var4 = new PixelGrabber(var19, 0, 0, var19.getWidth((ImageObserver) null), var19.getHeight((ImageObserver) null), var9, 0, var19.getWidth((ImageObserver) null));
 
                             try {
                                 var4.grabPixels();
@@ -4437,15 +4437,15 @@ public class ptviewer extends Applet implements Runnable {
                                 continue;
                             }
 
-                            var11 = (int)this.hs_yp[var5];
+                            var11 = (int) this.hs_yp[var5];
                             var13 = (var5 << 24) + 16777215;
                             var14 = 0;
 
-                            for(int var7 = 0; var7 < var19.getHeight((ImageObserver)null) && var11 < var2; ++var11) {
-                                int var8 = var7 * var19.getWidth((ImageObserver)null);
+                            for (int var7 = 0; var7 < var19.getHeight((ImageObserver) null) && var11 < var2; ++var11) {
+                                int var8 = var7 * var19.getWidth((ImageObserver) null);
                                 int var6 = 0;
 
-                                for(var12 = (int)this.hs_xp[var5]; var6 < var19.getWidth((ImageObserver)null) && var12 < var3; ++var12) {
+                                for (var12 = (int) this.hs_xp[var5]; var6 < var19.getWidth((ImageObserver) null) && var12 < var3; ++var12) {
                                     if ((var9[var8 + var6] & 16777215) == 16777215) {
                                         var1[var11][var12] &= var13;
                                         ++var14;
@@ -4458,17 +4458,17 @@ public class ptviewer extends Applet implements Runnable {
                             }
 
                             var10000 = this.hs_yp;
-                            var10000[var5] += (double)(var19.getHeight((ImageObserver)null) >> 1);
+                            var10000[var5] += (double) (var19.getHeight((ImageObserver) null) >> 1);
                             var10000 = this.hs_xp;
-                            var10000[var5] += (double)(var19.getWidth((ImageObserver)null) >> 1);
-                            this.hs_up[var5] = (double)var19.getWidth((ImageObserver)null);
-                            this.hs_vp[var5] = (double)var19.getHeight((ImageObserver)null);
+                            var10000[var5] += (double) (var19.getWidth((ImageObserver) null) >> 1);
+                            this.hs_up[var5] = (double) var19.getWidth((ImageObserver) null);
+                            this.hs_vp[var5] = (double) var19.getHeight((ImageObserver) null);
                         }
                     }
                 }
             }
 
-            for(var5 = 0; var5 < this.numhs; ++var5) {
+            for (var5 = 0; var5 < this.numhs; ++var5) {
                 if (this.hs_link[var5] != -1) {
                     this.hs_xp[var5] = this.hs_xp[this.hs_link[var5]];
                     this.hs_yp[var5] = this.hs_yp[this.hs_link[var5]];
@@ -4477,12 +4477,12 @@ public class ptviewer extends Applet implements Runnable {
                 }
             }
 
-            for(var5 = 0; var5 < this.numhs; ++var5) {
+            for (var5 = 0; var5 < this.numhs; ++var5) {
                 if ((this.hs_imode[var5] & 4) > 0 && this.hs_him[var5] != null && this.hs_him[var5] instanceof Image) {
-                    var11 = (var19 = (Image)this.hs_him[var5]).getWidth((ImageObserver)null);
-                    var12 = var19.getHeight((ImageObserver)null);
-                    var13 = (int)this.hs_xp[var5] - (var11 >> 1);
-                    var14 = (int)this.hs_yp[var5] - (var12 >> 1);
+                    var11 = (var19 = (Image) this.hs_him[var5]).getWidth((ImageObserver) null);
+                    var12 = var19.getHeight((ImageObserver) null);
+                    var13 = (int) this.hs_xp[var5] - (var11 >> 1);
+                    var14 = (int) this.hs_yp[var5] - (var12 >> 1);
                     if (var13 >= 0 && var14 >= 0 && var11 + var13 <= var3 && var12 + var14 <= var2) {
                         int[] var15 = new int[var11 * var12 + var11 * var12];
                         var4 = new PixelGrabber(var19, 0, 0, var11, var12, var15, 0, var11);
@@ -4495,8 +4495,8 @@ public class ptviewer extends Applet implements Runnable {
 
                         this.im_extractRect(var1, var13, var14, var15, var11, 0, var12, var11, var12);
                         this.hs_him[var5] = var15;
-                        this.hs_up[var5] = (double)var11;
-                        this.hs_vp[var5] = (double)var12;
+                        this.hs_up[var5] = (double) var11;
+                        this.hs_vp[var5] = (double) var12;
                     } else {
                         System.out.println("Image for Hotspot No " + var5 + " outside main panorama");
                     }
@@ -4511,22 +4511,22 @@ public class ptviewer extends Applet implements Runnable {
         if (var1 == null) {
             return false;
         } else {
-            for(int var4 = 0; var4 < this.numhs; ++var4) {
+            for (int var4 = 0; var4 < this.numhs; ++var4) {
                 if ((this.hs_imode[var4] & 4) > 0 && this.hs_him[var4] != null && this.hs_him[var4] instanceof int[]) {
-                    int var5 = (int)this.hs_up[var4];
-                    int var6 = (int)this.hs_vp[var4];
-                    int var7 = (int)this.hs_xp[var4] - (var5 >> 1);
-                    int var8 = (int)this.hs_yp[var4] - (var6 >> 1);
+                    int var5 = (int) this.hs_up[var4];
+                    int var6 = (int) this.hs_vp[var4];
+                    int var7 = (int) this.hs_xp[var4] - (var5 >> 1);
+                    int var8 = (int) this.hs_yp[var4] - (var6 >> 1);
                     int[] var10000;
                     if (var3 || (this.hs_imode[var4] & 2) > 0 || var4 == var2 && (this.hs_imode[var4] & 1) > 0 || var2 >= 0 && this.hs_link[var4] == var2 && (this.hs_imode[var4] & 1) > 0) {
                         if ((this.hs_imode[var4] & 8) == 0) {
-                            this.im_insertRect(var1, var7, var8, (int[])this.hs_him[var4], var5, 0, 0, var5, var6);
+                            this.im_insertRect(var1, var7, var8, (int[]) this.hs_him[var4], var5, 0, 0, var5, var6);
                             var10000 = this.hs_imode;
                             var10000[var4] |= 8;
                             var9 = true;
                         }
                     } else if ((this.hs_imode[var4] & 8) > 0) {
-                        this.im_insertRect(var1, var7, var8, (int[])this.hs_him[var4], var5, 0, var6, var5, var6);
+                        this.im_insertRect(var1, var7, var8, (int[]) this.hs_him[var4], var5, 0, var6, var5, var6);
                         var10000 = this.hs_imode;
                         var10000[var4] &= -9;
                         var9 = true;
@@ -4539,32 +4539,32 @@ public class ptviewer extends Applet implements Runnable {
     }
 
     void hs_rel2abs(int var1, int var2) {
-        for(int var3 = 0; var3 < this.numhs; ++var3) {
+        for (int var3 = 0; var3 < this.numhs; ++var3) {
             if (this.hs_xp[var3] < 0.0D) {
-                this.hs_xp[var3] = -this.hs_xp[var3] * (double)var1 / 100.0D;
-                if (this.hs_xp[var3] >= (double)var1) {
-                    this.hs_xp[var3] = (double)(var1 - 1);
+                this.hs_xp[var3] = -this.hs_xp[var3] * (double) var1 / 100.0D;
+                if (this.hs_xp[var3] >= (double) var1) {
+                    this.hs_xp[var3] = (double) (var1 - 1);
                 }
             }
 
             if (this.hs_yp[var3] < 0.0D) {
-                this.hs_yp[var3] = -this.hs_yp[var3] * (double)var2 / 100.0D;
-                if (this.hs_yp[var3] >= (double)var2) {
-                    this.hs_yp[var3] = (double)(var2 - 1);
+                this.hs_yp[var3] = -this.hs_yp[var3] * (double) var2 / 100.0D;
+                if (this.hs_yp[var3] >= (double) var2) {
+                    this.hs_yp[var3] = (double) (var2 - 1);
                 }
             }
 
             if (this.hs_up[var3] < 0.0D && this.hs_up[var3] != -200.0D) {
-                this.hs_up[var3] = -this.hs_up[var3] * (double)var1 / 100.0D;
-                if (this.hs_up[var3] >= (double)var1) {
-                    this.hs_up[var3] = (double)(var1 - 1);
+                this.hs_up[var3] = -this.hs_up[var3] * (double) var1 / 100.0D;
+                if (this.hs_up[var3] >= (double) var1) {
+                    this.hs_up[var3] = (double) (var1 - 1);
                 }
             }
 
             if (this.hs_vp[var3] < 0.0D && this.hs_vp[var3] != -200.0D) {
-                this.hs_vp[var3] = -this.hs_vp[var3] * (double)var2 / 100.0D;
-                if (this.hs_vp[var3] >= (double)var2) {
-                    this.hs_vp[var3] = (double)(var2 - 1);
+                this.hs_vp[var3] = -this.hs_vp[var3] * (double) var2 / 100.0D;
+                if (this.hs_vp[var3] >= (double) var2) {
+                    this.hs_vp[var3] = (double) (var2 - 1);
                 }
             }
         }
@@ -4572,7 +4572,7 @@ public class ptviewer extends Applet implements Runnable {
     }
 
     void hs_draw(Graphics var1, int var2, int var3, int var4, int var5, int var6, boolean var7) {
-        for(int var8 = 0; var8 < this.numhs; ++var8) {
+        for (int var8 = 0; var8 < this.numhs; ++var8) {
             if (this.hs_visible[var8] && (var7 || (this.hs_imode[var8] & 2) > 0 || var8 == var6 && (this.hs_imode[var8] & 1) > 0 || var6 >= 0 && this.hs_link[var8] == var6 && (this.hs_imode[var8] & 1) > 0)) {
                 if (this.hs_him[var8] == null) {
                     if (this.hs_hc[var8] == null) {
@@ -4584,10 +4584,10 @@ public class ptviewer extends Applet implements Runnable {
                     var1.drawOval(this.hs_xv[var8] - 10 + var2, this.hs_yv[var8] - 10 + var3, 20, 20);
                     var1.fillOval(this.hs_xv[var8] - 5 + var2, this.hs_yv[var8] - 5 + var3, 10, 10);
                 } else if (this.hs_him[var8] instanceof Image) {
-                    Image var9 = (Image)this.hs_him[var8];
-                    var1.drawImage(var9, this.hs_xv[var8] - (var9.getWidth((ImageObserver)null) >> 1) + var2, this.hs_yv[var8] - (var9.getHeight((ImageObserver)null) >> 1) + var3, this);
+                    Image var9 = (Image) this.hs_him[var8];
+                    var1.drawImage(var9, this.hs_xv[var8] - (var9.getWidth((ImageObserver) null) >> 1) + var2, this.hs_yv[var8] - (var9.getHeight((ImageObserver) null) >> 1) + var3, this);
                 } else if ((this.hs_imode[var8] & 16) > 0 && this.hs_him[var8] instanceof String) {
-                    String var15 = (String)this.hs_him[var8];
+                    String var15 = (String) this.hs_him[var8];
                     Dimension var10 = this.string_textWindowSize(var1, var15);
                     if (this.hs_xv[var8] >= 0 && this.hs_xv[var8] < var4 && this.hs_yv[var8] >= 0 && this.hs_yv[var8] < var5) {
                         int var11 = 0;
@@ -4626,17 +4626,17 @@ public class ptviewer extends Applet implements Runnable {
     }
 
     final void hs_exec_popup(int var1) {
-        for(int var2 = 0; var2 < this.numhs; ++var2) {
+        for (int var2 = 0; var2 < this.numhs; ++var2) {
             if (this.hs_visible[var2] && this.hs_him[var2] != null && (var2 == var1 || var1 >= 0 && this.hs_link[var2] == var1) && this.hs_him[var2] instanceof String && (this.hs_imode[var2] & 16) == 0) {
-                this.JumpToLink((String)this.hs_him[var2], (String)null);
+                this.JumpToLink((String) this.hs_him[var2], (String) null);
             }
         }
 
     }
 
     final void hs_setLinkedHotspots() {
-        for(int var1 = 0; var1 < this.numhs; ++var1) {
-            for(int var2 = var1 + 1; var2 < this.numhs; ++var2) {
+        for (int var1 = 0; var1 < this.numhs; ++var1) {
+            for (int var2 = var1 + 1; var2 < this.numhs; ++var2) {
                 if (this.hs_xp[var1] == this.hs_xp[var2] && this.hs_yp[var1] == this.hs_yp[var2] && this.hs_link[var1] == -1) {
                     this.hs_link[var2] = var1;
                 }
@@ -4650,14 +4650,14 @@ public class ptviewer extends Applet implements Runnable {
         int var35 = var4 >> 1;
         double[][] var15 = new double[3][3];
         double var11 = var9 * 2.0D * 3.141592653589793D / 360.0D;
-        double var13 = (double)var1 / (2.0D * Math.tan(var11 / 2.0D));
+        double var13 = (double) var1 / (2.0D * Math.tan(var11 / 2.0D));
         this.SetMatrix(-var7 * 2.0D * 3.141592653589793D / 360.0D, -var5 * 2.0D * 3.141592653589793D / 360.0D, var15, 0);
 
-        for(int var16 = 0; var16 < this.numhs; ++var16) {
-            double var24 = this.hs_xp[var16] - (double)var34;
-            double var26 = (double)this.pheight - (this.hs_yp[var16] - (double)var35);
-            double var30 = var24 / (double)var34 * 3.141592653589793D;
-            double var32 = var26 / (double)var35 * 3.141592653589793D / 2.0D;
+        for (int var16 = 0; var16 < this.numhs; ++var16) {
+            double var24 = this.hs_xp[var16] - (double) var34;
+            double var26 = (double) this.pheight - (this.hs_yp[var16] - (double) var35);
+            double var30 = var24 / (double) var34 * 3.141592653589793D;
+            double var32 = var26 / (double) var35 * 3.141592653589793D / 2.0D;
             double var22;
             if (Math.abs(var30) > 1.5707963267948966D) {
                 var22 = 1.0D;
@@ -4671,13 +4671,13 @@ public class ptviewer extends Applet implements Runnable {
             var24 = var15[0][0] * var18 + var15[1][0] * var20 + var15[2][0] * var22;
             var26 = var15[0][1] * var18 + var15[1][1] * var20 + var15[2][1] * var22;
             double var28 = var15[0][2] * var18 + var15[1][2] * var20 + var15[2][2] * var22;
-            this.hs_xv[var16] = (int)(var24 * var13 / var28 + (double)var1 / 2.0D);
-            this.hs_yv[var16] = (int)(var26 * var13 / var28 + (double)var2 / 2.0D);
+            this.hs_xv[var16] = (int) (var24 * var13 / var28 + (double) var1 / 2.0D);
+            this.hs_yv[var16] = (int) (var26 * var13 / var28 + (double) var2 / 2.0D);
             int var36 = 12;
             int var37 = 12;
             if (this.hs_him[var16] != null && this.hs_him[var16] instanceof Image) {
-                var36 = ((Image)this.hs_him[var16]).getWidth((ImageObserver)null) >> 1;
-                var37 = ((Image)this.hs_him[var16]).getHeight((ImageObserver)null) >> 1;
+                var36 = ((Image) this.hs_him[var16]).getWidth((ImageObserver) null) >> 1;
+                var37 = ((Image) this.hs_him[var16]).getHeight((ImageObserver) null) >> 1;
             } else if (this.hs_him[var16] != null && this.hs_him[var16] instanceof String && (this.hs_imode[var16] & 16) > 0) {
                 var36 = 100;
                 var37 = 100;

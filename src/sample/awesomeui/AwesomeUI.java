@@ -8,15 +8,19 @@ package sample.awesomeui;
 import sample.awesomeui.animation.FadeInUpTransition;
 import com.sun.javafx.scene.control.behavior.ButtonBehavior;
 import com.sun.javafx.scene.control.behavior.KeyBinding;
+
 import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.effect.BoxBlur;
+
 import static javafx.scene.input.KeyCode.ENTER;
 import static javafx.scene.input.KeyEvent.KEY_PRESSED;
 import static javafx.scene.input.KeyEvent.KEY_RELEASED;
+
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -24,7 +28,6 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 /**
- *
  * @author Fernando Andrauss
  */
 public class AwesomeUI extends Application {

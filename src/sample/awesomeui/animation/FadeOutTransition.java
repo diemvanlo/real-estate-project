@@ -8,20 +8,20 @@ import javafx.util.Duration;
 
 /**
  * Animate a fade out effect on a node
- * 
+ * <p>
  * Port of FadeOut from Animate.css http://daneden.me/animate by Dan Eden
- * 
+ * <p>
  * {@literal @}keyframes fadeOut {
- * 	0% {opacity: 1;}	
- * 	100% {opacity: 0;}
+ * 0% {opacity: 1;}
+ * 100% {opacity: 0;}
  * }
- * 
+ *
  * @author Jasper Potts
  */
 public class FadeOutTransition extends CachedTimelineTransition {
     /**
      * Create new FadeOutTransition
-     * 
+     *
      * @param node The node to affect
      */
     public FadeOutTransition(final Node node) {

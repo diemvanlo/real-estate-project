@@ -6,9 +6,8 @@
 package sample.hopital.helpers;
 
 /**
- *
  * @author danml
  */
 public class Database {
-    
+
 }

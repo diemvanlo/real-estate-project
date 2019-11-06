@@ -2,8 +2,10 @@ package sample.awesomeui;
 
 import sample.awesomeui.animation.FadeOutDownTransition;
 import sample.awesomeui.animation.ShakeTransition;
+
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,7 +36,7 @@ public class LoginController implements Initializable {
 
     @FXML
     void close(ActionEvent event) {
-         // Aplicando a animação de saida
+        // Aplicando a animação de saida
         new FadeOutDownTransition(rootPane)
                 .setOnFinish((e) -> {
                     ((Stage) tfUsuario.getScene().getWindow()).close();
@@ -56,13 +58,13 @@ public class LoginController implements Initializable {
 
     @FXML
     void login(ActionEvent event) {
-        
+
         tfUsuario.setId(null);
         tfSenha.setId(null);
-        
+
         if (tfUsuario.getText().equals("admin") && tfSenha.getText().equals("admin")) {
-            
-             // Aplicando a animação de entrada
+
+            // Aplicando a animação de entrada
             new FadeOutDownTransition(rootPane)
                     .setOnFinish((e) -> {
 
@@ -73,8 +75,8 @@ public class LoginController implements Initializable {
                     .play();
 
         } else {
-            
-             // Aplicando a animação de validação
+
+            // Aplicando a animação de validação
             new ShakeTransition(rootPane)
                     .setDelayTime(Duration.ZERO)
                     .setDuration(Duration.millis(800))
@@ -95,8 +97,8 @@ public class LoginController implements Initializable {
     void minimize(ActionEvent event) {
         ((Stage) ((Stage) tfUsuario.getScene().getWindow()).getOwner()).setIconified(true);
     }
-    
-    
+
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Método chamado na leitura do FXML

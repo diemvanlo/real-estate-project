@@ -8,21 +8,21 @@ import javafx.util.Duration;
 
 /**
  * Animate a shake effect on the given node
- * 
+ * <p>
  * Port of Shake from Animate.css http://daneden.me/animate by Dan Eden
- * 
+ * <p>
  * {@literal @}keyframes shake {
- * 	0%, 100% {transform: translateX(0);}
- * 	10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
- * 	20%, 40%, 60%, 80% {transform: translateX(10px);}
+ * 0%, 100% {transform: translateX(0);}
+ * 10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
+ * 20%, 40%, 60%, 80% {transform: translateX(10px);}
  * }
- * 
+ *
  * @author Jasper Potts
  */
 public class ShakeTransition extends CachedTimelineTransition {
     /**
      * Create new ShakeTransition
-     * 
+     *
      * @param node The node to affect
      */
     public ShakeTransition(final Node node) {

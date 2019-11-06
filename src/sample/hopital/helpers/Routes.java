@@ -6,7 +6,6 @@
 package sample.hopital.helpers;
 
 /**
- *
  * @author danml
  */
 public class Routes {

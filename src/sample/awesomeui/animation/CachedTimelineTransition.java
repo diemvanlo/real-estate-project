@@ -29,9 +29,9 @@ public class CachedTimelineTransition extends Transition {
     /**
      * Create new CachedTimelineTransition
      *
-     * @param node The node that is being animated by the timeline
+     * @param node     The node that is being animated by the timeline
      * @param timeline The timeline for the animation, it should be from 0 to 1
-     * seconds
+     *                 seconds
      */
     public CachedTimelineTransition(final Node node, final Timeline timeline) {
         this(node, timeline, true);
@@ -40,11 +40,11 @@ public class CachedTimelineTransition extends Transition {
     /**
      * Create new CachedTimelineTransition
      *
-     * @param node The node that is being animated by the timeline
+     * @param node     The node that is being animated by the timeline
      * @param timeline The timeline for the animation, it should be from 0 to 1
-     * seconds
+     *                 seconds
      * @param useCache When true the node is cached as image during the
-     * animation
+     *                 animation
      */
     public CachedTimelineTransition(final Node node, final Timeline timeline, final boolean useCache) {
         this.node = node;
@@ -107,7 +107,7 @@ public class CachedTimelineTransition extends Transition {
         setCycleDuration(value);
         return this;
     }
-    
+
     public CachedTimelineTransition setNode(Node node) {
         this.node = node;
         return this;
@@ -116,7 +116,6 @@ public class CachedTimelineTransition extends Transition {
     void setTimeline(Timeline timeline) {
         this.timeline = timeline;
     }
-    
-    
+
 
 }

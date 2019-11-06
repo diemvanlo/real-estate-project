@@ -10,6 +10,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -192,11 +193,11 @@ public class FloatMenu extends StackPane implements Initializable {
         new FadeOutDownTransition(this, getTranslateY())
                 // Evento padrão: remover o balão do painel 
                 .setOnFinish((e) -> {
-                    
+
                     if (paneToShow != null) {
                         paneToShow.getChildren().remove(this);
                     }
-                    
+
                     if (onfinish != null) {
                         onfinish.handle(e);
                     }
@@ -209,8 +210,8 @@ public class FloatMenu extends StackPane implements Initializable {
     /**
      * Método para mostrar o balão
      *
-     * @param ref botão de referência
-     * @param rootPane painel onde o balão será mostrado
+     * @param ref            botão de referência
+     * @param rootPane       painel onde o balão será mostrado
      * @param floatMenuItems itens do menu
      */
     public void show(Node ref, StackPane rootPane, List<FloatMenuItem> floatMenuItems) {
@@ -236,11 +237,11 @@ public class FloatMenu extends StackPane implements Initializable {
     /**
      * Mostra o Balão relativo à posição do botão que o solicitou
      *
-     * @param ref botão de referência
-     * @param rootPane painel onde o balão será mostrado
+     * @param ref            botão de referência
+     * @param rootPane       painel onde o balão será mostrado
      * @param floatMenuItems itens do menu (os itens sempre devem ser passados
-     * para que se calcula a área que o balão irá ocupar e a posição que ele
-     * deve aparecer)
+     *                       para que se calcula a área que o balão irá ocupar e a posição que ele
+     *                       deve aparecer)
      */
     private void doShow(Node ref, StackPane rootPane, List<FloatMenuItem> floatMenuItems) {
 

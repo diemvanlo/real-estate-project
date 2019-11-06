@@ -11,11 +11,13 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXPopup;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import sample.hopital.helpers.Routes;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -52,7 +54,7 @@ public class HomeViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
+
         HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(hamburger);
         transition.setRate(-1);
         hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (MouseEvent e) -> {
@@ -85,7 +87,7 @@ public class HomeViewController implements Initializable {
                                 setNode(welcome);
                                 break;
                             case "doctorMenu":
-                                drawer.close();                               
+                                drawer.close();
                                 setNode(doctorsPane);
                                 break;
                             case "paymentMenu":
@@ -93,9 +95,9 @@ public class HomeViewController implements Initializable {
                                 setNode(payments);
                                 break;
                             case "appointmentMenu":
-                                drawer.close();                                
+                                drawer.close();
                                 setNode(appointment);
-                                break;                                
+                                break;
                         }
                     });
                 }

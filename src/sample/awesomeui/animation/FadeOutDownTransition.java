@@ -8,9 +8,9 @@ import javafx.util.Duration;
 
 /**
  * Animate a fade out Down effect on a node
- *
+ * <p>
  * Port of FadeInDown from Animate.css http://daneden.me/animate by Dan Eden
- *
+ * <p>
  * {@literal @}keyframes fadeOutDown { 0% { opacity: 1; transform:
  * translateY(0); } 100% { opacity: 0; transform: translateY(20px); } }
  *

@@ -16,7 +16,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 /**
- *
  * @author danml
  */
 
@@ -25,7 +24,7 @@ public class HospitalFX extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("../login/Login.fxml"));
-        JFXDecorator decorator=new JFXDecorator(stage, root, false, false, true);
+        JFXDecorator decorator = new JFXDecorator(stage, root, false, false, true);
         decorator.setCustomMaximize(false);
         decorator.setBorder(Border.EMPTY);
 

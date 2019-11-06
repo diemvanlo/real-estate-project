@@ -8,26 +8,26 @@ import javafx.util.Duration;
 
 /**
  * Animate a fade in up effect on a node
- * 
+ * <p>
  * Port of FadeInUp from Animate.css http://daneden.me/animate by Dan Eden
- * 
+ * <p>
  * {@literal @}keyframes fadeInUp {
- * 	0% {
- * 		opacity: 0;
- * 		transform: translateY(20px);
- * 	}
- * 	100% {
- * 		opacity: 1;
- * 		transform: translateY(0);
- * 	}
+ * 0% {
+ * opacity: 0;
+ * transform: translateY(20px);
  * }
- * 
+ * 100% {
+ * opacity: 1;
+ * transform: translateY(0);
+ * }
+ * }
+ *
  * @author Jasper Potts
  */
 public class FadeInUpTransition extends CachedTimelineTransition {
     /**
      * Create new FadeInUpTransition
-     * 
+     *
      * @param node The node to affect
      */
     public FadeInUpTransition(final Node node) {

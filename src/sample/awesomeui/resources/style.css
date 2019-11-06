@@ -6,41 +6,41 @@
 
 }
 
-.pane-menu{
+.pane-menu {
     -fx-background-color: linear-gradient(to right, rgb(125, 68, 144), rgb(238, 132, 180), rgb(159, 72, 115));
-    -fx-background-radius:50;
+    -fx-background-radius: 50;
 }
 
-.pane-menu-float{
+.pane-menu-float {
     -fx-background-color: linear-gradient(to right, rgb(125, 68, 144), rgb(159, 72, 115));
 }
 
-.btn-cancel-menu{
+.btn-cancel-menu {
     -fx-background-color: linear-gradient(to right, rgb(125, 68, 144), rgb(159, 72, 115));
 }
 
-.btn-cancel-menu:hover{
+.btn-cancel-menu:hover {
     -fx-background-color: linear-gradient(to right, derive(rgb(125, 68, 144), 10%), derive(rgb(159, 72, 115), 30%));
 }
 
-.btn-cancel-menu:focused{
+.btn-cancel-menu:focused {
     -fx-background-color: #962c57;
-    -fx-effect: dropshadow( three-pass-box , #ff33ff , 15, 0.0 , 0 , 3 );
+    -fx-effect: dropshadow(three-pass-box, #ff33ff, 15, 0.0, 0, 3);
 }
 
-.btn-cancel-menu:armed{
+.btn-cancel-menu:armed {
     -fx-background-color: linear-gradient(to right, derive(rgb(125, 68, 144), -10%), derive(rgb(159, 72, 115), -30%));
 }
 
-#rodape{
-    -fx-background-radius:30 30 0 0 ;
+#rodape {
+    -fx-background-radius: 30 30 0 0;
 }
 
-#floating-menu{
-    -fx-background-radius:20 ;
+#floating-menu {
+    -fx-background-radius: 20;
 }
 
-.btn-menu{
+.btn-menu {
     -fx-background-color: transparent;
     -fx-background-radius: 100%;
     -fx-border-radius: 100%;
@@ -50,25 +50,25 @@
 }
 
 
-
-.btn-menu-float{
+.btn-menu-float {
     -fx-background-radius: 10 10 10 10;
     -fx-border-radius: 10 10 10 10;
 }
 
-.btn-menu:hover{
+.btn-menu:hover {
     -fx-background-color: #757575b4;
 }
 
-.btn-menu:focused{
+.btn-menu:focused {
     -fx-background-color: #962c57;
-    -fx-effect: dropshadow( three-pass-box , #ff33ff , 15, 0.0 , 0 , 3 );
+    -fx-effect: dropshadow(three-pass-box, #ff33ff, 15, 0.0, 0, 3);
 }
 
-.btn-menu .glyph-icon{
+.btn-menu .glyph-icon {
     -fx-fill: white;
 }
-.btn-sub-menu{
+
+.btn-sub-menu {
     -fx-background-color: transparent;
     -fx-background-radius: 100%;
     -fx-border-radius: 100%;
@@ -77,22 +77,22 @@
     -fx-border-width: 2;
 }
 
-.btn-sub-menu:hover{
+.btn-sub-menu:hover {
     -fx-background-color: #757575b4;
 }
 
-.btn-sub-menu:focused{
+.btn-sub-menu:focused {
     -fx-background-color: #962c57;
-    -fx-effect: dropshadow( three-pass-box , #ff33ff , 15, 0.0 , 0 , 3 );
+    -fx-effect: dropshadow(three-pass-box, #ff33ff, 15, 0.0, 0, 3);
 }
 
-.btn-sub-menu .glyph-icon{
+.btn-sub-menu .glyph-icon {
     -fx-fill: white;
 }
 
-.menu-list{
-    -fx-background-color:  transparent;
-    -fx-border-insets:     0;
+.menu-list {
+    -fx-background-color: transparent;
+    -fx-border-insets: 0;
     -fx-background-insets: 0;
 }
 
@@ -102,7 +102,7 @@
     -fx-cell-size: 50px;
     -fx-font: 14px "Segoe UI Semibold";
     -fx-alignment: CENTER_LEFT;
-    -fx-border-color:transparent;
+    -fx-border-color: transparent;
 }
 
 .menu-list .list-cell:filled:hover {
@@ -115,13 +115,13 @@
     -fx-text-fill: white;
 }
 
-.text-field-login{
+.text-field-login {
     -fx-focus-color: pink;
     -fx-background-radius: 15 15 15 15;
     -fx-border-radius: 15 15 15 15;
 }
 
-#text-field-validation-error{
+#text-field-validation-error {
     -fx-background-color: #ffcccc;
     -fx-focus-color: red;
     -fx-border-color: red;

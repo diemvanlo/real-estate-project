@@ -7,10 +7,12 @@ package sample.hopital.hospitalfx;
 
 import com.jfoenix.controls.JFXButton;
 import com.sun.java.swing.plaf.windows.resources.windows;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -48,8 +50,8 @@ public class DrawerController implements Initializable {
     @FXML
     private void logOut(ActionEvent event) {
         try {
-            Stage window=(Stage) exitBtn.getScene().getWindow();
-            sample.hopital.hospitalfx.HospitalFX hospitalFX=new sample.hopital.hospitalfx.HospitalFX();
+            Stage window = (Stage) exitBtn.getScene().getWindow();
+            sample.hopital.hospitalfx.HospitalFX hospitalFX = new sample.hopital.hospitalfx.HospitalFX();
             hospitalFX.start(new Stage());
             window.close();
         } catch (Exception ex) {
@@ -62,5 +64,5 @@ public class DrawerController implements Initializable {
     private void exit(ActionEvent event) {
         Platform.exit();
     }
-    
+
 }
