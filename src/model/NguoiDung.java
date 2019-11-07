@@ -2,6 +2,31 @@ package model;
 
 public class NguoiDung {
     private String idNguoiDung;
+    private String nameNguoiDung; // tên người dùng
+    private String userName;      // tên đăng nhập
+    private String passWord;
+    private String address;
+    private String numberPhone;
+    private String email;
+    private Boolean gender;
+    private String role;
+    private String linhVuc;
+
+    public NguoiDung() {
+    }
+
+    public NguoiDung(String idNguoiDung, String nameNguoiDung, String userName, String passWord, String address, String numberPhone, String email, Boolean gender, String role, String linhVuc) {
+        this.idNguoiDung = idNguoiDung;
+        this.nameNguoiDung = nameNguoiDung;
+        this.userName = userName;
+        this.passWord = passWord;
+        this.address = address;
+        this.numberPhone = numberPhone;
+        this.email = email;
+        this.gender = gender;
+        this.role = role;
+        this.linhVuc = linhVuc;
+    }
 
     public String getIdNguoiDung() {
         return idNguoiDung;
@@ -82,31 +107,4 @@ public class NguoiDung {
     public void setLinhVuc(String linhVuc) {
         this.linhVuc = linhVuc;
     }
-
-    public NguoiDung(String idNguoiDung, String nameNguoiDung, String userName, String passWord, String address, String numberPhone, String email, Boolean gender, String role, String linhVuc) {
-        this.idNguoiDung = idNguoiDung;
-        this.nameNguoiDung = nameNguoiDung;
-        this.userName = userName;
-        this.passWord = passWord;
-        this.address = address;
-        this.numberPhone = numberPhone;
-        this.email = email;
-        this.gender = gender;
-        this.role = role;
-        this.linhVuc = linhVuc;
-    }
-
-    private String nameNguoiDung; // tên người dùng
-    private String userName;      // tên đăng nhập
-    private String passWord;
-    private String address;
-    private String numberPhone;
-    private String email;
-    private Boolean gender;
-    private String role;
-    private String linhVuc;
-
-    public NguoiDung() {
-    }
-
 }

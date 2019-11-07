@@ -14,7 +14,8 @@ public class Project {         // dự án
     private Date ngayKetThuc;
     private String hinhThucQuanLi;  // chung cư, tgian sở hữu 10 năm ...
     private String hinhThucDauTu;   // 5% giá trị dự án. hoặc số tiền cụ thể
-    private String tenDoiTac;       // tên đối tác đầu tư
+    private String idNguoiDung;
+    private String nameNguoiDung;       // tên đối tác đầu tư
     private String trangThai;       // đã đủ ( số tiền / chủ ) đầu tư, chưa đủ …
     private String mapX;            // tọa độ vị trí theo vĩ tuyến
     private String mapY;            // tọa độ vị trí theo kinh tuyến
@@ -23,7 +24,7 @@ public class Project {         // dự án
     public Project() {
     }
 
-    public Project(String idDuAn, String tenDuAn, String loaiHinh, String diaChi, Double dienTich, Double chiPhiDuAn, String mucTieu, Date ngayBatDau, Date ngayKetThuc, String hinhThucQuanLi, String hinhThucDauTu, String tenDoiTac, String trangThai, String mapX, String mapY, Double banKinh) {
+    public Project(String idDuAn, String tenDuAn, String loaiHinh, String diaChi, Double dienTich, Double chiPhiDuAn, String mucTieu, Date ngayBatDau, Date ngayKetThuc, String hinhThucQuanLi, String hinhThucDauTu, String idNguoiDung, String nameNguoiDung, String trangThai, String mapX, String mapY, Double banKinh) {
         this.idDuAn = idDuAn;
         this.tenDuAn = tenDuAn;
         this.loaiHinh = loaiHinh;
@@ -35,7 +36,8 @@ public class Project {         // dự án
         this.ngayKetThuc = ngayKetThuc;
         this.hinhThucQuanLi = hinhThucQuanLi;
         this.hinhThucDauTu = hinhThucDauTu;
-        this.tenDoiTac = tenDoiTac;
+        this.idNguoiDung = idNguoiDung;
+        this.nameNguoiDung = nameNguoiDung;
         this.trangThai = trangThai;
         this.mapX = mapX;
         this.mapY = mapY;
@@ -130,12 +132,20 @@ public class Project {         // dự án
         this.hinhThucDauTu = hinhThucDauTu;
     }
 
-    public String getTenDoiTac() {
-        return tenDoiTac;
+    public String getIdNguoiDung() {
+        return idNguoiDung;
     }
 
-    public void setTenDoiTac(String tenDoiTac) {
-        this.tenDoiTac = tenDoiTac;
+    public void setIdNguoiDung(String idNguoiDung) {
+        this.idNguoiDung = idNguoiDung;
+    }
+
+    public String getNameNguoiDung() {
+        return nameNguoiDung;
+    }
+
+    public void setNameNguoiDung(String nameNguoiDung) {
+        this.nameNguoiDung = nameNguoiDung;
     }
 
     public String getTrangThai() {
