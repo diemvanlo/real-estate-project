@@ -1,11 +1,12 @@
 package model;
 
-public class Imager {
+import java.io.InputStream;
+
+public class Image {
     private String idImager;
-    private String imager;
+    private InputStream image;
     private String regimeImager;
     private int idProduct;
-
 
     public String getIdImager() {
         return idImager;
@@ -15,12 +16,12 @@ public class Imager {
         this.idImager = idImager;
     }
 
-    public String getImager() {
-        return imager;
+    public InputStream getImage() {
+        return image;
     }
 
-    public void setImager(String imager) {
-        this.imager = imager;
+    public void setImage(InputStream image) {
+        this.image = image;
     }
 
     public String getRegimeImager() {
@@ -39,12 +40,12 @@ public class Imager {
         this.idProduct = idProduct;
     }
 
-    public Imager() {
+    public Image() {
     }
 
-    public Imager(String idImager, String imager, String regimeImager, int idProduct) {
+    public Image(String idImager, InputStream image, String regimeImager, int idProduct) {
         this.idImager = idImager;
-        this.imager = imager;
+        this.image = image;
         this.regimeImager = regimeImager;
         this.idProduct = idProduct;
     }
