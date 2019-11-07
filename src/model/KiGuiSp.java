@@ -1,9 +1,9 @@
-package Model;
+package model;
 
 import java.io.InputStream;
 import java.util.Date;
 
-public class kiGuiSpModel {
+public class KiGuiSp {
     private String idSanPham;
     private String tenKH;      // tên khách hàng kí gửi SP
     private String tenSP;      // tên SP kí gửi
@@ -17,10 +17,10 @@ public class kiGuiSpModel {
     private String sdt;
     private String email;
 
-    public kiGuiSpModel() {
+    public KiGuiSp() {
     }
 
-    public kiGuiSpModel(String idSanPham, String tenKH, String tenSP, String loaiHinh, double dienTich, double giaSP, String diaChi, String moTa, InputStream hinhAnh, Date ngayKiGui, String sdt, String email) {
+    public KiGuiSp(String idSanPham, String tenKH, String tenSP, String loaiHinh, double dienTich, double giaSP, String diaChi, String moTa, InputStream hinhAnh, Date ngayKiGui, String sdt, String email) {
         this.idSanPham = idSanPham;
         this.tenKH = tenKH;
         this.tenSP = tenSP;

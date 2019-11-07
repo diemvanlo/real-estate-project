@@ -1,14 +1,14 @@
-package Model;
+package model;
 
-public class phanTichSanPhamModel {
+public class PhanTichSanPham {
     private int soNguoiTiepCanSP;  // số người tiếp cận sản phẩm
     private int soNguoiMuaSP ;     // sốp người mua sp của dự án ( 1 )
     private float danhGia;         // % đánh giá của khách hàng danhGia = tổng số sao ở ( phanTichSanPhamModel) / 6
 
-    public phanTichSanPhamModel() {
+    public PhanTichSanPham() {
     }
 
-    public phanTichSanPhamModel(int soNguoiTiepCanSP, int soNguoiMuaSP, float danhGia) {
+    public PhanTichSanPham(int soNguoiTiepCanSP, int soNguoiMuaSP, float danhGia) {
         this.soNguoiTiepCanSP = soNguoiTiepCanSP;
         this.soNguoiMuaSP = soNguoiMuaSP;
         this.danhGia = danhGia;

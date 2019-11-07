@@ -1,6 +1,6 @@
-package Model;
+package model;
 
-public class nguoiDungModel {
+public class NguoiDung {
     private String idNguoiDung;
     private String nameNguoiDung; // tên người dùng
     private String userName;      // tên đăng nhập
@@ -10,11 +10,11 @@ public class nguoiDungModel {
     private String email;
     private Boolean gender;
 
-    public nguoiDungModel() {
+    public NguoiDung() {
 
     }
 
-    public nguoiDungModel(String idNguoiDung, String userName, String nameNguoiDung, String passWord, String address, String numberPhone, String email, Boolean gender) {
+    public NguoiDung(String idNguoiDung, String userName, String nameNguoiDung, String passWord, String address, String numberPhone, String email, Boolean gender) {
         this.idNguoiDung = idNguoiDung;
         this.nameNguoiDung = nameNguoiDung;
         this.userName = userName;

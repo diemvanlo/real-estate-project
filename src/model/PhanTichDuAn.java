@@ -1,15 +1,15 @@
-package Model;
+package model;
 
-public class phantichDuAnModel {
+public class PhanTichDuAn {
     private int soNguoiTiepCan;   // số người tiếp cận dự án ( xem, tìm hiểu về dự án )
     private int soNguoiDauTu;     // số người đã đầu tư vào dự án
     private int soNguoiMuaSP;     // số khách hàng đặt mua sp của dự án ( 1 )
     private float KhaNangSinhLoi;       // KhaNangSinhLoi = soNguoiMuaSP*100/soNguoiTiepCan  ( % cơ hội bán sp )
 
-    public phantichDuAnModel() {
+    public PhanTichDuAn() {
     }
 
-    public phantichDuAnModel(int soNguoiTiepCan, int soNguoiDauTu, int soNguoiMuaSP, float khaNangSinhLoi) {
+    public PhanTichDuAn(int soNguoiTiepCan, int soNguoiDauTu, int soNguoiMuaSP, float khaNangSinhLoi) {
         this.soNguoiTiepCan = soNguoiTiepCan;
         this.soNguoiDauTu = soNguoiDauTu;
         this.soNguoiMuaSP = soNguoiMuaSP;

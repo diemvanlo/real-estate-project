@@ -1,6 +1,6 @@
-package Model;
+package model;
 
-public class phanTichDanhGiaKhachHang {
+public class PhanTichDanhGiaKhachHang {
     private int so0Sao;
     private int so1Sao;
     private int so2Sao;
@@ -8,10 +8,10 @@ public class phanTichDanhGiaKhachHang {
     private int so4Sao;
     private int so5Sao;
 
-    public phanTichDanhGiaKhachHang() {
+    public PhanTichDanhGiaKhachHang() {
     }
 
-    public phanTichDanhGiaKhachHang(int so0Sao, int so1Sao, int so2Sao, int so3Sao, int so4Sao, int so5Sao) {
+    public PhanTichDanhGiaKhachHang(int so0Sao, int so1Sao, int so2Sao, int so3Sao, int so4Sao, int so5Sao) {
         this.so0Sao = so0Sao;
         this.so1Sao = so1Sao;
         this.so2Sao = so2Sao;

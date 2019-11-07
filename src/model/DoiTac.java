@@ -1,8 +1,8 @@
-package Model;
+package model;
 
 import java.util.Date;
 
-public class doitacModel {
+public class DoiTac {
     private String logo;        // logo đối tác
     private String idDoiTac;
     private String tenDoiTac;
@@ -11,10 +11,10 @@ public class doitacModel {
     private String duAnDauTu;   // dự án đã đầu tư
     private  String danhGia;    // đánh giá của đối tác về công ty
 
-    public doitacModel() {
+    public DoiTac() {
     }
 
-    public doitacModel(String logo, String idDoiTac, String tenDoiTac, String linhVuc, Date ngayThamGia, String duAnDauTu, String danhGia) {
+    public DoiTac(String logo, String idDoiTac, String tenDoiTac, String linhVuc, Date ngayThamGia, String duAnDauTu, String danhGia) {
         this.logo = logo;
         this.idDoiTac = idDoiTac;
         this.tenDoiTac = tenDoiTac;

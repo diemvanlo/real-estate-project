@@ -1,8 +1,8 @@
-package Model;
+package model;
 
 import java.util.Date;
 
-public class projectModel {         // dự án
+public class Project {         // dự án
     private String idDuAn;
     private String tenDuAn;
     private String loaiHinh;        // lô đất, chung cư, nhà ở, biệt thự, khu du lịch ..
@@ -20,10 +20,10 @@ public class projectModel {         // dự án
     private String mapY;            // tọa độ vị trí theo kinh tuyến
     private Double banKinh;
 
-    public projectModel() {
+    public Project() {
     }
 
-    public projectModel(String idDuAn, String tenDuAn, String loaiHinh, String diaChi, Double dienTich, Double chiPhiDuAn, String mucTieu, Date ngayBatDau, Date ngayKetThuc, String hinhThucQuanLi, String hinhThucDauTu, String tenDoiTac, String trangThai, String mapX, String mapY, Double banKinh) {
+    public Project(String idDuAn, String tenDuAn, String loaiHinh, String diaChi, Double dienTich, Double chiPhiDuAn, String mucTieu, Date ngayBatDau, Date ngayKetThuc, String hinhThucQuanLi, String hinhThucDauTu, String tenDoiTac, String trangThai, String mapX, String mapY, Double banKinh) {
         this.idDuAn = idDuAn;
         this.tenDuAn = tenDuAn;
         this.loaiHinh = loaiHinh;

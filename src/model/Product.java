@@ -1,8 +1,8 @@
-package Model;
+package model;
 
 import java.util.Date;
 
-public class productModel {
+public class Product {
     private String idSanPham;
     private String tenSanPham;
     private String idDuAn;
@@ -17,10 +17,10 @@ public class productModel {
     private String chiTiet;   // đang xây dựng , đã hoàn thành..
     private String trangThai; // đã bán, chưa bán
 
-    public productModel() {
+    public Product() {
     }
 
-    public productModel(String idSanPham, String tenSanPham, String idDuAn, String tenDuAn, String loaiHinh, String diaChi, Double dienTich, Double giaTien, String moTa, Date ngayTao, Date ngayBan, String chiTiet, String trangThai) {
+    public Product(String idSanPham, String tenSanPham, String idDuAn, String tenDuAn, String loaiHinh, String diaChi, Double dienTich, Double giaTien, String moTa, Date ngayTao, Date ngayBan, String chiTiet, String trangThai) {
         this.idSanPham = idSanPham;
         this.tenSanPham = tenSanPham;
         this.idDuAn = idDuAn;
