@@ -6,7 +6,7 @@ public class Product {
     private String idSanPham;
     private String tenSanPham;
     private String idDuAn;
-    private String tenDuAn;
+    // private String tenDuAn;
     private String loaiHinh;   // căn hộ chung cư, nhà ở, lô đất
     private String diaChi;
     private Double dienTich;
@@ -16,17 +16,16 @@ public class Product {
     private Date ngayBan;
     private String chiTiet;   // đang xây dựng , đã hoàn thành..
     private String trangThai; // đã bán, chưa bán
-    private String kyGui; // yes or no
+    private String kyGui;     // yes or no
     private String idNguoiDung;
 
     public Product() {
     }
 
-    public Product(String idSanPham, String tenSanPham, String idDuAn, String tenDuAn, String loaiHinh, String diaChi, Double dienTich, Double giaTien, String moTa, Date ngayTao, Date ngayBan, String chiTiet, String trangThai, String kyGui, String idNguoiDung) {
+    public Product(String idSanPham, String tenSanPham, String idDuAn, String loaiHinh, String diaChi, Double dienTich, Double giaTien, String moTa, Date ngayTao, Date ngayBan, String chiTiet, String trangThai, String kyGui, String idNguoiDung) {
         this.idSanPham = idSanPham;
         this.tenSanPham = tenSanPham;
         this.idDuAn = idDuAn;
-        this.tenDuAn = tenDuAn;
         this.loaiHinh = loaiHinh;
         this.diaChi = diaChi;
         this.dienTich = dienTich;
@@ -62,14 +61,6 @@ public class Product {
 
     public void setIdDuAn(String idDuAn) {
         this.idDuAn = idDuAn;
-    }
-
-    public String getTenDuAn() {
-        return tenDuAn;
-    }
-
-    public void setTenDuAn(String tenDuAn) {
-        this.tenDuAn = tenDuAn;
     }
 
     public String getLoaiHinh() {
