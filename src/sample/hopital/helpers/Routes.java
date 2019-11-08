@@ -9,7 +9,6 @@ package sample.hopital.helpers;
  * @author danml
  */
 public class Routes {
-
     public static String LOGINVIEW = "../login/Login.fxml";
     public static String MAINVIEW = "../hospitalfx/HomeView.fxml";
     public static String DRAWERVIEW = "../hospitalfx/Drawer.fxml";
