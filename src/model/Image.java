@@ -3,16 +3,26 @@ package model;
 import java.io.InputStream;
 
 public class Image {
-    private String idImager;
+    private int idImager;
     private InputStream image;
     private String regimeImager;
-    private int idProduct;
+    private int idSanPham;
 
-    public String getIdImager() {
+    public Image() {
+    }
+
+    public Image(int idImager, InputStream image, String regimeImager, int idSanPham) {
+        this.idImager = idImager;
+        this.image = image;
+        this.regimeImager = regimeImager;
+        this.idSanPham = idSanPham;
+    }
+
+    public int getIdImager() {
         return idImager;
     }
 
-    public void setIdImager(String idImager) {
+    public void setIdImager(int idImager) {
         this.idImager = idImager;
     }
 
@@ -32,21 +42,11 @@ public class Image {
         this.regimeImager = regimeImager;
     }
 
-    public int getIdProduct() {
-        return idProduct;
+    public int getIdSanPham() {
+        return idSanPham;
     }
 
-    public void setIdProduct(int idProduct) {
-        this.idProduct = idProduct;
-    }
-
-    public Image() {
-    }
-
-    public Image(String idImager, InputStream image, String regimeImager, int idProduct) {
-        this.idImager = idImager;
-        this.image = image;
-        this.regimeImager = regimeImager;
-        this.idProduct = idProduct;
+    public void setIdSanPham(int idSanPham) {
+        this.idSanPham = idSanPham;
     }
 }

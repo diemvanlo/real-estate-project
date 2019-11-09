@@ -3,9 +3,9 @@ package model;
 import java.util.Date;
 
 public class Product {
-    private String idSanPham;
+    private int idSanPham;
     private String tenSanPham;
-    private String idDuAn;
+    private int idDuAn;
     // private String tenDuAn;
     private String diaChi;
     private Double dienTich;
@@ -15,12 +15,12 @@ public class Product {
     private Date ngayBan;
     private String chiTiet;   // đang xây dựng , đã hoàn thành..
     private String trangThai; // đã bán, chưa bán
-    private String idKhachHang; // nguoi mua sp
+    private int idKhachHang; // nguoi mua sp
 
     public Product() {
     }
 
-    public Product(String idSanPham, String tenSanPham, String idDuAn, String diaChi, Double dienTich, Double giaTien, String moTa, Date ngayTao, Date ngayBan, String chiTiet, String trangThai, String idKhachHang) {
+    public Product(int idSanPham, String tenSanPham, int idDuAn, String diaChi, Double dienTich, Double giaTien, String moTa, Date ngayTao, Date ngayBan, String chiTiet, String trangThai, int idKhachHang) {
         this.idSanPham = idSanPham;
         this.tenSanPham = tenSanPham;
         this.idDuAn = idDuAn;
@@ -35,11 +35,11 @@ public class Product {
         this.idKhachHang = idKhachHang;
     }
 
-    public String getIdSanPham() {
+    public int getIdSanPham() {
         return idSanPham;
     }
 
-    public void setIdSanPham(String idSanPham) {
+    public void setIdSanPham(int idSanPham) {
         this.idSanPham = idSanPham;
     }
 
@@ -51,11 +51,11 @@ public class Product {
         this.tenSanPham = tenSanPham;
     }
 
-    public String getIdDuAn() {
+    public int getIdDuAn() {
         return idDuAn;
     }
 
-    public void setIdDuAn(String idDuAn) {
+    public void setIdDuAn(int idDuAn) {
         this.idDuAn = idDuAn;
     }
 
@@ -123,11 +123,11 @@ public class Product {
         this.trangThai = trangThai;
     }
 
-    public String getIdKhachHang() {
+    public int getIdKhachHang() {
         return idKhachHang;
     }
 
-    public void setIdKhachHang(String idKhachHang) {
+    public void setIdKhachHang(int idKhachHang) {
         this.idKhachHang = idKhachHang;
     }
 }

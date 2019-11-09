@@ -12,17 +12,38 @@ DiaChi nvarchar(100) not null,
 Sdt varchar(15) not null,
 Email varchar(30),
 GioiTinh bit not null,
-LinhVuc nvarchar(50) not null,
+ChucVu nvarchar(50) not null,
 Role int not null,
 );
 --insert into NguoiDung(TenNguoiDung,TenDangNhap,Password,DiaChi,Sdt,Email,GioiTinh,LinhVuc,Role) values
---(N'Nguyễn Văn Tân','VanTan','123',N'Quảng trị','0325772929','VanTan@gmail.com','true',N'BDS Nhà đất',1);
+--(N'Nguyễn Văn Tân','VanTan','123',N'Quảng trị','0325772929','VanTan@gmail.com','true',N'Giám Đốc',1);
+
+create table KhachHang(
+IdKhachHang int identity(0,1) primary key not null,
+TenKhachHang nvarchar(50) not null ,
+GioiTinh bit,
+Sdt varchar(20) not null,
+Email nvarchar(50),
+DiaChi nvarchar(100) not null,
+)
+
 
 create table DanhGia(
-IdNguoiDung int not null,
+IdKhachHang int not null,
 DanhGia nvarchar(100),
-constraint fk_danhgia foreign key (IdNguoiDung) references NguoiDung (IdNguoiDung)
+constraint fk_danhgia foreign key (IdKhachHang) references KhachHang(IdKhachHang),
 );
+
+create table DoiTac(
+IdDoiTac int identity(0,1) primary key not  null,
+TenDoiTac nvarchar(50) not null,
+LinhVuc nvarchar(50) ,
+DiaChi nvarchar(100) not null,
+Sdt varchar(20) not null,
+Email varchar(50),
+Logo varchar(50),
+SoVonDaDauTu float,
+)
 
 create table DuAn(
 IdDuAn int identity(0,1) primary key not null,
@@ -36,19 +57,18 @@ NgayBatDau date,
 NgayKetThuc date,
 HinhThucQuanLi nvarchar(50) not null,
 HinhThucDauTu nvarchar(50) not null,
-IdNguoiDung int not null,
+IdDoiTac int not null,
 TrangThai nvarchar(50) ,
 MapX float,
 MapY float,
 BanKinh float,
-constraint fk_DuAn foreign key (IdNguoiDung) references NguoiDung(IdNguoiDung), 
+constraint fk_DuAn foreign key (IdDoiTac) references DoiTac(IdDoiTac), 
 )
 
 create table SanPham(
 IdSanPham int identity(0,1) primary key not null,
 TenSanPham nvarchar(50) not null,
 IdDuAn int not null,
-LoaiHinh nvarchar(30) not null,
 DiaChi nvarchar(50) not null,
 DienTich float not null,
 GiaTien float ,
@@ -57,9 +77,8 @@ NgayTao date ,
 NgayBan date,
 ChiTiet nvarchar(50),
 trangThai nvarchar(50) not null,
-KiGui varchar(10) not null,
-IdNguoiDung int ,
-constraint fk_SanPham foreign key (IdNguoiDung) references NguoiDung(IdNguoiDung),
+IdKhachHang int ,
+constraint fk_SanPham foreign key (IdKhachHang) references KhachHang(IdKhachHang),
 constraint fk_DuAn_SP foreign key (IdDuAn) references DuAn(IdDuAn),
 )
 

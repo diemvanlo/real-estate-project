@@ -1,7 +1,7 @@
 package model;
 
 public class NguoiDung {
-    private String idNguoiDung;
+    private int idNguoiDung;
     private String nameNguoiDung; // tên người dùng
     private String userName;      // tên đăng nhập
     private String passWord;
@@ -12,11 +12,10 @@ public class NguoiDung {
     private String chucVu;
     private int role;
 
-
     public NguoiDung() {
     }
 
-    public NguoiDung(String idNguoiDung, String nameNguoiDung, String userName, String passWord, String address, String numberPhone, String email, Boolean gender, String chucVu, int role) {
+    public NguoiDung(int idNguoiDung, String nameNguoiDung, String userName, String passWord, String address, String numberPhone, String email, Boolean gender, String chucVu, int role) {
         this.idNguoiDung = idNguoiDung;
         this.nameNguoiDung = nameNguoiDung;
         this.userName = userName;
@@ -25,15 +24,15 @@ public class NguoiDung {
         this.numberPhone = numberPhone;
         this.email = email;
         this.gender = gender;
-        chucVu = chucVu;
+        this.chucVu = chucVu;
         this.role = role;
     }
 
-    public String getIdNguoiDung() {
+    public int getIdNguoiDung() {
         return idNguoiDung;
     }
 
-    public void setIdNguoiDung(String idNguoiDung) {
+    public void setIdNguoiDung(int idNguoiDung) {
         this.idNguoiDung = idNguoiDung;
     }
 
@@ -93,12 +92,12 @@ public class NguoiDung {
         this.gender = gender;
     }
 
-    public String getchucVu() {
+    public String getChucVu() {
         return chucVu;
     }
 
-    public void setchucVu(String chucVu) {
-        chucVu = chucVu;
+    public void setChucVu(String chucVu) {
+        this.chucVu = chucVu;
     }
 
     public int getRole() {

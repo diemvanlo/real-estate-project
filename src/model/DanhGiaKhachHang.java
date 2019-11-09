@@ -1,22 +1,22 @@
 package model;
 
 public class DanhGiaKhachHang {
-    private String idKhachHang;
+    private int idKhachHang;
     private int soSaoBinhChon;
 
     public DanhGiaKhachHang() {
     }
 
-    public DanhGiaKhachHang(String idKhachHang, int soSaoBinhChon) {
+    public DanhGiaKhachHang(int idKhachHang, int soSaoBinhChon) {
         this.idKhachHang = idKhachHang;
         this.soSaoBinhChon = soSaoBinhChon;
     }
 
-    public String getIdKhachHang() {
+    public int getIdKhachHang() {
         return idKhachHang;
     }
 
-    public void setIdKhachHang(String idKhachHang) {
+    public void setIdKhachHang(int idKhachHang) {
         this.idKhachHang = idKhachHang;
     }
 

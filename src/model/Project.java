@@ -3,7 +3,7 @@ package model;
 import java.util.Date;
 
 public class Project {         // dự án
-    private String idDuAn;
+    private int idDuAn;
     private String tenDuAn;
     private String loaiHinh;        // lô đất, chung cư, nhà ở, biệt thự, khu du lịch ..
     private String diaChi;
@@ -14,7 +14,7 @@ public class Project {         // dự án
     private Date ngayKetThuc;
     private String hinhThucQuanLi;  // chung cư, tgian sở hữu 10 năm ...
     private String hinhThucDauTu;   // 5% giá trị dự án. hoặc số tiền cụ thể
-    private String idDoiTac;
+    private int idDoiTac;
     // private String TenDoiTac;       // tên đối tác đầu tư
     private String trangThai;       // đã đủ ( số tiền / chủ ) đầu tư, chưa đủ …
     private String mapX;            // tọa độ vị trí theo vĩ tuyến
@@ -24,11 +24,30 @@ public class Project {         // dự án
     public Project() {
     }
 
-    public String getIdDuAn() {
+    public Project(int idDuAn, String tenDuAn, String loaiHinh, String diaChi, Double dienTich, Double chiPhiDuAn, String mucTieu, Date ngayBatDau, Date ngayKetThuc, String hinhThucQuanLi, String hinhThucDauTu, int idDoiTac, String trangThai, String mapX, String mapY, Double banKinh) {
+        this.idDuAn = idDuAn;
+        this.tenDuAn = tenDuAn;
+        this.loaiHinh = loaiHinh;
+        this.diaChi = diaChi;
+        this.dienTich = dienTich;
+        this.chiPhiDuAn = chiPhiDuAn;
+        this.mucTieu = mucTieu;
+        this.ngayBatDau = ngayBatDau;
+        this.ngayKetThuc = ngayKetThuc;
+        this.hinhThucQuanLi = hinhThucQuanLi;
+        this.hinhThucDauTu = hinhThucDauTu;
+        this.idDoiTac = idDoiTac;
+        this.trangThai = trangThai;
+        this.mapX = mapX;
+        this.mapY = mapY;
+        this.banKinh = banKinh;
+    }
+
+    public int getIdDuAn() {
         return idDuAn;
     }
 
-    public void setIdDuAn(String idDuAn) {
+    public void setIdDuAn(int idDuAn) {
         this.idDuAn = idDuAn;
     }
 
@@ -112,11 +131,11 @@ public class Project {         // dự án
         this.hinhThucDauTu = hinhThucDauTu;
     }
 
-    public String getIdDoiTac() {
+    public int getIdDoiTac() {
         return idDoiTac;
     }
 
-    public void setIdDoiTac(String idDoiTac) {
+    public void setIdDoiTac(int idDoiTac) {
         this.idDoiTac = idDoiTac;
     }
 
