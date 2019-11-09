@@ -7,7 +7,6 @@ public class Product {
     private String tenSanPham;
     private String idDuAn;
     // private String tenDuAn;
-    private String loaiHinh;   // căn hộ chung cư, nhà ở, lô đất
     private String diaChi;
     private Double dienTich;
     private Double giaTien;
@@ -16,17 +15,15 @@ public class Product {
     private Date ngayBan;
     private String chiTiet;   // đang xây dựng , đã hoàn thành..
     private String trangThai; // đã bán, chưa bán
-    private String kyGui;     // yes or no
-    private String idNguoiDung;
+    private String idKhachHang; // nguoi mua sp
 
     public Product() {
     }
 
-    public Product(String idSanPham, String tenSanPham, String idDuAn, String loaiHinh, String diaChi, Double dienTich, Double giaTien, String moTa, Date ngayTao, Date ngayBan, String chiTiet, String trangThai, String kyGui, String idNguoiDung) {
+    public Product(String idSanPham, String tenSanPham, String idDuAn, String diaChi, Double dienTich, Double giaTien, String moTa, Date ngayTao, Date ngayBan, String chiTiet, String trangThai, String idKhachHang) {
         this.idSanPham = idSanPham;
         this.tenSanPham = tenSanPham;
         this.idDuAn = idDuAn;
-        this.loaiHinh = loaiHinh;
         this.diaChi = diaChi;
         this.dienTich = dienTich;
         this.giaTien = giaTien;
@@ -35,8 +32,7 @@ public class Product {
         this.ngayBan = ngayBan;
         this.chiTiet = chiTiet;
         this.trangThai = trangThai;
-        this.kyGui = kyGui;
-        this.idNguoiDung = idNguoiDung;
+        this.idKhachHang = idKhachHang;
     }
 
     public String getIdSanPham() {
@@ -61,14 +57,6 @@ public class Product {
 
     public void setIdDuAn(String idDuAn) {
         this.idDuAn = idDuAn;
-    }
-
-    public String getLoaiHinh() {
-        return loaiHinh;
-    }
-
-    public void setLoaiHinh(String loaiHinh) {
-        this.loaiHinh = loaiHinh;
     }
 
     public String getDiaChi() {
@@ -135,19 +123,11 @@ public class Product {
         this.trangThai = trangThai;
     }
 
-    public String getKyGui() {
-        return kyGui;
+    public String getIdKhachHang() {
+        return idKhachHang;
     }
 
-    public void setKyGui(String kyGui) {
-        this.kyGui = kyGui;
-    }
-
-    public String getIdNguoiDung() {
-        return idNguoiDung;
-    }
-
-    public void setIdNguoiDung(String idNguoiDung) {
-        this.idNguoiDung = idNguoiDung;
+    public void setIdKhachHang(String idKhachHang) {
+        this.idKhachHang = idKhachHang;
     }
 }

@@ -14,33 +14,14 @@ public class Project {         // dự án
     private Date ngayKetThuc;
     private String hinhThucQuanLi;  // chung cư, tgian sở hữu 10 năm ...
     private String hinhThucDauTu;   // 5% giá trị dự án. hoặc số tiền cụ thể
-    private String idNguoiDung;
-   // private String nameNguoiDung;       // tên đối tác đầu tư
+    private String idDoiTac;
+    // private String TenDoiTac;       // tên đối tác đầu tư
     private String trangThai;       // đã đủ ( số tiền / chủ ) đầu tư, chưa đủ …
     private String mapX;            // tọa độ vị trí theo vĩ tuyến
     private String mapY;            // tọa độ vị trí theo kinh tuyến
     private Double banKinh;
 
     public Project() {
-    }
-
-    public Project(String idDuAn, String tenDuAn, String loaiHinh, String diaChi, Double dienTich, Double chiPhiDuAn, String mucTieu, Date ngayBatDau, Date ngayKetThuc, String hinhThucQuanLi, String hinhThucDauTu, String idNguoiDung, String trangThai, String mapX, String mapY, Double banKinh) {
-        this.idDuAn = idDuAn;
-        this.tenDuAn = tenDuAn;
-        this.loaiHinh = loaiHinh;
-        this.diaChi = diaChi;
-        this.dienTich = dienTich;
-        this.chiPhiDuAn = chiPhiDuAn;
-        this.mucTieu = mucTieu;
-        this.ngayBatDau = ngayBatDau;
-        this.ngayKetThuc = ngayKetThuc;
-        this.hinhThucQuanLi = hinhThucQuanLi;
-        this.hinhThucDauTu = hinhThucDauTu;
-        this.idNguoiDung = idNguoiDung;
-        this.trangThai = trangThai;
-        this.mapX = mapX;
-        this.mapY = mapY;
-        this.banKinh = banKinh;
     }
 
     public String getIdDuAn() {
@@ -131,12 +112,12 @@ public class Project {         // dự án
         this.hinhThucDauTu = hinhThucDauTu;
     }
 
-    public String getIdNguoiDung() {
-        return idNguoiDung;
+    public String getIdDoiTac() {
+        return idDoiTac;
     }
 
-    public void setIdNguoiDung(String idNguoiDung) {
-        this.idNguoiDung = idNguoiDung;
+    public void setIdDoiTac(String idDoiTac) {
+        this.idDoiTac = idDoiTac;
     }
 
     public String getTrangThai() {

@@ -9,13 +9,14 @@ public class NguoiDung {
     private String numberPhone;
     private String email;
     private Boolean gender;
-    private String role;
-    private String linhVuc;
+    private String chucVu;
+    private int role;
+
 
     public NguoiDung() {
     }
 
-    public NguoiDung(String idNguoiDung, String nameNguoiDung, String userName, String passWord, String address, String numberPhone, String email, Boolean gender, String role, String linhVuc) {
+    public NguoiDung(String idNguoiDung, String nameNguoiDung, String userName, String passWord, String address, String numberPhone, String email, Boolean gender, String chucVu, int role) {
         this.idNguoiDung = idNguoiDung;
         this.nameNguoiDung = nameNguoiDung;
         this.userName = userName;
@@ -24,8 +25,8 @@ public class NguoiDung {
         this.numberPhone = numberPhone;
         this.email = email;
         this.gender = gender;
+        chucVu = chucVu;
         this.role = role;
-        this.linhVuc = linhVuc;
     }
 
     public String getIdNguoiDung() {
@@ -92,19 +93,19 @@ public class NguoiDung {
         this.gender = gender;
     }
 
-    public String getRole() {
+    public String getchucVu() {
+        return chucVu;
+    }
+
+    public void setchucVu(String chucVu) {
+        chucVu = chucVu;
+    }
+
+    public int getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(int role) {
         this.role = role;
-    }
-
-    public String getLinhVuc() {
-        return linhVuc;
-    }
-
-    public void setLinhVuc(String linhVuc) {
-        this.linhVuc = linhVuc;
     }
 }

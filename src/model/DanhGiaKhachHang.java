@@ -1,15 +1,23 @@
 package model;
 
 public class DanhGiaKhachHang {
-    private String idNguoiDung;
+    private String idKhachHang;
     private int soSaoBinhChon;
 
-    public String getIdNguoiDung() {
-        return idNguoiDung;
+    public DanhGiaKhachHang() {
     }
 
-    public void setIdNguoiDung(String idNguoiDung) {
-        this.idNguoiDung = idNguoiDung;
+    public DanhGiaKhachHang(String idKhachHang, int soSaoBinhChon) {
+        this.idKhachHang = idKhachHang;
+        this.soSaoBinhChon = soSaoBinhChon;
+    }
+
+    public String getIdKhachHang() {
+        return idKhachHang;
+    }
+
+    public void setIdKhachHang(String idKhachHang) {
+        this.idKhachHang = idKhachHang;
     }
 
     public int getSoSaoBinhChon() {
@@ -19,13 +27,4 @@ public class DanhGiaKhachHang {
     public void setSoSaoBinhChon(int soSaoBinhChon) {
         this.soSaoBinhChon = soSaoBinhChon;
     }
-
-    public DanhGiaKhachHang(String idNguoiDung, int soSaoBinhChon) {
-        this.idNguoiDung = idNguoiDung;
-        this.soSaoBinhChon = soSaoBinhChon;
-    }
-
-    public DanhGiaKhachHang() {
-    }
-
 }
