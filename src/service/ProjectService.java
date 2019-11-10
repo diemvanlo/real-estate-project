@@ -31,7 +31,7 @@ public class ProjectService {
 
     public static Project getProjectFromResultSet(ResultSet rs) throws SQLException {
         Project project = new Project();
-        project.setIdDuAn(rs.getString("maProject"));
+        project.setIdDuAn(rs.getInt("maProject"));
         project.setTenDuAn(rs.getString("tenDuAn"));
         project.setLoaiHinh(rs.getString("loaiHinh"));
         project.setDiaChi(rs.getString("diaChi"));
@@ -42,20 +42,20 @@ public class ProjectService {
         project.setNgayKetThuc(rs.getDate("ngayKetThuc"));
         project.setHinhThucQuanLi(rs.getString("hinhThucQuanLi"));
         project.setHinhThucDauTu(rs.getString("hinhThucDauTu"));
-        project.setIdNguoiDung(rs.getString("idNguoiDung"));
+        project.setIdDoiTac(rs.getInt("idNguoiDung"));
         project.setMapX(rs.getString("mapX"));
         project.setMapY(rs.getString("mapY"));
         project.setBanKinh(rs.getDouble("banKinh"));
         return project;
     }
 
-    public static Project findByMaProject(String maProject) {
+    public static Project findByMaProject(int maProject) {
         Project project = new Project();
         try {
             ResultSet rs = com.createStatement().executeQuery("select * from project");
             boolean isValid = false;
             while (rs.next()) {
-                if (rs.getString("MaProject").equalsIgnoreCase(maProject)) {
+                if (rs.getInt("MaProject") == maProject) {
                     isValid = true;
                     project = getProjectFromResultSet(rs);
                 }
@@ -76,7 +76,7 @@ public class ProjectService {
             ResultSet rs = com.createStatement().executeQuery("select * from project");
             boolean isValid = false;
             while (rs.next()) {
-                Project project ;
+                Project project;
                 project = getProjectFromResultSet(rs);
                 list.add(project);
                 isValid = true;
@@ -97,7 +97,7 @@ public class ProjectService {
 
     public static void save(Project project, File file) throws SQLException, FileNotFoundException {
         Project projectExist = findByMaProject(project.getIdDuAn());
-        if (projectExist.getIdDuAn() != null) {
+        if (projectExist.getIdDuAn() != 0) {
             PreparedStatement pst = com.prepareStatement("UPDATE [javafx].[project] SET 'tenProject' = '" + project.getTenDuAn() +
                     "', 'loaiHinh' = '" + project.getLoaiHinh() +
                     "', 'diaChi' = '" + project.getDiaChi() +
@@ -108,7 +108,7 @@ public class ProjectService {
                     "', 'ngayKetThuc' = '" + project.getNgayKetThuc() +
                     "', 'hinhThucQuanLi' = '" + project.getHinhThucQuanLi() +
                     "', 'hinhThucDauTu' = '" + project.getHinhThucDauTu() +
-                    "', 'idNguoiDung' = '" + project.getIdNguoiDung() +
+                    "', 'idNguoiDung' = '" + project.getIdDoiTac() +
                     "', 'trangThai' = '" + project.getTrangThai() +
                     "', 'mapX' = '" + project.getMapX() +
                     "', 'mapY' = '" + project.getMapY() +
@@ -131,7 +131,7 @@ public class ProjectService {
                             project.getNgayKetThuc() + "','" +
                             project.getHinhThucQuanLi() + "','" +
                             project.getHinhThucDauTu() + "','" +
-                            project.getIdNguoiDung() + "','" +
+                            project.getIdDoiTac() + "','" +
                             project.getTrangThai() + "','" +
                             project.getMapX() + "','" +
                             project.getMapY() + "','" +

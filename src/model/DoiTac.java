@@ -23,7 +23,7 @@ public class DoiTac {
         this.sdt = sdt;
         this.email = email;
         this.logo = logo;
-        soVonDaDauTu = soVonDaDauTu;
+        this.soVonDaDauTu = soVonDaDauTu;
     }
 
     public int getIdDoiTac() {
