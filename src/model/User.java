@@ -1,8 +1,8 @@
 package model;
 
-public class NguoiDung {
-    private int idNguoiDung;
-    private String nameNguoiDung; // tên người dùng
+public class User {
+    private int idUser;
+    private String nameUser; // tên người dùng
     private String userName;      // tên đăng nhập
     private String passWord;
     private String address;
@@ -12,12 +12,12 @@ public class NguoiDung {
     private String chucVu;
     private int role;
 
-    public NguoiDung() {
+    public User() {
     }
 
-    public NguoiDung(int idNguoiDung, String nameNguoiDung, String userName, String passWord, String address, String numberPhone, String email, Boolean gender, String chucVu, int role) {
-        this.idNguoiDung = idNguoiDung;
-        this.nameNguoiDung = nameNguoiDung;
+    public User(int idUser, String nameUser, String userName, String passWord, String address, String numberPhone, String email, Boolean gender, String chucVu, int role) {
+        this.idUser = idUser;
+        this.nameUser = nameUser;
         this.userName = userName;
         this.passWord = passWord;
         this.address = address;
@@ -28,20 +28,20 @@ public class NguoiDung {
         this.role = role;
     }
 
-    public int getIdNguoiDung() {
-        return idNguoiDung;
+    public int getIdUser() {
+        return idUser;
     }
 
-    public void setIdNguoiDung(int idNguoiDung) {
-        this.idNguoiDung = idNguoiDung;
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
-    public String getNameNguoiDung() {
-        return nameNguoiDung;
+    public String getNameUser() {
+        return nameUser;
     }
 
-    public void setNameNguoiDung(String nameNguoiDung) {
-        this.nameNguoiDung = nameNguoiDung;
+    public void setNameUser(String nameUser) {
+        this.nameUser = nameUser;
     }
 
     public String getUserName() {
