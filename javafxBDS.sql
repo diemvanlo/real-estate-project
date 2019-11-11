@@ -3,10 +3,10 @@
 use javafxbds;
 
 
-create table NguoiDung(
-IdNguoiDung int identity(0,1) primary key not null,
-TenNguoiDung nvarchar(50) not null,
-TenDangNhap varchar(50) not null,
+create table Userr(
+IdUser int identity(0,1) primary key not null,
+NameUser nvarchar(50) not null,
+UserName varchar(50) not null,
 Password varchar(50) not null,
 DiaChi nvarchar(100) not null,
 Sdt varchar(15) not null,
@@ -25,12 +25,14 @@ GioiTinh bit,
 Sdt varchar(20) not null,
 Email nvarchar(50),
 DiaChi nvarchar(100) not null,
+
 )
 
 
 create table DanhGia(
 IdKhachHang int not null,
-DanhGia nvarchar(100),
+NhanXet nvarchar(100),
+SoSao int ,
 constraint fk_danhgia foreign key (IdKhachHang) references KhachHang(IdKhachHang),
 );
 

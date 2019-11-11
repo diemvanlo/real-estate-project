@@ -7,19 +7,18 @@ public class KhachHang {
     private String sdt;
     private String email;
     private String diaChi;
-    private String nhanXet;
+
 
     public KhachHang() {
     }
 
-    public KhachHang(int idKhachHang, String tenKhachHang, Boolean gioiTinh, String sdt, String email, String diaChi, String nhanXet) {
+    public KhachHang(int idKhachHang, String tenKhachHang, Boolean gioiTinh, String sdt, String email, String diaChi) {
         this.idKhachHang = idKhachHang;
         this.tenKhachHang = tenKhachHang;
         this.gioiTinh = gioiTinh;
         this.sdt = sdt;
         this.email = email;
         this.diaChi = diaChi;
-        this.nhanXet = nhanXet;
     }
 
     public int getIdKhachHang() {
@@ -68,13 +67,5 @@ public class KhachHang {
 
     public void setDiaChi(String diaChi) {
         this.diaChi = diaChi;
-    }
-
-    public String getNhanXet() {
-        return nhanXet;
-    }
-
-    public void setNhanXet(String nhanXet) {
-        this.nhanXet = nhanXet;
     }
 }
