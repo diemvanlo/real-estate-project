@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class HomeView  implements Initializable {
+public class HomeView implements Initializable {
     @FXML
     private JFXHamburger hamburger;
     @FXML
@@ -45,7 +45,7 @@ public class HomeView  implements Initializable {
         try {
             VBox sidePane = FXMLLoader.load(getClass().getResource("view/Drawer.fxml"));
             AnchorPane duAnPane = FXMLLoader.load(getClass().getResource("view/DuAn.fxml"));
-//            AnchorPane login = FXMLLoader.load(getClass().getResource(Routes.LOGINVIEW));
+            AnchorPane sanPhamPane = FXMLLoader.load(getClass().getResource("view/SanPham.fxml"));
 //            AnchorPane payments = FXMLLoader.load(getClass().getResource(Routes.PAYMENTSVIEW));
 //            AnchorPane appointment = FXMLLoader.load(getClass().getResource(Routes.APPOINTMENTSVIEW));
 //            AnchorPane welcome = FXMLLoader.load(getClass().getResource(Routes.WELCOMEVIEW));
@@ -64,6 +64,10 @@ public class HomeView  implements Initializable {
                                 drawer.close();
                                 setNode(duAnPane);
                                 break;
+                            case "sanPhamMenu":
+                                drawer.close();
+                                setNode(sanPhamPane);
+                                break;
                             case "paymentMenu":
                                 drawer.close();
 //                                setNode(payments);
@@ -81,6 +85,7 @@ public class HomeView  implements Initializable {
         }
 
     }
+
     private void setNode(Node node) {
         holderPane.getChildren().clear();
         holderPane.getChildren().add(node);

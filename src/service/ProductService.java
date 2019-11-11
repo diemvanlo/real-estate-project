@@ -46,7 +46,7 @@ public class ProductService {
     public static Product findByMaProduct(int IdProduct) {
         Product product = new Product();
         try {
-            ResultSet rs = com.createStatement().executeQuery("select * from product");
+            ResultSet rs = com.createStatement().executeQuery("select * from SanPham");
             boolean isValid = false;
             while (rs.next()) {
                 if (rs.getInt("IdSanPham") == IdProduct) {
@@ -67,7 +67,7 @@ public class ProductService {
     public static List<Product> getAll() {
         List<Product> list = new ArrayList<>();
         try {
-            ResultSet rs = com.createStatement().executeQuery("select * from product");
+            ResultSet rs = com.createStatement().executeQuery("select * from SanPham");
             boolean isValid = false;
             while (rs.next()) {
                 Product product;
@@ -86,13 +86,13 @@ public class ProductService {
     }
 
     public static void deleteByMaProduct(String IdProduct) throws SQLException {
-        com.createStatement().executeUpdate("DELETE FROM [javafx].[product] WHERE ('IdSanPham' = '" + IdProduct + "')");
+        com.createStatement().executeUpdate("DELETE FROM [javafxbds].[SanPham] WHERE ('IdSanPham' = '" + IdProduct + "')");
     }
 
     public static void save(Product product, File file) throws SQLException, FileNotFoundException {
         Product productExist = findByMaProduct(product.getIdSanPham());
         if (productExist.getIdSanPham() != 0) {
-            PreparedStatement pst = com.prepareStatement("UPDATE [javafx].[product] SET 'TenSanPham' = '" + product.getTenSanPham() +
+            PreparedStatement pst = com.prepareStatement("UPDATE [javafxbds].[SanPham] SET 'TenSanPham' = '" + product.getTenSanPham() +
                     "', 'IdSanPham' = '" + product.getIdSanPham() +
                     "', 'TenSanPham' = '" + product.getTenSanPham() +
                     "', 'IdDuAn' = '" + product.getIdDuAn() +
@@ -110,7 +110,7 @@ public class ProductService {
             pst.execute();
         } else {
             PreparedStatement pst = com.prepareStatement(
-                    "INSERT INTO [javafx].[product] ('IdSanPham', 'TenSanPham', 'IdDuAn', 'DiaChi','DienTich', 'GiaTien', " +
+                    "INSERT INTO [javafxbds].[SanPham] ('IdSanPham', 'TenSanPham', 'IdDuAn', 'DiaChi','DienTich', 'GiaTien', " +
                             "'MoTa', 'NgayTao', 'NgayBan', 'ChiTiet', 'trangThai', 'IdKhachHang') VALUES ('" +
                             product.getIdSanPham() + "', '" +
                             product.getTenSanPham() + "',' " +
