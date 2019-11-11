@@ -1,6 +1,5 @@
 package service;
 
-
 import model.Project;
 
 import java.io.File;
@@ -31,18 +30,19 @@ public class ProjectService {
 
     public static Project getProjectFromResultSet(ResultSet rs) throws SQLException {
         Project project = new Project();
-        project.setIdDuAn(rs.getInt("maProject"));
-        project.setTenDuAn(rs.getString("tenDuAn"));
-        project.setLoaiHinh(rs.getString("loaiHinh"));
-        project.setDiaChi(rs.getString("diaChi"));
-        project.setDienTich(rs.getDouble("dienTich"));
-        project.setChiPhiDuAn(rs.getDouble("chiPhiDuAn"));
-        project.setMucTieu(rs.getString("mucTieu"));
-        project.setNgayBatDau(rs.getDate("ngayBatDau"));
-        project.setNgayKetThuc(rs.getDate("ngayKetThuc"));
-        project.setHinhThucQuanLi(rs.getString("hinhThucQuanLi"));
-        project.setHinhThucDauTu(rs.getString("hinhThucDauTu"));
-        project.setIdDoiTac(rs.getInt("idNguoiDung"));
+        project.setIdDuAn(rs.getInt("IdDuAn"));
+        project.setTenDuAn(rs.getString("TenDuAn"));
+        project.setLoaiHinh(rs.getString("LoaiHinh"));
+        project.setDiaChi(rs.getString("DiaChi"));
+        project.setDienTich(rs.getDouble("DienTich"));
+        project.setChiPhiDuAn(rs.getDouble("ChiPhi"));
+        project.setMucTieu(rs.getString("MucTieu"));
+        project.setNgayBatDau(rs.getDate("NgayBatDau"));
+        project.setNgayKetThuc(rs.getDate("NgayKetThuc"));
+        project.setHinhThucQuanLi(rs.getString("HinhThucQuanLi"));
+        project.setHinhThucDauTu(rs.getString("HinhThucDauTu"));
+        project.setIdDoiTac(rs.getInt("IdDoiTac"));
+        project.setTrangThai(rs.getString("TrangThai"));
         project.setMapX(rs.getString("mapX"));
         project.setMapY(rs.getString("mapY"));
         project.setBanKinh(rs.getDouble("banKinh"));
@@ -52,7 +52,7 @@ public class ProjectService {
     public static Project findByMaProject(int maProject) {
         Project project = new Project();
         try {
-            ResultSet rs = com.createStatement().executeQuery("select * from project");
+            ResultSet rs = com.createStatement().executeQuery("select * from duan");
             boolean isValid = false;
             while (rs.next()) {
                 if (rs.getInt("MaProject") == maProject) {
@@ -73,7 +73,7 @@ public class ProjectService {
     public static List<Project> getAll() {
         List<Project> list = new ArrayList<>();
         try {
-            ResultSet rs = com.createStatement().executeQuery("select * from project");
+            ResultSet rs = com.createStatement().executeQuery("select * from duan");
             boolean isValid = false;
             while (rs.next()) {
                 Project project;
@@ -92,13 +92,13 @@ public class ProjectService {
     }
 
     public static void deleteByMaProject(String maProject) throws SQLException {
-        com.createStatement().executeUpdate("DELETE FROM [javafx].[project] WHERE ('maProject' = '" + maProject + "')");
+        com.createStatement().executeUpdate("DELETE FROM [javafx].[duan] WHERE ('maProject' = '" + maProject + "')");
     }
 
     public static void save(Project project, File file) throws SQLException, FileNotFoundException {
         Project projectExist = findByMaProject(project.getIdDuAn());
         if (projectExist.getIdDuAn() != 0) {
-            PreparedStatement pst = com.prepareStatement("UPDATE [javafx].[project] SET 'tenProject' = '" + project.getTenDuAn() +
+            PreparedStatement pst = com.prepareStatement("UPDATE [javafx].[duan] SET 'tenProject' = '" + project.getTenDuAn() +
                     "', 'loaiHinh' = '" + project.getLoaiHinh() +
                     "', 'diaChi' = '" + project.getDiaChi() +
                     "', 'dienTich' = '" + project.getDienTich() +
@@ -117,7 +117,7 @@ public class ProjectService {
             pst.execute();
         } else {
             PreparedStatement pst = com.prepareStatement(
-                    "INSERT INTO [javafx].[project] ('idDuAn', 'tenProject', 'loaiHinh', 'diaChi','dienTich', 'chiPhiDuAn', " +
+                    "INSERT INTO [javafx].[duan] ('idDuAn', 'tenProject', 'loaiHinh', 'diaChi','dienTich', 'chiPhiDuAn', " +
                             "'mucTieu', 'ngayBatDau', 'ngayKetThuc', 'hinhThucQuanLi', 'hinhThucDauTu', 'idNguoiDung', " +
                             "'trangThai', 'mapX', 'mapY', 'banKinh') VALUES ('" +
                             project.getIdDuAn() + "', '" +
@@ -138,5 +138,11 @@ public class ProjectService {
                             project.getBanKinh() + "');");
             pst.execute();
         }
+    }
+
+    public static void main(String[] args) {
+
+        List<Project> projects = getAll();
+        System.out.println("fff");
     }
 }

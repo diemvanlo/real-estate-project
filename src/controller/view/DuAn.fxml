@@ -7,7 +7,9 @@
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
@@ -22,6 +24,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <AnchorPane prefHeight="684.0" prefWidth="1105.0" stylesheets="@../assets/styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DuAnController">
    <children>
       <JFXTabPane layoutX="14.0" layoutY="14.0" prefHeight="658.0" prefWidth="1080.0">
@@ -34,8 +39,7 @@
                            <items>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="1103.0">
                                  <children>
-                                    <TextField layoutX="579.0" layoutY="14.0" prefHeight="30.0" prefWidth="302.0" promptText="Tìm thông tin dự án" styleClass="search-box" />
-                                    <TableView layoutX="14.0" layoutY="72.0" prefHeight="532.0" prefWidth="991.0">
+                                    <TableView fx:id="tableView" layoutX="14.0" layoutY="72.0" prefHeight="532.0" prefWidth="991.0">
                                        <columns>
                                           <TableColumn fx:id="colID" editable="false" prefWidth="69.0" text="ID" />
                                           <TableColumn fx:id="colName" editable="false" minWidth="0.0" prefWidth="102.0" text="Tên dự án" />
@@ -58,6 +62,12 @@
                                           <GaussianBlur />
                                        </effect>
                                     </TableView>
+                                    <Pagination fx:id="clientPagination" layoutX="5.0" layoutY="56.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="569.0" prefWidth="1041.0">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Pagination>
+                                    <TextField layoutX="579.0" layoutY="14.0" prefHeight="30.0" prefWidth="302.0" promptText="Tìm thông tin dự án" styleClass="search-box" />
                                  </children>
                               </AnchorPane>
                            </items>
