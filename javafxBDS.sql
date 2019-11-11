@@ -15,26 +15,24 @@ GioiTinh bit not null,
 ChucVu nvarchar(50) not null,
 Role int not null,
 );
---insert into NguoiDung(TenNguoiDung,TenDangNhap,Password,DiaChi,Sdt,Email,GioiTinh,LinhVuc,Role) values
---(N'Nguyễn Văn Tân','VanTan','123',N'Quảng trị','0325772929','VanTan@gmail.com','true',N'Giám Đốc',1);
+
+insert into Userr(NameUser,UserName,Password,DiaChi,Sdt,Email,GioiTinh,ChucVu,Role) values
+(N'Nguyễn Văn Tân','VanTan','123',N'Quảng trị','0325772929','VanTan@gmail.com','true',N'Giám Đốc',1);
 
 create table KhachHang(
 IdKhachHang int identity(0,1) primary key not null,
 TenKhachHang nvarchar(50) not null ,
 GioiTinh bit,
+DiaChi nvarchar(100) not null,
 Sdt varchar(20) not null,
 Email nvarchar(50),
-DiaChi nvarchar(100) not null,
-
-)
-
-
-create table DanhGia(
-IdKhachHang int not null,
-NhanXet nvarchar(100),
-SoSao int ,
-constraint fk_danhgia foreign key (IdKhachHang) references KhachHang(IdKhachHang),
 );
+
+insert into KhachHang(TenKhachHang,GioiTinh,DiaChi,Sdt,Email) values
+(N'Nguyễn Văn A','true',N'Quảng trị','0327772999','Vana@gmail.com'),
+(N'Nguyễn Văn B','true',N'Quảng Bình','0566778998','Basd@gmail.com');
+
+
 
 create table DoiTac(
 IdDoiTac int identity(0,1) primary key not  null,
@@ -46,6 +44,9 @@ Email varchar(50),
 Logo varchar(50),
 SoVonDaDauTu float,
 )
+insert into DoiTac(TenDoiTac,LinhVuc,DiaChi,Sdt,Email,Logo,SoVonDaDauTu) values
+(N'Cty ABC',N'Xây Dựng',N'Quảng Nam','0325111222','abc@gmail.com','',455465),
+(N'Cty BDS',N'Bất Động Sản',N'Quảng Ngãi','0326777988','dda@gmail.com','',78826);
 
 create table DuAn(
 IdDuAn int identity(0,1) primary key not null,
@@ -67,6 +68,10 @@ BanKinh float,
 constraint fk_DuAn foreign key (IdDoiTac) references DoiTac(IdDoiTac), 
 )
 
+insert into DuAn(TenDuAn,LoaiHinh,DiaChi,DienTich,ChiPhi,MucTieu,NgayBatDau,NgayKetThuc,HinhThucQuanLi,HinhThucDauTu,IdDoiTac,TrangThai,MapX,MapY,BanKinh) values
+(N'Chung cư ABCD',N'Chung Cư',N'08 Hà văn Tính',112,550,N'hoàn thành trong 2 năm','2017-05-02','',N'Chung Cư',N'góp vốn',0,N'Đang xây dựng',54545,6565,4545),
+(N'Chung cư sa',N'Chung Cư',N'03 Hà văn Ngọc',4545,10289,N'hoàn thành trong 5 năm','2019-01-02','',N'Chung Cư',N'góp vốn ',0,N'Đang xây dựng',85698,5454,87887);
+
 create table SanPham(
 IdSanPham int identity(0,1) primary key not null,
 TenSanPham nvarchar(50) not null,
@@ -83,6 +88,19 @@ IdKhachHang int ,
 constraint fk_SanPham foreign key (IdKhachHang) references KhachHang(IdKhachHang),
 constraint fk_DuAn_SP foreign key (IdDuAn) references DuAn(IdDuAn),
 )
+
+insert into SanPham(TenSanPham,IdDuAn,DiaChi,DienTich,GiaTien,MoTa,NgayTao,NgayBan,ChiTiet,trangThai,IdKhachHang) values
+(N'Phòng 101',0,N'08 Hà Văn Tính',50,510,N'đang xây dựng','2017-05-02','',N'phòng đầy đủ tiện nghi',N'chưa bán',''),
+(N'Phòng 02',1,N'03 Hà Văn Ngọc',40,390,N'đang xây dựng','2019-03-02','',N'phòng đầy đủ tiện nghi',N'chưa bán','');
+
+create table DanhGia(
+IdKhachHang int not null,
+NhanXet nvarchar(100),
+SoSao int ,
+IdSanPham int,
+constraint fk_danhgia foreign key (IdKhachHang) references KhachHang(IdKhachHang),
+constraint fk_danhgia2 foreign key (IdSanPham) references SanPham(IdSanPham) 
+);
 
 create table HinhAnh(
 IdHinhAnh int identity(0,1) primary key not null,

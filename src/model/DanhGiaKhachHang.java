@@ -4,14 +4,16 @@ public class DanhGiaKhachHang {
     private int idKhachHang;
     private int soSaoBinhChon;
     private String nhanXet;
+    private int idSanPham;
 
     public DanhGiaKhachHang() {
     }
 
-    public DanhGiaKhachHang(int idKhachHang, int soSaoBinhChon, String nhanXet) {
+    public DanhGiaKhachHang(int idKhachHang, int soSaoBinhChon, String nhanXet, int idSanPham) {
         this.idKhachHang = idKhachHang;
         this.soSaoBinhChon = soSaoBinhChon;
         this.nhanXet = nhanXet;
+        this.idSanPham = idSanPham;
     }
 
     public int getIdKhachHang() {
@@ -36,5 +38,13 @@ public class DanhGiaKhachHang {
 
     public void setNhanXet(String nhanXet) {
         this.nhanXet = nhanXet;
+    }
+
+    public int getIdSanPham() {
+        return idSanPham;
+    }
+
+    public void setIdSanPham(int idSanPham) {
+        this.idSanPham = idSanPham;
     }
 }
