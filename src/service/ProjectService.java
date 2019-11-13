@@ -91,45 +91,43 @@ public class ProjectService {
     }
 
     public static void deleteByMaProject(String maProject) throws SQLException {
-        System.out.println("DELETE FROM DuAn WHERE (idDuAn = '" + maProject + "')");
         ProductService.deleteByMaProject(maProject);
         com.createStatement().executeUpdate("DELETE FROM DuAn WHERE (idDuAn = '" + maProject + "')");
     }
 
     public static void save(Project project) throws SQLException, FileNotFoundException {
         if (project.getIdDuAn() != null) {
-            PreparedStatement pst = com.prepareStatement("UPDATE DuAn SET tenDuAn = '" + project.getTenDuAn() +
-                    "', loaiHinh = '" + project.getLoaiHinh() +
-                    "', 'diaChi' = '" + project.getDiaChi() +
-                    "', 'dienTich' = '" + project.getDienTich() +
-                    "', 'ChiPhi' = '" + project.getChiPhiDuAn() +
-                    "', 'ngayBatDau' = '" + project.getNgayBatDau() +
-                    "', 'ngayKetThuc' = '" + project.getNgayKetThuc() +
-                    "', 'hinhThucQuanLi' = '" + project.getHinhThucQuanLi() +
-                    "', 'hinhThucDauTu' = '" + project.getHinhThucDauTu() +
-                    "', 'IdDoiTac' = '" + project.getIdDoiTac() +
-                    "', 'trangThai' = '" + project.getTrangThai() +
-                    "', 'mapX' = '" + project.getMapX() +
-                    "', 'mapY' = '" + project.getMapY() +
-                    "', 'banKinh' = '" + project.getBanKinh() +
-                    "')");
+            PreparedStatement pst = com.prepareStatement("UPDATE DuAn SET tenDuAn = N'" + project.getTenDuAn() +
+                    "', loaiHinh = N'" + project.getLoaiHinh() +
+                    "', diaChi = N'" + project.getDiaChi() +
+                    "', dienTich = '" + project.getDienTich() +
+                    "', ChiPhi = '" + project.getChiPhiDuAn() +
+                    "', ngayBatDau = '" + project.getNgayBatDau() +
+                    "', ngayKetThuc = '" + project.getNgayKetThuc() +
+                    "', hinhThucQuanLi = N'" + project.getHinhThucQuanLi() +
+                    "', hinhThucDauTu = N'" + project.getHinhThucDauTu() +
+                    "', IdDoiTac = '" + project.getIdDoiTac() +
+                    "', trangThai = N'" + project.getTrangThai() +
+                    "', mapX = '" + project.getMapX() +
+                    "', mapY = '" + project.getMapY() +
+                    "', banKinh = '" + project.getBanKinh() +
+                    "'");
             pst.execute();
         } else {
-
             PreparedStatement pst = com.prepareStatement(
                     "INSERT INTO DuAn (TenDuAn, loaiHinh, diaChi,dienTich, ChiPhi, " +
                             " ngayBatDau, ngayKetThuc, hinhThucQuanLi, hinhThucDauTu, IdDoiTac, " +
-                            "trangThai, mapX, mapY, banKinh) VALUES ('" +
-                            project.getTenDuAn() + "',' " +
-                            project.getLoaiHinh() + "',' " +
+                            "trangThai, mapX, mapY, banKinh) VALUES (N'" +
+                            project.getTenDuAn() + "',N' " +
+                            project.getLoaiHinh() + "',N' " +
                             project.getDiaChi() + "','" +
                             project.getDienTich() + "','" +
                             project.getChiPhiDuAn() + "','" +
                             project.getNgayBatDau() + "','" +
-                            project.getNgayKetThuc() + "','" +
-                            project.getHinhThucQuanLi() + "','" +
+                            project.getNgayKetThuc() + "',N'" +
+                            project.getHinhThucQuanLi() + "',N'" +
                             project.getHinhThucDauTu() + "','" +
-                            project.getIdDoiTac() + "','" +
+                            project.getIdDoiTac() + "',N'" +
                             project.getTrangThai() + "','" +
                             project.getMapX() + "','" +
                             project.getMapY() + "','" +

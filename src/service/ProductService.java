@@ -86,17 +86,16 @@ public class ProductService {
     }
 
     public static void deleteByMaProduct(String IdProduct) throws SQLException {
-        com.createStatement().executeUpdate("DELETE FROM SanPham WHERE ('IdSanPham' = '" + IdProduct + "')");
+        com.createStatement().executeUpdate("DELETE FROM SanPham WHERE (IdSanPham = '" + IdProduct + "')");
     }
     public static void deleteByMaProject(String IDDuAn) throws SQLException {
-        System.out.println("DELETE FROM SanPham WHERE ('IdDuAn' = '" + IDDuAn + "')");
-        com.createStatement().executeUpdate("DELETE FROM SanPham WHERE ('IdDuAn' = '" + IDDuAn + "')");
+        com.createStatement().executeUpdate("DELETE FROM SanPham WHERE (IdDuAn = '" + IDDuAn + "')");
     }
 
     public static void save(Product product, File file) throws SQLException, FileNotFoundException {
         Product productExist = findByMaProduct(product.getIdSanPham());
         if (productExist.getIdSanPham() != 0) {
-            PreparedStatement pst = com.prepareStatement("UPDATE SanPham SET 'TenSanPham' = '" + product.getTenSanPham() +
+            PreparedStatement pst = com.prepareStatement("UPDATE SanPham SET TenSanPham = '" + product.getTenSanPham() +
                     "', 'IdSanPham' = '" + product.getIdSanPham() +
                     "', 'TenSanPham' = '" + product.getTenSanPham() +
                     "', 'IdDuAn' = '" + product.getIdDuAn() +

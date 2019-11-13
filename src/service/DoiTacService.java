@@ -81,28 +81,48 @@ public class DoiTacService {
         return list;
     }
 
+    public static List<String> getAllID() {
+        List<String> list = new ArrayList<>();
+        try {
+            ResultSet rs = com.createStatement().executeQuery("select * from doiTac");
+            boolean isValid = false;
+            while (rs.next()) {
+                String id = rs.getString("IdDoiTac");
+                list.add(id);
+                isValid = true;
+            }
+            if (!isValid) {
+                return list;
+            }
+            rs.getStatement().close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return list;
+    }
+
     public static void deleteByMaDoiTac(String IdDoiTac) throws SQLException {
-        com.createStatement().executeUpdate("DELETE FROM [javafx].[doiTac] WHERE ('IdDoiTac' = '" + IdDoiTac + "')");
+        com.createStatement().executeUpdate("DELETE FROM [javafx].[doiTac] WHERE (IdDoiTac = '" + IdDoiTac + "')");
     }
 
     public static void save(DoiTac doiTac, File file) throws SQLException, FileNotFoundException {
         DoiTac doiTacExist = findByMaDoiTac(doiTac.getIdDoiTac());
         if (doiTacExist.getIdDoiTac() != 0) {
-            PreparedStatement pst = com.prepareStatement("UPDATE [javafx].[doiTac] SET 'tenDoiTac' = '" + doiTac.getTenDoitac() +
-                    "', 'IdDoiTac' = '" + doiTac.getIdDoiTac() +
-                    "', 'TenDoiTac' = '" + doiTac.getTenDoitac() +
-                    "', 'LinhVuc' = '" + doiTac.getLinhVuc() +
-                    "', 'DiaChi' = '" + doiTac.getDiaChi() +
-                    "', 'Sdt' = '" + doiTac.getSdt() +
-                    "', 'Email' = '" + doiTac.getEmail() +
-                    "', 'Logo' = '" + doiTac.getLogo() +
-                    "', 'SoVonDaDauTu' = '" + doiTac.getsoVonDaDauTu() +
+            PreparedStatement pst = com.prepareStatement("UPDATE [javafx].[doiTac] SET tenDoiTac = '" + doiTac.getTenDoitac() +
+                    "', IdDoiTac = '" + doiTac.getIdDoiTac() +
+                    "', TenDoiTac = '" + doiTac.getTenDoitac() +
+                    "', LinhVuc = '" + doiTac.getLinhVuc() +
+                    "', DiaChi = '" + doiTac.getDiaChi() +
+                    "', Sdt = '" + doiTac.getSdt() +
+                    "', Email = '" + doiTac.getEmail() +
+                    "', Logo = '" + doiTac.getLogo() +
+                    "', SoVonDaDauTu = '" + doiTac.getsoVonDaDauTu() +
                     "')");
             pst.execute();
         } else {
             PreparedStatement pst = com.prepareStatement(
-                    "INSERT INTO [javafx].[doiTac] ('IdDoiTac', 'TenDoiTac', 'LinhVuc', 'DiaChi','Sdt', 'Email', " +
-                            "'Logo', 'SoVonDaDauTu') VALUES ('" +
+                    "INSERT INTO [javafx].[doiTac] (IdDoiTac, TenDoiTac, LinhVuc, DiaChi,Sdt, Email, " +
+                            "Logo, SoVonDaDauTu) VALUES ('" +
                             doiTac.getIdDoiTac() + "', '" +
                             doiTac.getTenDoitac() + "',' " +
                             doiTac.getLinhVuc() + "',' " +
@@ -114,5 +134,10 @@ public class DoiTacService {
                             "')");
             pst.execute();
         }
+    }
+
+    public static void main(String[] args) {
+        List<String> ids = getAllID();
+        System.out.println(ids.size());
     }
 }

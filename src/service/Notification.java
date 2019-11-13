@@ -10,8 +10,7 @@ public class Notification {
                 .hideAfter(Duration.seconds(5)).position(Pos.BOTTOM_RIGHT);
         if (type == 0) {
             notifications.showInformation();
-        }
-        else if (type ==1){
+        } else if (type == 1) {
             notifications.showError();
         }
     }
