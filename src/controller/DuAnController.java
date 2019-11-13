@@ -7,18 +7,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import model.Project;
+import service.DoiTacService;
 import service.Notification;
 import service.PaginatedList;
 import service.ProjectService;
@@ -26,10 +20,7 @@ import service.ProjectService;
 import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -79,8 +70,6 @@ public class DuAnController implements Initializable {
     @FXML
     private TableColumn<Project, String> colVonDauTu;
     @FXML
-    private TableColumn<Project, String> colTGHoanThanh;
-    @FXML
     private TableColumn<Project, String> colNgayBatDau;
     @FXML
     private TableColumn<Project, String> colNgayKetThuc;
@@ -111,7 +100,14 @@ public class DuAnController implements Initializable {
     @FXML
     JFXTabPane tabView;
     Notification notification = new Notification();
+    @FXML
+    ToggleGroup q;
 
+    @FXML
+    private RadioButton rdDone;
+
+    @FXML
+    private RadioButton rdUndone;
     public DuAnController() throws SQLException {
     }
 
@@ -162,7 +158,6 @@ public class DuAnController implements Initializable {
         colDiaChi.setCellValueFactory(new PropertyValueFactory<>("diaChi"));
         colDienTich.setCellValueFactory(new PropertyValueFactory<>("dienTich"));
         colVonDauTu.setCellValueFactory(new PropertyValueFactory<>("chiPhiDuAn"));
-        colTGHoanThanh.setCellValueFactory(new PropertyValueFactory<>("mucTieu"));
         colNgayBatDau.setCellValueFactory(new PropertyValueFactory<>("ngayBatDau"));
         colNgayKetThuc.setCellValueFactory(new PropertyValueFactory<>("ngayKetThuc"));
         colHTQuanLy.setCellValueFactory(new PropertyValueFactory<>("hinhThucQuanLi"));
@@ -177,13 +172,12 @@ public class DuAnController implements Initializable {
     }
 
     public void selectItem() throws SQLException, IOException {
-        System.out.println("selected");
         Project NV = tableView.getSelectionModel().getSelectedItem();
         btnEdit.setDisable(false);
         btnDelete.setDisable(false);
-        if (NV != null) {
-            NV = ProjectService.findByMaProject(NV.getIdDuAn());
-        }
+//        if (NV != null) {
+//            NV = ProjectService.findByMaProject(NV.getIdDuAn());
+//        }
     }
 
     public void changeStage(ActionEvent actionEvent) throws IOException, SQLException {
@@ -203,6 +197,11 @@ public class DuAnController implements Initializable {
         dateEnd.setValue(LocalDate.of(Calendar.getInstance().get(Calendar.YEAR) + 2,
                 Calendar.getInstance().get(Calendar.MONTH) + 1,
                 Calendar.getInstance().get(Calendar.DAY_OF_MONTH)));
+        if (this.project.getIdDoiTac() != null) {
+            comIDDoiTac.getSelectionModel().select(this.project.getIdDoiTac());
+        }
+        comHTDauTu.getSelectionModel().select(this.project.getHinhThucDauTu());
+        comHTQuanLy.getSelectionModel().select(this.project.getHinhThucQuanLi());
         if (this.project.getMapX() != null) {
             txtMapX.setText(this.project.getMapX().toString());
         }
@@ -211,6 +210,9 @@ public class DuAnController implements Initializable {
         }
         if (this.project.getBanKinh() != null) {
             txtBanKinh.setText(this.project.getBanKinh().toString());
+        }
+        if (this.project.getTrangThai().equals("CHƯA ĐỦ VỐN")){
+            rdUndone.setSelected(true);
         }
 //        FXMLLoader loader = new FXMLLoader(getClass().getResource("views/EidtProject.fxml"));
 //        Parent root = (Parent) loader.load();
@@ -240,23 +242,22 @@ public class DuAnController implements Initializable {
         if (comIDDoiTac.getSelectionModel().selectedItemProperty().getValue() != null) {
             IDDoiTac = comIDDoiTac.getSelectionModel().selectedItemProperty().getValue().toString();
         }
-//        ProjectService.deleteByMaProject(maProjectTextField.getText());
-        System.out.println(dateStart.getValue().toString());
+        RadioButton selectedRadioButton = (RadioButton) q.getSelectedToggle();
+        String trangThai = selectedRadioButton.getText();
         Project project = new Project(this.project.getIdDuAn(), txtName.getText(), loaiHinh,
                 txtDiaChi.getText(), Double.parseDouble(txtDienTich.getText()),
                 Double.parseDouble(txtVonDauTu.getText()),
                 dateStart.getValue().toString(),
                 dateEnd.getValue().toString(),
-                hinhThucQuanLi, hinhThucDauTu, 0, "",
+                hinhThucQuanLi, hinhThucDauTu, Integer.parseInt(IDDoiTac), trangThai,
                 Double.parseDouble(txtMapX.getText()),
                 Double.parseDouble(txtMapY.getText()),
                 Double.parseDouble(txtBanKinh.getText())
         );
         project.setIdDuAn(this.project.getIdDuAn());
-
         ProjectService.save(project);
         notification.notification("Save thành công", "Đã lưu vào database", 0);
-//        onCancel(actionEvent);
+        setTableView();
     }
 
     public void edit(ActionEvent actionEvent) throws IOException, SQLException {
@@ -266,7 +267,6 @@ public class DuAnController implements Initializable {
 
     public void deleteItem(ActionEvent actionEvent) throws SQLException {
         Project project = tableView.getSelectionModel().getSelectedItem();
-        System.out.println(project.getIdDuAn());
         ProjectService.deleteByMaProject(String.valueOf(project.getIdDuAn()));
         setTableView();
     }
@@ -281,10 +281,118 @@ public class DuAnController implements Initializable {
         changeStage(actionEvent);
     }
 
+    @FXML
+    public void onCancel(ActionEvent actionEvent) {
+        SingleSelectionModel<Tab> selectionModel = tabView.getSelectionModel();
+        selectionModel.select(0);
+        this.project = new Project();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setTableView();
         clientPagination.setPageFactory(this::setTableView);
+        List<String> listDoiTacId = DoiTacService.getAllID();
+        ObservableList<String> data = FXCollections.observableArrayList(listDoiTacId);
+        comIDDoiTac.setItems(data);
+//        if (this.project.getIdDoiTac() != null) {
+//            comIDDoiTac.getSelectionModel().select(this.project.getIdDoiTac());
+//        }
+        txtDienTich.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                txtDienTich.setText(newValue.replaceAll("[^\\d*|\\d+\\,\\d]", ""));
+                if (!newValue.matches("\\d*|\\d+\\,\\d*") && !newValue.contains(".")) {
+                    txtDienTich.setText(newValue.replaceAll("[^\\d*|\\d+\\,\\d]", ""));
+                    notification.notification("Ký tự nhập không phải là số", "Vui lòng nhập lại", 1);
+                }
+                try {
+                    if (Double.parseDouble(newValue) < 0) {
+                        txtDienTich.setText(newValue.replaceAll(newValue, oldValue));
+                        notification.notification("Số nhập phải lớn hơn 0", "Vui lòng nhập lại", 1);
+                    }
+                } catch (Exception e) {
 
+                }
+            }
+        });
+        txtVonDauTu.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                txtVonDauTu.setText(newValue.replaceAll("[^\\d*|\\d+\\,\\d]", ""));
+                if (!newValue.matches("\\d*|\\d+\\,\\d*") && !newValue.contains(".")) {
+                    txtVonDauTu.setText(newValue.replaceAll("[^\\d*|\\d+\\,\\d]", ""));
+                    notification.notification("Ký tự nhập không phải là số", "Vui lòng nhập lại", 1);
+                }
+                try {
+                    if (Double.parseDouble(newValue) < 0) {
+                        txtVonDauTu.setText(newValue.replaceAll(newValue, oldValue));
+                        notification.notification("Số nhập phải lớn hơn 0", "Vui lòng nhập lại", 1);
+                    }
+                } catch (Exception e) {
+
+                }
+            }
+        });
+        txtMapX.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                txtMapX.setText(newValue.replaceAll("[^\\d*|\\d+\\,\\d]", ""));
+                if (!newValue.matches("\\d*|\\d+\\,\\d*") && !newValue.contains(".")) {
+                    txtMapX.setText(newValue.replaceAll("[^\\d*|\\d+\\,\\d]", ""));
+                    notification.notification("Ký tự nhập không phải là số", "Vui lòng nhập lại", 1);
+                }
+                try {
+                    if (Double.parseDouble(newValue) < 0) {
+                        txtMapX.setText(newValue.replaceAll(newValue, oldValue));
+                        notification.notification("Số nhập phải lớn hơn 0", "Vui lòng nhập lại", 1);
+                    }
+                } catch (Exception e) {
+
+                }
+            }
+        });
+        txtMapY.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                txtMapY.setText(newValue.replaceAll("[^\\d*|\\d+\\,\\d]", ""));
+                if (!newValue.matches("\\d*|\\d+\\,\\d*") && !newValue.contains(".")) {
+                    txtMapY.setText(newValue.replaceAll("[^\\d*|\\d+\\,\\d]", ""));
+                    notification.notification("Ký tự nhập không phải là số", "Vui lòng nhập lại", 1);
+                }
+                try {
+                    if (Double.parseDouble(newValue) < 0) {
+                        txtMapY.setText(newValue.replaceAll(newValue, oldValue));
+                        notification.notification("Số nhập phải lớn hơn 0", "Vui lòng nhập lại", 1);
+                    }
+                } catch (Exception e) {
+
+                }
+            }
+        });
+        txtBanKinh.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                txtBanKinh.setText(newValue.replaceAll("[^\\d*|\\d+\\,\\d]", ""));
+                if (!newValue.matches("\\d*|\\d+\\,\\d*") && !newValue.contains(".")) {
+                    txtBanKinh.setText(newValue.replaceAll("[^\\d*|\\d+\\,\\d]", ""));
+                    notification.notification("Ký tự nhập không phải là số", "Vui lòng nhập lại", 1);
+                }
+                try {
+                    if (Double.parseDouble(newValue) < 0) {
+                        txtBanKinh.setText(newValue.replaceAll(newValue, oldValue));
+                        notification.notification("Số nhập phải lớn hơn 0", "Vui lòng nhập lại", 1);
+                    }
+                } catch (Exception e) {
+
+                }
+            }
+        });
     }
+
 }

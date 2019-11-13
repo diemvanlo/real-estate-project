@@ -47,7 +47,6 @@
                                                         <TableColumn fx:id="colDiaChi" editable="false" minWidth="0.0" prefWidth="94.0" sortable="false" text="Địa chỉ" />
                                                         <TableColumn fx:id="colDienTich" editable="false" minWidth="0.0" prefWidth="97.0" sortable="false" text="Diện tích" />
                                                         <TableColumn fx:id="colVonDauTu" editable="false" minWidth="0.0" prefWidth="115.0" sortable="false" text="Vốn đầu tư" />
-                                                        <TableColumn fx:id="colTGHoanThanh" editable="false" minWidth="0.0" prefWidth="132.0" sortable="false" text="TG hoàn thành" />
                                                         <TableColumn fx:id="colNgayBatDau" editable="false" minWidth="0.0" prefWidth="121.0" sortable="false" text="Ngày bắt đâu" />
                                                         <TableColumn fx:id="colNgayKetThuc" editable="false" minWidth="0.0" prefWidth="133.0" sortable="false" text="Ngày kết thúc" />
                                                         <TableColumn fx:id="colHTQuanLy" editable="false" minWidth="0.0" prefWidth="111.0" sortable="false" text="HT quản lý" />
@@ -68,7 +67,7 @@
                                                     </cursor>
                                                 </Pagination>
                                                 <JFXTextField fx:id="clientSearchTextField" layoutX="579.0" layoutY="14.0" onKeyReleased="#filter" prefHeight="30.0" prefWidth="302.0" promptText="Tìm thông tin dự án" style="-fx-border-width: 0;" styleClass="search-box" />
-                                                <JFXButton fx:id="btnEdit" layoutX="233.0" layoutY="13.0" prefHeight="27.0" prefWidth="78.0" styleClass="cancel-button" text="Edit" />
+                                                <JFXButton fx:id="btnEdit" layoutX="233.0" layoutY="13.0" onAction="#edit" prefHeight="27.0" prefWidth="78.0" styleClass="cancel-button" text="Edit" />
                                                 <JFXButton fx:id="btnDelete" layoutX="343.0" layoutY="12.0" onAction="#deleteItem" prefHeight="37.0" prefWidth="100.0" styleClass="red-btn" text="Delete" />
                                                 <JFXButton fx:id="btnAdd" layoutX="126.0" layoutY="13.0" onAction="#creatNew" prefHeight="34.0" prefWidth="98.0" styleClass="blue-btn" text="New" />
                                                 <JFXButton layoutX="460.0" layoutY="12.0" prefHeight="37.0" prefWidth="100.0" styleClass="green-btn" text="In excel" />
@@ -214,14 +213,14 @@
                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                             <children>
                                                                 <JFXComboBox fx:id="comHTQuanLy" prefHeight="40.0" prefWidth="480.0" promptText="Hình thức quản lý">
-                                                                   <items>
-                                                                      <FXCollections fx:factory="observableArrayList">
-                                                                         <String fx:value="Căn hộ cho thuê" />
-                                                                         <String fx:value="Bán nhà ở" />
-                                                                         <String fx:value="Đất nền" />
-                                                                         <String fx:value="Đất cho thuê" />
-                                                                      </FXCollections>
-                                                                   </items>
+                                                                    <items>
+                                                                        <FXCollections fx:factory="observableArrayList">
+                                                                            <String fx:value="Căn hộ cho thuê" />
+                                                                            <String fx:value="Bán nhà ở" />
+                                                                            <String fx:value="Đất nền" />
+                                                                            <String fx:value="Đất cho thuê" />
+                                                                        </FXCollections>
+                                                                    </items>
                                                                 </JFXComboBox>
                                                             </children>
                                                         </HBox>
@@ -232,33 +231,33 @@
                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                             <children>
                                                                 <JFXComboBox fx:id="comHTDauTu" prefHeight="40.0" prefWidth="480.0" promptText="Hình thức đầu tư">
-                                                                   <items>
-                                                                      <FXCollections fx:factory="observableArrayList">
-                                                                         <String fx:value="Góp vốn" />
-                                                                         <String fx:value="Cùng xây dựng" />
-                                                                      </FXCollections>
-                                                                   </items>
+                                                                    <items>
+                                                                        <FXCollections fx:factory="observableArrayList">
+                                                                            <String fx:value="Góp vốn" />
+                                                                            <String fx:value="Cùng xây dựng" />
+                                                                        </FXCollections>
+                                                                    </items>
                                                                 </JFXComboBox>
                                                             </children>
                                                         </HBox>
                                                     </children>
                                                 </VBox>
-                                    <VBox prefHeight="47.0" prefWidth="448.0">
-                                       <children>
-                                          <HBox prefHeight="100.0" prefWidth="200.0">
-                                             <children>
-                                                <JFXComboBox fx:id="comIDDoiTac" prefHeight="40.0" prefWidth="480.0" promptText="Đối tác">
-                                                   <items>
-                                                      <FXCollections fx:factory="observableArrayList">
-                                                         <String fx:value="Góp vốn" />
-                                                         <String fx:value="Cùng xây dựng" />
-                                                      </FXCollections>
-                                                   </items>
-                                                </JFXComboBox>
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
+                                                <VBox prefHeight="47.0" prefWidth="448.0">
+                                                    <children>
+                                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                                            <children>
+                                                                <JFXComboBox fx:id="comIDDoiTac" prefHeight="40.0" prefWidth="480.0" promptText="Đối tác">
+                                                                    <items>
+                                                                        <FXCollections fx:factory="observableArrayList">
+                                                                            <String fx:value="Góp vốn" />
+                                                                            <String fx:value="Cùng xây dựng" />
+                                                                        </FXCollections>
+                                                                    </items>
+                                                                </JFXComboBox>
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </VBox>
                                                 <VBox prefHeight="47.0" prefWidth="448.0">
                                                     <children>
                                                         <HBox prefHeight="100.0" prefWidth="200.0">
@@ -282,28 +281,28 @@
                                                         </HBox>
                                                     </children>
                                                 </VBox>
-                                    <VBox prefHeight="82.0" prefWidth="541.0">
-                                       <children>
-                                          <Label prefHeight="20.0" prefWidth="222.0" style="-fx-text-fill: #868282;" text="Taking Appointments" />
-                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
-                                             <children>
-                                                <JFXRadioButton selected="true" text="ĐÃ ĐỦ VỐN">
-                                                   <toggleGroup>
-                                                      <ToggleGroup fx:id="q" />
-                                                   </toggleGroup>
-                                                </JFXRadioButton>
-                                                <JFXRadioButton layoutX="10.0" layoutY="10.0" text="CHƯA ĐỦ VỐN" toggleGroup="$q" />
-                                             </children>
-                                             <padding>
-                                                <Insets left="100.0" right="20.0" />
-                                             </padding>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
+                                                <VBox prefHeight="82.0" prefWidth="541.0">
+                                                    <children>
+                                                        <Label prefHeight="20.0" prefWidth="222.0" style="-fx-text-fill: #868282;" text="Tình trạng" />
+                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                                                            <children>
+                                                                <JFXRadioButton fx:id="rdDone" selected="true" text="ĐÃ ĐỦ VỐN">
+                                                                    <toggleGroup>
+                                                                        <ToggleGroup fx:id="q" />
+                                                                    </toggleGroup>
+                                                                </JFXRadioButton>
+                                                                <JFXRadioButton fx:id="rdUndone" layoutX="10.0" layoutY="10.0" text="CHƯA ĐỦ VỐN" toggleGroup="$q" />
+                                                            </children>
+                                                            <padding>
+                                                                <Insets left="100.0" right="20.0" />
+                                                            </padding>
+                                                        </HBox>
+                                                    </children>
+                                                </VBox>
                                                 <Separator prefWidth="200.0" />
                                                 <HBox alignment="CENTER_RIGHT" prefHeight="77.0" prefWidth="511.0" spacing="20.0">
                                                     <children>
-                                                        <JFXButton styleClass="cancel-button" text="Cancel" />
+                                                        <JFXButton onAction="#onCancel" styleClass="cancel-button" text="Cancel" />
                                                         <JFXButton layoutX="72.0" layoutY="10.0" onAction="#onSave" prefHeight="37.0" prefWidth="100.0" styleClass="blue-btn" text="Save" />
                                                     </children>
                                                     <padding>
