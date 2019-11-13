@@ -55,7 +55,6 @@ LoaiHinh nvarchar(30) not null,
 DiaChi nvarchar(50) not null,
 DienTich float not null,
 ChiPhi float not null,
-MucTieu nvarchar(50),
 NgayBatDau date,
 NgayKetThuc date,
 HinhThucQuanLi nvarchar(50) not null,
@@ -68,9 +67,9 @@ BanKinh float,
 constraint fk_DuAn foreign key (IdDoiTac) references DoiTac(IdDoiTac), 
 )
 
-insert into DuAn(TenDuAn,LoaiHinh,DiaChi,DienTich,ChiPhi,MucTieu,NgayBatDau,NgayKetThuc,HinhThucQuanLi,HinhThucDauTu,IdDoiTac,TrangThai,MapX,MapY,BanKinh) values
-(N'Chung cư ABCD',N'Chung Cư',N'08 Hà văn Tính',112,550,N'hoàn thành trong 2 năm','2017-05-02','',N'Chung Cư',N'góp vốn',0,N'Đang xây dựng',54545,6565,4545),
-(N'Chung cư sa',N'Chung Cư',N'03 Hà văn Ngọc',4545,10289,N'hoàn thành trong 5 năm','2019-01-02','',N'Chung Cư',N'góp vốn ',0,N'Đang xây dựng',85698,5454,87887);
+insert into DuAn(TenDuAn,LoaiHinh,DiaChi,DienTich,ChiPhi,NgayBatDau,NgayKetThuc,HinhThucQuanLi,HinhThucDauTu,IdDoiTac,TrangThai,MapX,MapY,BanKinh) values
+(N'Chung cư ABCD',N'Chung Cư',N'08 Hà văn Tính',112,550,'2017-05-02','',N'Chung Cư',N'góp vốn',0,N'Đang xây dựng',54545,6565,4545),
+(N'Chung cư sa',N'Chung Cư',N'03 Hà văn Ngọc',4545,10289,'2019-01-02','',N'Chung Cư',N'góp vốn ',0,N'Đang xây dựng',85698,5454,87887);
 
 create table SanPham(
 IdSanPham int identity(0,1) primary key not null,

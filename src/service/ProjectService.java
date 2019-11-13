@@ -36,15 +36,14 @@ public class ProjectService {
         project.setDiaChi(rs.getString("DiaChi"));
         project.setDienTich(rs.getDouble("DienTich"));
         project.setChiPhiDuAn(rs.getDouble("ChiPhi"));
-        project.setMucTieu(rs.getString("MucTieu"));
-        project.setNgayBatDau(rs.getDate("NgayBatDau"));
-        project.setNgayKetThuc(rs.getDate("NgayKetThuc"));
+        project.setNgayBatDau(rs.getString("NgayBatDau"));
+        project.setNgayKetThuc(rs.getString("NgayKetThuc"));
         project.setHinhThucQuanLi(rs.getString("HinhThucQuanLi"));
         project.setHinhThucDauTu(rs.getString("HinhThucDauTu"));
         project.setIdDoiTac(rs.getInt("IdDoiTac"));
         project.setTrangThai(rs.getString("TrangThai"));
-        project.setMapX(rs.getString("mapX"));
-        project.setMapY(rs.getString("mapY"));
+        project.setMapX(rs.getDouble("mapX"));
+        project.setMapY(rs.getDouble("mapY"));
         project.setBanKinh(rs.getDouble("banKinh"));
         return project;
     }
@@ -55,7 +54,7 @@ public class ProjectService {
             ResultSet rs = com.createStatement().executeQuery("select * from duan");
             boolean isValid = false;
             while (rs.next()) {
-                if (rs.getInt("MaProject") == maProject) {
+                if (rs.getInt("IdDuAn") == maProject) {
                     isValid = true;
                     project = getProjectFromResultSet(rs);
                 }
@@ -73,7 +72,7 @@ public class ProjectService {
     public static List<Project> getAll() {
         List<Project> list = new ArrayList<>();
         try {
-            ResultSet rs = com.createStatement().executeQuery("select * from duan");
+            ResultSet rs = com.createStatement().executeQuery("select * from DuAn");
             boolean isValid = false;
             while (rs.next()) {
                 Project project;
@@ -92,23 +91,23 @@ public class ProjectService {
     }
 
     public static void deleteByMaProject(String maProject) throws SQLException {
-        com.createStatement().executeUpdate("DELETE FROM [javafx].[duan] WHERE ('maProject' = '" + maProject + "')");
+        System.out.println("DELETE FROM DuAn WHERE (idDuAn = '" + maProject + "')");
+        ProductService.deleteByMaProject(maProject);
+        com.createStatement().executeUpdate("DELETE FROM DuAn WHERE (idDuAn = '" + maProject + "')");
     }
 
-    public static void save(Project project, File file) throws SQLException, FileNotFoundException {
-        Project projectExist = findByMaProject(project.getIdDuAn());
-        if (projectExist.getIdDuAn() != 0) {
-            PreparedStatement pst = com.prepareStatement("UPDATE [javafx].[duan] SET 'tenProject' = '" + project.getTenDuAn() +
-                    "', 'loaiHinh' = '" + project.getLoaiHinh() +
+    public static void save(Project project) throws SQLException, FileNotFoundException {
+        if (project.getIdDuAn() != null) {
+            PreparedStatement pst = com.prepareStatement("UPDATE DuAn SET tenDuAn = '" + project.getTenDuAn() +
+                    "', loaiHinh = '" + project.getLoaiHinh() +
                     "', 'diaChi' = '" + project.getDiaChi() +
                     "', 'dienTich' = '" + project.getDienTich() +
-                    "', 'chiPhiDuAn' = '" + project.getChiPhiDuAn() +
-                    "', 'mucTieu' = '" + project.getMucTieu() +
+                    "', 'ChiPhi' = '" + project.getChiPhiDuAn() +
                     "', 'ngayBatDau' = '" + project.getNgayBatDau() +
                     "', 'ngayKetThuc' = '" + project.getNgayKetThuc() +
                     "', 'hinhThucQuanLi' = '" + project.getHinhThucQuanLi() +
                     "', 'hinhThucDauTu' = '" + project.getHinhThucDauTu() +
-                    "', 'idNguoiDung' = '" + project.getIdDoiTac() +
+                    "', 'IdDoiTac' = '" + project.getIdDoiTac() +
                     "', 'trangThai' = '" + project.getTrangThai() +
                     "', 'mapX' = '" + project.getMapX() +
                     "', 'mapY' = '" + project.getMapY() +
@@ -116,17 +115,16 @@ public class ProjectService {
                     "')");
             pst.execute();
         } else {
+
             PreparedStatement pst = com.prepareStatement(
-                    "INSERT INTO [javafx].[duan] ('idDuAn', 'tenProject', 'loaiHinh', 'diaChi','dienTich', 'chiPhiDuAn', " +
-                            "'mucTieu', 'ngayBatDau', 'ngayKetThuc', 'hinhThucQuanLi', 'hinhThucDauTu', 'idNguoiDung', " +
-                            "'trangThai', 'mapX', 'mapY', 'banKinh') VALUES ('" +
-                            project.getIdDuAn() + "', '" +
+                    "INSERT INTO DuAn (TenDuAn, loaiHinh, diaChi,dienTich, ChiPhi, " +
+                            " ngayBatDau, ngayKetThuc, hinhThucQuanLi, hinhThucDauTu, IdDoiTac, " +
+                            "trangThai, mapX, mapY, banKinh) VALUES ('" +
                             project.getTenDuAn() + "',' " +
                             project.getLoaiHinh() + "',' " +
                             project.getDiaChi() + "','" +
                             project.getDienTich() + "','" +
                             project.getChiPhiDuAn() + "','" +
-                            project.getMucTieu() + "','" +
                             project.getNgayBatDau() + "','" +
                             project.getNgayKetThuc() + "','" +
                             project.getHinhThucQuanLi() + "','" +

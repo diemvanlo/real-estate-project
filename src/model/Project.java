@@ -1,37 +1,36 @@
 package model;
 
-import java.util.Date;
 
 public class Project {         // dự án
-    private int idDuAn;
+    private Integer idDuAn;
     private String tenDuAn;
     private String loaiHinh;        // lô đất, chung cư, nhà ở, biệt thự, khu du lịch ..
     private String diaChi;
     private Double dienTich;
     private Double chiPhiDuAn;
-    private String mucTieu;         // hoàn thành trong 2 năm,....
-    private Date ngayBatDau;
-    private Date ngayKetThuc;
+    private String ngayBatDau;
+    private String ngayKetThuc;
     private String hinhThucQuanLi;  // chung cư, tgian sở hữu 10 năm ...
     private String hinhThucDauTu;   // 5% giá trị dự án. hoặc số tiền cụ thể
-    private int idDoiTac;
+    private Integer idDoiTac;
     // private String TenDoiTac;       // tên đối tác đầu tư
     private String trangThai;       // đã đủ ( số tiền / chủ ) đầu tư, chưa đủ …
-    private String mapX;            // tọa độ vị trí theo vĩ tuyến
-    private String mapY;            // tọa độ vị trí theo kinh tuyến
+    private Double mapX;            // tọa độ vị trí theo vĩ tuyến
+    private Double mapY;            // tọa độ vị trí theo kinh tuyến
     private Double banKinh;
 
     public Project() {
     }
 
-    public Project(int idDuAn, String tenDuAn, String loaiHinh, String diaChi, Double dienTich, Double chiPhiDuAn, String mucTieu, Date ngayBatDau, Date ngayKetThuc, String hinhThucQuanLi, String hinhThucDauTu, int idDoiTac, String trangThai, String mapX, String mapY, Double banKinh) {
+    public Project(Integer idDuAn, String tenDuAn, String loaiHinh, String diaChi, Double dienTich, Double chiPhiDuAn,
+                   String ngayBatDau, String ngayKetThuc, String hinhThucQuanLi, String hinhThucDauTu, Integer idDoiTac,
+                   String trangThai, Double mapX, Double mapY, Double banKinh) {
         this.idDuAn = idDuAn;
         this.tenDuAn = tenDuAn;
         this.loaiHinh = loaiHinh;
         this.diaChi = diaChi;
         this.dienTich = dienTich;
         this.chiPhiDuAn = chiPhiDuAn;
-        this.mucTieu = mucTieu;
         this.ngayBatDau = ngayBatDau;
         this.ngayKetThuc = ngayKetThuc;
         this.hinhThucQuanLi = hinhThucQuanLi;
@@ -43,11 +42,11 @@ public class Project {         // dự án
         this.banKinh = banKinh;
     }
 
-    public int getIdDuAn() {
+    public Integer getIdDuAn() {
         return idDuAn;
     }
 
-    public void setIdDuAn(int idDuAn) {
+    public void setIdDuAn(Integer idDuAn) {
         this.idDuAn = idDuAn;
     }
 
@@ -91,27 +90,19 @@ public class Project {         // dự án
         this.chiPhiDuAn = chiPhiDuAn;
     }
 
-    public String getMucTieu() {
-        return mucTieu;
-    }
-
-    public void setMucTieu(String mucTieu) {
-        this.mucTieu = mucTieu;
-    }
-
-    public Date getNgayBatDau() {
+    public String getNgayBatDau() {
         return ngayBatDau;
     }
 
-    public void setNgayBatDau(Date ngayBatDau) {
+    public void setNgayBatDau(String ngayBatDau) {
         this.ngayBatDau = ngayBatDau;
     }
 
-    public Date getNgayKetThuc() {
+    public String getNgayKetThuc() {
         return ngayKetThuc;
     }
 
-    public void setNgayKetThuc(Date ngayKetThuc) {
+    public void setNgayKetThuc(String ngayKetThuc) {
         this.ngayKetThuc = ngayKetThuc;
     }
 
@@ -131,11 +122,11 @@ public class Project {         // dự án
         this.hinhThucDauTu = hinhThucDauTu;
     }
 
-    public int getIdDoiTac() {
+    public Integer getIdDoiTac() {
         return idDoiTac;
     }
 
-    public void setIdDoiTac(int idDoiTac) {
+    public void setIdDoiTac(Integer idDoiTac) {
         this.idDoiTac = idDoiTac;
     }
 
@@ -147,19 +138,19 @@ public class Project {         // dự án
         this.trangThai = trangThai;
     }
 
-    public String getMapX() {
+    public Double getMapX() {
         return mapX;
     }
 
-    public void setMapX(String mapX) {
+    public void setMapX(Double mapX) {
         this.mapX = mapX;
     }
 
-    public String getMapY() {
+    public Double getMapY() {
         return mapY;
     }
 
-    public void setMapY(String mapY) {
+    public void setMapY(Double mapY) {
         this.mapY = mapY;
     }
 
