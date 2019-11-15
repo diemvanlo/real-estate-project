@@ -35,7 +35,7 @@ public class DoiTacService {
         doiTac.setSdt(rs.getString("Sdt"));
         doiTac.setEmail(rs.getString("Email"));
         doiTac.setLogo(rs.getBinaryStream("Logo"));
-        doiTac.setsoVonDaDauTu(rs.getDouble("SoVonDaDauTu"));
+        doiTac.setSoVonDaDauTu(rs.getDouble("SoVonDaDauTu"));
         return doiTac;
     }
 
@@ -102,13 +102,13 @@ public class DoiTacService {
     }
 
     public static void deleteByMaDoiTac(String IdDoiTac) throws SQLException {
-        com.createStatement().executeUpdate("DELETE FROM [javafx].[doiTac] WHERE (IdDoiTac = '" + IdDoiTac + "')");
+        com.createStatement().executeUpdate("DELETE FROM doiTac WHERE (IdDoiTac = '" + IdDoiTac + "')");
     }
 
     public static void save(DoiTac doiTac, File file) throws SQLException, FileNotFoundException {
         DoiTac doiTacExist = findByMaDoiTac(doiTac.getIdDoiTac());
         if (doiTacExist.getIdDoiTac() != 0) {
-            PreparedStatement pst = com.prepareStatement("UPDATE [javafx].[doiTac] SET tenDoiTac = '" + doiTac.getTenDoitac() +
+            PreparedStatement pst = com.prepareStatement("UPDATE doiTac SET tenDoiTac = '" + doiTac.getTenDoitac() +
                     "', IdDoiTac = '" + doiTac.getIdDoiTac() +
                     "', TenDoiTac = '" + doiTac.getTenDoitac() +
                     "', LinhVuc = '" + doiTac.getLinhVuc() +
@@ -116,21 +116,19 @@ public class DoiTacService {
                     "', Sdt = '" + doiTac.getSdt() +
                     "', Email = '" + doiTac.getEmail() +
                     "', Logo = '" + doiTac.getLogo() +
-                    "', SoVonDaDauTu = '" + doiTac.getsoVonDaDauTu() +
+                    "', SoVonDaDauTu = '" + doiTac.getSoVonDaDauTu() +
                     "')");
             pst.execute();
         } else {
             PreparedStatement pst = com.prepareStatement(
-                    "INSERT INTO [javafx].[doiTac] (IdDoiTac, TenDoiTac, LinhVuc, DiaChi,Sdt, Email, " +
-                            "Logo, SoVonDaDauTu) VALUES ('" +
-                            doiTac.getIdDoiTac() + "', '" +
+                    "INSERT INTO doiTac ( TenDoiTac, LinhVuc, DiaChi,Sdt, Email, " +
+                            " SoVonDaDauTu) VALUES ('" +
                             doiTac.getTenDoitac() + "',' " +
                             doiTac.getLinhVuc() + "',' " +
                             doiTac.getDiaChi() + "','" +
                             doiTac.getSdt() + "','" +
                             doiTac.getEmail() + "','" +
-                            doiTac.getLogo() + "','" +
-                            doiTac.getsoVonDaDauTu() + "','" +
+                            doiTac.getSoVonDaDauTu() + "','" +
                             "')");
             pst.execute();
         }

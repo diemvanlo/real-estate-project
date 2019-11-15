@@ -35,7 +35,7 @@ public class DrawerController implements Initializable {
     @FXML
     private JFXButton projectBtn;
     @FXML
-    private JFXButton newsBtn;
+    private JFXButton doiTacBtn;
     @FXML
     private JFXButton userBtn;
     @FXML
@@ -55,7 +55,7 @@ public class DrawerController implements Initializable {
     private void logOut(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("views/Login.fxml"));
-            Parent root = (Parent) loader.load();
+            Parent root = loader.load();
             Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             appStage.hide();
             Stage stage = new Stage();

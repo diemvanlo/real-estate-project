@@ -15,7 +15,7 @@
         <JFXButton fx:id="homeBtn" accessibleText="homeMenu" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Home" />
         <JFXButton fx:id="projectBtn" accessibleText="duAnMenu" layoutX="10.0" layoutY="53.0" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Dự án" />
         <JFXButton fx:id="sanPhamBtn" accessibleText="sanPhamMenu" layoutX="10.0" layoutY="10.0" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Sản phẩm" />
-        <JFXButton fx:id="newsBtn" accessibleText="paymentMenu" layoutX="10.0" layoutY="96.0" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Tin tức" />
+        <JFXButton fx:id="doiTacBtn" accessibleText="doiTac" layoutX="10.0" layoutY="96.0" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Đối tác" />
         <JFXButton fx:id="userBtn" accessibleText="logoutMenu" layoutX="10.0" layoutY="382.0" onAction="#logOut" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Người dùng" />
       <JFXButton fx:id="userBtn1" accessibleText="logoutMenu" layoutX="10.0" layoutY="358.0" onAction="#logOut" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Test" />
         <JFXButton fx:id="logoutBtn" accessibleText="logoutMenu" layoutX="10.0" layoutY="182.0" onAction="#logOut" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Log out" />

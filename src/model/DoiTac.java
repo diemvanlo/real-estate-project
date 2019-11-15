@@ -10,12 +10,22 @@ public class DoiTac {
     private String sdt;
     private String email;
     private InputStream logo;
-    private double soVonDaDauTu;  // số vốn đã đầu tư
+    private Double soVonDaDauTu;  // số vốn đã đầu tư
+
+    public DoiTac(int idDoiTac, String tenDoitac, String linhVuc, String diaChi, String sdt, String email, Double soVonDaDauTu) {
+        this.idDoiTac = idDoiTac;
+        this.tenDoitac = tenDoitac;
+        this.linhVuc = linhVuc;
+        this.diaChi = diaChi;
+        this.sdt = sdt;
+        this.email = email;
+        this.soVonDaDauTu = soVonDaDauTu;
+    }
 
     public DoiTac() {
     }
 
-    public DoiTac(int idDoiTac, String tenDoitac, String linhVuc, String diaChi, String sdt, String email, InputStream logo, double soVonDaDauTu) {
+    public DoiTac(int idDoiTac, String tenDoitac, String linhVuc, String diaChi, String sdt, String email, InputStream logo, Double soVonDaDauTu) {
         this.idDoiTac = idDoiTac;
         this.tenDoitac = tenDoitac;
         this.linhVuc = linhVuc;
@@ -82,11 +92,11 @@ public class DoiTac {
         this.logo = logo;
     }
 
-    public double getsoVonDaDauTu() {
+    public Double getSoVonDaDauTu() {
         return soVonDaDauTu;
     }
 
-    public void setsoVonDaDauTu(double soVonDaDauTu) {
-        soVonDaDauTu = soVonDaDauTu;
+    public void setSoVonDaDauTu(Double soVonDaDauTu) {
+        this.soVonDaDauTu = soVonDaDauTu;
     }
 }
