@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -108,32 +109,51 @@ public class DoiTacService {
     public static void save(DoiTac doiTac, File file) throws SQLException, FileNotFoundException {
         DoiTac doiTacExist = findByMaDoiTac(doiTac.getIdDoiTac());
         if (doiTacExist.getIdDoiTac() != 0) {
-            PreparedStatement pst = com.prepareStatement("UPDATE doiTac SET tenDoiTac = '" + doiTac.getTenDoitac() +
-                    "', IdDoiTac = '" + doiTac.getIdDoiTac() +
-                    "', TenDoiTac = '" + doiTac.getTenDoitac() +
-                    "', LinhVuc = '" + doiTac.getLinhVuc() +
-                    "', DiaChi = '" + doiTac.getDiaChi() +
-                    "', Sdt = '" + doiTac.getSdt() +
-                    "', Email = '" + doiTac.getEmail() +
-                    "', Logo = '" + doiTac.getLogo() +
-                    "', SoVonDaDauTu = '" + doiTac.getSoVonDaDauTu() +
-                    "')");
+            PreparedStatement pst = com.prepareStatement("UPDATE doiTac SET tenDoiTac = ?," +
+                    "LinhVuc = ?," +
+                    "DiaChi = ?," +
+                    "Sdt = ?," +
+                    "Email = ?," +
+                    "SoVonDaDauTu = ? where IDDoiTac = ?" );
+            pst.setString(1, doiTac.getTenDoitac());
+            pst.setString(2, doiTac.getLinhVuc());
+            pst.setString(3, doiTac.getDiaChi());
+            pst.setString(4, doiTac.getSdt());
+            pst.setString(5, doiTac.getEmail());
+            pst.setDouble(6, doiTac.getSoVonDaDauTu());
+            pst.setInt(7, doiTac.getIdDoiTac());
             pst.execute();
         } else {
+            System.out.println("INSERT INTO doiTac ( TenDoiTac, LinhVuc, DiaChi,Sdt, Email, " +
+                    " SoVonDaDauTu) VALUES ('" +
+                    doiTac.getTenDoitac() + "',' " +
+                    doiTac.getLinhVuc() + "',' " +
+                    doiTac.getDiaChi() + "','" +
+                    doiTac.getSdt() + "','" +
+                    doiTac.getEmail() + "','" +
+                    doiTac.getSoVonDaDauTu() + "')");
+            DecimalFormat df = new DecimalFormat("###");
+            System.out.println(df.format(doiTac.getSoVonDaDauTu()));
             PreparedStatement pst = com.prepareStatement(
                     "INSERT INTO doiTac ( TenDoiTac, LinhVuc, DiaChi,Sdt, Email, " +
-                            " SoVonDaDauTu) VALUES ('" +
-                            doiTac.getTenDoitac() + "',' " +
-                            doiTac.getLinhVuc() + "',' " +
-                            doiTac.getDiaChi() + "','" +
-                            doiTac.getSdt() + "','" +
-                            doiTac.getEmail() + "','" +
-                            doiTac.getSoVonDaDauTu() + "','" +
-                            "')");
+                            " SoVonDaDauTu) VALUES (?,?,?,?,?,?)");
+            pst.setString(1, doiTac.getTenDoitac());
+            pst.setString(2, doiTac.getLinhVuc());
+            pst.setString(3, doiTac.getDiaChi());
+            pst.setString(4, doiTac.getSdt());
+            pst.setString(5, doiTac.getEmail());
+            pst.setDouble(6, doiTac.getSoVonDaDauTu());
             pst.execute();
         }
     }
 
+    //+
+//        doiTac.getTenDoitac() + "',' " +
+//        doiTac.getLinhVuc() + "',' " +
+//        doiTac.getDiaChi() + "','" +
+//        doiTac.getSdt() + "','" +
+//        doiTac.getEmail() + "','" +
+//        df.format(doiTac.getSoVonDaDauTu()) + "
     public static void main(String[] args) {
         List<String> ids = getAllID();
         System.out.println(ids.size());

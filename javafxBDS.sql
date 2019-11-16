@@ -36,17 +36,17 @@ insert into KhachHang(TenKhachHang,GioiTinh,DiaChi,Sdt,Email) values
 
 create table DoiTac(
 IdDoiTac int identity(0,1) primary key not  null,
-TenDoiTac nvarchar(50) not null,
-LinhVuc nvarchar(50) ,
-DiaChi nvarchar(100) not null,
-Sdt varchar(20) not null,
-Email varchar(50),
-Logo varchar(50),
+TenDoiTac nvarchar(30) not null,
+LinhVuc nvarchar(30) ,
+DiaChi nvarchar(60) not null,
+Sdt varchar(15) not null,
+Email varchar(15),
+Logo binary(5000) ,
 SoVonDaDauTu float,
 )
-insert into DoiTac(TenDoiTac,LinhVuc,DiaChi,Sdt,Email,Logo,SoVonDaDauTu) values
-(N'Cty ABC',N'Xây Dựng',N'Quảng Nam','0325111222','abc@gmail.com','',455465),
-(N'Cty BDS',N'Bất Động Sản',N'Quảng Ngãi','0326777988','dda@gmail.com','',78826);
+insert into DoiTac(TenDoiTac,LinhVuc,DiaChi,Sdt,Email,SoVonDaDauTu) values
+(N'Cty ABC',N'Xây Dựng',N'Quảng Nam','0325111222','abc@gmail.com',455465),
+(N'Cty BDS',N'Bất Động Sản',N'Quảng Ngãi','0326777988','dda@gmail.com',78826);
 
 create table DuAn(
 IdDuAn int identity(0,1) primary key not null,

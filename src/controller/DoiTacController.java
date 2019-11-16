@@ -132,13 +132,13 @@ public class DoiTacController implements Initializable {
         pagingList = new PaginatedList<>(doiTacList);
         clientPagination.setPageCount(pagingList.listOfPages.size());
         doiTacs = FXCollections.observableList(doiTacList);
-        colID.setCellValueFactory(new PropertyValueFactory<>("idDuAn"));
-        colName.setCellValueFactory(new PropertyValueFactory<>("tenDuAn"));
-        colLinhVuc.setCellValueFactory(new PropertyValueFactory<>("loaiHinh"));
+        colID.setCellValueFactory(new PropertyValueFactory<>("idDoiTac"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("tenDoitac"));
+        colLinhVuc.setCellValueFactory(new PropertyValueFactory<>("linhVuc"));
         colDiaChi.setCellValueFactory(new PropertyValueFactory<>("diaChi"));
-        colSDT.setCellValueFactory(new PropertyValueFactory<>("dienTich"));
-        colEmail.setCellValueFactory(new PropertyValueFactory<>("chiPhiDuAn"));
-        colSoVonDauTu.setCellValueFactory(new PropertyValueFactory<>("ngayBatDau"));
+        colSDT.setCellValueFactory(new PropertyValueFactory<>("sdt"));
+        colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        colSoVonDauTu.setCellValueFactory(new PropertyValueFactory<>("soVonDaDauTu"));
         tableView.setItems(doiTacs);
         return tableView;
     }
@@ -157,7 +157,9 @@ public class DoiTacController implements Initializable {
         selectionModel.select(1);
         txtName.setText(this.doiTac.getTenDoitac());
         txtDiaChi.setText(this.doiTac.getDiaChi());
-        txtVonDauTu.setText(Double.valueOf(this.doiTac.getSoVonDaDauTu()).toString());
+        if (this.doiTac.getSoVonDaDauTu() != null) {
+            txtVonDauTu.setText(Double.valueOf(this.doiTac.getSoVonDaDauTu()).toString());
+        }
         comLinhVuc.getSelectionModel().select(this.doiTac.getLinhVuc());
 
     }
@@ -234,7 +236,7 @@ public class DoiTacController implements Initializable {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         file = fileChooser.showOpenDialog(stage);
         if (file != null) {
-            imageView.setImage(new Image(file.toURI().toString(), 600, 700, true, true));
+            imageView.setImage(new Image(file.toURI().toString(), 1200, 1500, true, true));
         }
     }
 }

@@ -108,7 +108,6 @@ public class ProductService {
                     "', 'ChiTiet' = '" + product.getChiTiet() +
                     "', 'trangThai' = '" + product.getTrangThai() +
                     "', 'IdKhachHang' = '" + product.getIdKhachHang() +
-
                     "')");
             pst.execute();
         } else {
