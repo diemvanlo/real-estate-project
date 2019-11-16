@@ -24,9 +24,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<?import com.jfoenix.controls.JFXTextArea?>
-<?import com.jfoenix.controls.JFXRadioButton?>
-<?import javafx.scene.control.ToggleGroup?>
 <AnchorPane prefHeight="684.0" prefWidth="1105.0" stylesheets="@../assets/styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SanPhamController">
    <children>
       <JFXTabPane layoutX="14.0" layoutY="14.0" prefHeight="658.0" prefWidth="1080.0">
@@ -213,9 +210,8 @@
                                           <Image url="@../../sample/hopital/imgs/doctor.png" />
                                        </image>
                                     </ImageView>
-                                    <Label layoutX="182.0" layoutY="14.0" prefHeight="41.0" prefWidth="89.0" styleClass="custom-white-title-label" text="16" />
+                                    <Label layoutX="182.0" layoutY="14.0" prefHeight="41.0" prefWidth="89.0" styleClass="custom-white-title-label" text="100" />
                                     <Label layoutX="182.0" layoutY="55.0" prefHeight="31.0" prefWidth="210.0" styleClass="custom-white-label" text="Sản phẩm" />
-                                    <Label layoutX="182.0" layoutY="86.0" prefHeight="33.0" prefWidth="210.0" styleClass="custom-white-label" text="Đã đủ vốn" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane prefHeight="166.0" prefWidth="393.0" style="-fx-background-color: #DD4B39;" styleClass="card-unpadded">
@@ -227,7 +223,7 @@
                                        </image>
                                     </ImageView>
                                     <Label layoutX="209.0" layoutY="14.0" prefHeight="67.0" prefWidth="89.0" styleClass="custom-white-title-label" text="57 / 100 " />
-                                    <Label layoutX="174.0" layoutY="68.0" prefHeight="31.0" prefWidth="210.0" styleClass="custom-white-label" text="Dự án đã xây dựng xong" />
+                                    <Label layoutX="174.0" layoutY="68.0" prefHeight="31.0" prefWidth="210.0" styleClass="custom-white-label" text="Sản phẩm đã bán" />
                                     <JFXProgressBar layoutX="179.0" layoutY="120.0" progress="0.51" />
                                  </children>
                               </AnchorPane>
