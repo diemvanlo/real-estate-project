@@ -41,7 +41,7 @@ LinhVuc nvarchar(30) ,
 DiaChi nvarchar(60) not null,
 Sdt varchar(15) not null,
 Email varchar(15),
-Logo binary(5000) ,
+Logo Varbinary(max)  ,
 SoVonDaDauTu float,
 )
 insert into DoiTac(TenDoiTac,LinhVuc,DiaChi,Sdt,Email,SoVonDaDauTu) values
