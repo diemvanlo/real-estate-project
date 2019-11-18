@@ -19,16 +19,15 @@ import model.DoiTac;
 import service.DoiTacService;
 import service.Notification;
 import service.PaginatedList;
-import service.DoiTacService;
 
 import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class DoiTacController implements Initializable {
@@ -84,6 +83,11 @@ public class DoiTacController implements Initializable {
     final FileChooser fileChooser = new FileChooser();
     @FXML
     ImageView imageView;
+    String EMAIL_REGEX = "^(.+)@(.+)$";
+    String PHONE_REGEX = "^[0]+[9,12,16,18,19]+[0-9]{8}$";
+    Pattern emailPattern = Pattern.compile(EMAIL_REGEX);
+    Pattern phonePattern = Pattern.compile(PHONE_REGEX);
+    Matcher matcher;
 
     public DoiTacController() throws SQLException {
     }
@@ -141,7 +145,6 @@ public class DoiTacController implements Initializable {
     }
 
     public void selectItem() throws SQLException, IOException {
-        DoiTac NV = tableView.getSelectionModel().getSelectedItem();
         btnEdit.setDisable(false);
         btnDelete.setDisable(false);
     }
@@ -158,7 +161,6 @@ public class DoiTacController implements Initializable {
             }
         }
         imageView.setImage(new Image("file:photo.jpg", 400, 550, true, true));
-
         SingleSelectionModel<Tab> selectionModel = tabView.getSelectionModel();
         selectionModel.select(1);
         txtName.setText(this.doiTac.getTenDoitac());
@@ -175,6 +177,16 @@ public class DoiTacController implements Initializable {
     }
 
     public void onSave(ActionEvent actionEvent) throws SQLException, IOException {
+        matcher = emailPattern.matcher(txtEmail.getText());
+        if (!matcher.matches()) {
+            notification.notification("Lỗi", "email không hợp lê", 1);
+            return;
+        }
+        matcher = phonePattern.matcher(txtSDT.getText());
+        if (!matcher.matches()) {
+            notification.notification("Lỗi", "phone không hợp lê", 1);
+            return;
+        }
         String loaiHinh = "Chưa đặt";
         if (comLinhVuc.getSelectionModel().selectedItemProperty().getValue() != null) {
             loaiHinh = comLinhVuc.getSelectionModel().selectedItemProperty().getValue().toString();

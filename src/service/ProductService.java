@@ -37,7 +37,7 @@ public class ProductService {
         product.setMoTa(rs.getString("MoTa"));
         product.setNgayTao(rs.getDate("NgayTao"));
         product.setNgayBan(rs.getDate("NgayBan"));
-        product.setChiTiet(rs.getString("ChiTiet"));
+        product.setTienDo(rs.getString("ChiTiet"));
         product.setTrangThai(rs.getString("trangThai"));
         product.setIdKhachHang(rs.getInt("IdKhachHang"));
         return product;
@@ -105,7 +105,7 @@ public class ProductService {
                     "', 'MoTa' = '" + product.getMoTa() +
                     "', 'NgayTao' = '" + product.getNgayTao() +
                     "', 'NgayBan' = '" + product.getNgayBan() +
-                    "', 'ChiTiet' = '" + product.getChiTiet() +
+                    "', 'ChiTiet' = '" + product.getTienDo() +
                     "', 'trangThai' = '" + product.getTrangThai() +
                     "', 'IdKhachHang' = '" + product.getIdKhachHang() +
                     "')");
@@ -123,7 +123,7 @@ public class ProductService {
                             product.getMoTa() + "','" +
                             product.getNgayTao() + "','" +
                             product.getNgayBan() + "','" +
-                            product.getChiTiet() + "','" +
+                            product.getTienDo() + "','" +
                             product.getTrangThai() + "','" +
                             product.getIdKhachHang() + "','" +
                             "')");

@@ -100,32 +100,35 @@ public class KhachHangService {
     }
 
     public static void deleteByMaKhachHang(String IdKhachHang) throws SQLException {
-        com.createStatement().executeUpdate("DELETE FROM [javafx].[khachHang] WHERE (IdKhachHang = '" + IdKhachHang + "')");
+        com.createStatement().executeUpdate("DELETE FROM khachHang WHERE (IdKhachHang = '" + IdKhachHang + "')");
     }
 
-    public static void save(KhachHang khachHang, File file) throws SQLException, FileNotFoundException {
+    public static void save(KhachHang khachHang) throws SQLException, FileNotFoundException {
         KhachHang khachHangExist = findByMaKhachHang(khachHang.getIdKhachHang());
         if (khachHangExist.getIdKhachHang() != 0) {
-            PreparedStatement pst = com.prepareStatement("UPDATE [javafx].[khachHang] SET tenKhachHang = '" + khachHang.getTenKhachHang() +
-                    "', IdKhachHang = '" + khachHang.getIdKhachHang() +
-                    "', TenKhachHang = '" + khachHang.getTenKhachHang() +
-                    "', GioiTinh = '" + khachHang.getGioiTinh() +
-                    "', DiaChi = '" + khachHang.getDiaChi() +
+            byte gioiTinh = 1;
+            if (!khachHang.getGioiTinh()) {
+                gioiTinh = 0;
+            }
+            PreparedStatement pst = com.prepareStatement("UPDATE khachHang SET tenKhachHang = '" + khachHang.getTenKhachHang() +
+                    "', GioiTinh = " + gioiTinh +
+                    ", DiaChi = '" + khachHang.getDiaChi() +
                     "', Sdt = '" + khachHang.getSdt() +
                     "', Email = '" + khachHang.getEmail() +
-                    "')");
+                    "' where IdKhachHang = " + khachHang.getIdKhachHang());
             pst.execute();
         } else {
+            byte gioiTinh = 1;
+            if (!khachHang.getGioiTinh()) {
+                gioiTinh = 0;
+            }
             PreparedStatement pst = com.prepareStatement(
-                    "INSERT INTO [javafx].[khachHang] (IdKhachHang, TenKhachHang, LinhVuc, DiaChi,Sdt, Email, " +
-                            "Logo, SoVonDaDauTu) VALUES ('" +
-                            khachHang.getIdKhachHang() + "', '" +
-                            khachHang.getTenKhachHang() + "',' " +
-                            khachHang.getGioiTinh() + "',' " +
+                    "INSERT INTO khachHang ( TenKhachHang, GioiTinh, DiaChi , Sdt, Email) VALUES ('" +
+                            khachHang.getTenKhachHang() + "', " +
+                            gioiTinh + ",' " +
                             khachHang.getDiaChi() + "','" +
                             khachHang.getSdt() + "','" +
-                            khachHang.getEmail() + "','" +
-                            "')");
+                            khachHang.getEmail() + "')");
             pst.execute();
         }
     }

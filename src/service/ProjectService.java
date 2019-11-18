@@ -111,7 +111,8 @@ public class ProjectService {
                     "', mapX = '" + project.getMapX() +
                     "', mapY = '" + project.getMapY() +
                     "', banKinh = '" + project.getBanKinh() +
-                    "'");
+                    "' " +
+                    "where IdDuAn = " + project.getIdDuAn());
             pst.execute();
         } else {
             PreparedStatement pst = com.prepareStatement(
