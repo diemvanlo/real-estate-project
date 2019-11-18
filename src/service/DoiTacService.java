@@ -3,8 +3,7 @@ package service;
 
 import model.DoiTac;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,16 +28,21 @@ public class DoiTacService {
 
     public static DoiTac getDoiTacFromResultSet(ResultSet rs) throws SQLException {
         DoiTac doiTac = new DoiTac();
+        byte[] bytes = rs.getBytes("Logo");
+        if (bytes != null) {
+            InputStream targetStream = new ByteArrayInputStream(bytes);
+            doiTac.setLogo(targetStream);
+        }
         doiTac.setIdDoiTac(rs.getInt("IdDoiTac"));
         doiTac.setTenDoitac(rs.getString("TenDoiTac"));
         doiTac.setLinhVuc(rs.getString("LinhVuc"));
         doiTac.setDiaChi(rs.getString("DiaChi"));
         doiTac.setSdt(rs.getString("Sdt"));
         doiTac.setEmail(rs.getString("Email"));
-        doiTac.setLogo(rs.getBinaryStream("Logo"));
         doiTac.setSoVonDaDauTu(rs.getDouble("SoVonDaDauTu"));
         return doiTac;
     }
+
 
     public static DoiTac findByMaDoiTac(int IdDoiTac) {
         DoiTac doiTac = new DoiTac();
@@ -106,54 +110,76 @@ public class DoiTacService {
         com.createStatement().executeUpdate("DELETE FROM doiTac WHERE (IdDoiTac = '" + IdDoiTac + "')");
     }
 
-    public static void save(DoiTac doiTac, File file) throws SQLException, FileNotFoundException {
+
+    public static void save(DoiTac doiTac, File file) throws SQLException, IOException {
         DoiTac doiTacExist = findByMaDoiTac(doiTac.getIdDoiTac());
         if (doiTacExist.getIdDoiTac() != 0) {
-            PreparedStatement pst = com.prepareStatement("UPDATE doiTac SET tenDoiTac = ?," +
-                    "LinhVuc = ?," +
-                    "DiaChi = ?," +
-                    "Sdt = ?," +
-                    "Email = ?," +
-                    "SoVonDaDauTu = ? where IDDoiTac = ?" );
-            pst.setString(1, doiTac.getTenDoitac());
-            pst.setString(2, doiTac.getLinhVuc());
-            pst.setString(3, doiTac.getDiaChi());
-            pst.setString(4, doiTac.getSdt());
-            pst.setString(5, doiTac.getEmail());
-            pst.setDouble(6, doiTac.getSoVonDaDauTu());
-            pst.setInt(7, doiTac.getIdDoiTac());
-            pst.execute();
+            if (file == null) {
+                PreparedStatement pst = com.prepareStatement("UPDATE doiTac SET tenDoiTac = ?," +
+                        "LinhVuc = ?," +
+                        "DiaChi = ?," +
+                        "Sdt = ?," +
+                        "Email = ?," +
+                        "SoVonDaDauTu = ? where IDDoiTac = ?");
+                pst.setString(1, doiTac.getTenDoitac());
+                pst.setString(2, doiTac.getLinhVuc());
+                pst.setString(3, doiTac.getDiaChi());
+                pst.setString(4, doiTac.getSdt());
+                pst.setString(5, doiTac.getEmail());
+                pst.setDouble(6, doiTac.getSoVonDaDauTu());
+                pst.setInt(7, doiTac.getIdDoiTac());
+                pst.execute();
+            } else {
+                PreparedStatement pst = com.prepareStatement("UPDATE doiTac SET tenDoiTac = ?," +
+                        "LinhVuc = ?," +
+                        "DiaChi = ?," +
+                        "Sdt = ?," +
+                        "Email = ?," +
+                        "SoVonDaDauTu = ?, " +
+                        "logo = ?" +
+                        " where IDDoiTac = ?");
+                pst.setString(1, doiTac.getTenDoitac());
+                pst.setString(2, doiTac.getLinhVuc());
+                pst.setString(3, doiTac.getDiaChi());
+                pst.setString(4, doiTac.getSdt());
+                pst.setString(5, doiTac.getEmail());
+                pst.setDouble(6, doiTac.getSoVonDaDauTu());
+                InputStream inputStream = new FileInputStream(file);
+                pst.setBinaryStream(7, inputStream, (int) file.length());
+                pst.setInt(8, doiTac.getIdDoiTac());
+                pst.execute();
+            }
         } else {
-            System.out.println("INSERT INTO doiTac ( TenDoiTac, LinhVuc, DiaChi,Sdt, Email, " +
-                    " SoVonDaDauTu) VALUES ('" +
-                    doiTac.getTenDoitac() + "',' " +
-                    doiTac.getLinhVuc() + "',' " +
-                    doiTac.getDiaChi() + "','" +
-                    doiTac.getSdt() + "','" +
-                    doiTac.getEmail() + "','" +
-                    doiTac.getSoVonDaDauTu() + "')");
-            DecimalFormat df = new DecimalFormat("###");
-            System.out.println(df.format(doiTac.getSoVonDaDauTu()));
-            PreparedStatement pst = com.prepareStatement(
-                    "INSERT INTO doiTac ( TenDoiTac, LinhVuc, DiaChi,Sdt, Email, " +
-                            " SoVonDaDauTu) VALUES (?,?,?,?,?,?)");
-            pst.setString(1, doiTac.getTenDoitac());
-            pst.setString(2, doiTac.getLinhVuc());
-            pst.setString(3, doiTac.getDiaChi());
-            pst.setString(4, doiTac.getSdt());
-            pst.setString(5, doiTac.getEmail());
-            pst.setDouble(6, doiTac.getSoVonDaDauTu());
-            pst.execute();
+            if (file == null) {
+                DecimalFormat df = new DecimalFormat("###");
+                PreparedStatement pst = com.prepareStatement(
+                        "INSERT INTO doiTac ( TenDoiTac, LinhVuc, DiaChi, Sdt, Email, " +
+                                " SoVonDaDauTu) VALUES (?,?,?,?,?,?)");
+                pst.setString(1, doiTac.getTenDoitac());
+                pst.setString(2, doiTac.getLinhVuc());
+                pst.setString(3, doiTac.getDiaChi());
+                pst.setString(4, doiTac.getSdt());
+                pst.setString(5, doiTac.getEmail());
+                pst.setDouble(6, doiTac.getSoVonDaDauTu());
+                pst.execute();
+            } else {
+                InputStream inputStream = new FileInputStream(file);
+                PreparedStatement pst = com.prepareStatement(
+                        "INSERT INTO doiTac ( TenDoiTac, LinhVuc, DiaChi, Sdt, Email, " +
+                                " SoVonDaDauTu, logo) VALUES (?,?,?,?,?,?,?)");
+                pst.setString(1, doiTac.getTenDoitac());
+                pst.setString(2, doiTac.getLinhVuc());
+                pst.setString(3, doiTac.getDiaChi());
+                pst.setString(4, doiTac.getSdt());
+                pst.setString(5, doiTac.getEmail());
+                pst.setDouble(6, doiTac.getSoVonDaDauTu());
+                pst.setBinaryStream(7, inputStream, (int) file.length());
+                pst.execute();
+                inputStream.close();
+            }
         }
     }
 
-    //+
-//        doiTac.getTenDoitac() + "',' " +
-//        doiTac.getLinhVuc() + "',' " +
-//        doiTac.getDiaChi() + "','" +
-//        doiTac.getSdt() + "','" +
-//        doiTac.getEmail() + "','" +
-//        df.format(doiTac.getSoVonDaDauTu()) + "
     public static void main(String[] args) {
         List<String> ids = getAllID();
         System.out.println(ids.size());

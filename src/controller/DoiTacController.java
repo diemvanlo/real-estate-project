@@ -19,19 +19,15 @@ import model.DoiTac;
 import service.DoiTacService;
 import service.Notification;
 import service.PaginatedList;
-import service.DoiTacService;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class DoiTacController implements Initializable {
@@ -82,11 +78,16 @@ public class DoiTacController implements Initializable {
     JFXTabPane tabView;
     Notification notification = new Notification();
 
+    InputStream inputStream;
     File file;
     final FileChooser fileChooser = new FileChooser();
-    InputStream inputStream;
     @FXML
     ImageView imageView;
+    String EMAIL_REGEX = "^(.+)@(.+)$";
+    String PHONE_REGEX = "^[0]+[9,12,16,18,19]+[0-9]{8}$";
+    Pattern emailPattern = Pattern.compile(EMAIL_REGEX);
+    Pattern phonePattern = Pattern.compile(PHONE_REGEX);
+    Matcher matcher;
 
     public DoiTacController() throws SQLException {
     }
@@ -144,27 +145,48 @@ public class DoiTacController implements Initializable {
     }
 
     public void selectItem() throws SQLException, IOException {
-        DoiTac NV = tableView.getSelectionModel().getSelectedItem();
         btnEdit.setDisable(false);
         btnDelete.setDisable(false);
-//        if (NV != null) {
-//            NV = DoiTacService.findByMaDoiTac(NV.getIdDuAn());
-//        }
     }
 
     public void changeStage(ActionEvent actionEvent) throws IOException, SQLException {
+        this.doiTac = DoiTacService.findByMaDoiTac(this.doiTac.getIdDoiTac());
+        OutputStream os = new FileOutputStream(new File("photo.jpg"));
+        byte[] content = new byte[1024];
+        int size = 0;
+        if (this.doiTac.getLogo() != null) {
+            inputStream = this.doiTac.getLogo();
+            while ((size = inputStream.read(content)) != -1) {
+                os.write(content, 0, size);
+            }
+        }
+        imageView.setImage(new Image("file:photo.jpg", 400, 550, true, true));
         SingleSelectionModel<Tab> selectionModel = tabView.getSelectionModel();
         selectionModel.select(1);
         txtName.setText(this.doiTac.getTenDoitac());
         txtDiaChi.setText(this.doiTac.getDiaChi());
+        txtSDT.setText(this.doiTac.getSdt());
+        txtEmail.setText(this.doiTac.getEmail());
         if (this.doiTac.getSoVonDaDauTu() != null) {
             txtVonDauTu.setText(Double.valueOf(this.doiTac.getSoVonDaDauTu()).toString());
+        } else {
+            txtVonDauTu.setText("");
         }
         comLinhVuc.getSelectionModel().select(this.doiTac.getLinhVuc());
 
     }
 
-    public void onSave(ActionEvent actionEvent) throws SQLException, FileNotFoundException {
+    public void onSave(ActionEvent actionEvent) throws SQLException, IOException {
+        matcher = emailPattern.matcher(txtEmail.getText());
+        if (!matcher.matches()) {
+            notification.notification("Lỗi", "email không hợp lê", 1);
+            return;
+        }
+        matcher = phonePattern.matcher(txtSDT.getText());
+        if (!matcher.matches()) {
+            notification.notification("Lỗi", "phone không hợp lê", 1);
+            return;
+        }
         String loaiHinh = "Chưa đặt";
         if (comLinhVuc.getSelectionModel().selectedItemProperty().getValue() != null) {
             loaiHinh = comLinhVuc.getSelectionModel().selectedItemProperty().getValue().toString();
@@ -180,6 +202,7 @@ public class DoiTacController implements Initializable {
 
     public void edit(ActionEvent actionEvent) throws IOException, SQLException {
         this.doiTac = tableView.getSelectionModel().getSelectedItem();
+
         changeStage(actionEvent);
     }
 
@@ -190,8 +213,6 @@ public class DoiTacController implements Initializable {
     }
 
     public void printIntoExcel() throws IOException {
-//        excel.doiTacs = this.doiTacList;
-//        excel.printDoiTacToExcel();
     }
 
     public void creatNew(ActionEvent actionEvent) throws IOException, SQLException {

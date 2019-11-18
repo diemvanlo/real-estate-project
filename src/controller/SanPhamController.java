@@ -12,7 +12,9 @@ import javafx.scene.control.Pagination;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import model.DoiTac;
 import model.Product;
+import service.DoiTacService;
 import service.PaginatedList;
 import service.ProductService;
 
@@ -51,7 +53,7 @@ public class SanPhamController implements Initializable {
     @FXML
     private TableColumn<Product, String> colNgayBan;
     @FXML
-    private TableColumn<Product, String> colChiTiet;
+    private TableColumn<Product, String> colTienDo;
     @FXML
     private TableColumn<Product, String> colTrangThai;
     @FXML
@@ -76,7 +78,7 @@ public class SanPhamController implements Initializable {
         result = product.stream()
                 .filter(item -> String.valueOf(item.getIdSanPham()).contains(search)
                         || item.getTenSanPham().contains(search)
-                         )
+                )
                 .collect(Collectors.toList());
         product = FXCollections.observableList(result);
         tableView.setItems(product);
@@ -89,7 +91,6 @@ public class SanPhamController implements Initializable {
         setTableView();
         int fromIndex = integer * 10;
         int toIndex = Math.min(fromIndex + 10, product.size());
-        ObservableList<Product> ProductObservableArray = FXCollections.observableArrayList(product.subList(fromIndex, toIndex));
         tableView.setItems(product);
         return tableView;
     }
@@ -112,9 +113,9 @@ public class SanPhamController implements Initializable {
         colMoTa.setCellValueFactory(new PropertyValueFactory<>("moTa"));
         colNgayTao.setCellValueFactory(new PropertyValueFactory<>("ngayTao"));
         colNgayBan.setCellValueFactory(new PropertyValueFactory<>("ngayBan"));
-        colChiTiet.setCellValueFactory(new PropertyValueFactory<>("chiTiet"));
+        colTienDo.setCellValueFactory(new PropertyValueFactory<>("tienDo"));
         colTrangThai.setCellValueFactory(new PropertyValueFactory<>("trangThai"));
-        colIdKhachHang.setCellValueFactory(new PropertyValueFactory<>("idKhachHang"));
+//        colIdKhachHang.setCellValueFactory(new PropertyValueFactory<>("idKhachHang"));
         tableView.setItems(product);
         return tableView;
     }
@@ -123,10 +124,6 @@ public class SanPhamController implements Initializable {
         Product NV = tableView.getSelectionModel().getSelectedItem();
         btnEdit.setDisable(false);
         btnDelete.setDisable(false);
-        if (NV != null) {
-            NV = ProductService.findByMaProduct(NV.getIdSanPham());
-
-        }
     }
 
     public void creatNew(ActionEvent actionEvent) throws IOException, SQLException {
@@ -154,6 +151,21 @@ public class SanPhamController implements Initializable {
         Product Product = tableView.getSelectionModel().getSelectedItem();
         ProductService.deleteByMaProduct(String.valueOf(Product.getIdSanPham()));
         setTableView();
+    }
+
+    public void onSave(ActionEvent actionEvent) throws SQLException, IOException {
+
+//        String loaiHinh = "Chưa đặt";
+//        if (comLinhVuc.getSelectionModel().selectedItemProperty().getValue() != null) {
+//            loaiHinh = comLinhVuc.getSelectionModel().selectedItemProperty().getValue().toString();
+//        }
+//        DoiTac doiTac = new DoiTac(this.doiTac.getIdDoiTac(), txtName.getText(), loaiHinh,
+//                txtDiaChi.getText(), txtSDT.getText(),
+//                txtEmail.getText(), Double.parseDouble(txtVonDauTu.getText()));
+//
+//        DoiTacService.save(doiTac, this.file);
+//        notification.notification("Save thành công", "Đã lưu vào database", 0);
+//        setTableView();
     }
 
     public void printIntoExcel() throws IOException {

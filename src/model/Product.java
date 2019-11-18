@@ -13,14 +13,14 @@ public class Product {
     private String moTa;      // phòng ở tầng bao nhiêu, vị thế, thuận lợi…
     private Date ngayTao;
     private Date ngayBan;
-    private String chiTiet;   // đang xây dựng , đã hoàn thành..
+    private String tienDo;   // 10 %, 20% , 30% .....
     private String trangThai; // đã bán, chưa bán
     private int idKhachHang; // nguoi mua sp
 
     public Product() {
     }
 
-    public Product(int idSanPham, String tenSanPham, int idDuAn, String diaChi, Double dienTich, Double giaTien, String moTa, Date ngayTao, Date ngayBan, String chiTiet, String trangThai, int idKhachHang) {
+    public Product(int idSanPham, String tenSanPham, int idDuAn, String diaChi, Double dienTich, Double giaTien, String moTa, Date ngayTao, Date ngayBan, String tienDo, String trangThai, int idKhachHang) {
         this.idSanPham = idSanPham;
         this.tenSanPham = tenSanPham;
         this.idDuAn = idDuAn;
@@ -30,7 +30,7 @@ public class Product {
         this.moTa = moTa;
         this.ngayTao = ngayTao;
         this.ngayBan = ngayBan;
-        this.chiTiet = chiTiet;
+        this.tienDo = tienDo;
         this.trangThai = trangThai;
         this.idKhachHang = idKhachHang;
     }
@@ -107,12 +107,12 @@ public class Product {
         this.ngayBan = ngayBan;
     }
 
-    public String getChiTiet() {
-        return chiTiet;
+    public String getTienDo() {
+        return tienDo;
     }
 
-    public void setChiTiet(String chiTiet) {
-        this.chiTiet = chiTiet;
+    public void setTienDo(String tienDo) {
+        this.tienDo = tienDo;
     }
 
     public String getTrangThai() {

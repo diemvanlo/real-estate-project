@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -15,6 +14,7 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -23,11 +23,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="684.0" prefWidth="1105.0" stylesheets="@../assets/styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DoiTacController">
+<AnchorPane prefHeight="684.0" prefWidth="1105.0" stylesheets="@../assets/styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KhachHangController">
     <children>
         <JFXTabPane fx:id="tabView" layoutX="14.0" layoutY="14.0" prefHeight="658.0" prefWidth="1080.0">
             <tabs>
-                <Tab text="Các đối tác">
+                <Tab text="Khách hàng">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
@@ -38,12 +38,11 @@
                                                 <TableView fx:id="tableView" layoutX="14.0" layoutY="72.0" onMouseClicked="#selectItem" prefHeight="532.0" prefWidth="991.0">
                                                     <columns>
                                                         <TableColumn fx:id="colID" editable="false" prefWidth="69.0" text="ID" />
-                                                        <TableColumn fx:id="colName" editable="false" minWidth="0.0" prefWidth="143.0" text="Tên đối tác" />
-                                                        <TableColumn fx:id="colLinhVuc" editable="false" minWidth="0.0" prefWidth="125.0" sortable="false" text="Lĩnh vực" />
-                                                        <TableColumn fx:id="colDiaChi" editable="false" minWidth="0.0" prefWidth="184.0" sortable="false" text="Địa chỉ" />
-                                                        <TableColumn fx:id="colSDT" editable="false" minWidth="0.0" prefWidth="143.0" sortable="false" text="Số điện thoại" />
-                                                        <TableColumn fx:id="colEmail" editable="false" minWidth="0.0" prefWidth="184.0" sortable="false" text="Email" />
-                                                        <TableColumn fx:id="colSoVonDauTu" editable="false" minWidth="0.0" prefWidth="135.0" sortable="false" text="Số vốn đầu tư" />
+                                                        <TableColumn fx:id="colName" editable="false" minWidth="0.0" prefWidth="262.0" text="Tên khách hàng" />
+                                                        <TableColumn fx:id="colGioiTinh" editable="false" minWidth="0.0" prefWidth="127.0" sortable="false" text="Giới tính" />
+                                                        <TableColumn fx:id="colSDT" editable="false" minWidth="0.0" prefWidth="168.0" sortable="false" text="Số điện thoại" />
+                                                        <TableColumn fx:id="colEmail" editable="false" minWidth="0.0" prefWidth="208.0" sortable="false" text="Email" />
+                                                        <TableColumn fx:id="colDiaChi" editable="false" minWidth="0.0" prefWidth="140.0" sortable="false" text="Địa chỉ" />
                                                     </columns>
                                                     <effect>
                                                         <GaussianBlur />
@@ -54,12 +53,11 @@
                                                         <Cursor fx:constant="HAND" />
                                                     </cursor>
                                                 </Pagination>
-                                                <JFXTextField fx:id="clientSearchTextField" layoutX="744.0" layoutY="15.0" onKeyReleased="#filter" prefHeight="30.0" prefWidth="302.0" promptText="Tìm thông tin dự án" style="-fx-border-width: 0;" styleClass="search-box" />
+                                                <JFXTextField fx:id="clientSearchTextField" layoutX="579.0" layoutY="14.0" onKeyReleased="#filter" prefHeight="30.0" prefWidth="302.0" promptText="Tìm thông tin dự án" style="-fx-border-width: 0;" styleClass="search-box" />
                                                 <JFXButton fx:id="btnEdit" layoutX="233.0" layoutY="13.0" onAction="#edit" prefHeight="27.0" prefWidth="78.0" styleClass="cancel-button" text="Edit" />
                                                 <JFXButton fx:id="btnDelete" layoutX="343.0" layoutY="12.0" onAction="#deleteItem" prefHeight="37.0" prefWidth="100.0" styleClass="red-btn" text="Delete" />
                                                 <JFXButton fx:id="btnAdd" layoutX="126.0" layoutY="13.0" onAction="#creatNew" prefHeight="34.0" prefWidth="98.0" styleClass="blue-btn" text="New" />
-                                                <JFXButton layoutX="460.0" layoutY="12.0" prefHeight="37.0" prefWidth="100.0" styleClass="green-btn" text="In excel" />
-                                                <JFXButton layoutX="573.0" layoutY="12.0" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #e0852a;" styleClass="green-btn" text="Reload" />
+                                                <JFXButton fx:id="btnin" layoutX="460.0" layoutY="12.0" prefHeight="37.0" prefWidth="100.0" styleClass="green-btn" text="In excel" />
                                             </children>
                                         </AnchorPane>
                                     </items>
@@ -97,7 +95,7 @@
                                                 </ImageView>
                                                 <Label layoutX="209.0" layoutY="14.0" prefHeight="67.0" prefWidth="89.0" styleClass="custom-white-title-label" text="57 of 100 " />
                                                 <Label layoutX="182.0" layoutY="76.0" prefHeight="31.0" prefWidth="210.0" styleClass="custom-white-label" text="Unattended appointments" />
-
+                                                <JFXProgressBar layoutX="179.0" layoutY="120.0" progress="0.52" />
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane prefHeight="157.0" prefWidth="205.0" style="-fx-background-color: #F39C12;" styleClass="card">
@@ -129,11 +127,14 @@
                                         <AnchorPane prefHeight="110.0" prefWidth="393.0" style="-fx-background-color: #00ADD8;" styleClass="card-unpadded">
                                             <children>
                                                 <Pane layoutX="-1.0" prefHeight="141.0" prefWidth="23.0" style="-fx-background-color: #007390;" />
-                                                <ImageView fx:id="imageView" fitHeight="149.0" fitWidth="149.0" layoutX="33.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fitHeight="97.0" fitWidth="124.0" layoutX="33.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>
                                                         <Image url="@../../sample/hopital/imgs/doctor.png" />
                                                     </image>
                                                 </ImageView>
+                                                <Label layoutX="182.0" layoutY="14.0" prefHeight="41.0" prefWidth="89.0" styleClass="custom-white-title-label" text="16" />
+                                                <Label layoutX="182.0" layoutY="55.0" prefHeight="31.0" prefWidth="210.0" styleClass="custom-white-label" text="Dự án" />
+                                                <Label layoutX="182.0" layoutY="86.0" prefHeight="33.0" prefWidth="210.0" styleClass="custom-white-label" text="Đã đủ vốn" />
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane prefHeight="166.0" prefWidth="393.0" style="-fx-background-color: #DD4B39;" styleClass="card-unpadded">
@@ -144,7 +145,25 @@
                                                         <Image url="@../../sample/hopital/imgs/Appointment.png" />
                                                     </image>
                                                 </ImageView>
-                                                <JFXButton layoutX="186.0" layoutY="46.0" onAction="#uploadImage" prefHeight="44.0" prefWidth="137.0" styleClass="blue-btn" text="Upload ảnh" />
+                                                <Label layoutX="209.0" layoutY="14.0" prefHeight="67.0" prefWidth="89.0" styleClass="custom-white-title-label" text="57 / 100 " />
+                                                <Label layoutX="174.0" layoutY="68.0" prefHeight="31.0" prefWidth="210.0" styleClass="custom-white-label" text="Dự án đã xây dựng xong" />
+                                                <JFXProgressBar layoutX="179.0" layoutY="120.0" progress="0.51" />
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane prefHeight="157.0" prefWidth="205.0" style="-fx-background-color: #F39C12;" styleClass="card">
+                                            <children>
+                                                <VBox layoutX="14.0" layoutY="14.0" prefHeight="85.0" prefWidth="159.0">
+                                                    <children>
+                                                        <Label prefHeight="31.0" prefWidth="153.0" styleClass="custom-white-title-label" text="ID : " />
+                                                        <Label prefHeight="20.0" prefWidth="152.0" styleClass="custom-white-title-label" text="Monday" />
+                                                        <Label prefHeight="20.0" prefWidth="151.0" styleClass="custom-white-title-label" text="12/07/2017" />
+                                                    </children>
+                                                </VBox>
+                                                <ImageView fitHeight="31.0" fitWidth="50.0" layoutX="143.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../../sample/hopital/imgs/Copyright.png" />
+                                                    </image>
+                                                </ImageView>
                                             </children>
                                         </AnchorPane>
                                     </children>
@@ -154,9 +173,9 @@
                                         <VBox layoutX="20.0" layoutY="14.0" prefHeight="380.0" prefWidth="415.0" spacing="10.0">
                                             <children>
                                                 <JFXTextField fx:id="txtName" focusColor="#00add8" labelFloat="true" promptText="Tên dự án" unFocusColor="#868282" />
-                                                <JFXTextField fx:id="txtSDT" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="46.0" promptText="Số điện thoại" unFocusColor="#868282" />
-                                                <JFXTextField fx:id="txtEmail" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="82.0" promptText="Email" unFocusColor="#868282" />
-                                                <JFXTextField fx:id="txtVonDauTu" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="118.0" promptText="Vốn đâu tư" unFocusColor="#868282" />
+                                                <JFXTextField fx:id="txtDiaChi" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="46.0" promptText="Đia chỉ" unFocusColor="#868282" />
+                                                <JFXTextField fx:id="txtSDT" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="82.0" promptText="Số điện thoại" unFocusColor="#868282" />
+                                                <JFXTextField fx:id="txtEmail" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="118.0" promptText="Email" unFocusColor="#868282" />
                                             </children>
                                             <padding>
                                                 <Insets left="20.0" top="10.0" />
@@ -166,34 +185,26 @@
                                             <children>
                                                 <VBox prefHeight="82.0" prefWidth="541.0">
                                                     <children>
-                                                        <Label style="-fx-text-fill: #868282;" text="Lĩnh vực" />
-                                                        <JFXComboBox fx:id="comLinhVuc" prefHeight="40.0" prefWidth="494.0">
-                                                            <VBox.margin>
-                                                                <Insets left="100.0" />
-                                                            </VBox.margin>
-                                                            <items>
-                                                                <FXCollections fx:factory="observableArrayList">
-                                                                    <String fx:value="Xây dựng" />
-                                                                    <String fx:value="Mua bán bđs" />
-                                                                    <String fx:value="Thẩm định bds" />
-                                                                </FXCollections>
-                                                            </items>
-                                                        </JFXComboBox>
-                                                    </children>
-                                                </VBox>
-                                                <VBox prefHeight="47.0" prefWidth="448.0">
-                                                    <children>
-                                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                                        <Label prefHeight="20.0" prefWidth="222.0" style="-fx-text-fill: #868282;" text="Giới tính" />
+                                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                                                             <children>
-                                                                <JFXTextField fx:id="txtDiaChi" prefHeight="30.0" prefWidth="517.0" promptText="Địa chỉ" />
+                                                                <JFXRadioButton fx:id="rdNam" selected="true" text="Nam">
+                                                                    <toggleGroup>
+                                                                        <ToggleGroup fx:id="q" />
+                                                                    </toggleGroup>
+                                                                </JFXRadioButton>
+                                                                <JFXRadioButton fx:id="rdNu" layoutX="10.0" layoutY="10.0" text="Nữ" toggleGroup="$q" />
                                                             </children>
+                                                            <padding>
+                                                                <Insets left="100.0" right="20.0" />
+                                                            </padding>
                                                         </HBox>
                                                     </children>
                                                 </VBox>
                                                 <Separator prefWidth="200.0" />
                                                 <HBox alignment="CENTER_RIGHT" prefHeight="77.0" prefWidth="511.0" spacing="20.0">
                                                     <children>
-                                                        <JFXButton onAction="#onCancel" styleClass="cancel-button" text="Cancel" />
+                                                        <JFXButton fx:id="btncn" onAction="#onCancel" styleClass="cancel-button" text="Cancel" />
                                                         <JFXButton layoutX="72.0" layoutY="10.0" onAction="#onSave" prefHeight="37.0" prefWidth="100.0" styleClass="blue-btn" text="Save" />
                                                     </children>
                                                     <padding>

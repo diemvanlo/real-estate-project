@@ -5,21 +5,32 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="684.0" prefWidth="149.0" styleClass="card-unpadded" stylesheets="@../assets/styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DrawerController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="684.0"
+      prefWidth="149.0" styleClass="card-unpadded" stylesheets="@../assets/styles/styles.css"
+      xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.DrawerController">
     <children>
         <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../assets/imgs/cover.jpg" />
+                <Image url="@../assets/imgs/cover.jpg"/>
             </image>
         </ImageView>
-        <JFXButton fx:id="homeBtn" accessibleText="homeMenu" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Home" />
-        <JFXButton fx:id="projectBtn" accessibleText="duAnMenu" layoutX="10.0" layoutY="53.0" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Dự án" />
-        <JFXButton fx:id="sanPhamBtn" accessibleText="sanPhamMenu" layoutX="10.0" layoutY="10.0" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Sản phẩm" />
-        <JFXButton fx:id="doiTacBtn" accessibleText="doiTac" layoutX="10.0" layoutY="96.0" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Đối tác" />
-        <JFXButton fx:id="userBtn" accessibleText="logoutMenu" layoutX="10.0" layoutY="382.0" onAction="#logOut" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Người dùng" />
-      <JFXButton fx:id="userBtn1" accessibleText="logoutMenu" layoutX="10.0" layoutY="358.0" onAction="#logOut" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Test" />
-        <JFXButton fx:id="logoutBtn" accessibleText="logoutMenu" layoutX="10.0" layoutY="182.0" onAction="#logOut" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Log out" />
-        <JFXButton fx:id="exitBtn" accessibleText="exitMenu" layoutX="10.0" layoutY="182.0" onAction="#exit" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Exit" />
-        <JFXButton prefHeight="227.0" prefWidth="152.0" styleClass="drawer-buttons" text="  " />
+        <JFXButton fx:id="homeBtn" accessibleText="homeMenu" prefHeight="43.0" prefWidth="200.0"
+                   styleClass="drawer-buttons" text="Home"/>
+        <JFXButton fx:id="projectBtn" accessibleText="duAnMenu" layoutX="10.0" layoutY="53.0" prefHeight="43.0"
+                   prefWidth="200.0" styleClass="drawer-buttons" text="Dự án"/>
+        <JFXButton fx:id="sanPhamBtn" accessibleText="sanPhamMenu" layoutX="10.0" layoutY="10.0" prefHeight="43.0"
+                   prefWidth="200.0" styleClass="drawer-buttons" text="Sản phẩm"/>
+        <JFXButton fx:id="doiTacBtn" accessibleText="doiTac" layoutX="10.0" layoutY="96.0" prefHeight="43.0"
+                   prefWidth="200.0" styleClass="drawer-buttons" text="Đối tác"/>
+        <JFXButton fx:id="userBtn" accessibleText="logoutMenu" layoutX="10.0" layoutY="382.0"
+                   prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Người dùng"/>
+        <JFXButton fx:id="khachHanhBtn" accessibleText="khachHang" layoutX="10.0" layoutY="358.0"
+                   prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Khách hàng"/>
+        <JFXButton fx:id="logoutBtn" accessibleText="logoutMenu" layoutX="10.0" layoutY="182.0" onAction="#logOut"
+                   prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Log out"/>
+        <JFXButton fx:id="exitBtn" accessibleText="exitMenu" layoutX="10.0" layoutY="182.0" onAction="#exit"
+                   prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Exit"/>
+        <JFXButton prefHeight="227.0" prefWidth="152.0" styleClass="drawer-buttons" text="  "/>
     </children>
 </VBox>
