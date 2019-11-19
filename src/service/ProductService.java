@@ -35,8 +35,8 @@ public class ProductService {
         product.setDienTich(rs.getDouble("DienTich"));
         product.setGiaTien(rs.getDouble("GiaTien"));
         product.setMoTa(rs.getString("MoTa"));
-        product.setNgayTao(rs.getDate("NgayTao"));
-        product.setNgayBan(rs.getDate("NgayBan"));
+        product.setNgayTao(rs.getString("NgayTao"));
+        product.setNgayBan(rs.getString("NgayBan"));
         product.setTienDo(rs.getString("ChiTiet"));
         product.setTrangThai(rs.getString("trangThai"));
         product.setIdKhachHang(rs.getInt("IdKhachHang"));
@@ -88,45 +88,70 @@ public class ProductService {
     public static void deleteByMaProduct(String IdProduct) throws SQLException {
         com.createStatement().executeUpdate("DELETE FROM SanPham WHERE (IdSanPham = '" + IdProduct + "')");
     }
+
     public static void deleteByMaProject(String IDDuAn) throws SQLException {
         com.createStatement().executeUpdate("DELETE FROM SanPham WHERE (IdDuAn = '" + IDDuAn + "')");
     }
 
-    public static void save(Product product, File file) throws SQLException, FileNotFoundException {
+    public static void save(Product product) throws SQLException, FileNotFoundException {
         Product productExist = findByMaProduct(product.getIdSanPham());
         if (productExist.getIdSanPham() != 0) {
-            PreparedStatement pst = com.prepareStatement("UPDATE SanPham SET TenSanPham = '" + product.getTenSanPham() +
-                    "', 'IdSanPham' = '" + product.getIdSanPham() +
-                    "', 'TenSanPham' = '" + product.getTenSanPham() +
-                    "', 'IdDuAn' = '" + product.getIdDuAn() +
-                    "', 'DiaChi' = '" + product.getDiaChi() +
-                    "', 'DienTich' = '" + product.getDienTich() +
-                    "', 'GiaTien' = '" + product.getGiaTien() +
-                    "', 'MoTa' = '" + product.getMoTa() +
-                    "', 'NgayTao' = '" + product.getNgayTao() +
-                    "', 'NgayBan' = '" + product.getNgayBan() +
-                    "', 'ChiTiet' = '" + product.getTienDo() +
-                    "', 'trangThai' = '" + product.getTrangThai() +
-                    "', 'IdKhachHang' = '" + product.getIdKhachHang() +
-                    "')");
+            String sql ="UPDATE SanPham SET TenSanPham = '" + product.getTenSanPham() +
+                    "', IdDuAn = '" + product.getIdDuAn() +
+                    "', DiaChi = '" + product.getDiaChi() +
+                    "', DienTich = '" + product.getDienTich() +
+                    "', GiaTien = '" + product.getGiaTien() +
+                    "', MoTa = '" + product.getMoTa() +
+                    "', NgayTao = '" + product.getNgayTao() +
+                    "', NgayBan = '" + product.getNgayBan() +
+                    "', ChiTiet = '" + product.getTienDo() +
+                    "', trangThai = '" + product.getTrangThai() +
+                    "' where IdSanPham = " + product.getIdSanPham();
+            if (product.getIdKhachHang() != 0){
+                sql ="UPDATE SanPham SET TenSanPham = '" + product.getTenSanPham() +
+                        "', IdDuAn = '" + product.getIdDuAn() +
+                        "', DiaChi = '" + product.getDiaChi() +
+                        "', DienTich = '" + product.getDienTich() +
+                        "', GiaTien = '" + product.getGiaTien() +
+                        "', MoTa = '" + product.getMoTa() +
+                        "', NgayTao = '" + product.getNgayTao() +
+                        "', NgayBan = '" + product.getNgayBan() +
+                        "', ChiTiet = '" + product.getTienDo() +
+                        "', trangThai = '" + product.getTrangThai() +
+                        "', IdKhachHang = '" + product.getIdKhachHang() +
+                        "' where IdSanPham = " + product.getIdSanPham();
+            }
+            PreparedStatement pst = com.prepareStatement(sql);
             pst.execute();
         } else {
-            PreparedStatement pst = com.prepareStatement(
-                    "INSERT INTO SanPham ('IdSanPham', 'TenSanPham', 'IdDuAn', 'DiaChi','DienTich', 'GiaTien', " +
-                            "'MoTa', 'NgayTao', 'NgayBan', 'ChiTiet', 'trangThai', 'IdKhachHang') VALUES ('" +
-                            product.getIdSanPham() + "', '" +
-                            product.getTenSanPham() + "',' " +
-                            product.getIdDuAn() + "',' " +
-                            product.getDiaChi() + "','" +
-                            product.getDienTich() + "','" +
-                            product.getGiaTien() + "','" +
-                            product.getMoTa() + "','" +
-                            product.getNgayTao() + "','" +
-                            product.getNgayBan() + "','" +
-                            product.getTienDo() + "','" +
-                            product.getTrangThai() + "','" +
-                            product.getIdKhachHang() + "','" +
-                            "')");
+            String sql = "INSERT INTO SanPham ( TenSanPham, IdDuAn, DiaChi,DienTich, GiaTien, " +
+                    "MoTa, NgayTao, NgayBan, ChiTiet, trangThai) VALUES ('" +
+                    product.getTenSanPham() + "',' " +
+                    product.getIdDuAn() + "',' " +
+                    product.getDiaChi() + "','" +
+                    product.getDienTich() + "','" +
+                    product.getGiaTien() + "','" +
+                    product.getMoTa() + "','" +
+                    product.getNgayTao() + "','" +
+                    product.getNgayBan() + "','" +
+                    product.getTienDo() + "','" +
+                    product.getTrangThai()  + "')";
+            if (product.getIdKhachHang() != 0) {
+                sql = "INSERT INTO SanPham ( TenSanPham, IdDuAn, DiaChi,DienTich, GiaTien, " +
+                        "MoTa, NgayTao, NgayBan, ChiTiet, trangThai, IdKhachHang) VALUES ('" +
+                        product.getTenSanPham() + "',' " +
+                        product.getIdDuAn() + "',' " +
+                        product.getDiaChi() + "','" +
+                        product.getDienTich() + "','" +
+                        product.getGiaTien() + "','" +
+                        product.getMoTa() + "','" +
+                        product.getNgayTao() + "','" +
+                        product.getNgayBan() + "','" +
+                        product.getTienDo() + "','" +
+                        product.getTrangThai() + "'" + "," +
+                        product.getIdKhachHang() + ")";
+            }
+            PreparedStatement pst = com.prepareStatement(sql);
             pst.execute();
         }
     }

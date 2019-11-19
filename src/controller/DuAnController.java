@@ -21,6 +21,7 @@ import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -108,6 +109,7 @@ public class DuAnController implements Initializable {
 
     @FXML
     private RadioButton rdUndone;
+
     public DuAnController() throws SQLException {
     }
 
@@ -191,15 +193,24 @@ public class DuAnController implements Initializable {
         if (this.project.getChiPhiDuAn() != null) {
             txtVonDauTu.setText(this.project.getChiPhiDuAn().toString());
         }
-        dateStart.setValue(LocalDate.of(Calendar.getInstance().get(Calendar.YEAR),
-                Calendar.getInstance().get(Calendar.MONTH) + 1,
-                Calendar.getInstance().get(Calendar.DAY_OF_MONTH)));
-        dateEnd.setValue(LocalDate.of(Calendar.getInstance().get(Calendar.YEAR) + 2,
-                Calendar.getInstance().get(Calendar.MONTH) + 1,
-                Calendar.getInstance().get(Calendar.DAY_OF_MONTH)));
+        if (this.project.getNgayBatDau() == null) {
+            dateStart.setValue(LocalDate.of(Calendar.getInstance().get(Calendar.YEAR),
+                    Calendar.getInstance().get(Calendar.MONTH) + 1,
+                    Calendar.getInstance().get(Calendar.DAY_OF_MONTH)));
+            dateEnd.setValue(LocalDate.of(Calendar.getInstance().get(Calendar.YEAR) + 2,
+                    Calendar.getInstance().get(Calendar.MONTH) + 1,
+                    Calendar.getInstance().get(Calendar.DAY_OF_MONTH)));
+        } else {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate localDateStart = LocalDate.parse(this.project.getNgayBatDau(), formatter);
+            dateStart.setValue(localDateStart);
+            LocalDate localDateEnd = LocalDate.parse(this.project.getNgayKetThuc(), formatter);
+            dateEnd.setValue(localDateEnd);
+        }
         if (this.project.getIdDoiTac() != null) {
             comIDDoiTac.getSelectionModel().select(this.project.getIdDoiTac());
         }
+        comLoaiHinh.getSelectionModel().select(this.project.getLoaiHinh());
         comHTDauTu.getSelectionModel().select(this.project.getHinhThucDauTu());
         comHTQuanLy.getSelectionModel().select(this.project.getHinhThucQuanLi());
         if (this.project.getMapX() != null) {
@@ -211,18 +222,9 @@ public class DuAnController implements Initializable {
         if (this.project.getBanKinh() != null) {
             txtBanKinh.setText(this.project.getBanKinh().toString());
         }
-        if (this.project.getTrangThai().equals("CHƯA ĐỦ VỐN")){
+        if (this.project.getTrangThai().equals("CHƯA ĐỦ VỐN")) {
             rdUndone.setSelected(true);
         }
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("views/EidtProject.fxml"));
-//        Parent root = (Parent) loader.load();
-//        EditProjectController editProjectController = loader.getController();
-//        editProjectController.init(this.nhanVien, editProject);
-//        Stage stage = new Stage();
-//        stage.setResizable(false);
-//        stage.initModality(Modality.APPLICATION_MODAL);
-//        stage.setScene(new Scene(root));
-//        stage.show();
     }
 
     public void onSave(ActionEvent actionEvent) throws SQLException, FileNotFoundException {
@@ -332,7 +334,6 @@ public class DuAnController implements Initializable {
                         notification.notification("Số nhập phải lớn hơn 0", "Vui lòng nhập lại", 1);
                     }
                 } catch (Exception e) {
-
                 }
             }
         });
@@ -351,7 +352,6 @@ public class DuAnController implements Initializable {
                         notification.notification("Số nhập phải lớn hơn 0", "Vui lòng nhập lại", 1);
                     }
                 } catch (Exception e) {
-
                 }
             }
         });
@@ -370,7 +370,6 @@ public class DuAnController implements Initializable {
                         notification.notification("Số nhập phải lớn hơn 0", "Vui lòng nhập lại", 1);
                     }
                 } catch (Exception e) {
-
                 }
             }
         });
@@ -389,7 +388,6 @@ public class DuAnController implements Initializable {
                         notification.notification("Số nhập phải lớn hơn 0", "Vui lòng nhập lại", 1);
                     }
                 } catch (Exception e) {
-
                 }
             }
         });

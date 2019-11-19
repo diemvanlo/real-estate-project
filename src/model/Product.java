@@ -11,8 +11,8 @@ public class Product {
     private Double dienTich;
     private Double giaTien;
     private String moTa;      // phòng ở tầng bao nhiêu, vị thế, thuận lợi…
-    private Date ngayTao;
-    private Date ngayBan;
+    private String ngayTao;
+    private String ngayBan;
     private String tienDo;   // 10 %, 20% , 30% .....
     private String trangThai; // đã bán, chưa bán
     private int idKhachHang; // nguoi mua sp
@@ -20,7 +20,21 @@ public class Product {
     public Product() {
     }
 
-    public Product(int idSanPham, String tenSanPham, int idDuAn, String diaChi, Double dienTich, Double giaTien, String moTa, Date ngayTao, Date ngayBan, String tienDo, String trangThai, int idKhachHang) {
+    public Product(int idSanPham, String tenSanPham, int idDuAn, String diaChi, Double dienTich, Double giaTien, String moTa, String ngayTao, String ngayBan, String tienDo, String trangThai) {
+        this.idSanPham = idSanPham;
+        this.tenSanPham = tenSanPham;
+        this.idDuAn = idDuAn;
+        this.diaChi = diaChi;
+        this.dienTich = dienTich;
+        this.giaTien = giaTien;
+        this.moTa = moTa;
+        this.ngayTao = ngayTao;
+        this.ngayBan = ngayBan;
+        this.tienDo = tienDo;
+        this.trangThai = trangThai;
+    }
+
+    public Product(int idSanPham, String tenSanPham, int idDuAn, String diaChi, Double dienTich, Double giaTien, String moTa, String ngayTao, String ngayBan, String tienDo, String trangThai, int idKhachHang) {
         this.idSanPham = idSanPham;
         this.tenSanPham = tenSanPham;
         this.idDuAn = idDuAn;
@@ -34,6 +48,7 @@ public class Product {
         this.trangThai = trangThai;
         this.idKhachHang = idKhachHang;
     }
+
 
     public int getIdSanPham() {
         return idSanPham;
@@ -91,19 +106,19 @@ public class Product {
         this.moTa = moTa;
     }
 
-    public Date getNgayTao() {
+    public String getNgayTao() {
         return ngayTao;
     }
 
-    public void setNgayTao(Date ngayTao) {
+    public void setNgayTao(String ngayTao) {
         this.ngayTao = ngayTao;
     }
 
-    public Date getNgayBan() {
+    public String getNgayBan() {
         return ngayBan;
     }
 
-    public void setNgayBan(Date ngayBan) {
+    public void setNgayBan(String ngayBan) {
         this.ngayBan = ngayBan;
     }
 
