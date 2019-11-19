@@ -15,7 +15,7 @@ public class User {
     public User() {
     }
 
-    public User(int idUser, String nameUser, String userName, String passWord, String address, String numberPhone, String email, Boolean gender, String chucVu, int role) {
+    public User(int idUser, String nameUser, String userName, String passWord, String address, String numberPhone, String email, Boolean gender, String chucVu) {
         this.idUser = idUser;
         this.nameUser = nameUser;
         this.userName = userName;
@@ -25,7 +25,10 @@ public class User {
         this.email = email;
         this.gender = gender;
         this.chucVu = chucVu;
-        this.role = role;
+
+    }
+
+    public User(int idUser, String text, String text1, String text2, String text3, String text4, String text5, boolean isMale) {
     }
 
     public int getIdUser() {

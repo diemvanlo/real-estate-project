@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXProgressBar?>
+<?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.lang.String?>
@@ -16,6 +17,7 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -24,7 +26,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="684.0" prefWidth="1105.0" stylesheets="@../assets/styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DuAnController">
+<AnchorPane prefHeight="684.0" prefWidth="1105.0" stylesheets="@../assets/styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserController">
     <children>
         <JFXTabPane fx:id="tabView" layoutX="14.0" layoutY="14.0" prefHeight="658.0" prefWidth="1080.0">
             <tabs>
@@ -40,13 +42,14 @@
                                                     <columns>
                                                         <TableColumn fx:id="colID" editable="false" prefWidth="50.0" text="ID" />
                                                         <TableColumn fx:id="colName" editable="false" minWidth="0.0" prefWidth="151.0" text="Tên người dùng" />
-                                                        <TableColumn fx:id="colLoaiHinh" editable="false" minWidth="0.0" prefWidth="128.0" sortable="false" text="Tên đăng nhập" />
-                                                        <TableColumn fx:id="colDiaChi" editable="false" minWidth="0.0" prefWidth="99.0" sortable="false" text="Password" />
-                                                        <TableColumn fx:id="colDienTich" editable="false" minWidth="0.0" prefWidth="77.0" sortable="false" text="Địa chỉ" />
-                                                        <TableColumn fx:id="colVonDauTu" editable="false" minWidth="0.0" prefWidth="68.0" sortable="false" text="Sdt" />
-                                                        <TableColumn fx:id="colNgayBatDau" editable="false" minWidth="0.0" prefWidth="73.0" sortable="false" text="Email" />
-                                                        <TableColumn fx:id="colNgayKetThuc" editable="false" minWidth="0.0" prefWidth="92.0" sortable="false" text="Giới tính" />
-                                                        <TableColumn fx:id="colHTQuanLy" editable="false" minWidth="0.0" prefWidth="92.0" sortable="false" text="Chức vụ" />
+                                                        <TableColumn fx:id="coltendangnhap" editable="false" minWidth="0.0" prefWidth="128.0" sortable="false" text="Tên đăng nhập" />
+                                                        <TableColumn fx:id="colPass" editable="false" minWidth="0.0" prefWidth="99.0" sortable="false" text="Password" />
+                                                        <TableColumn fx:id="colDiachi" editable="false" minWidth="0.0" prefWidth="77.0" sortable="false" text="Địa chỉ" />
+                                                        <TableColumn fx:id="colSdt" editable="false" minWidth="0.0" prefWidth="68.0" sortable="false" text="Sdt" />
+                                                        <TableColumn fx:id="colEmail" editable="false" minWidth="0.0" prefWidth="73.0" sortable="false" text="Email" />
+                                                        <TableColumn fx:id="colGioitinh" editable="false" minWidth="0.0" prefWidth="92.0" sortable="false" text="Giới tính" />
+                                                        <TableColumn fx:id="colChucvu" editable="false" minWidth="0.0" prefWidth="92.0" sortable="false" text="Chức vụ" />
+                                          <TableColumn fx:id="colRole" editable="false" prefWidth="108.0" text="Role" />
                                                     </columns>
                                                     <effect>
                                                         <GaussianBlur />
@@ -175,20 +178,11 @@
                                     <children>
                                         <VBox layoutX="20.0" layoutY="14.0" prefHeight="380.0" prefWidth="415.0" spacing="10.0">
                                             <children>
-                                                <JFXTextField fx:id="txtName" focusColor="#00add8" labelFloat="true" promptText="Tên người dùng" unFocusColor="#868282" />
-                                                <JFXComboBox fx:id="comLoaiHinh" prefHeight="40.0" prefWidth="402.0" promptText="Tên đăng nhập">
-                                                    <items>
-                                                        <FXCollections fx:factory="observableArrayList">
-                                                            <String fx:value="Khu nghỉ dưỡng ven biển" />
-                                                            <String fx:value="Đất nền" />
-                                                            <String fx:value="Nhà phố" />
-                                                            <String fx:value="Căn hộ chung cư" />
-                                                        </FXCollections>
-                                                    </items>
-                                                </JFXComboBox>
-                                                <JFXTextField fx:id="txtDiaChi" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="46.0" promptText="Password" unFocusColor="#868282" />
-                                                <JFXTextField fx:id="txtDienTich" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="82.0" promptText="Địa chỉ" unFocusColor="#868282" />
-                                                <JFXTextField fx:id="txtVonDauTu" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="118.0" promptText="Sdt" unFocusColor="#868282" />
+                                                <JFXTextField fx:id="txtName" focusColor="#00add8" promptText="Tên người dùng" unFocusColor="#868282" />
+                                                <JFXTextField fx:id="txttendangnhap" promptText="Tên đăng nhập" />
+                                                <JFXTextField fx:id="txtpassword" focusColor="#00add8" layoutX="10.0" layoutY="46.0" promptText="Password" unFocusColor="#868282" />
+                                                <JFXTextField fx:id="txtDiachi" focusColor="#00add8" layoutX="10.0" layoutY="82.0" promptText="Địa chỉ" unFocusColor="#868282" />
+                                                <JFXTextField fx:id="txtSdt" focusColor="#00add8" layoutX="10.0" layoutY="118.0" promptText="Sdt" unFocusColor="#868282" />
                                             </children>
                                             <padding>
                                                 <Insets left="20.0" top="10.0" />
@@ -198,41 +192,52 @@
                                             <children>
                                                 <VBox layoutX="30.0" layoutY="30.0" prefHeight="47.0" prefWidth="448.0">
                                                     <children>
+                                                        <Label text="Giới tính">
+                                             <VBox.margin>
+                                                <Insets bottom="20.0" />
+                                             </VBox.margin></Label>
                                                         <HBox prefHeight="100.0" prefWidth="200.0">
-                                             <children>
-                                                                <JFXTextField fx:id="txtMapX" labelFloat="true" promptText="Giới tính" />
-                                             </children>
+                                                            <children>
+                                                                <JFXRadioButton fx:id="rdnam" text="Nam">
+                                                                    <toggleGroup>
+                                                                        <ToggleGroup fx:id="q" />
+                                                                    </toggleGroup>
+                                                                </JFXRadioButton>
+                                                                <JFXRadioButton fx:id="rdnu" text="Nữ" toggleGroup="$q" />
+                                                            </children>
                                                         </HBox>
                                                     </children>
                                                 </VBox>
                                                 <VBox layoutX="30.0" layoutY="30.0" prefHeight="47.0" prefWidth="448.0">
                                                     <children>
                                                         <HBox prefHeight="100.0" prefWidth="200.0">
-                                             <children>
-                                                                <JFXTextField fx:id="txtBanKinh" labelFloat="true" prefHeight="30.0" prefWidth="493.0" promptText="Email" />
-                                             </children>
+                                                            <children>
+                                                                <JFXTextField fx:id="txtEmail" prefHeight="30.0" prefWidth="493.0" promptText="Email" />
+                                                            </children>
                                                         </HBox>
                                                     </children>
                                                 </VBox>
                                                 <VBox prefHeight="47.0" prefWidth="448.0">
                                                     <children>
                                                         <HBox prefHeight="100.0" prefWidth="200.0">
-                                             <children>
-                                                <JFXComboBox prefHeight="31.0" prefWidth="185.0" promptText="Chức vụ" />
-                                             </children></HBox>
+                                                            <children>
+                                                                <JFXComboBox fx:id="comChucvu" prefHeight="31.0" prefWidth="185.0" promptText="Chức vụ">
+                                                                    <items>
+                                                                        <FXCollections fx:factory="observableArrayList">
+                                                                            <String fx:value="Giám đốc" />
+                                                                            <String fx:value="Nhân viên" />
+                                                                        </FXCollections>
+                                                                    </items>
+                                                                </JFXComboBox>
+                                                <JFXTextField fx:id="txtRole" prefHeight="30.0" prefWidth="154.0" promptText="Role">
+                                                   <HBox.margin>
+                                                      <Insets left="70.0" />
+                                                   </HBox.margin>
+                                                </JFXTextField>
+                                                            </children>
+                                                        </HBox>
                                                     </children>
                                                 </VBox>
-                                                <VBox prefHeight="47.0" prefWidth="448.0">
-                                                    <children>
-                                                        <HBox prefHeight="100.0" prefWidth="200.0" />
-                                                    </children>
-                                                </VBox>
-                                                <VBox layoutX="10.0" layoutY="92.0" prefHeight="44.0" prefWidth="491.0">
-                                                    <children>
-                                                        <HBox prefHeight="43.0" prefWidth="491.0" />
-                                                    </children>
-                                                </VBox>
-                                                <VBox prefHeight="82.0" prefWidth="541.0" />
                                                 <Separator prefWidth="200.0" />
                                                 <HBox alignment="CENTER_RIGHT" prefHeight="77.0" prefWidth="511.0" spacing="20.0">
                                                     <children>

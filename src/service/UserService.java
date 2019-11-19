@@ -28,9 +28,9 @@ public class UserService {
 
     public static User getUserFromResultSet(ResultSet rs) throws SQLException {
         User user = new User();
-        user.setIdUser(rs.getInt("IdNguoiDung"));
-        user.setNameUser(rs.getString("TenNguoiDung"));
-        user.setUserName(rs.getString("TenDangNhap"));
+        user.setIdUser(rs.getInt("IdUser"));
+        user.setNameUser(rs.getString("NameUser"));
+        user.setUserName(rs.getString("UserName"));
         user.setPassWord(rs.getString("Password"));
         user.setAddress(rs.getString("DiaChi"));
         user.setEmail(rs.getString("Email"));
@@ -44,10 +44,10 @@ public class UserService {
     public static User findByMaUser(int IdUser) {
         User user = new User();
         try {
-            ResultSet rs = com.createStatement().executeQuery("select * from user");
+            ResultSet rs = com.createStatement().executeQuery("select * from Userr");
             boolean isValid = false;
             while (rs.next()) {
-                if (rs.getInt("IdNguoiDung") == IdUser) {
+                if (rs.getInt("IdUser") == IdUser) {
                     isValid = true;
                     user = getUserFromResultSet(rs);
                 }
@@ -65,7 +65,7 @@ public class UserService {
     public static List<User> getAll() {
         List<User> list = new ArrayList<>();
         try {
-            ResultSet rs = com.createStatement().executeQuery("select * from user");
+            ResultSet rs = com.createStatement().executeQuery("select * from Userr");
             boolean isValid = false;
             while (rs.next()) {
                 User user;
@@ -84,40 +84,39 @@ public class UserService {
     }
 
     public static void deleteByMaUser(String IdUser) throws SQLException {
-        com.createStatement().executeUpdate("DELETE FROM [javafx].[user] WHERE ('IdNguoiDung' = '" + IdUser + "')");
+        System.out.println(IdUser);
+        com.createStatement().executeUpdate("DELETE FROM Userr WHERE (IdUser = '" + IdUser + "')");
     }
 
-    public static void save(User user, File file) throws SQLException, FileNotFoundException {
+    public static void save(User user) throws SQLException, FileNotFoundException {
         User userExist = findByMaUser(user.getIdUser());
         if (userExist.getIdUser() != 0) {
-            PreparedStatement pst = com.prepareStatement("UPDATE [javafx].[user] SET 'TenNguoiDung' = '" + user.getNameUser() +
-                    "', 'IdNguoiDung' = '" + user.getIdUser() +
-                    "', 'TenNguoiDung' = '" + user.getNameUser() +
-                    "', 'TenDangNhap' = '" + user.getUserName() +
-                    "', 'Password' = '" + user.getPassWord() +
-                    "', 'Sdt' = '" + user.getNumberPhone() +
-                    "', 'Email' = '" + user.getEmail() +
-                    "', 'DiaChi' = '" + user.getAddress() +
-                    "', 'GioiTinh' = '" + user.getGender() +
-                    "', 'ChucVu' = '" + user.getChucVu() +
-                    "', 'Role' = '" + user.getRole() +
-                    "')");
+            PreparedStatement pst = com.prepareStatement("UPDATE Userr SET NameUser = '" + user.getNameUser() +
+                    "', NameUser = N'" + user.getNameUser() +
+                    "', UserName = '" + user.getUserName() +
+                    "', Password = '" + user.getPassWord() +
+                    "', Sdt = '" + user.getNumberPhone() +
+                    "', Email = '" + user.getEmail() +
+                    "', DiaChi = N'" + user.getAddress() +
+                    "', GioiTinh = '" + user.getGender() +
+                    "', ChucVu = N'" + user.getChucVu() +
+                    "', Role = '" + user.getRole() +
+                    "' where  idUser = " + user.getIdUser());
             pst.execute();
         } else {
+
             PreparedStatement pst = com.prepareStatement(
-                    "INSERT INTO [javafx].[user] ('IdNguoiDung', 'TenNguoiDung', 'TenDangNhap', 'Password','Sdt', 'Email', " +
-                            "'DiaChi', 'GioiTinh', 'ChucVu', 'Role') VALUES ('" +
-                            user.getIdUser() + "', '" +
+                    "INSERT INTO Userr ( NameUser, UserName,Password,Sdt, Email, " +
+                            "DiaChi, GioiTinh, ChucVu, Role) VALUES (N'" +
                             user.getNameUser() + "',' " +
                             user.getUserName() + "',' " +
                             user.getPassWord() + "','" +
                             user.getNumberPhone() + "','" +
-                            user.getEmail() + "','" +
+                            user.getEmail() + "',N'" +
                             user.getAddress() + "','" +
-                            user.getGender() + "','" +
+                            user.getGender() + "',N'" +
                             user.getChucVu() + "','" +
-                            user.getRole() + "','" +
-                            "')");
+                            user.getRole() + "')");
             pst.execute();
         }
     }
