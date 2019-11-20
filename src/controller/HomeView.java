@@ -49,6 +49,7 @@ public class HomeView implements Initializable {
             AnchorPane doiTacPane = FXMLLoader.load(getClass().getResource("view/DoiTac.fxml"));
             AnchorPane khachHangPane = FXMLLoader.load(getClass().getResource("view/KhachHang.fxml"));
             AnchorPane nguoiDungPane = FXMLLoader.load(getClass().getResource("view/NguoiDung.fxml"));
+            AnchorPane danhGiaPane = FXMLLoader.load(getClass().getResource("view/DanhGiaKhachhang.fxml"));
 //            setNode(welcome);
             drawer.setSidePane(sidePane);
 
@@ -79,6 +80,10 @@ public class HomeView implements Initializable {
                             case "khachHang":
                                 drawer.close();
                                 setNode(khachHangPane);
+                                break;
+                            case "danhGia":
+                                drawer.close();
+                                setNode(danhGiaPane);
                                 break;
                         }
                     });

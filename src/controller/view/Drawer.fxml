@@ -18,6 +18,7 @@
         <JFXButton fx:id="doiTacBtn" accessibleText="doiTac" layoutX="10.0" layoutY="96.0" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Đối tác" />
         <JFXButton fx:id="userBtn" accessibleText="nguoiDung" layoutX="10.0" layoutY="382.0" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Người dùng" />
         <JFXButton fx:id="khachHanhBtn" accessibleText="khachHang" layoutX="10.0" layoutY="358.0" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Khách hàng" />
+      <JFXButton fx:id="danhGiaBtn" accessibleText="danhGia" layoutX="10.0" layoutY="375.0" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Đánh giá" />
         <JFXButton fx:id="logoutBtn" accessibleText="logoutMenu" layoutX="10.0" layoutY="182.0" onAction="#logOut" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Log out" />
         <JFXButton fx:id="exitBtn" accessibleText="exitMenu" layoutX="10.0" layoutY="182.0" onAction="#exit" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Exit" />
         <JFXButton prefHeight="227.0" prefWidth="152.0" styleClass="drawer-buttons" text="  " />

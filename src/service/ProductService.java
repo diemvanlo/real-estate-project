@@ -63,7 +63,25 @@ public class ProductService {
         }
         return product;
     }
-
+    public static List<String> getAllID() {
+        List<String> list = new ArrayList<>();
+        try {
+            ResultSet rs = com.createStatement().executeQuery("select * from SanPham");
+            boolean isValid = false;
+            while (rs.next()) {
+                String id = rs.getString("IdSanPham");
+                list.add(id);
+                isValid = true;
+            }
+            if (!isValid) {
+                return list;
+            }
+            rs.getStatement().close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return list;
+    }
     public static List<Product> getAll() {
         List<Product> list = new ArrayList<>();
         try {

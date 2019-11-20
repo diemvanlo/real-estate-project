@@ -98,7 +98,8 @@ NhanXet nvarchar(100),
 SoSao int ,
 IdSanPham int,
 constraint fk_danhgia foreign key (IdKhachHang) references KhachHang(IdKhachHang),
-constraint fk_danhgia2 foreign key (IdSanPham) references SanPham(IdSanPham) 
+constraint fk_danhgia2 foreign key (IdSanPham) references SanPham(IdSanPham) ,
+unique (IdKhachHang,IdSanPham)
 );
 
 create table HinhAnh(
