@@ -109,3 +109,66 @@ CheDo nvarchar(20) ,
 IdSanPham int not null,
 constraint fk_HinhAnh foreign key (IdSanPham) references SanPham(IdSanPham),
 )
+
+
+/*   sp_ThongKeDA    */
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[sp_ThongKeDA](@Year INT)
+AS BEGIN
+	SELECT
+		TenDuAn DuAn,
+		COUNT(DISTINCT sp.IdSanPham) SoSP,
+		COUNT(dt.IdDoiTac) SoDT,
+		COUNT(kh.IdKhachHang) SoKH,
+		SUM(da.ChiPhi) DoanhThu
+	
+	FROM DuAn da
+		JOIN SanPham sp ON da.IdDoiTac=sp.IdDuAn
+		JOIN DoiTac dt ON da.IdDoiTac=dt.IdDoiTac
+		Join KhachHang kh ON sp.IdKhachHang=kh.IdKhachHang
+	WHERE YEAR(NgayTao) = @Year
+	GROUP BY TenDuAn
+END
+
+/*   sp_ThongKeDoanhThu  */
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[sp_ThongKeDoanhThu](@Year INT)
+AS BEGIN
+	SELECT
+    	YEAR(NgayTao) Nam,
+		COUNT(DISTINCT da.IdDuAn) SoDuAn,
+		COUNT(sp.IdSanPham) SoSP,
+		SUM(sp.GiaTien) DoanhThu,
+		MAX(sp.GiaTien) CaoNhat,
+		MIN(sp.GiaTien) ThapNhat,
+		AVG(sp.GiaTien) TrungBinh
+	FROM DuAn da
+		JOIN SanPham sp ON da.IdDuAn=sp.IdSanPham
+		
+	WHERE YEAR(NgayTao) = @Year
+	GROUP BY NgayTao
+END
+
+/*  sp_ThongKeDoiTac    */
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[sp_ThongKeDoiTac]
+AS BEGIN
+	SELECT
+		TenDoiTac DoiTac,
+		COUNT(DISTINCT da.IdDoiTac) SoDuAnDauTu,  /* số dự án đã đầu tư của đối tác */
+		SUM(dt.SoVonDaDauTu) SoVonDaDauTu
+		
+	    FROM DoiTac dt
+		JOIN DuAn da ON dt.IdDoiTac=da.IdDoiTac
+
+	GROUP BY TenDoiTac
+END

@@ -52,7 +52,7 @@ public class LoginController implements Initializable {
             stage.show();
             notification.notification("Đăng nhập thành công", "Vai Trò : " + user.getRole(), 0);
         } else {
-            notification.notification("Đăng nhập thất bại", "UserName hoặc mật khẩu sai" + user.getUserName()  +" -- " + user.getPassWord(),1);
+            notification.notification("Đăng nhập thất bại", "UserName hoặc mật khẩu sai",1);
         }
     }
 
