@@ -62,6 +62,27 @@ public class UserService {
         return user;
     }
 
+    public static User findByUserName(String UserName) {
+        User user = new User();
+        try {
+            ResultSet rs = com.createStatement().executeQuery("select * from Userr ");
+            boolean isValid = false;
+            while (rs.next()) {
+                if (rs.getString("UserName").equalsIgnoreCase(UserName)) {
+                    isValid = true;
+                    user = getUserFromResultSet(rs);
+                }
+            }
+            if (!isValid) {
+                return user;
+            }
+            rs.getStatement().close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
     public static List<User> getAll() {
         List<User> list = new ArrayList<>();
         try {

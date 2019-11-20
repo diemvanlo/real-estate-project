@@ -90,6 +90,26 @@ public class ProjectService {
         return list;
     }
 
+    public static List<String> getAllID() {
+        List<String> list = new ArrayList<>();
+        try {
+            ResultSet rs = com.createStatement().executeQuery("select * from duAN");
+            boolean isValid = false;
+            while (rs.next()) {
+                String id = rs.getString("IdDuAn");
+                list.add(id);
+                isValid = true;
+            }
+            if (!isValid) {
+                return list;
+            }
+            rs.getStatement().close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return list;
+    }
+
     public static void deleteByMaProject(String maProject) throws SQLException {
         ProductService.deleteByMaProject(maProject);
         com.createStatement().executeUpdate("DELETE FROM DuAn WHERE (idDuAn = '" + maProject + "')");
