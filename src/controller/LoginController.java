@@ -11,7 +11,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.User;
 import service.Notification;
+import service.UserService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,19 +40,20 @@ public class LoginController implements Initializable {
     public Notification notification = new Notification();
 
     public void login(javafx.event.ActionEvent actionEvent) throws IOException, SQLException {
-//        NhanVien nhanVien = NhanVienService.findByMaNhanVien(emailTextField.getText());
-//        if (nhanVien.getMaNhanVien() != null && nhanVien.getMatKhau().equals(passwordTextField.getText())) {
+        User user = UserService.findByUserName(emailTextField.getText());
+
+        if (user.getUserName() != null && user.getPassWord().equals(passwordTextField.getText())) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("view/HomeView.fxml"));
-            Parent root = (Parent) loader.load();
+            Parent root = loader.load();
             Stage appStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             appStage.hide();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
-//            notification.notification("Đăng nhập thành công", "Vai Trò : " + nhanVien.getVaiTro(), 0);
-//        } else {
-//            notification.notification("Đăng nhập thất bại", "UserName hoặc mật khẩu sai", 1);
-//        }
+            notification.notification("Đăng nhập thành công", "Vai Trò : " + user.getRole(), 0);
+        } else {
+            notification.notification("Đăng nhập thất bại", "UserName hoặc mật khẩu sai" + user.getUserName()  +" -- " + user.getPassWord(),1);
+        }
     }
 
 
