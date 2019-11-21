@@ -56,13 +56,14 @@ public class DrawerController implements Initializable {
     @FXML
     private void logOut(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("views/Login.fxml"));
+            HomeView.role = false;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("view/Login.fxml"));
             Parent root = loader.load();
             Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             appStage.hide();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-//            stage.show();
+            stage.show();
         } catch (Exception ex) {
             Logger.getLogger(DrawerController.class.getName()).log(Level.SEVERE, null, ex);
         }
