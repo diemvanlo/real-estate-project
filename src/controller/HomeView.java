@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import sample.hopital.helpers.Routes;
 import sample.hopital.hospitalfx.HomeViewController;
+import service.Notification;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,6 +27,9 @@ public class HomeView implements Initializable {
     private AnchorPane holderPane;
     @FXML
     private JFXDrawer drawer;
+
+    public static boolean role = false;
+    Notification notification = new Notification();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -67,7 +71,11 @@ public class HomeView implements Initializable {
                                 break;
                             case "nguoiDung":
                                 drawer.close();
-                                setNode(nguoiDungPane);
+                                if (HomeView.role == true) {
+                                    setNode(nguoiDungPane);
+                                } else {
+                                    notification.notification("Lỗi truy cập", "Bạn không có quyền truy cập", 1);
+                                }
                                 break;
                             case "doiTac":
                                 drawer.close();

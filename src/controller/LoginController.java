@@ -51,6 +51,9 @@ public class LoginController implements Initializable {
             stage.setScene(new Scene(root));
             stage.show();
             notification.notification("Đăng nhập thành công", "Vai Trò : " + user.getRole(), 0);
+            if (user.getRole() == 1){
+                HomeView.role = true;
+            }
         } else {
             notification.notification("Đăng nhập thất bại", "UserName hoặc mật khẩu sai",1);
         }
