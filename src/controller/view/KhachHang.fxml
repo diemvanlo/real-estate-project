@@ -53,7 +53,7 @@
                                                         <Cursor fx:constant="HAND" />
                                                     </cursor>
                                                 </Pagination>
-                                                <JFXTextField fx:id="clientSearchTextField" layoutX="579.0" layoutY="14.0" onKeyReleased="#filter" prefHeight="30.0" prefWidth="302.0" promptText="Tìm thông tin dự án" style="-fx-border-width: 0;" styleClass="search-box" />
+                                                <JFXTextField fx:id="clientSearchTextField" layoutX="579.0" layoutY="14.0" onKeyReleased="#filter" prefHeight="30.0" prefWidth="302.0" promptText="Tìm thông tin Khách hàng" style="-fx-border-width: 0;" styleClass="search-box" />
                                                 <JFXButton fx:id="btnEdit" layoutX="233.0" layoutY="13.0" onAction="#edit" prefHeight="27.0" prefWidth="78.0" styleClass="cancel-button" text="Edit" />
                                                 <JFXButton fx:id="btnDelete" layoutX="343.0" layoutY="12.0" onAction="#deleteItem" prefHeight="37.0" prefWidth="100.0" styleClass="red-btn" text="Delete" />
                                                 <JFXButton fx:id="btnAdd" layoutX="126.0" layoutY="13.0" onAction="#creatNew" prefHeight="34.0" prefWidth="98.0" styleClass="blue-btn" text="New" />
