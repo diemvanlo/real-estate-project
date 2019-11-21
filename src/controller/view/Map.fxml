@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.lynden.gmapsfx.GoogleMapView?>
+<?import javafx.scene.layout.BorderPane?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<BorderPane fx:id="boderPane" prefHeight="634.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MapController">
+    <center>
+        <JFXComboBox fx:id="watchingMode" prefHeight="25.0" prefWidth="480.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="TERRAIN"/>
+                    <String fx:value="ROADMAP"/>
+                    <String fx:value="SATELLITE"/>
+                    <String fx:value="HYBRID"/>
+                </FXCollections>
+            </items>
+        </JFXComboBox>
+        <GoogleMapView fx:id="mapComponent" prefHeight="545.0" prefWidth="807.0" BorderPane.alignment="CENTER">
+        </GoogleMapView>
+    </center>
+</BorderPane>

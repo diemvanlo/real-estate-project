@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sample.map.sample;
+package sample;
 
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
@@ -28,6 +28,7 @@ import javafx.application.Application;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -42,7 +43,7 @@ import netscape.javascript.JSObject;
  * @author Geoff Capper
  */
 public class SampleApp extends Application implements MapComponentInitializedListener {
-
+    @FXML
     protected GoogleMapView mapComponent;
     protected GoogleMap map;
 
@@ -53,16 +54,12 @@ public class SampleApp extends Application implements MapComponentInitializedLis
         mapComponent.addMapInializedListener(this);
 
         BorderPane bp = new BorderPane();
-        ToolBar tb = new ToolBar();
-
-        bp.setTop(tb);
 
         bp.setCenter(mapComponent);
 
         Scene scene = new Scene(bp, 650, 700);
         stage.setScene(scene);
         stage.show();
-
     }
 
     @Override
@@ -75,12 +72,12 @@ public class SampleApp extends Application implements MapComponentInitializedLis
         MapOptions options = new MapOptions();
         options.center(centre)
                 .zoom(9)
-                .overviewMapControl(false)
-                .panControl(false)
-                .rotateControl(false)
-                .scaleControl(false)
-                .streetViewControl(false)
-                .zoomControl(false)
+                .overviewMapControl(true)
+                .panControl(true)
+                .rotateControl(true)
+                .scaleControl(true)
+                .streetViewControl(true)
+                .zoomControl(true)
                 .mapType(MapTypeIdEnum.TERRAIN);
 
         map = mapComponent.createMap(options, false);
@@ -89,7 +86,7 @@ public class SampleApp extends Application implements MapComponentInitializedLis
 
         markerOptions.position(centre)
                 .title("Centre Marker")
-                .icon(MarkerImageFactory.createMarkerImage("sample/map/sample/res/mymarker.png", "png"))
+                .icon(MarkerImageFactory.createMarkerImage("/au/net/capper/gmapsfx/sample/res/mymarker.png", "png"))
                 .animation(Animation.DROP)
                 .visible(true);
 
@@ -99,7 +96,7 @@ public class SampleApp extends Application implements MapComponentInitializedLis
         LatLong markerLatLong2 = new LatLong(-42.238968, 147.23352);
         markerOptions2.position(markerLatLong2)
                 .title("A Different Marker")
-                .icon(MarkerImageFactory.createMarkerImage("sample/map/sample/res/mymarker2.png", "png"))
+                .icon(MarkerImageFactory.createMarkerImage("/sample/res/mymarker.png", "png"))
                 .visible(true);
 
         Marker myMarker2 = new Marker(markerOptions2);
@@ -107,11 +104,11 @@ public class SampleApp extends Application implements MapComponentInitializedLis
         map.addMarker(myMarker);
         map.addMarker(myMarker2);
 
-        String infoImg = MarkerImageFactory.createMarkerImage("sample/map/sample/res/Flower.png", "png");
+        String infoImg = MarkerImageFactory.createMarkerImage("/sample/res/mymarker2.png", "png");
         Logger.getLogger(getClass().getName()).log(Level.INFO, "InfoImage built as: {0}", infoImg);
-        System.out.println(MarkerImageFactory.createMarkerImage("sample/map/sample/res/mymarker2.png", "png"));
+
         InfoWindowOptions infoOptions = new InfoWindowOptions();
-        infoOptions.content("<h2>Here's an info window</h2><p>with some info and a picture</p><p><img src=\"" + infoImg + "\" /></p>")
+        infoOptions.content("<h2>Here's an info window</h2><p>with some info and a picture</p><p><img src=\"" + "https://fyf.tac-cdn.net/images/products/large/BF116-11KM_R.jpg?auto=webp&quality=60" + "\" /></p>")
                 .position(centre);
 
         InfoWindow window = new InfoWindow(infoOptions);

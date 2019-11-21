@@ -70,7 +70,7 @@
                                                 <JFXButton fx:id="btnEdit" layoutX="233.0" layoutY="13.0" onAction="#edit" prefHeight="27.0" prefWidth="78.0" styleClass="cancel-button" text="Edit" />
                                                 <JFXButton fx:id="btnDelete" layoutX="343.0" layoutY="12.0" onAction="#deleteItem" prefHeight="37.0" prefWidth="100.0" styleClass="red-btn" text="Delete" />
                                                 <JFXButton fx:id="btnAdd" layoutX="126.0" layoutY="13.0" onAction="#creatNew" prefHeight="34.0" prefWidth="98.0" styleClass="blue-btn" text="New" />
-                                                <JFXButton fx:id="btnin" layoutX="460.0" layoutY="12.0" prefHeight="37.0" prefWidth="100.0" styleClass="green-btn" text="In excel" />
+                                                <JFXButton fx:id="btnin" layoutX="460.0" layoutY="12.0" prefHeight="37.0" prefWidth="182.0" styleClass="green-btn" text="In excel" />
                                             </children>
                                         </AnchorPane>
                                     </items>
@@ -139,15 +139,8 @@
                                     <children>
                                         <AnchorPane prefHeight="110.0" prefWidth="393.0" style="-fx-background-color: #00ADD8;" styleClass="card-unpadded">
                                             <children>
+                                    <JFXButton onAction="#onMap" layoutX="36.0" layoutY="47.0" prefHeight="62.0" prefWidth="220.0" styleClass="red-btn" text="Xem trên Google map" />
                                                 <Pane layoutX="-1.0" prefHeight="141.0" prefWidth="23.0" style="-fx-background-color: #007390;" />
-                                                <ImageView fitHeight="97.0" fitWidth="124.0" layoutX="33.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                                                    <image>
-                                                        <Image url="@../../sample/hopital/imgs/doctor.png" />
-                                                    </image>
-                                                </ImageView>
-                                                <Label layoutX="182.0" layoutY="14.0" prefHeight="41.0" prefWidth="89.0" styleClass="custom-white-title-label" text="16" />
-                                                <Label layoutX="182.0" layoutY="55.0" prefHeight="31.0" prefWidth="210.0" styleClass="custom-white-label" text="Dự án" />
-                                                <Label layoutX="182.0" layoutY="86.0" prefHeight="33.0" prefWidth="210.0" styleClass="custom-white-label" text="Đã đủ vốn" />
                                             </children>
                                         </AnchorPane>
                                         <AnchorPane prefHeight="166.0" prefWidth="393.0" style="-fx-background-color: #DD4B39;" styleClass="card-unpadded">

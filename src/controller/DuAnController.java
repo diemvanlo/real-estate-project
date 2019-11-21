@@ -7,10 +7,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.Project;
 import service.DoiTacService;
 import service.Notification;
@@ -290,6 +295,19 @@ public class DuAnController implements Initializable {
         this.project = new Project();
     }
 
+    @FXML
+    public void onMap() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/Map.fxml"));
+        Parent root = loader.load();
+        MapController mapController = loader.getController();
+        mapController.init(txtMapX.getText(), txtMapY.getText(), txtName.getText());
+        Stage stage = new Stage();
+        stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setTableView();
@@ -337,42 +355,7 @@ public class DuAnController implements Initializable {
                 }
             }
         });
-        txtMapX.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue,
-                                String newValue) {
-                txtMapX.setText(newValue.replaceAll("[^\\d*|\\d+\\,\\d]", ""));
-                if (!newValue.matches("\\d*|\\d+\\,\\d*") && !newValue.contains(".")) {
-                    txtMapX.setText(newValue.replaceAll("[^\\d*|\\d+\\,\\d]", ""));
-                    notification.notification("Ký tự nhập không phải là số", "Vui lòng nhập lại", 1);
-                }
-                try {
-                    if (Double.parseDouble(newValue) < 0) {
-                        txtMapX.setText(newValue.replaceAll(newValue, oldValue));
-                        notification.notification("Số nhập phải lớn hơn 0", "Vui lòng nhập lại", 1);
-                    }
-                } catch (Exception e) {
-                }
-            }
-        });
-        txtMapY.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue,
-                                String newValue) {
-                txtMapY.setText(newValue.replaceAll("[^\\d*|\\d+\\,\\d]", ""));
-                if (!newValue.matches("\\d*|\\d+\\,\\d*") && !newValue.contains(".")) {
-                    txtMapY.setText(newValue.replaceAll("[^\\d*|\\d+\\,\\d]", ""));
-                    notification.notification("Ký tự nhập không phải là số", "Vui lòng nhập lại", 1);
-                }
-                try {
-                    if (Double.parseDouble(newValue) < 0) {
-                        txtMapY.setText(newValue.replaceAll(newValue, oldValue));
-                        notification.notification("Số nhập phải lớn hơn 0", "Vui lòng nhập lại", 1);
-                    }
-                } catch (Exception e) {
-                }
-            }
-        });
+
         txtBanKinh.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
