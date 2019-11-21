@@ -113,15 +113,15 @@ public class UserService {
         User userExist = findByMaUser(user.getIdUser());
         if (userExist.getIdUser() != 0) {
             PreparedStatement pst = com.prepareStatement("UPDATE Userr SET NameUser = '" + user.getNameUser() +
-                    "', NameUser = N'" + user.getNameUser() +
-                    "', UserName = '" + user.getUserName() +
-                    "', Password = '" + user.getPassWord() +
-                    "', Sdt = '" + user.getNumberPhone() +
-                    "', Email = '" + user.getEmail() +
-                    "', DiaChi = N'" + user.getAddress() +
-                    "', GioiTinh = '" + user.getGender() +
-                    "', ChucVu = N'" + user.getChucVu() +
-                    "', Role = '" + user.getRole() +
+                    "',NameUser = N'" + user.getNameUser() +
+                    "',UserName = '" + user.getUserName() +
+                    "',Password = '" + user.getPassWord() +
+                    "',Sdt = '" + user.getNumberPhone() +
+                    "',Email = '" + user.getEmail() +
+                    "',DiaChi = N'" + user.getAddress() +
+                    "',GioiTinh = '" + user.getGender() +
+                    "',ChucVu = N'" + user.getChucVu() +
+                    "',Role = '" + user.getRole() +
                     "' where  idUser = " + user.getIdUser());
             pst.execute();
         } else {
@@ -129,8 +129,8 @@ public class UserService {
             PreparedStatement pst = com.prepareStatement(
                     "INSERT INTO Userr ( NameUser, UserName,Password,Sdt, Email, " +
                             "DiaChi, GioiTinh, ChucVu, Role) VALUES (N'" +
-                            user.getNameUser() + "',' " +
-                            user.getUserName() + "',' " +
+                            user.getNameUser() + "','" +
+                            user.getUserName() + "','" +
                             user.getPassWord() + "','" +
                             user.getNumberPhone() + "','" +
                             user.getEmail() + "',N'" +
