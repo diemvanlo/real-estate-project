@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="container" prefHeight="709.0" prefWidth="803.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DoanhThuTheoNamTable">
+    <children>
+        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="709.0" prefWidth="812.0">
+            <children>
+                <Pane layoutX="-3.0" prefHeight="79.0" prefWidth="819.0" style="-fx-background-color: #3F51B5;" styleClass="product-detail-header">
+                    <children>
+                        <Label fx:id="actionLabel" layoutX="124.0" layoutY="27.0" text="Doanh thu" textFill="#fafafa">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="24.0" layoutY="29.0" text="Thống kê /" textFill="#e0e0e0">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <JFXButton fx:id="cancelButton" layoutX="548.0" layoutY="25.0" onAction="#onCancel" prefHeight="37.0" prefWidth="90.0" ripplerFill="#c78579" text="Exit" textFill="WHITE">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </JFXButton>
+                        <JFXButton fx:id="helpButton" layoutX="658.0" layoutY="25.0" prefHeight="37.0" prefWidth="90.0" ripplerFill="#7986cb" text="Help" textFill="WHITE">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </JFXButton>
+                    </children>
+                </Pane>
+                <Pane layoutX="19.0" layoutY="433.0" prefHeight="1.0" prefWidth="672.0" style="-fx-background-color: #EEEEEE;" />
+                <BarChart fx:id="bar_chart1" alternativeRowFillVisible="false" horizontalGridLinesVisible="false" layoutX="11.0" layoutY="143.0" prefHeight="251.0" prefWidth="242.0" title="Số học viên" verticalGridLinesVisible="false">
+                    <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis side="LEFT" />
+                    </yAxis>
+                </BarChart>
+                <Pagination fx:id="clientPagination" layoutX="11.0" layoutY="387.0" maxPageIndicatorCount="5" pageCount="7" prefHeight="309.0" prefWidth="729.0">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Pagination>
+                <TableView fx:id="tableView" layoutX="24.0" layoutY="403.0" prefHeight="233.0" prefWidth="706.0">
+                    <columns>
+                        <TableColumn fx:id="colID" text="ID dự án" />
+                        <TableColumn fx:id="colSoSanPham" prefWidth="150.0" text="Số sản phẩm" />
+                        <TableColumn fx:id="colSum" prefWidth="103.0" text="Doanh thu" />
+                        <TableColumn fx:id="colMin" prefWidth="103.0" text="Thấp nhất" />
+                        <TableColumn fx:id="colMax" prefWidth="103.0" text="Cao nhất" />
+                        <TableColumn fx:id="colAVG" prefWidth="103.0" text="Trung bình" />
+                    </columns>
+                </TableView>
+                <BarChart fx:id="bar_chart2" alternativeRowFillVisible="false" horizontalGridLinesVisible="false" layoutX="276.0" layoutY="143.0" prefHeight="251.0" prefWidth="471.0" title="Doanh thu" verticalGridLinesVisible="false">
+                    <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis side="LEFT" />
+                    </yAxis>
+                </BarChart>
+                <JFXComboBox fx:id="comYear" layoutX="182.0" layoutY="109.0" onAction="#setTableView" prefHeight="25.0" prefWidth="208.0" promptText="Năm" />
+            </children>
+        </AnchorPane>
+    </children>
+</StackPane>

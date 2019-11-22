@@ -177,7 +177,7 @@ public class SanPhamController implements Initializable {
             comTinhTrang.getSelectionModel().select("Chưa bán");
         }
         System.out.println(this.product.getTrangThai());
-        if (this.product.getTrangThai().equalsIgnoreCase("Đã bán")) {
+        if (this.product.getTrangThai() != null && this.product.getTrangThai().equalsIgnoreCase("Đã bán")) {
             comIdKhachHang.setVisible(true);
         }
         if (this.product.getNgayTao() != null) {
@@ -248,6 +248,8 @@ public class SanPhamController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setTableView();
+        btnDelete.setDisable(true);
+        btnEdit.setDisable(true);
         clientPagination.setPageFactory(this::setTableView);
         List<String> listProjectId = ProjectService.getAllID();
         ObservableList<String> doiTacData = FXCollections.observableArrayList(listProjectId);
@@ -262,6 +264,42 @@ public class SanPhamController implements Initializable {
                     comIdKhachHang.setVisible(true);
                 } else {
                     comIdKhachHang.setVisible(false);
+                }
+            }
+        });
+        txtDienTich.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                txtDienTich.setText(newValue.replaceAll("[^\\d*|\\d+\\,\\d]", ""));
+                if (!newValue.matches("\\d*|\\d+\\,\\d*") && !newValue.contains(".")) {
+                    txtDienTich.setText(newValue.replaceAll("[^\\d*|\\d+\\,\\d]", ""));
+                    notification.notification("Ký tự nhập không phải là số", "Vui lòng nhập lại", 1);
+                }
+                try {
+                    if (Double.parseDouble(newValue) < 0) {
+                        txtDienTich.setText(newValue.replaceAll(newValue, oldValue));
+                        notification.notification("Số nhập phải lớn hơn 0", "Vui lòng nhập lại", 1);
+                    }
+                } catch (Exception e) {
+                }
+            }
+        });
+        txtGiaTien.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                txtGiaTien.setText(newValue.replaceAll("[^\\d*|\\d+\\,\\d]", ""));
+                if (!newValue.matches("\\d*|\\d+\\,\\d*") && !newValue.contains(".")) {
+                    txtGiaTien.setText(newValue.replaceAll("[^\\d*|\\d+\\,\\d]", ""));
+                    notification.notification("Ký tự nhập không phải là số", "Vui lòng nhập lại", 1);
+                }
+                try {
+                    if (Double.parseDouble(newValue) < 0) {
+                        txtGiaTien.setText(newValue.replaceAll(newValue, oldValue));
+                        notification.notification("Số nhập phải lớn hơn 0", "Vui lòng nhập lại", 1);
+                    }
+                } catch (Exception e) {
                 }
             }
         });

@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class ProjectService {
@@ -110,6 +111,26 @@ public class ProjectService {
         return list;
     }
 
+    public static List<String> getAllYear() {
+        List<String> list = new ArrayList<>();
+        try {
+            ResultSet rs = com.createStatement().executeQuery("select YEAR(NgayBatDau) year from duAN group by YEAR(NgayBatDau)");
+            boolean isValid = false;
+            while (rs.next()) {
+                String year = rs.getString("year");
+                list.add(year);
+                isValid = true;
+            }
+            if (!isValid) {
+                return list;
+            }
+            rs.getStatement().close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return list;
+    }
+    
     public static void deleteByMaProject(String maProject) throws SQLException {
         ProductService.deleteByMaProject(maProject);
         com.createStatement().executeUpdate("DELETE FROM DuAn WHERE (idDuAn = '" + maProject + "')");

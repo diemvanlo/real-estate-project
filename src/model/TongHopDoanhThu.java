@@ -1,8 +1,7 @@
 package model;
 
 public class TongHopDoanhThu {
-    private int Nam;
-    private int SoDuAn;
+    private int idDuAn;
     private int SoSp;
     private double TongDoanhThu;
     private double DoanhThuCaoNhat;
@@ -12,30 +11,12 @@ public class TongHopDoanhThu {
     public TongHopDoanhThu() {
     }
 
-    public TongHopDoanhThu(int nam, int soDuAn, int soSp, double tongDoanhThu, double doanhThuCaoNhat, double doanhThuThapNhat, double doanhThuTB) {
-        Nam = nam;
-        SoDuAn = soDuAn;
-        SoSp = soSp;
-        TongDoanhThu = tongDoanhThu;
-        DoanhThuCaoNhat = doanhThuCaoNhat;
-        DoanhThuThapNhat = doanhThuThapNhat;
-        DoanhThuTB = doanhThuTB;
+    public int getIdDuAn() {
+        return idDuAn;
     }
 
-    public int getNam() {
-        return Nam;
-    }
-
-    public void setNam(int nam) {
-        Nam = nam;
-    }
-
-    public int getSoDuAn() {
-        return SoDuAn;
-    }
-
-    public void setSoDuAn(int soDuAn) {
-        SoDuAn = soDuAn;
+    public void setIdDuAn(int idDuAn) {
+        this.idDuAn = idDuAn;
     }
 
     public int getSoSp() {
@@ -75,6 +56,15 @@ public class TongHopDoanhThu {
     }
 
     public void setDoanhThuTB(double doanhThuTB) {
+        DoanhThuTB = doanhThuTB;
+    }
+
+    public TongHopDoanhThu(int idDuAn, int soSp, double tongDoanhThu, double doanhThuCaoNhat, double doanhThuThapNhat, double doanhThuTB) {
+        this.idDuAn = idDuAn;
+        SoSp = soSp;
+        TongDoanhThu = tongDoanhThu;
+        DoanhThuCaoNhat = doanhThuCaoNhat;
+        DoanhThuThapNhat = doanhThuThapNhat;
         DoanhThuTB = doanhThuTB;
     }
 }

@@ -44,13 +44,13 @@ public class ThongKeService {
         tongHopDoanhThu.setDoanhThuCaoNhat(rs.getDouble("CaoNhat"));
         tongHopDoanhThu.setDoanhThuTB(rs.getDouble("TrungBinh"));
         tongHopDoanhThu.setDoanhThuThapNhat(rs.getDouble("ThapNhat"));
-        tongHopDoanhThu.setNam(rs.getInt("Nam"));
-        tongHopDoanhThu.setSoDuAn(rs.getInt("SoDuAn"));
+//        tongHopDoanhThu.setNam(rs.getInt("Nam"));
+        tongHopDoanhThu.setSoSp(rs.getInt("SoDuAn"));
         tongHopDoanhThu.setSoSp(rs.getInt("SoSP"));
         tongHopDoanhThu.setTongDoanhThu(rs.getDouble("DoanhThu"));
         return tongHopDoanhThu;
     }
-    public List<TongHopDuAn> getduan() {
+    public List<TongHopDuAn> getDuAn() {
         List<TongHopDuAn> list = new ArrayList<>();
         try {
             ResultSet rs = com.createStatement().executeQuery("{call sp_ThongKeDA}");
@@ -70,7 +70,7 @@ public class ThongKeService {
         }
         return list;
     }
-    public List<TongHopDoiTac> getdoitac() {
+    public List<TongHopDoiTac> getDoiTac() {
         List<TongHopDoiTac> list = new ArrayList<>();
         try {
             ResultSet rs = com.createStatement().executeQuery("{call sp_ThongKeDoiTac}");
@@ -90,7 +90,7 @@ public class ThongKeService {
         }
         return list;
     }
-    public List<TongHopDoanhThu> getdoanhthu() {
+    public List<TongHopDoanhThu> getDoanhThu() {
         List<TongHopDoanhThu> list = new ArrayList<>();
         try {
             ResultSet rs = com.createStatement().executeQuery("{call sp_ThongKeDoanhThu}");

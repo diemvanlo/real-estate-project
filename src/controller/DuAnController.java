@@ -355,7 +355,6 @@ public class DuAnController implements Initializable {
                 }
             }
         });
-
         txtBanKinh.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,

@@ -78,7 +78,7 @@ public class MapController extends Application implements MapComponentInitialize
         String infoImg = MarkerImageFactory.createMarkerImage("/sample/res/mymarker2.png", "png");
         Logger.getLogger(getClass().getName()).log(Level.INFO, "InfoImage built as: {0}", infoImg);
         InfoWindowOptions infoOptions = new InfoWindowOptions();
-        infoOptions.content("<h2>Đây là vị trí dự án</h2><p>Tên dự án  " + this.name + "</p><p><img height=50 width=50 src=\"" + "https://fyf.tac-cdn.net/images/products/large/BF116-11KM_R.jpg?auto=webp&quality=60" + "\" /></p>")
+        infoOptions.content("<h2>Đây là vị trí dự án</h2><p>Tên dự án  " + this.name + "</p><p><img height=50 width=50 src=\"" + "https://freshome.com/wp-content/uploads/2018/09/contemporary-exterior.jpg" + "\" /></p>")
                 .position(centre);
         InfoWindow window = new InfoWindow(infoOptions);
         window.open(map, myMarker);
@@ -109,7 +109,7 @@ public class MapController extends Application implements MapComponentInitialize
         String infoImg = MarkerImageFactory.createMarkerImage("/sample/res/mymarker2.png", "png");
         Logger.getLogger(getClass().getName()).log(Level.INFO, "InfoImage built as: {0}", infoImg);
         InfoWindowOptions infoOptions = new InfoWindowOptions();
-        infoOptions.content("<h2>Here's an info window</h2><p>with some info and a picture</p><p><img src=\"" + "https://fyf.tac-cdn.net/images/products/large/BF116-11KM_R.jpg?auto=webp&quality=60" + "\" /></p>")
+        infoOptions.content("<h2>Đây là vị trí dự án</h2><p>Tên dự án  " + this.name + "</p><p><img height=50 width=50 src=\"" + "https://freshome.com/wp-content/uploads/2018/09/contemporary-exterior.jpg" + "\" /></p>")
                 .position(centre);
         InfoWindow window = new InfoWindow(infoOptions);
         window.open(map, myMarker);
