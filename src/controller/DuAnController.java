@@ -1,6 +1,7 @@
 package controller;
 
 import com.jfoenix.controls.*;
+import data.Excel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -111,6 +112,7 @@ public class DuAnController implements Initializable {
 
     @FXML
     private RadioButton rdDone;
+    Excel excel = new Excel();
 
     @FXML
     private RadioButton rdUndone;
@@ -186,7 +188,11 @@ public class DuAnController implements Initializable {
 //            NV = ProjectService.findByMaProject(NV.getIdDuAn());
 //        }
     }
+    public void printIntoExcel() throws IOException {
+        excel.setProjects(this.projectList);
+        excel.writeProjectToFile();
 
+    }
     public void changeStage(ActionEvent actionEvent) throws IOException, SQLException {
         SingleSelectionModel<Tab> selectionModel = tabView.getSelectionModel();
         selectionModel.select(1);
@@ -276,11 +282,6 @@ public class DuAnController implements Initializable {
         Project project = tableView.getSelectionModel().getSelectedItem();
         ProjectService.deleteByMaProject(String.valueOf(project.getIdDuAn()));
         setTableView();
-    }
-
-    public void printIntoExcel() throws IOException {
-//        excel.projects = this.projectList;
-//        excel.printProjectToExcel();
     }
 
     public void creatNew(ActionEvent actionEvent) throws IOException, SQLException {
