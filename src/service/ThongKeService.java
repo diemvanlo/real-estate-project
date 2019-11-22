@@ -4,7 +4,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+import model.TongHopDoanhThu;
+import model.TongHopDoiTac;
+import model.TongHopDuAn;
 public class ThongKeService {
     private static Connection com;
 
@@ -20,19 +22,44 @@ public class ThongKeService {
 
     public ThongKeService() throws SQLException {
     }
-    public List<Object[]> getduan() {
-        List<Object[]> list = new ArrayList<>();
+    public static TongHopDuAn getTongHopDuAnFromResultSet(ResultSet rs) throws SQLException{
+        TongHopDuAn tongHopDuAn = new TongHopDuAn();
+        tongHopDuAn.setDoanhThu(rs.getDouble("DoanhThu"));
+        tongHopDuAn.setNam(rs.getInt("NgayTao"));
+        tongHopDuAn.setSoKH(rs.getInt("SoKH"));
+        tongHopDuAn.setSoNhaDauTu(rs.getInt("SoDT"));
+        tongHopDuAn.setSoSP(rs.getInt("SoSP"));
+        tongHopDuAn.setTenDuAn(rs.getString("DuAn"));
+        return tongHopDuAn;
+    }
+    public static TongHopDoiTac getTongHopDoiTacFromResultSet(ResultSet rs) throws SQLException{
+        TongHopDoiTac tongHopDoiTac = new TongHopDoiTac();
+        tongHopDoiTac.setSoDuAnDaDauTu(rs.getInt("SoDuAnDauTu"));
+        tongHopDoiTac.setSoVonDaDauTu(rs.getDouble("SoVonDaDauTu"));
+        tongHopDoiTac.setTenDoitac(rs.getString("dt"));
+        return tongHopDoiTac;
+    }
+    public static TongHopDoanhThu getTongHopDoanhThuFromResultSet(ResultSet rs) throws SQLException{
+        TongHopDoanhThu tongHopDoanhThu = new TongHopDoanhThu();
+        tongHopDoanhThu.setDoanhThuCaoNhat(rs.getDouble("CaoNhat"));
+        tongHopDoanhThu.setDoanhThuTB(rs.getDouble("TrungBinh"));
+        tongHopDoanhThu.setDoanhThuThapNhat(rs.getDouble("ThapNhat"));
+        tongHopDoanhThu.setNam(rs.getInt("Nam"));
+        tongHopDoanhThu.setSoDuAn(rs.getInt("SoDuAn"));
+        tongHopDoanhThu.setSoSp(rs.getInt("SoSP"));
+        tongHopDoanhThu.setTongDoanhThu(rs.getDouble("DoanhThu"));
+        return tongHopDoanhThu;
+    }
+    public List<TongHopDuAn> getduan() {
+        List<TongHopDuAn> list = new ArrayList<>();
         try {
             ResultSet rs = com.createStatement().executeQuery("{call sp_ThongKeDA}");
             boolean isValid = false;
             while (rs.next()) {
-                Object[] model = {
-                        rs.getInt("SoSP"),
-                        rs.getInt("SoDT"),
-                        rs.getInt("SoKH"),
-                        rs.getFloat("DoanhThu")
-                };
-                list.add(model);
+                TongHopDuAn tongHopDuAn;
+                tongHopDuAn = getTongHopDuAnFromResultSet(rs);
+                list.add(tongHopDuAn);
+                isValid=true;
             }
             if (!isValid) {
                 return list;
@@ -43,17 +70,16 @@ public class ThongKeService {
         }
         return list;
     }
-    public List<Object[]> getdoitac() {
-        List<Object[]> list = new ArrayList<>();
+    public List<TongHopDoiTac> getdoitac() {
+        List<TongHopDoiTac> list = new ArrayList<>();
         try {
             ResultSet rs = com.createStatement().executeQuery("{call sp_ThongKeDoiTac}");
             boolean isValid = false;
             while (rs.next()) {
-                Object[] model = {
-                        rs.getInt("SoDuAnDauTu"),
-                        rs.getInt("SoVonDaDauTu"),
-                };
-                list.add(model);
+               TongHopDoiTac tongHopDoiTac;
+               tongHopDoiTac = getTongHopDoiTacFromResultSet(rs);
+               list.add(tongHopDoiTac);
+               isValid=true;
             }
             if (!isValid) {
                 return list;
@@ -64,22 +90,16 @@ public class ThongKeService {
         }
         return list;
     }
-    public List<Object[]> getdoanhthu() {
-        List<Object[]> list = new ArrayList<>();
+    public List<TongHopDoanhThu> getdoanhthu() {
+        List<TongHopDoanhThu> list = new ArrayList<>();
         try {
             ResultSet rs = com.createStatement().executeQuery("{call sp_ThongKeDoanhThu}");
             boolean isValid = false;
             while (rs.next()) {
-                Object[] model = {
-                        rs.getInt("Nam"),
-                        rs.getInt("SoDuAn"),
-                        rs.getInt("SoSP"),
-                        rs.getFloat("DoanhThu"),
-                        rs.getFloat("CaoNhat"),
-                        rs.getFloat("ThapNhat"),
-                        rs.getFloat("TrungBinh"),
-                };
-                list.add(model);
+                TongHopDoanhThu tongHopDoanhThu;
+                tongHopDoanhThu = getTongHopDoanhThuFromResultSet(rs);
+                list.add(tongHopDoanhThu);
+                isValid=true;
             }
             if (!isValid) {
                 return list;
