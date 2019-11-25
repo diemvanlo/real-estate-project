@@ -57,7 +57,7 @@
                                                 <JFXButton fx:id="btnEdit" layoutX="233.0" layoutY="13.0" onAction="#edit" prefHeight="27.0" prefWidth="78.0" styleClass="cancel-button" text="Edit" />
                                                 <JFXButton fx:id="btnDelete" layoutX="343.0" layoutY="12.0" onAction="#deleteItem" prefHeight="37.0" prefWidth="100.0" styleClass="red-btn" text="Delete" />
                                                 <JFXButton fx:id="btnAdd" layoutX="126.0" layoutY="13.0" onAction="#creatNew" prefHeight="34.0" prefWidth="98.0" styleClass="blue-btn" text="New" />
-                                                <JFXButton fx:id="btnin" layoutX="460.0" layoutY="12.0" prefHeight="37.0" prefWidth="100.0" styleClass="green-btn" text="In excel" />
+                                                <JFXButton fx:id="btnin" layoutX="460.0" layoutY="12.0" onAction="#printtoExecl" prefHeight="37.0" prefWidth="100.0" styleClass="green-btn" text="In excel" />
                                             </children>
                                         </AnchorPane>
                                     </items>

@@ -1,6 +1,7 @@
 package controller;
 
 import com.jfoenix.controls.*;
+import data.Excel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -29,7 +30,7 @@ import java.util.stream.Collectors;
 public class SanPhamController implements Initializable {
     @FXML
     JFXTextField clientSearchTextFieldd;
-
+    public Product product = new Product();
     List<Product> productList = new ArrayList<>();
     @FXML
     private TableView<Product> tableView;
@@ -87,7 +88,7 @@ public class SanPhamController implements Initializable {
     private JFXComboBox comIdKhachHang;
     @FXML
     JFXTabPane tabView;
-    private Product product;
+    Excel excel = new Excel();
 
     Notification notification = new Notification();
 
@@ -112,7 +113,10 @@ public class SanPhamController implements Initializable {
             setTableView(0);
         }
     }
-
+    public void printIntoExecl() throws IOException{
+        excel.setProducts(this.productList);
+        excel.writeProductToFile();
+    }
     private Node setTableView(Integer integer) {
         setTableView();
         int fromIndex = integer * 10;

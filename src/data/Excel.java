@@ -75,11 +75,11 @@ public class Excel {
     }
 
     public void writeProductToFile() throws IOException {
-        File pathName = new File("src/data/Project.txt");
+            File pathName = new File("src/data/data.txt");
         String sProduct;
         try {
             FileWriter wf = new FileWriter(pathName);
-            String title = "Id Dự án|idDuAn|idDuAn|idDuAn|idDuAn|idDuAn|idDuAn|idDuAn|idDuAn|idDuAn|idDuAn|idDuAn|";
+            String title = "Id sản phẩm|Tên sản phẩm|idDuAn|Địa chỉ|Diện tích|Giá tiền|Mô tả|Ngày tạo|Ngày bán|Tiến độ|Trạng thái|ID khách hàng|";
             wf.write(title + "\n");
             for (Product e : products
             ) {
@@ -92,35 +92,35 @@ public class Excel {
             wf.close();
         } catch (Exception e) {
         }
-        Runtime.getRuntime().exec("src/data/printProjectExcel.exe", null, new File("src/data/"));
+        Runtime.getRuntime().exec("src/data/printExcel.exe", null, new File("src/data/"));
     }
 
     public void writeKhachHangToFile() throws IOException {
-        File pathName = new File("src/data/Project.txt");
+        File pathName = new File("src/data/data.txt");
         String sKhachHang;
         try {
             FileWriter wf = new FileWriter(pathName);
-            String title = "Id Dự án|idDuAn|idDuAn|idDuAn|idDuAn|idDuAn|idDuAn|idDuAn|idDuAn|idDuAn|idDuAn|idDuAn|";
+            String title = "Id |Tên khách hàng|Giới tính|Số điện thoại|Email|Địa chỉ|";
             wf.write(title + "\n");
             for (KhachHang e : khachHangs
             ) {
                 sKhachHang = e.getIdKhachHang() + "|" + e.getTenKhachHang() + "|" + e.getGioiTinh() + "|" + e.getSdt() + "|" +
-                        e.getEmail() + "|" + e.getSdt()
+                        e.getEmail() + "|" + e.getDiaChi()
                 ;
                 wf.write(sKhachHang + "\n");
             }
             wf.close();
         } catch (Exception e) {
         }
-        Runtime.getRuntime().exec("src/data/printProjectExcel.exe", null, new File("src/data/"));
+        Runtime.getRuntime().exec("src/data/printExcel.exe", null, new File("src/data/"));
     }
 
     public void writeDoiTacToFile() throws IOException {
-        File pathName = new File("src/data/Project.txt");
+        File pathName = new File("src/data/data.txt");
         String sDoiTac;
         try {
             FileWriter wf = new FileWriter(pathName);
-            String title = "Id Dự án|idDuAn|idDuAn|idDuAn|idDuAn|idDuAn|idDuAn|idDuAn|idDuAn|idDuAn|idDuAn|idDuAn|";
+            String title = "Id |Tên đối tác|Lĩnh vực|Địa chỉ|Số điện thoại|Email|Số vốn đầu tư|";
             wf.write(title + "\n");
             for (DoiTac e : doiTacs
             ) {
@@ -132,7 +132,7 @@ public class Excel {
             wf.close();
         } catch (Exception e) {
         }
-        Runtime.getRuntime().exec("src/data/printProjectExcel.exe", null, new File("src/data/"));
+        Runtime.getRuntime().exec("src/data/printExcel.exe", null, new File("src/data/"));
     }
 
 }

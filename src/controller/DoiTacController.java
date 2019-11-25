@@ -1,6 +1,7 @@
 package controller;
 
 import com.jfoenix.controls.*;
+import data.Excel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -81,6 +82,7 @@ public class DoiTacController implements Initializable {
     InputStream inputStream;
     File file;
     final FileChooser fileChooser = new FileChooser();
+    Excel excel = new Excel();
     @FXML
     ImageView imageView;
     String EMAIL_REGEX = "^(.+)@(.+)$";
@@ -213,6 +215,8 @@ public class DoiTacController implements Initializable {
     }
 
     public void printIntoExcel() throws IOException {
+        excel.setDoiTacs(this.doiTacList);
+        excel.writeDoiTacToFile();
     }
 
     public void creatNew(ActionEvent actionEvent) throws IOException, SQLException {

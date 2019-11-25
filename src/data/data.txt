@@ -1,4 +1,4 @@
-Id Dự án|Tên dự án|Loại hình|Địa chỉ|Diện tích|Chi phí dự án|Ngày bắt đầu|Ngày kết thúc|Hình thức quản lý|Hình thức đầu tư|Id đối tác|Trạng thái|Vị trí X|Vị trí Y|Bán kính
-0|Nguyeen thong|Khu nghỉ dưỡng ven biển| 666|4.5E7|3447.0|2019-11-18|2021-11-18|Đất nền|Cùng xây dựng|7|ĐÃ ĐỦ VỐN|16.0660474|108.2282656|4.4E7
-1|Vu lang|Đất nền| 666|457.0|34470.0|2019-11-21|2021-11-27|Đất nền|Cùng xây dựng|7|ĐÃ ĐỦ VỐN|16.0247701|108.1836957|447.0
-2|song hong| Đất nền| 66|455.0|566.0|2020-03-25|2021-11-22|Bán nhà ở|Góp vốn|7|ĐÃ ĐỦ VỐN|16.0185825|108.1710981|56.0
+Id |Tên đối tác|Lĩnh vực|Địa chỉ|Số điện thoại|Email|Số vốn đầu tư|
+0|Cty ABC|Xây Dựng|Quảng Nam|0325111222|abc@gmail.com|455465.0
+1|Cty BDS|Bất Động Sản|Quảng Ngãi|0326777988|dda@gmail.com|78826.0
+2|Cty ABC|Xây dựng|Quảng Nam|0912121212|abc@gmail.com|4554650.0

@@ -1,6 +1,7 @@
 package controller;
 
 import com.jfoenix.controls.*;
+import data.Excel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -79,7 +80,7 @@ public class KhachHangController implements Initializable {
 
     @FXML
     private RadioButton rdNu;
-
+    Excel excel = new Excel();
     String EMAIL_REGEX = "^(.+)@(.+)$";
     String PHONE_REGEX = "^[0]+[9,12,16,18,19]+[0-9]{8}$";
     Pattern emailPattern = Pattern.compile(EMAIL_REGEX);
@@ -158,7 +159,10 @@ public class KhachHangController implements Initializable {
             rdNu.setSelected(true);
         }
     }
-
+    public void printtoExecl() throws IOException{
+        excel.setKhachHangs(this.khachHangList);
+        excel.writeKhachHangToFile();
+    }
     public void onSave(ActionEvent actionEvent) throws SQLException, FileNotFoundException {
         matcher = emailPattern.matcher(txtEmail.getText());
         if (!matcher.matches()) {
