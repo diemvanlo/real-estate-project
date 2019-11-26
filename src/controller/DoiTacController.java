@@ -85,6 +85,7 @@ public class DoiTacController implements Initializable {
     Excel excel = new Excel();
     @FXML
     ImageView imageView;
+
     String EMAIL_REGEX = "^(.+)@(.+)$";
     String PHONE_REGEX = "^[0]+[9,12,16,18,19]+[0-9]{8}$";
     Pattern emailPattern = Pattern.compile(EMAIL_REGEX);
@@ -100,7 +101,7 @@ public class DoiTacController implements Initializable {
 
     @FXML
     public void filter() {
-        String search = clientSearchTextField.getText();
+       String search = clientSearchTextField.getText();
         System.out.println(search);
         setTableView();
         List<DoiTac> result;
@@ -257,6 +258,7 @@ public class DoiTacController implements Initializable {
         });
     }
 
+    @FXML
     public void uploadImage(ActionEvent actionEvent) {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         file = fileChooser.showOpenDialog(stage);

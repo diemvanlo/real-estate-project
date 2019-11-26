@@ -41,6 +41,8 @@ public class DrawerController implements Initializable {
     @FXML
     private JFXButton khachHanhBtn;
     @FXML
+    private JFXButton updateAnhBtn;
+    @FXML
     private JFXButton logoutBtn;
     @FXML
     private JFXButton exitBtn;

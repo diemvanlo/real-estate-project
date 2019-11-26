@@ -149,7 +149,7 @@ AS BEGIN
 		MIN(sp.GiaTien) ThapNhat,
 		AVG(sp.GiaTien) TrungBinh
 	FROM DuAn da
-		JOIN SanPham sp ON da.IdDuAn=sp.IdSanPham
+		JOIN SanPham sp ON da.IdDuAn=sp.IdDuAn
 		
 	WHERE YEAR(NgayTao) = @Year
 	GROUP BY NgayTao
