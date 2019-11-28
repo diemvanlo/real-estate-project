@@ -12,8 +12,8 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.imageUpload.Image?>
+<?import javafx.scene.imageUpload.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -29,9 +29,9 @@
                       style="-fx-background-color: #00A0F3;">
                     <children>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
+                            <imageUpload>
                                 <Image url="@../imgs/appoint.png"/>
-                            </image>
+                            </imageUpload>
                         </ImageView>
                         <Label prefHeight="20.0" prefWidth="233.0"
                                style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 17px;"
@@ -113,9 +113,9 @@
                       style="-fx-background-color: #00A65A;">
                     <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
+                            <imageUpload>
                                 <Image url="@../imgs/add.png"/>
-                            </image>
+                            </imageUpload>
                         </ImageView>
                         <Label prefHeight="20.0" prefWidth="233.0"
                                style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 17px;"

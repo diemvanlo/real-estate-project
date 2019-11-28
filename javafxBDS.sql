@@ -32,8 +32,6 @@ insert into KhachHang(TenKhachHang,GioiTinh,DiaChi,Sdt,Email) values
 (N'Nguyễn Văn A','true',N'Quảng trị','0327772999','Vana@gmail.com'),
 (N'Nguyễn Văn B','true',N'Quảng Bình','0566778998','Basd@gmail.com');
 
-
-
 create table DoiTac(
 IdDoiTac int identity(0,1) primary key not  null,
 TenDoiTac nvarchar(30) not null,
@@ -47,6 +45,13 @@ SoVonDaDauTu float,
 insert into DoiTac(TenDoiTac,LinhVuc,DiaChi,Sdt,Email,SoVonDaDauTu) values
 (N'Cty ABC',N'Xây Dựng',N'Quảng Nam','0325111222','abc@gmail.com',455465),
 (N'Cty BDS',N'Bất Động Sản',N'Quảng Ngãi','0326777988','dda@gmail.com',78826);
+
+create table Image(
+idImage int identity(0,1) primary key not  null,
+IdSanPham nvarchar(30) not null,
+ImageMode nvarchar(30) ,
+Image Varbinary(max)  ,
+)
 
 create table DuAn(
 IdDuAn int identity(0,1) primary key not null,
@@ -149,7 +154,7 @@ AS BEGIN
 		MIN(sp.GiaTien) ThapNhat,
 		AVG(sp.GiaTien) TrungBinh
 	FROM DuAn da
-		JOIN SanPham sp ON da.IdDuAn=sp.IdSanPham
+		JOIN SanPham sp ON da.IdDuAn=sp.IdDuAn
 		
 	WHERE YEAR(NgayTao) = @Year
 	GROUP BY NgayTao

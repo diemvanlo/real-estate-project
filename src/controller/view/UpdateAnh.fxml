@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="684.0" prefWidth="1105.0" stylesheets="@../assets/styles/styles.css"
+            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.UpdateAnh">
+    <children>
+        <JFXTabPane fx:id="tabView" layoutX="14.0" layoutY="14.0" prefHeight="658.0" prefWidth="1080.0">
+            <tabs>
+                <Tab text="Danh sách hình ảnh">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <SplitPane orientation="VERTICAL" prefHeight="649.0" prefWidth="1105.0">
+                                    <items>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0"
+                                                    prefWidth="1103.0">
+                                            <children>
+                                                <TableView fx:id="tableView" layoutX="14.0" layoutY="72.0"
+                                                           onMouseClicked="#selectItem" prefHeight="532.0"
+                                                           prefWidth="991.0">
+                                                    <columns>
+                                                        <TableColumn fx:id="colID" editable="false" prefWidth="118.0"
+                                                                     text="ID"/>
+                                                        <TableColumn fx:id="colCheDo" editable="false" minWidth="0.0"
+                                                                     prefWidth="199.0" sortable="false" text="Chế độ"/>
+                                                        <TableColumn fx:id="colHinhAnh" editable="false" minWidth="0.0"
+                                                                     prefWidth="538.0" sortable="false"
+                                                                     text="Hình ảnh"/>
+                                                        <TableColumn fx:id="colIdSanPham" editable="false"
+                                                                     minWidth="0.0" prefWidth="134.0" sortable="false"
+                                                                     text="ID sản phẩm"/>
+                                                    </columns>
+                                                    <effect>
+                                                        <GaussianBlur/>
+                                                    </effect>
+                                                </TableView>
+                                                <Pagination fx:id="clientPagination" layoutX="5.0" layoutY="56.0"
+                                                            maxPageIndicatorCount="5" pageCount="7" prefHeight="569.0"
+                                                            prefWidth="1041.0">
+                                                    <cursor>
+                                                        <Cursor fx:constant="HAND"/>
+                                                    </cursor>
+                                                </Pagination>
+                                                <JFXTextField fx:id="clientSearchTextField" layoutX="744.0"
+                                                              layoutY="15.0" onKeyReleased="#filter" prefHeight="30.0"
+                                                              prefWidth="302.0" promptText="Tìm kiếm thông tin hình ảnh"
+                                                              style="-fx-border-width: 0;" styleClass="search-box"/>
+                                                <JFXButton fx:id="btnEdit" layoutX="233.0" layoutY="13.0"
+                                                           prefHeight="27.0" prefWidth="78.0" styleClass="cancel-button"
+                                                           text="Edit"/>
+                                                <JFXButton fx:id="btnDelete" layoutX="343.0" layoutY="12.0"
+                                                           onAction="#deleteItem" prefHeight="37.0" prefWidth="100.0"
+                                                           styleClass="red-btn" text="Delete"/>
+                                                <JFXButton fx:id="btnAdd" layoutX="126.0" layoutY="13.0"
+                                                           prefHeight="34.0" prefWidth="98.0"
+                                                           styleClass="blue-btn" text="New"/>
+                                                <JFXButton fx:id="btnin" layoutX="460.0" layoutY="12.0"
+                                                           onAction="#printIntoExcel" prefHeight="37.0"
+                                                           prefWidth="100.0" styleClass="green-btn" text="In excel"/>
+                                                <JFXButton layoutX="573.0" layoutY="12.0" prefHeight="37.0"
+                                                           prefWidth="100.0" style="-fx-background-color: #e0852a;"
+                                                           styleClass="green-btn" text="Reload"/>
+                                            </children>
+                                        </AnchorPane>
+                                    </items>
+                                </SplitPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Thông tin">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <HBox prefHeight="135.0" prefWidth="1068.0" spacing="30.0">
+                                    <children>
+                                        <AnchorPane prefHeight="110.0" prefWidth="393.0"
+                                                    style="-fx-background-color: #00ADD8;" styleClass="card-unpadded">
+                                            <children>
+                                                <Pane layoutX="-1.0" prefHeight="141.0" prefWidth="23.0"
+                                                      style="-fx-background-color: #007390;"/>
+                                                <ImageView fitHeight="97.0" fitWidth="124.0" layoutX="33.0"
+                                                           layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../../sample/hopital/imgs/doctor.png"/>
+                                                    </image>
+                                                </ImageView>
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane prefHeight="166.0" prefWidth="393.0"
+                                                    style="-fx-background-color: #DD4B39;" styleClass="card-unpadded">
+                                            <children>
+                                                <Pane layoutX="-1.0" prefHeight="166.0" prefWidth="23.0"
+                                                      style="-fx-background-color: #C74433;"/>
+                                                <ImageView fitHeight="125.0" fitWidth="124.0" layoutX="33.0"
+                                                           layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../../sample/hopital/imgs/Appointment.png"/>
+                                                    </image>
+                                                </ImageView>
+
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane prefHeight="157.0" prefWidth="205.0"
+                                                    style="-fx-background-color: #F39C12;" styleClass="card">
+                                            <children>
+                                                <VBox layoutX="14.0" layoutY="14.0" prefHeight="85.0" prefWidth="159.0">
+                                                    <children>
+
+                                                    </children>
+                                                </VBox>
+                                                <ImageView fitHeight="31.0" fitWidth="50.0" layoutX="143.0"
+                                                           layoutY="102.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../../sample/hopital/imgs/Copyright.png"/>
+                                                    </image>
+                                                </ImageView>
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <HBox layoutX="23.0" layoutY="33.0" prefHeight="135.0" prefWidth="1068.0"
+                                      spacing="30.0">
+                                    <children>
+                                        <AnchorPane prefHeight="110.0" prefWidth="393.0"
+                                                    style="-fx-background-color: #00ADD8;" styleClass="card-unpadded">
+                                            <children>
+                                                <Pane layoutX="-1.0" prefHeight="141.0" prefWidth="23.0"
+                                                      style="-fx-background-color: #007390;"/>
+                                                <ImageView fx:id="imageView" fitHeight="149.0" fitWidth="149.0"
+                                                           layoutX="33.0" layoutY="9.0" pickOnBounds="true"
+                                                           preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../../sample/hopital/imgs/doctor.png"/>
+                                                    </image>
+                                                </ImageView>
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane prefHeight="166.0" prefWidth="393.0"
+                                                    style="-fx-background-color: #DD4B39;" styleClass="card-unpadded">
+                                            <children>
+                                                <Pane layoutX="-1.0" prefHeight="166.0" prefWidth="23.0"
+                                                      style="-fx-background-color: #C74433;"/>
+                                                <ImageView fitHeight="125.0" fitWidth="124.0" layoutX="33.0"
+                                                           layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../../sample/hopital/imgs/Appointment.png"/>
+                                                    </image>
+                                                </ImageView>
+                                                <JFXButton layoutX="186.0" layoutY="46.0" prefHeight="44.0"
+                                                           prefWidth="137.0" styleClass="blue-btn" text="Upload ảnh"/>
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                </HBox>
+                                <AnchorPane layoutX="23.0" layoutY="224.0" prefHeight="413.0" prefWidth="1057.0"
+                                            styleClass="card-unpadded">
+                                    <children>
+                                        <VBox layoutX="201.0" layoutY="14.0" prefHeight="380.0" prefWidth="575.0"
+                                              spacing="10.0">
+                                            <children>
+                                                <JFXTextField fx:id="txtCheDo" focusColor="#00add8" labelFloat="true"
+                                                              prefHeight="36.0" prefWidth="654.0" promptText="Chế độ"
+                                                              unFocusColor="#868282">
+                                                    <VBox.margin>
+                                                        <Insets right="30.0" top="10.0"/>
+                                                    </VBox.margin>
+                                                </JFXTextField>
+                                                <HBox prefHeight="44.0" prefWidth="555.0">
+                                                    <children>
+                                                        <Label text="ID sản phẩm ">
+                                                            <HBox.margin>
+                                                                <Insets top="12.0"/>
+                                                            </HBox.margin>
+                                                        </Label>
+                                                        <JFXComboBox prefHeight="40.0" prefWidth="383.0">
+                                                            <HBox.margin>
+                                                                <Insets left="10.0"/>
+                                                            </HBox.margin>
+                                                        </JFXComboBox>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets top="10.0"/>
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <Separator prefWidth="200.0"/>
+                                                <HBox prefHeight="56.0" prefWidth="555.0">
+                                                    <children>
+                                                        <JFXButton onAction="#onCancel" styleClass="cancel-button"
+                                                                   text="Cancel">
+                                                            <HBox.margin>
+                                                                <Insets left="20.0" right="180.0"/>
+                                                            </HBox.margin>
+                                                        </JFXButton>
+                                                        <JFXButton onAction="#onSave" prefHeight="37.0"
+                                                                   prefWidth="100.0" styleClass="blue-btn" text="Save"/>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets top="10.0"/>
+                                                    </VBox.margin>
+                                                </HBox>
+                                            </children>
+                                            <padding>
+                                                <Insets left="20.0" top="10.0"/>
+                                            </padding>
+                                        </VBox>
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </JFXTabPane>
+    </children>
+</AnchorPane>
