@@ -25,8 +25,9 @@ public class DashBoardController {
         changeStage(actionEvent, "controller/view/DoanhThuTheoNam.fxml");
     }
 
-    public void toIncomeTable(ActionEvent actionEvent) throws IOException, SQLException {
-        changeStage(actionEvent, "views/Income.fxml");
+    public void toDoanhThuCacNamTable(ActionEvent actionEvent) throws IOException, SQLException {
+        changeStage(actionEvent, "view/DoanhThuCacNam.fxml");
+        //changeStage(actionEvent, "controller/view/DoanhThuCacNam.fxml");
     }
 
     public void toTongHopDiemTable(ActionEvent actionEvent) throws IOException, SQLException {
