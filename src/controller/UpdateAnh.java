@@ -14,8 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import model.DoiTac;
-import model.Image;
+import model.ImageUpload;
 import service.ImageService;
 import service.Notification;
 import service.PaginatedList;
@@ -37,20 +36,20 @@ public class UpdateAnh implements Initializable {
     @FXML
     JFXTextField txtIdSP;
 
-    public Image image = new Image();
-    List<Image> imageList = new ArrayList<>();
+    public ImageUpload imageUpload = new ImageUpload();
+    List<ImageUpload> imageUploadList = new ArrayList<>();
 
     @FXML
-    private TableView<Image> tableView;
+    private TableView<ImageUpload> tableView;
     @FXML
-    private TableColumn<Image, String> colID;
+    private TableColumn<ImageUpload, String> colID;
     @FXML
-    private TableColumn<Image, String> colCheDo;
+    private TableColumn<ImageUpload, String> colCheDo;
     @FXML
-    private TableColumn<Image, String> colHinhAnh;
+    private TableColumn<ImageUpload, String> colHinhAnh;
     @FXML
-    private TableColumn<Image, String> colIdSanPham;
-    private ObservableList<Image> images = FXCollections.observableArrayList();
+    private TableColumn<ImageUpload, String> colIdSanPham;
+    private ObservableList<ImageUpload> imageUploads = FXCollections.observableArrayList();
     @FXML
     private JFXButton btnEdit;
     @FXML
@@ -59,7 +58,7 @@ public class UpdateAnh implements Initializable {
     private JFXButton btnAdd;
     @FXML
     Pagination clientPagination;
-    PaginatedList<Image> pagingList;
+    PaginatedList<ImageUpload> pagingList;
     @FXML
     JFXTabPane tabView;
     Notification notification = new Notification();
@@ -75,14 +74,14 @@ public class UpdateAnh implements Initializable {
         java.lang.String search = clientSearchTextField.getText();
         System.out.println(search);
         setTableView();
-        List<Image> result;
-        result = images.stream()
+        List<ImageUpload> result;
+        result = imageUploads.stream()
                 .filter(item -> String.valueOf(item.getIdImager()).contains(search)
                         || item.getRegimeImager().contains(search)
                         || (item.getIdSanPham() == Integer.parseInt(search)))
                 .collect(Collectors.toList());
-        images = FXCollections.observableList(result);
-        tableView.setItems(images);
+        imageUploads = FXCollections.observableList(result);
+        tableView.setItems(imageUploads);
         if (clientSearchTextField.getText().isEmpty()) {
             setTableView(0);
         }
@@ -91,9 +90,9 @@ public class UpdateAnh implements Initializable {
     private Node setTableView(Integer integer) {
         setTableView();
         int fromIndex = integer * 10;
-        int toIndex = Math.min(fromIndex + 10, images.size());
-        ObservableList<Image> doiTacObservableArray = FXCollections.observableArrayList(images.subList(fromIndex, toIndex));
-        tableView.setItems(images);
+        int toIndex = Math.min(fromIndex + 10, imageUploads.size());
+        ObservableList<ImageUpload> doiTacObservableArray = FXCollections.observableArrayList(imageUploads.subList(fromIndex, toIndex));
+        tableView.setItems(imageUploads);
         return tableView;
     }
 
@@ -101,17 +100,17 @@ public class UpdateAnh implements Initializable {
         btnDelete.setDisable(true);
         btnEdit.setDisable(true);
         tableView.getItems().clear();
-        imageList.clear();
-        imageList = ImageService.getAll();
-        pagingList = new PaginatedList<>(imageList);
+        imageUploadList.clear();
+        imageUploadList = ImageService.getAll();
+        pagingList = new PaginatedList<>(imageUploadList);
         clientPagination.setPageCount(pagingList.listOfPages.size());
-        images = FXCollections.observableList(imageList);
+        imageUploads = FXCollections.observableList(imageUploadList);
         colID.setCellValueFactory(new PropertyValueFactory<>("idImager"));
         colCheDo.setCellValueFactory(new PropertyValueFactory<>("image"));
         colHinhAnh.setCellValueFactory(new PropertyValueFactory<>("regimeImager"));
         colIdSanPham.setCellValueFactory(new PropertyValueFactory<>("idSanPham"));
 
-        tableView.setItems(images);
+        tableView.setItems(imageUploads);
         return tableView;
     }
 
@@ -121,12 +120,12 @@ public class UpdateAnh implements Initializable {
     }
 
     public void changeStage(ActionEvent actionEvent) throws IOException, SQLException {
-        this.image = ImageService.findByMaImage(this.image.getIdImager());
+        this.imageUpload = ImageService.findByMaImage(this.imageUpload.getIdImager());
         OutputStream os = new FileOutputStream(new File("photo.jpg"));
         byte[] content = new byte[1024];
         int size = 0;
-        if (this.image.getImage() != null) {
-            inputStream = this.image.getImage();
+        if (this.imageUpload.getImage() != null) {
+            inputStream = this.imageUpload.getImage();
             while ((size = inputStream.read(content)) != -1) {
                 os.write(content, 0, size);
             }
@@ -134,27 +133,27 @@ public class UpdateAnh implements Initializable {
         imageView.setImage(new javafx.scene.image.Image("file:photo.jpg", 400, 550, true, true));
         SingleSelectionModel<Tab> selectionModel = tabView.getSelectionModel();
         selectionModel.select(1);
-        txtCheDo.setText(this.image.getRegimeImager());
-        txtIdSP.setText(Integer.valueOf(this.image.getIdSanPham()).toString());
+        txtCheDo.setText(this.imageUpload.getRegimeImager());
+        txtIdSP.setText(Integer.valueOf(this.imageUpload.getIdSanPham()).toString());
 
     }
 
     public void onSave() throws SQLException, IOException {
-        ImageService.save(image, this.file);
+        ImageService.save(imageUpload, this.file);
         notification.notification("Save thành công", "Đã lưu vào database", 0);
         setTableView();
     }
 
     @FXML
     public void edit(ActionEvent actionEvent) throws IOException, SQLException {
-        this.image = tableView.getSelectionModel().getSelectedItem();
+        this.imageUpload = tableView.getSelectionModel().getSelectedItem();
 
         changeStage(actionEvent);
     }
 
     public void deleteItem() throws SQLException {
-        Image image = tableView.getSelectionModel().getSelectedItem();
-        ImageService.deleteByMaImage(String.valueOf(image.getIdImager()));
+        ImageUpload imageUpload = tableView.getSelectionModel().getSelectedItem();
+        ImageService.deleteByMaImage(String.valueOf(imageUpload.getIdImager()));
         setTableView();
     }
 
@@ -162,7 +161,7 @@ public class UpdateAnh implements Initializable {
     }
 
     public void createNew(ActionEvent actionEvent) throws IOException, SQLException {
-        this.image = new Image();
+        this.imageUpload = new ImageUpload();
         changeStage(actionEvent);
     }
 
@@ -170,7 +169,7 @@ public class UpdateAnh implements Initializable {
     public void onCancel() {
         SingleSelectionModel<Tab> selectionModel = tabView.getSelectionModel();
         selectionModel.select(0);
-        this.image = new Image();
+        this.imageUpload = new ImageUpload();
     }
 
 

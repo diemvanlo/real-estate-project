@@ -1,14 +1,15 @@
 package service;
 
 
-import model.Image;
+import model.DoiTac;
+import model.ImageUpload;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,45 +27,49 @@ public class ImageService {
 
     private Notification notification = new Notification();
 
-    public static Image getImageFromResultSet(ResultSet rs) throws SQLException {
-        Image image = new Image();
-        image.setIdImager(rs.getInt("IdHinhAnh"));
-        image.setImage(rs.getBinaryStream("HinhAnh"));
-        image.setRegimeImager(rs.getString("CheDo"));
-        image.setIdSanPham(rs.getInt("IdSanPham"));
-        return image;
+    public static ImageUpload getImageFromResultSet(ResultSet rs) throws SQLException {
+        ImageUpload imageUpload = new ImageUpload();
+        byte[] bytes = rs.getBytes("Image");
+        if (bytes != null) {
+            InputStream targetStream = new ByteArrayInputStream(bytes);
+            imageUpload.setImage(targetStream);
+        }
+        imageUpload.setIdImager(rs.getInt("idImage"));
+        imageUpload.setRegimeImager(rs.getString("ImageMode"));
+        imageUpload.setIdSanPham(rs.getInt("IdSanPham"));
+        return imageUpload;
     }
 
-    public static Image findByMaImage(int IdImage) {
-        Image image = new Image();
+    public static ImageUpload findByMaImage(int IdImage) {
+        ImageUpload imageUpload = new ImageUpload();
         try {
             ResultSet rs = com.createStatement().executeQuery("select * from image");
             boolean isValid = false;
             while (rs.next()) {
-                if (rs.getInt("IdHinhAnh") == IdImage) {
+                if (rs.getInt("idImage") == IdImage) {
                     isValid = true;
-                    image = getImageFromResultSet(rs);
+                    imageUpload = getImageFromResultSet(rs);
                 }
             }
             if (!isValid) {
-                return image;
+                return imageUpload;
             }
             rs.getStatement().close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return image;
+        return imageUpload;
     }
 
-    public static List<Image> getAll() {
-        List<Image> list = new ArrayList<>();
+    public static List<ImageUpload> getAll() {
+        List<ImageUpload> list = new ArrayList<>();
         try {
             ResultSet rs = com.createStatement().executeQuery("select * from image");
             boolean isValid = false;
             while (rs.next()) {
-                Image image;
-                image = getImageFromResultSet(rs);
-                list.add(image);
+                ImageUpload imageUpload;
+                imageUpload = getImageFromResultSet(rs);
+                list.add(imageUpload);
                 isValid = true;
             }
             if (!isValid) {
@@ -78,28 +83,45 @@ public class ImageService {
     }
 
     public static void deleteByMaImage(String IdImage) throws SQLException {
-        com.createStatement().executeUpdate("DELETE FROM [javafx].[image] WHERE ('IdSanPham' = '" + IdImage + "')");
+        com.createStatement().executeUpdate("DELETE FROM image WHERE (idImage = '" + IdImage + "')");
     }
 
-    public static void save(Image image, File file) throws SQLException, FileNotFoundException {
-        Image imageExist = findByMaImage(image.getIdImager());
-        if (imageExist.getIdImager() != 0) {
-            PreparedStatement pst = com.prepareStatement("UPDATE [javafx].[image] SET 'HinhAnh' = '" + image.getImage() +
-                    "', 'IdHinhAnh' = '" + image.getIdImager() +
-                    "', 'HinhAnh' = '" + image.getImage() +
-                    "', 'CheDo' = '" + image.getRegimeImager() +
-                    "', 'IdSanPham' = '" + image.getIdSanPham() +
-                    "')");
-            pst.execute();
+    public static void save(ImageUpload imageUpload, File file) throws SQLException, IOException {
+        ImageUpload imageUploadExist = findByMaImage(imageUpload.getIdImager());
+        if (imageUploadExist.getIdImager() != 0) {
+            if (file != null) {
+                PreparedStatement pst = com.prepareStatement("UPDATE image SET IdSanPham = '" + imageUpload.getImage() +
+                        "', ImageMode = '" + imageUpload.getIdImager() +
+                        "', Image = ? where idImage = " + imageUpload.getIdImager());
+                InputStream inputStream = new FileInputStream(file);
+                pst.setBinaryStream(1, inputStream, (int) file.length());
+                pst.execute();
+            } else {
+                PreparedStatement pst = com.prepareStatement("UPDATE image SET IdSanPham = ?," +
+                        "ImageMode = ?," +
+                        " where IDDoiTac = ?");
+                pst.setInt(1, imageUpload.getIdSanPham());
+                pst.setString(2, imageUpload.getRegimeImager());
+                pst.execute();
+            }
         } else {
-            PreparedStatement pst = com.prepareStatement(
-                    "INSERT INTO [javafx].[image] ('IdHinhAnh', 'HinhAnh', 'CheDo', 'IdSanPham') VALUES ('" +
-                            image.getIdImager() + "', '" +
-                            image.getImage() + "',' " +
-                            image.getRegimeImager() + "',' " +
-                            image.getIdSanPham() + "','" +
-                            "')");
-            pst.execute();
+            if (file == null) {
+                DecimalFormat df = new DecimalFormat("###");
+                PreparedStatement pst = com.prepareStatement(
+                        "INSERT INTO image ( IdSanPham, ImageMode) VALUES (?,?)");
+                pst.setInt(1, imageUpload.getIdSanPham());
+                pst.setString(2, imageUpload.getRegimeImager());
+                pst.execute();
+            } else {
+                InputStream inputStream = new FileInputStream(file);
+                PreparedStatement pst = com.prepareStatement(
+                        "INSERT INTO image ( IdSanPham, ImageMode ,Image ) VALUES (?,?,?)");
+                pst.setInt(1, imageUpload.getIdSanPham());
+                pst.setString(2, imageUpload.getRegimeImager());
+                pst.setBinaryStream(3, inputStream, (int) file.length());
+                pst.execute();
+                inputStream.close();
+            }
         }
     }
 }

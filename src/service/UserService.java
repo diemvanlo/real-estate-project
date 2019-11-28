@@ -71,6 +71,7 @@ public class UserService {
                 if (rs.getString("UserName").equalsIgnoreCase(UserName)) {
                     isValid = true;
                     user = getUserFromResultSet(rs);
+                    return user;
                 }
             }
             if (!isValid) {
