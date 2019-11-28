@@ -68,9 +68,12 @@ public class UserService {
             ResultSet rs = com.createStatement().executeQuery("select * from Userr ");
             boolean isValid = false;
             while (rs.next()) {
+                System.out.println(rs.getString("UserName"));
+                System.out.println(UserName);
                 if (rs.getString("UserName").equalsIgnoreCase(UserName)) {
                     isValid = true;
                     user = getUserFromResultSet(rs);
+                    return user;
                 }
             }
             if (!isValid) {
@@ -112,9 +115,8 @@ public class UserService {
     public static void save(User user) throws SQLException, FileNotFoundException {
         User userExist = findByMaUser(user.getIdUser());
         if (userExist.getIdUser() != 0) {
-            PreparedStatement pst = com.prepareStatement("UPDATE Userr SET NameUser = '" + user.getNameUser() +
-                    "',NameUser = N'" + user.getNameUser() +
-                    "',UserName = '" + user.getUserName() +
+            PreparedStatement pst = com.prepareStatement("UPDATE Userr SET NameUser = N'" + user.getNameUser() +
+                    "',UserName = N'" + user.getUserName() +
                     "',Password = '" + user.getPassWord() +
                     "',Sdt = '" + user.getNumberPhone() +
                     "',Email = '" + user.getEmail() +

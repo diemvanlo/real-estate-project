@@ -40,8 +40,8 @@ public class LoginController implements Initializable {
     public Notification notification = new Notification();
 
     public void login(javafx.event.ActionEvent actionEvent) throws IOException, SQLException {
+        System.out.println(emailTextField.getText());
         User user = UserService.findByUserName(emailTextField.getText());
-
         if (user.getUserName() != null && user.getPassWord().equals(passwordTextField.getText())) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("view/HomeView.fxml"));
             Parent root = loader.load();
