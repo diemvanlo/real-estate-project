@@ -43,7 +43,7 @@ public class Main extends Application {
         TimerTask tt = new TimerTask() {
             @Override
             public void run() {
-                countdown = countdown + 0.5;
+                countdown = countdown + 0.3;
                 System.out.println(countdown);
                 gauge.setLevel(countdown);
                 if (countdown > 0.9) {

@@ -188,11 +188,13 @@ public class DuAnController implements Initializable {
 //            NV = ProjectService.findByMaProject(NV.getIdDuAn());
 //        }
     }
+
     public void printIntoExcel() throws IOException {
         excel.setProjects(this.projectList);
         excel.writeProjectToFile();
 
     }
+
     public void changeStage(ActionEvent actionEvent) throws IOException, SQLException {
         SingleSelectionModel<Tab> selectionModel = tabView.getSelectionModel();
         selectionModel.select(1);
@@ -301,7 +303,7 @@ public class DuAnController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/Map.fxml"));
         Parent root = loader.load();
         MapController mapController = loader.getController();
-        mapController.init(txtMapX.getText(), txtMapY.getText(), txtName.getText());
+        mapController.init(txtMapX.getText(), txtMapY.getText(), this.project);
         Stage stage = new Stage();
         stage.setResizable(false);
         stage.initModality(Modality.APPLICATION_MODAL);
