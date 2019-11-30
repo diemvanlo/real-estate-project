@@ -58,7 +58,7 @@ insert into DoiTac(TenDoiTac,LinhVuc,DiaChi,Sdt,Email,SoVonDaDauTu) values
 (N'Cty HANAM',N'Nhà Đất',N'Quảng Ngãi','0456888385','ffc@gmail.com',53536),
 (N'Cty NAITHANG',N'Xây Dựng',N'Quảng Ninh','0896888321','sfaac@gmail.com',2323),
 (N'Cty XD Phúc Hải',N'Bất Động Sản',N'Quảng bình','0999988321','sdc@gmail.com',36487),
-(N'Cty MiaAli',N'Xây Dựng',N'Quảng Trị','0456845631','fc@gmail.com',96533535);
+(N'Cty MiaAli',N'Xây Dựng',N'Quảng Trị','0456845631','fc@gmail.com',96533535),
 
 (N'Cty sdfsd',N'Xây Dựng',N'Quảng bình','0456888321','fsdfsdfc@gmail.com',645465),
 (N'Cty BBC',N'Bât động sản',N'Quảng Ngãi','05224448465','ab@gmail.com',455465),
