@@ -10,8 +10,6 @@ import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import sample.hopital.helpers.Routes;
-import sample.hopital.hospitalfx.HomeViewController;
 import service.Notification;
 
 import java.io.IOException;
@@ -104,7 +102,7 @@ public class HomeView implements Initializable {
                 }
             }
         } catch (IOException ex) {
-            Logger.getLogger(HomeViewController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

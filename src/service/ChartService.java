@@ -1,6 +1,7 @@
 package service;
 
 import model.TongHopDoanhThu;
+import model.TongHopDuAn;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -42,6 +43,31 @@ public class ChartService {
                 model.setDoanhThuCaoNhat(rs.getDouble("CaoNhat"));
                 model.setDoanhThuThapNhat(rs.getDouble("ThapNhat"));
                 model.setDoanhThuTB(rs.getDouble("TrungBinh"));
+                list.add(model);
+            }
+            if (!isValid) {
+                return list;
+            }
+            rs.getStatement().close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    public static List<TongHopDuAn> getDoanhThuTheoNam() {
+        List<TongHopDuAn> list = new ArrayList<>();
+        try {
+            ResultSet rs = com.createStatement().executeQuery("select YEAR(sp.NgayBan) nam , sum(sp.GiaTien) doanhThu , sum(da.DienTich) dienTich, SUM(sp.IdKhachHang) soKhachHang from DuAn da\n" +
+                    "\t\tJOIN SanPham sp ON da.IdDuAn=sp.IdDuAn \n" +
+                    "\t\tJoin KhachHang kh ON sp.IdKhachHang=kh.IdKhachHang\n" +
+                    "\t\tgroup by year(sp.NgayBan);");
+            boolean isValid = false;
+            while (rs.next()) {
+                TongHopDuAn model = new TongHopDuAn();
+                model.setNam(rs.getInt("nam"));
+                model.setDienTich(rs.getDouble("dienTich"));
+                model.setDoanhThu(rs.getDouble("doanhThu"));
+                model.setSoKhachHang(rs.getInt("soKhachHang"));
                 list.add(model);
             }
             if (!isValid) {

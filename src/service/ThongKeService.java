@@ -26,10 +26,6 @@ public class ThongKeService {
         TongHopDuAn tongHopDuAn = new TongHopDuAn();
         tongHopDuAn.setDoanhThu(rs.getDouble("DoanhThu"));
         tongHopDuAn.setNam(rs.getInt("NgayTao"));
-        tongHopDuAn.setSoKH(rs.getInt("SoKH"));
-        tongHopDuAn.setSoNhaDauTu(rs.getInt("SoDT"));
-        tongHopDuAn.setSoSP(rs.getInt("SoSP"));
-        tongHopDuAn.setTenDuAn(rs.getString("DuAn"));
         return tongHopDuAn;
     }
     public static TongHopDoiTac getTongHopDoiTacFromResultSet(ResultSet rs) throws SQLException{

@@ -1,7 +1,7 @@
 package service;
 
 
-import model.DoiTac;
+
 import model.ImageUpload;
 
 import java.io.*;
@@ -29,13 +29,13 @@ public class ImageService {
 
     public static ImageUpload getImageFromResultSet(ResultSet rs) throws SQLException {
         ImageUpload imageUpload = new ImageUpload();
-        byte[] bytes = rs.getBytes("Image");
+        byte[] bytes = rs.getBytes("HinhAnh");
         if (bytes != null) {
             InputStream targetStream = new ByteArrayInputStream(bytes);
             imageUpload.setImage(targetStream);
         }
-        imageUpload.setIdImager(rs.getInt("idImage"));
-        imageUpload.setRegimeImager(rs.getString("ImageMode"));
+        imageUpload.setIdImager(rs.getInt("IdHinhAnh"));
+        imageUpload.setRegimeImager(rs.getString("CheDo"));
         imageUpload.setIdSanPham(rs.getInt("IdSanPham"));
         return imageUpload;
     }
@@ -43,10 +43,10 @@ public class ImageService {
     public static ImageUpload findByMaImage(int IdImage) {
         ImageUpload imageUpload = new ImageUpload();
         try {
-            ResultSet rs = com.createStatement().executeQuery("select * from image");
+            ResultSet rs = com.createStatement().executeQuery("select * from HinhAnh");
             boolean isValid = false;
             while (rs.next()) {
-                if (rs.getInt("idImage") == IdImage) {
+                if (rs.getInt("IdHinhAnh") == IdImage) {
                     isValid = true;
                     imageUpload = getImageFromResultSet(rs);
                 }
@@ -64,7 +64,7 @@ public class ImageService {
     public static List<ImageUpload> getAll() {
         List<ImageUpload> list = new ArrayList<>();
         try {
-            ResultSet rs = com.createStatement().executeQuery("select * from image");
+            ResultSet rs = com.createStatement().executeQuery("select * from HinhAnh");
             boolean isValid = false;
             while (rs.next()) {
                 ImageUpload imageUpload;
@@ -83,23 +83,23 @@ public class ImageService {
     }
 
     public static void deleteByMaImage(String IdImage) throws SQLException {
-        com.createStatement().executeUpdate("DELETE FROM image WHERE (idImage = '" + IdImage + "')");
+        com.createStatement().executeUpdate("DELETE FROM HinhAnh WHERE (IdHinhAnh = '" + IdImage + "')");
     }
 
     public static void save(ImageUpload imageUpload, File file) throws SQLException, IOException {
         ImageUpload imageUploadExist = findByMaImage(imageUpload.getIdImager());
         if (imageUploadExist.getIdImager() != 0) {
             if (file != null) {
-                PreparedStatement pst = com.prepareStatement("UPDATE image SET IdSanPham = '" + imageUpload.getImage() +
-                        "', ImageMode = '" + imageUpload.getIdImager() +
-                        "', Image = ? where idImage = " + imageUpload.getIdImager());
+                PreparedStatement pst = com.prepareStatement("UPDATE HinhAnh SET IdSanPham = '" + imageUpload.getImage() +
+                        "', CheDo = '" + imageUpload.getIdImager() +
+                        "', HinhAnh = ? where IdHinhAnh = " + imageUpload.getIdImager());
                 InputStream inputStream = new FileInputStream(file);
                 pst.setBinaryStream(1, inputStream, (int) file.length());
                 pst.execute();
             } else {
-                PreparedStatement pst = com.prepareStatement("UPDATE image SET IdSanPham = ?," +
-                        "ImageMode = ?," +
-                        " where IDDoiTac = ?");
+                PreparedStatement pst = com.prepareStatement("UPDATE HinhAnh SET IdSanPham = ?," +
+                        "CheDo = ?," +
+                        " where IdHinhAnh = ?");
                 pst.setInt(1, imageUpload.getIdSanPham());
                 pst.setString(2, imageUpload.getRegimeImager());
                 pst.execute();
@@ -108,14 +108,14 @@ public class ImageService {
             if (file == null) {
                 DecimalFormat df = new DecimalFormat("###");
                 PreparedStatement pst = com.prepareStatement(
-                        "INSERT INTO image ( IdSanPham, ImageMode) VALUES (?,?)");
+                        "INSERT INTO HinhAnh ( CheDo, IdSanPham) VALUES (?,?)");
                 pst.setInt(1, imageUpload.getIdSanPham());
                 pst.setString(2, imageUpload.getRegimeImager());
                 pst.execute();
             } else {
                 InputStream inputStream = new FileInputStream(file);
                 PreparedStatement pst = com.prepareStatement(
-                        "INSERT INTO image ( IdSanPham, ImageMode ,Image ) VALUES (?,?,?)");
+                        "INSERT INTO HinhAnh ( HinhAnh, CheDo ,IdSanPham ) VALUES (?,?,?)");
                 pst.setInt(1, imageUpload.getIdSanPham());
                 pst.setString(2, imageUpload.getRegimeImager());
                 pst.setBinaryStream(3, inputStream, (int) file.length());

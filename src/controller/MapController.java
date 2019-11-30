@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.Project;
 
 import java.net.URL;
 import java.util.Locale;
@@ -29,7 +30,7 @@ public class MapController extends Application implements MapComponentInitialize
     protected GoogleMap map;
     public String mapX;
     public String mapY;
-    public String name;
+    public Project project;
     public MapTypeIdEnum mapTypeIdEnum = MapTypeIdEnum.TERRAIN;
     @FXML
     BorderPane boderPane;
@@ -78,7 +79,15 @@ public class MapController extends Application implements MapComponentInitialize
         String infoImg = MarkerImageFactory.createMarkerImage("/sample/res/mymarker2.png", "png");
         Logger.getLogger(getClass().getName()).log(Level.INFO, "InfoImage built as: {0}", infoImg);
         InfoWindowOptions infoOptions = new InfoWindowOptions();
-        infoOptions.content("<h2>Đây là vị trí dự án</h2><p>Tên dự án  " + this.name + "</p><p><img height=50 width=50 src=\"" + "https://freshome.com/wp-content/uploads/2018/09/contemporary-exterior.jpg" + "\" /></p>")
+        infoOptions.content("<h2>Đây là vị trí dự án</h2><p>Tên dự án  " + this.project.getTenDuAn() + "</p><p><img height=50 width=50 src=\"" + "https://freshome.com/wp-content/uploads/2018/09/contemporary-exterior.jpg" + "\" /></p>" +
+                "<p>Loại hình  " + this.project.getLoaiHinh() + "</p>" +
+                "<p>Địa chỉ  " + this.project.getDiaChi() + "</p>" +
+                "<p>Diện tích  " + this.project.getDienTich() + "</p>" +
+                "<p>Hình thức quản lý  " + this.project.getHinhThucQuanLi() + "</p>" +
+                "<p>Hình thức đầu tư  " + this.project.getHinhThucDauTu() + "</p>" +
+                "<p>Trạng thái " + this.project.getTrangThai() + "</p>" +
+                "<p>Bán kinh  " + this.project.getBanKinh() + "</p>"
+        )
                 .position(centre);
         InfoWindow window = new InfoWindow(infoOptions);
         window.open(map, myMarker);
@@ -109,16 +118,24 @@ public class MapController extends Application implements MapComponentInitialize
         String infoImg = MarkerImageFactory.createMarkerImage("/sample/res/mymarker2.png", "png");
         Logger.getLogger(getClass().getName()).log(Level.INFO, "InfoImage built as: {0}", infoImg);
         InfoWindowOptions infoOptions = new InfoWindowOptions();
-        infoOptions.content("<h2>Đây là vị trí dự án</h2><p>Tên dự án  " + this.name + "</p><p><img height=50 width=50 src=\"" + "https://freshome.com/wp-content/uploads/2018/09/contemporary-exterior.jpg" + "\" /></p>")
+        infoOptions.content("<h2>Đây là vị trí dự án</h2><p>Tên dự án  " + this.project.getTenDuAn() + "</p><p><img height=50 width=50 src=\"" + "https://freshome.com/wp-content/uploads/2018/09/contemporary-exterior.jpg" + "\" /></p>" +
+                "<p>Loại hình  " + this.project.getLoaiHinh() + "</p>" +
+                "<p>Địa chỉ  " + this.project.getDiaChi() + "</p>" +
+                "<p>Diện tích  " + this.project.getDienTich() + "</p>" +
+                "<p>Hình thức quản lý  " + this.project.getHinhThucQuanLi() + "</p>" +
+                "<p>Hình thức đầu tư  " + this.project.getHinhThucDauTu() + "</p>" +
+                "<p>Trạng thái " + this.project.getTrangThai() + "</p>" +
+                "<p>Bán kinh  " + this.project.getBanKinh() + "</p>"
+        )
                 .position(centre);
         InfoWindow window = new InfoWindow(infoOptions);
         window.open(map, myMarker);
     }
 
-    public void init(String mapX, String mapY, String name) {
+    public void init(String mapX, String mapY, Project project) {
         this.mapX = mapX;
         this.mapY = mapY;
-        this.name = name;
+        this.project = project;
     }
 
     @Override
@@ -133,11 +150,11 @@ public class MapController extends Application implements MapComponentInitialize
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 if (newValue.equals("TERRAIN")) {
                     mapTypeIdEnum = MapTypeIdEnum.TERRAIN;
-                } else if (newValue.equals("ROADMAP")){
+                } else if (newValue.equals("ROADMAP")) {
                     mapTypeIdEnum = MapTypeIdEnum.ROADMAP;
-                } else if (newValue.equals("SATELLITE")){
+                } else if (newValue.equals("SATELLITE")) {
                     mapTypeIdEnum = MapTypeIdEnum.SATELLITE;
-                } else if (newValue.equals("HYBRID")){
+                } else if (newValue.equals("HYBRID")) {
                     mapTypeIdEnum = MapTypeIdEnum.HYBRID;
                 }
                 reloadMap();
