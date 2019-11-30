@@ -116,12 +116,12 @@ constraint fk_DuAn_SP foreign key (IdDuAn) references DuAn(IdDuAn),
 )
 
 insert into SanPham(TenSanPham,IdDuAn,DiaChi,DienTich,GiaTien,MoTa,NgayTao,NgayBan,ChiTiet,trangThai,IdKhachHang) values
-(N'Phòng 15',2,N'03 Hà Văn Tính',40,390,N'đang xây dựng','2019-03-02','',N'phòng đầy đủ tiện nghi',N'chưa bán',2),
-(N'Phòng 16',2,N'08 Bạch Đằng',40,390,N'đang xây dựng','2019-03-02','',N'phòng đầy đủ tiện nghi',N'chưa bán',2),
-(N'Phòng 17',2,N'03 Hà Văn Ngọc',40,390,N'đang xây dựng','2019-03-02','',N'phòng đầy đủ tiện nghi',N'chưa bán',2),
-(N'Phòng 18',2,N'03 Hà Văn Ngọc',40,390,N'đang xây dựng','2019-03-02','',N'phòng đầy đủ tiện nghi',N'chưa bán',2),
-(N'Phòng 19',2,N'03 Hà Văn Ngọc',40,390,N'đang xây dựng','2019-03-02','',N'phòng đầy đủ tiện nghi',N'chưa bán',2),
-(N'Phòng 20',2,N'03 Hà Văn Ngọc',40,390,N'đang xây dựng','2019-03-02','',N'phòng đầy đủ tiện nghi',N'chưa bán',2),
+(N'Phòng 22',2,N'03 Hà Văn Tính',40,390,N'đang xây dựng','2019-03-02','',N'phòng đầy đủ tiện nghi',N'chưa bán',3),
+(N'Phòng 6',2,N'08 Bạch Đằng',40,390,N'đang xây dựng','2019-03-02','',N'phòng đầy đủ tiện nghi',N'chưa bán',4),
+(N'Phòng 7',2,N'03 Hà Văn Ngọc',40,390,N'đang xây dựng','2019-03-02','',N'phòng đầy đủ tiện nghi',N'chưa bán',5),
+(N'Phòng 18',2,N'03 Hà Văn Ngọc',40,390,N'đang xây dựng','2019-03-02','',N'phòng đầy đủ tiện nghi',N'chưa bán',6),
+(N'Phòng 19',2,N'03 Hà Văn Ngọc',40,390,N'đang xây dựng','2019-03-02','',N'phòng đầy đủ tiện nghi',N'chưa bán',7),
+(N'Phòng 20',2,N'03 Hà Văn Ngọc',40,390,N'đang xây dựng','2019-03-02','',N'phòng đầy đủ tiện nghi',N'chưa bán',5),
 (N'Phòng 21',2,N'03 Hà Văn Ngọc',40,390,N'đang xây dựng','2019-03-02','',N'phòng đầy đủ tiện nghi',N'chưa bán',2),
 
 (N'Phòng 101',1,N'08 Hà Văn Tính',50,510,N'đang xây dựng','2017-05-02','',N'phòng đầy đủ tiện nghi',N'chưa bán',1),
@@ -136,6 +136,13 @@ constraint fk_danhgia foreign key (IdKhachHang) references KhachHang(IdKhachHang
 constraint fk_danhgia2 foreign key (IdSanPham) references SanPham(IdSanPham) ,
 unique (IdKhachHang,IdSanPham)
 );
+
+insert into DanhGia(IdKhachHang,NhanXet,SoSao,IdSanPham) values
+(1,N' Giá thành hợp lí',5,2),
+(3,N' sản phẩm tốt',5,4),
+(4,N' sản phẩm đúng mô tả',5,5),
+(5,N' giá tốt phù hợp sản phẩm',5,11),
+(6,N' sản phẩm đẹp ngoài mong đợi',5,12);
 
 create table HinhAnh(
 IdHinhAnh int identity(1,1) primary key not null,
