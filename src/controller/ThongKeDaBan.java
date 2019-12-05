@@ -72,8 +72,8 @@ public class ThongKeDaBan implements Initializable {
         clientPagination.setPageCount(pagingList.listOfPages.size());
         tongHopDuAns = FXCollections.observableList(tongHopDuAnList);
         colNam.setCellValueFactory(new PropertyValueFactory<>("Nam"));
-        colDienTich.setCellValueFactory(new PropertyValueFactory<>("doanhThu"));
-        colDoanhThu.setCellValueFactory(new PropertyValueFactory<>("dienTich"));
+        colDienTich.setCellValueFactory(new PropertyValueFactory<>("dienTich"));
+        colDoanhThu.setCellValueFactory(new PropertyValueFactory<>("doanhThu"));
         colSoKhachHang.setCellValueFactory(new PropertyValueFactory<>("soKhachHang"));
         tableView.setItems(tongHopDuAns);
         plotBarChart();
@@ -88,11 +88,11 @@ public class ThongKeDaBan implements Initializable {
         lineChartDienTich.getData().clear();
         List<XYChart.Series> serieses1 = new ArrayList<>();
         XYChart.Series series1 = new XYChart.Series();
-        for (TongHopDuAn studentNumber :
+        for (TongHopDuAn tongHopDuAn :
                 tongHopDuAnList) {
             series1.setName("Diện tích bán được theo năm");
-            if (studentNumber.getNam() != 0) {
-                series1.getData().add(new XYChart.Data(studentNumber.getNam().toString(), studentNumber.getDienTich()));
+            if (tongHopDuAn.getNam() != 0) {
+                series1.getData().add(new XYChart.Data(tongHopDuAn.getNam().toString(), tongHopDuAn.getDienTich()));
             }
         }
         serieses1.add(series1);
@@ -101,11 +101,11 @@ public class ThongKeDaBan implements Initializable {
         lineChartDoanhThu.getData().clear();
         List<XYChart.Series> serieses2 = new ArrayList<>();
         XYChart.Series series2 = new XYChart.Series();
-        for (TongHopDuAn studentNumber :
+        for (TongHopDuAn tongHopDuAn :
                 tongHopDuAnList) {
             series2.setName("Doanh thu theo năm");
-            if (studentNumber.getNam() != 0) {
-                series2.getData().add(new XYChart.Data(studentNumber.getNam().toString(), studentNumber.getDoanhThu()));
+            if (tongHopDuAn.getNam() != 0) {
+                series2.getData().add(new XYChart.Data(tongHopDuAn.getNam().toString(), tongHopDuAn.getDoanhThu()));
             }
         }
         serieses2.add(series2);
@@ -114,11 +114,11 @@ public class ThongKeDaBan implements Initializable {
         lineChartSoKhachHang.getData().clear();
         List<XYChart.Series> serieses3 = new ArrayList<>();
         XYChart.Series series3 = new XYChart.Series();
-        for (TongHopDuAn studentNumber :
+        for (TongHopDuAn tongHopDuAn :
                 tongHopDuAnList) {
             series3.setName("Số khách hàng đã mua theo năm");
-            if (studentNumber.getNam() != 0) {
-                series3.getData().add(new XYChart.Data(studentNumber.getNam().toString(), studentNumber.getSoKhachHang()));
+            if (tongHopDuAn.getNam() != 0) {
+                series3.getData().add(new XYChart.Data(tongHopDuAn.getNam().toString(), tongHopDuAn.getSoKhachHang()));
             }
         }
         serieses3.add(series3);

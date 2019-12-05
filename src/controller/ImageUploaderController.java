@@ -125,8 +125,8 @@ public class ImageUploaderController implements Initializable {
         pagingList = new PaginatedList<>(imageList);
         clientPagination.setPageCount(pagingList.listOfPages.size());
         images = FXCollections.observableList(imageList);
-        colID.setCellValueFactory(new PropertyValueFactory<>("IdHinhAnh"));
-        colImageMode.setCellValueFactory(new PropertyValueFactory<>("CheDo"));
+        colID.setCellValueFactory(new PropertyValueFactory<>("idImager"));
+        colImageMode.setCellValueFactory(new PropertyValueFactory<>("regimeImager"));
         colIdSanPham.setCellValueFactory(new PropertyValueFactory<>("idSanPham"));
         tableView.setItems(images);
         return tableView;

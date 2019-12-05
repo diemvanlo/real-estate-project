@@ -113,9 +113,10 @@ public class ImageService {
                 pst.setString(2, imageUpload.getRegimeImager());
                 pst.execute();
             } else {
+                System.out.println("INSERT INTO HinhAnh ( HinhAnh, CheDo ,IdSanPham ) VALUES (?,?,?)");
                 InputStream inputStream = new FileInputStream(file);
                 PreparedStatement pst = com.prepareStatement(
-                        "INSERT INTO HinhAnh ( HinhAnh, CheDo ,IdSanPham ) VALUES (?,?,?)");
+                        "INSERT INTO HinhAnh ( IdSanPham, CheDo , HinhAnh) VALUES (?,?,?)");
                 pst.setInt(1, imageUpload.getIdSanPham());
                 pst.setString(2, imageUpload.getRegimeImager());
                 pst.setBinaryStream(3, inputStream, (int) file.length());
