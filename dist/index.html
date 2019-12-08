@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Image Panorama - Custom Linking</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="container"></div>
+<!-- partial -->
+  <script src='https://pchen66.github.io/js/three/three.min.js'></script>
+<script src='https://rawgit.com/pchen66/panolens.js/dev/build/panolens.min.js'></script>
+<script >
+var panorama, panorama2, viewer, container, infospot;
+
+container = document.querySelector( '#container' );
+
+panorama = new PANOLENS.ImagePanorama( '1.jpg' );
+panorama2 = new PANOLENS.ImagePanorama( 'https://scontent.fdad3-3.fna.fbcdn.net/v/t1.15752-9/s2048x2048/72544926_2255205761457919_596811157755396096_n.jpg?_nc_cat=109&_nc_oc=AQkJE2dPE73HP4RTkWtt9II4SXZ2aL8_pMpouG5u0d4QdRtOWLeLQZo__Y5aVwshDPw&_nc_ht=scontent.fdad3-3.fna&oh=fa6b0d4157d4519b3841df86e5cf8ab2&oe=5DF111DF' );
+
+infospot = new PANOLENS.Infospot( 500, PANOLENS.DataImage.Info );
+infospot.position.set( -100, -500, -5000 );
+infospot.addHoverText( "The Story" );
+infospot.addEventListener( 'click', function(){
+  viewer.setPanorama( panorama2 );
+} );
+
+panorama.add( infospot );
+
+viewer = new PANOLENS.Viewer( { container: container } );
+viewer.add( panorama, panorama2 );
+
+viewer.addUpdateCallback(function(){
+  
+});
+</script>
+
+</body>
+</html>
