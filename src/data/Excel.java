@@ -53,7 +53,7 @@ public class Excel {
     }
 
     public void writeProjectToFile() throws IOException {
-        File pathName = new File("src/data/data.txt");
+        File pathName = new File("data/data.txt");
         String sProject;
         try {
             FileWriter wf = new FileWriter(pathName);
@@ -71,11 +71,11 @@ public class Excel {
             wf.close();
         } catch (Exception e) {
         }
-        Runtime.getRuntime().exec("src/data/printExcel.exe", null, new File("src/data/"));
+        Runtime.getRuntime().exec("data/printExcel.exe", null, new File("data/"));
     }
 
     public void writeProductToFile() throws IOException {
-            File pathName = new File("src/data/data.txt");
+            File pathName = new File("data/data.txt");
         String sProduct;
         try {
             FileWriter wf = new FileWriter(pathName);
@@ -92,11 +92,11 @@ public class Excel {
             wf.close();
         } catch (Exception e) {
         }
-        Runtime.getRuntime().exec("src/data/printExcel.exe", null, new File("src/data/"));
+        Runtime.getRuntime().exec("data/printExcel.exe", null, new File("data/"));
     }
 
     public void writeKhachHangToFile() throws IOException {
-        File pathName = new File("src/data/data.txt");
+        File pathName = new File("data/data.txt");
         String sKhachHang;
         try {
             FileWriter wf = new FileWriter(pathName);
@@ -112,11 +112,11 @@ public class Excel {
             wf.close();
         } catch (Exception e) {
         }
-        Runtime.getRuntime().exec("src/data/printExcel.exe", null, new File("src/data/"));
+        Runtime.getRuntime().exec("data/printExcel.exe", null, new File("data/"));
     }
 
     public void writeDoiTacToFile() throws IOException {
-        File pathName = new File("src/data/data.txt");
+        File pathName = new File("data/data.txt");
         String sDoiTac;
         try {
             FileWriter wf = new FileWriter(pathName);
@@ -132,7 +132,7 @@ public class Excel {
             wf.close();
         } catch (Exception e) {
         }
-        Runtime.getRuntime().exec("src/data/printExcel.exe", null, new File("src/data/"));
+        Runtime.getRuntime().exec("data/printExcel.exe", null, new File("data/"));
     }
 
 }

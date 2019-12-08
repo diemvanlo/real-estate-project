@@ -1,0 +1,10 @@
+Id Dự án|Tên dự án|Loại hình|Địa chỉ|Diện tích|Chi phí dự án|Ngày bắt đầu|Ngày kết thúc|Hình thức quản lý|Hình thức đầu tư|Id đối tác|Trạng thái|Vị trí X|Vị trí Y|Bán kính
+3|Chung cư AAA|Đất nền|325 Ngô Văn Sở|78000.0|23000.0|2017-05-29|1900-01-01|Căn hộ cho thuê|Cùng xây dựng|14|ĐÃ ĐỦ VỐN|16.040505|108.1855874|5645000.0
+4|Chung cư Liên Chiểu|Chung Cư|108 Bắc Tính|112.0|550.0|2017-05-12|1900-01-01|Chung Cư|góp vốn|9|Đang xây dựng|698.0|786.0|7886.0
+5|Chung cư KHD|Chung Cư|08 Hà Huy Tập|7887.0|5345.0|2019-09-02|1900-01-01|Chung Cư|góp vốn|11|Đang xây dựng|788.0|65.0|566.0
+6|Chung cư UIO|Chung Cư|699 Hà Huy Tập|655.0|868.0|2019-08-02|1900-01-01|Chung Cư|góp vốn|12|Đang xây dựng|54545.0|5566.0|788.0
+7|Chung cư Hòa Khánh|Chung Cư|08 Bạch Đằng|785.0|988.0|2015-05-02|1900-01-01|Chung Cư|góp vốn|12|Đang xây dựng|7878.0|686.0|4545.0
+8|Chung cư Hòa Minh|Chung Cư|32 Nam Sơn|112.0|565.0|2017-05-02|1900-01-01|Chung Cư|góp vốn|14|Đang xây dựng|5963.0|6565.0|786.0
+9|Đất nền HA Nam|Đất nền|56 Hà văn Nam|533.0|785.0|2017-05-09|1900-01-01|Đất nền|góp vốn|19|Đang xây dựng|213.0|355.0|532.0
+10|Chung cư ABCD|Chung Cư|08 Hà văn Tính|112.0|550.0|2017-05-02|1900-01-01|Chung Cư|góp vốn|20|Đang xây dựng|54545.0|6565.0|4545.0
+11|Chung cư sa|Chung Cư|03 Hà văn Ngọc|4545.0|10289.0|2019-01-02|1900-01-01|Chung Cư|góp vốn |21|Đang xây dựng|85698.0|5454.0|87887.0
