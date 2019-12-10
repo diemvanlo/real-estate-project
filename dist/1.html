@@ -28,22 +28,15 @@
   </head>
 
   <body>
+	
     <script src="js/three/three.min.js"></script>
     <script src="js/panolens/panolens.min.js"></script>
 
     <script>
 
-      let panorama, panorama2, viewer;
+      let panorama, panorama2,panorama3,panorama4,panorama5,panorama6,panorama7, panorama8, viewer,diemNoi,diemNoi2, diemNoi3,diemNoi4,diemNoi5;
 
-      const path = 'sand/';
-      const format = '.png';
-      panorama = new PANOLENS.CubePanorama( [
-          path + 'px' + format, path + 'nx' + format,
-          path + 'py' + format, path + 'ny' + format,
-          path + 'pz' + format, path + 'nz' + format
-      ] );
-
-      panorama = new PANOLENS.ImagePanorama( 'image.jpg' );
+      panorama = new PANOLENS.ImagePanorama( 'photo.jpg' );
 
       viewer = new PANOLENS.Viewer();
       viewer.add( panorama );

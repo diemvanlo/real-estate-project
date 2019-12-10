@@ -1,0 +1,10 @@
+Id D? án|Tên d? án|Lo?i hình|??a ch?|Di?n tích|Chi phí d? án|Ngày b?t ??u|Ngày k?t thúc|Hình th?c qu?n lý|Hình th?c ??u t?|Id ??i tác|Tr?ng thái|V? trí X|V? trí Y|Bán kính
+3|Chung c? AAA|??t n?n|325 Ngô V?n S?|78000.0|23000.0|2017-05-29|1900-01-01|C?n h? cho thuê|Cùng xây d?ng|14|?Ã ?? V?N|16.040505|108.1855874|5645000.0
+4|Chung c? Liên Chi?u|Chung C?|108 B?c Tính|112.0|550.0|2017-05-12|1900-01-01|Chung C?|góp v?n|9|?ang xây d?ng|698.0|786.0|7886.0
+5|Chung c? KHD|Chung C?|08 Hà Huy T?p|7887.0|5345.0|2019-09-02|1900-01-01|Chung C?|góp v?n|11|?ang xây d?ng|788.0|65.0|566.0
+6|Chung c? UIO|Chung C?|699 Hà Huy T?p|655.0|868.0|2019-08-02|1900-01-01|Chung C?|góp v?n|12|?ang xây d?ng|54545.0|5566.0|788.0
+7|Chung c? Hòa Khánh|Chung C?|08 B?ch ??ng|785.0|988.0|2015-05-02|1900-01-01|Chung C?|góp v?n|12|?ang xây d?ng|7878.0|686.0|4545.0
+8|Chung c? Hòa Minh|Chung C?|32 Nam S?n|112.0|565.0|2017-05-02|1900-01-01|Chung C?|góp v?n|14|?ang xây d?ng|5963.0|6565.0|786.0
+9|??t n?n HA Nam|??t n?n|56 Hà v?n Nam|533.0|785.0|2017-05-09|1900-01-01|??t n?n|góp v?n|19|?ang xây d?ng|213.0|355.0|532.0
+10|Chung c? ABCD|Chung C?|08 Hà v?n Tính|112.0|550.0|2017-05-02|1900-01-01|Chung C?|góp v?n|20|?ang xây d?ng|54545.0|6565.0|4545.0
+11|Chung c? sa|Chung C?|03 Hà v?n Ng?c|4545.0|10289.0|2019-01-02|1900-01-01|Chung C?|góp v?n |21|?ang xây d?ng|85698.0|5454.0|87887.0

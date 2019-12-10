@@ -56,7 +56,7 @@ public class MapController extends Application implements MapComponentInitialize
     @Override
     public void mapInitialized() {
         //Once the map has been loaded by the Webview, initialize the map details.
-        LatLong centre = new LatLong(16.0247701, 108.1836957);
+        LatLong centre = new LatLong(this.project.getMapX(), this.project.getMapY());
         MapOptions options = new MapOptions();
         options.center(centre)
                 .zoom(17)
@@ -142,7 +142,6 @@ public class MapController extends Application implements MapComponentInitialize
     public void initialize(URL location, ResourceBundle resources) {
         mapComponent = new GoogleMapView(Locale.getDefault().getLanguage(), null);
         mapComponent.addMapInializedListener(this);
-//        reloadMap();
         boderPane.setTop(watchingMode);
         boderPane.setCenter(mapComponent);
         watchingMode.valueProperty().addListener(new ChangeListener<String>() {

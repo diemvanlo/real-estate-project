@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="JavaFXApplication1.jnlp">
+  <information>
+    <title>JavaFXApplication1</title>
+    <vendor>TechCare</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="JavaFXApplication1.jar" size="2922453" download="eager" />
+    <jar href="lib\GMapsFX-2.12.0.jar" size="207618" download="eager" />
+    <jar href="lib\Medusa-8.0.jar" size="1463851" download="eager" />
+    <jar href="lib\controlsfx-8.40.12.jar" size="996389" download="eager" />
+    <jar href="lib\fontawesomefx-8.9.jar" size="571068" download="eager" />
+    <jar href="lib\fontawesomefx-commons-9.1.2.jar" size="24064" download="eager" />
+    <jar href="lib\fontawesomefx-fontawesome-4.7.0-9.1.2.jar" size="137226" download="eager" />
+    <jar href="lib\jfoenix-8.0.2.jar" size="2442326" download="eager" />
+    <jar href="lib\logback-classic-1.2.1.jar" size="310442" download="eager" />
+    <jar href="lib\logback-core-1.2.1.jar" size="473113" download="eager" />
+    <jar href="lib\mssql-jdbc-6.2.2.jre8 - Copy.jar" size="825389" download="eager" />
+    <jar href="lib\mssql-jdbc-7.4.1.jre8.jar" size="1209659" download="eager" />
+    <jar href="lib\slf4j-api-1.7.23.jar" size="41105" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="JavaFXApplication1" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="controller.Main"  name="JavaFXApplication1" />
+  <update check="always"/>
+</jnlp>

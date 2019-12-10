@@ -43,9 +43,9 @@ insert into KhachHang(TenKhachHang,GioiTinh,DiaChi,Sdt,Email) values
 
 create table DoiTac(
 IdDoiTac int identity(1,1) primary key not  null,
-TenDoiTac nvarchar(30) not null,
-LinhVuc nvarchar(30) ,
-DiaChi nvarchar(60) not null,
+TenDoiTac nvarchar(20) not null,
+LinhVuc nvarchar(20) ,
+DiaChi nvarchar(20) not null,
 Sdt varchar(15) not null,
 Email varchar(15),
 Logo Varbinary(max)  ,
@@ -146,7 +146,7 @@ insert into DanhGia(IdKhachHang,NhanXet,SoSao,IdSanPham) values
 
 create table HinhAnh(
 IdHinhAnh int identity(1,1) primary key not null,
-HinhAnh varchar(50) ,
+HinhAnh Varbinary(max) ,
 CheDo nvarchar(20) , 
 IdSanPham int not null,
 constraint fk_HinhAnh foreign key (IdSanPham) references SanPham(IdSanPham),
