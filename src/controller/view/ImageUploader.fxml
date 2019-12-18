@@ -156,7 +156,7 @@
                                                 <Insets left="20.0" top="10.0" />
                                             </padding>
                                             <children>
-                                                <JFXComboBox fx:id="comIdSanPham" prefHeight="40.0" prefWidth="378.0" promptText="ID sản phẩm" />
+                                                <JFXComboBox fx:id="comIdSanPham" labelFloat="true" prefHeight="40.0" prefWidth="378.0" promptText="ID sản phẩm" />
                                             </children>
                                         </VBox>
                                         <VBox layoutX="513.0" layoutY="14.0" prefHeight="376.0" prefWidth="511.0" spacing="10.0">
