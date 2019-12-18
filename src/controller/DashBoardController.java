@@ -22,7 +22,7 @@ public class DashBoardController {
     }
 
     public void toPointTable(ActionEvent actionEvent) throws IOException, SQLException {
-        changeStage(actionEvent, "controller/view/DoanhThuTheoNam.fxml");
+        changeStage(actionEvent, "view/DoanhThuTheoNam.fxml");
     }
 
     public void toDoanhThuCacNamTable(ActionEvent actionEvent) throws IOException, SQLException {
@@ -31,9 +31,21 @@ public class DashBoardController {
     }
 
     public void toTongHopDiemTable(ActionEvent actionEvent) throws IOException, SQLException {
-        changeStage(actionEvent, "views/DoanhThuTheoNam.fxml");
+        changeStage(actionEvent, "view/DoanhThuTheoNam.fxml");
     }
     public void toThongKeDoanhThu(ActionEvent actionEvent) throws IOException, SQLException {
         changeStage(actionEvent, "view/DoanhThuTheoNam.fxml");
+    }
+    public void tonguoidung(ActionEvent actionEvent) throws  IOException, SQLException{
+        changeStage(actionEvent, "view/NguoiDung.fxml");
+    }
+    public void tokhachhang(ActionEvent actionEvent) throws  IOException, SQLException{
+        changeStage(actionEvent, "view/KhachHang.fxml");
+    }
+    public void tosanpham(ActionEvent actionEvent) throws  IOException, SQLException{
+        changeStage(actionEvent, "view/SanPham.fxml");
+    }
+    public void toduan(ActionEvent actionEvent) throws  IOException, SQLException{
+        changeStage(actionEvent, "view/DuAn.fxml");
     }
 }

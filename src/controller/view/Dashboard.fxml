@@ -8,12 +8,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="1087.0" style="-fx-background-color: #fa7e2c;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashBoardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="1044.0" style="-fx-background-color: #fa7e2c;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashBoardController">
     <children>
-        <Pane layoutX="99.0" prefHeight="649.0" prefWidth="631.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="159.0" AnchorPane.topAnchor="0.0">
+        <Pane layoutX="4.0" layoutY="8.0" prefHeight="705.0" prefWidth="1080.0" AnchorPane.bottomAnchor="-8.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="8.0">
             <children>
                 <Pane fx:id="see" layoutX="-25.0" layoutY="-178.0" prefHeight="303.0" prefWidth="467.0" rotate="41.6" style="-fx-background-color: #2C7EFA; -fx-background-radius: 70;" />
-                <Pane layoutX="76.0" layoutY="106.0">
+                <Pane layoutX="76.0" layoutY="60.0">
                     <children>
                         <Button mnemonicParsing="false" onAction="#toThongKeDoanhThu" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2">
                      <graphic>
@@ -30,16 +30,17 @@
                         </Label>
                     </children>
                 </Pane>
-                <Pane layoutX="316.0" layoutY="106.0" prefHeight="202.0" prefWidth="179.0">
+                <Pane layoutX="327.0" layoutY="54.0" prefHeight="202.0" prefWidth="179.0">
                     <children>
-                        <Button mnemonicParsing="false" onAction="#toDoanhThuCacNamTable" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2">
+                        <Button layoutX="3.0" layoutY="6.0" mnemonicParsing="false" onAction="#toDoanhThuCacNamTable" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2">
                      <graphic>
                               <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
                                       <Image url="@../assets/imgs/flow-market-icon.png" />
                                   </image>
                               </ImageView>
-                     </graphic></Button>
+                     </graphic>
+                  </Button>
                         <Label alignment="CENTER" layoutX="1.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="Sự phát triển các dự án" textFill="WHITE">
                             <font>
                                 <Font name="Arial Bold" size="13.0" />
@@ -47,9 +48,9 @@
                         </Label>
                     </children>
                 </Pane>
-                <Pane layoutX="71.0" layoutY="354.0" prefHeight="202.0" prefWidth="179.0">
+                <Pane layoutX="71.0" layoutY="291.0" prefHeight="202.0" prefWidth="179.0">
                     <children>
-                        <Button mnemonicParsing="false" onAction="#toTongHopDiemTable" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2">
+                        <Button layoutX="4.0" layoutY="14.0" mnemonicParsing="false" onAction="#toTongHopDiemTable" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2">
                      <graphic>
                               <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
@@ -57,16 +58,16 @@
                                   </image>
                               </ImageView>
                      </graphic></Button>
-                        <Label alignment="CENTER" layoutX="3.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="Tiến độ dự án" textFill="WHITE">
+                        <Label alignment="CENTER" layoutX="3.0" layoutY="155.0" prefHeight="17.0" prefWidth="168.0" text="Tiến độ dự án" textFill="WHITE">
                             <font>
                                 <Font name="Arial Bold" size="13.0" />
                             </font>
                         </Label>
                     </children>
                 </Pane>
-                <Pane layoutX="316.0" layoutY="354.0" prefHeight="202.0" prefWidth="179.0">
+                <Pane layoutX="327.0" layoutY="291.0" prefHeight="202.0" prefWidth="179.0">
                     <children>
-                        <Button mnemonicParsing="false" onAction="#toPointTable" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2">
+                        <Button layoutX="1.0" layoutY="14.0" mnemonicParsing="false" onAction="#toPointTable" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2">
                      <graphic>
                               <ImageView fitHeight="100.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
@@ -74,13 +75,85 @@
                                   </image>
                               </ImageView>
                      </graphic></Button>
-                        <Label alignment="CENTER" layoutX="1.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="Coming soon" textFill="WHITE">
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="156.0" prefHeight="17.0" prefWidth="168.0" text="Coming soon" textFill="WHITE">
                             <font>
                                 <Font name="Arial Bold" size="13.0" />
                             </font>
                         </Label>
                     </children>
                 </Pane>
+            <Pane layoutX="582.0" layoutY="291.0" prefHeight="202.0" prefWidth="179.0">
+               <children>
+                  <Button layoutY="14.0" mnemonicParsing="false" onAction="#tosanpham" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2">
+                     <graphic>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/imgs/icons8-product-100.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label alignment="CENTER" layoutY="159.0" prefHeight="17.0" prefWidth="168.0" text="Sản phẩm" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="582.0" layoutY="60.0" prefHeight="202.0" prefWidth="179.0">
+               <children>
+                  <Button fx:id="NG" layoutY="-1.0" mnemonicParsing="false" onAction="#tonguoidung" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2">
+                     <graphic>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/imgs/icons8-change-user-64.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label alignment="CENTER" layoutX="3.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="Người dùng" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="823.0" layoutY="60.0" prefHeight="202.0" prefWidth="179.0">
+               <children>
+                  <Label alignment="CENTER" layoutX="3.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="Khách hàng" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="6.0" mnemonicParsing="false" onAction="#tokhachhang" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2">
+                     <graphic>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/imgs/icons8-customer-64.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane layoutX="824.0" layoutY="298.0" prefHeight="202.0" prefWidth="179.0">
+               <children>
+                  <Button layoutX="6.0" layoutY="11.0" mnemonicParsing="false" onAction="#toduan" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2">
+                     <graphic>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/imgs/icons8-group-of-projects-64.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label alignment="CENTER" layoutY="159.0" prefHeight="17.0" prefWidth="168.0" text="Dự án" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
             </children>
         </Pane>
     </children>
