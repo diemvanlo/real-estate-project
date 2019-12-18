@@ -242,7 +242,7 @@
                                                                 <JFXComboBox fx:id="comChucvu" labelFloat="true" prefHeight="31.0" prefWidth="185.0" promptText="Chức vụ">
                                                                     <items>
                                                                         <FXCollections fx:factory="observableArrayList">
-                                                                            <String fx:value="Giám đốc" />
+                                                                            <String fx:value="Quản Lý" />
                                                                             <String fx:value="Nhân viên" />
                                                                         </FXCollections>
                                                                     </items>
