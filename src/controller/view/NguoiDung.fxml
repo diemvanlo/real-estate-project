@@ -26,8 +26,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="684.0" prefWidth="1105.0" stylesheets="@../assets/styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="controller.UserController"
-            >
+<AnchorPane prefHeight="684.0" prefWidth="1105.0" stylesheets="@../assets/styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserController">
     <children>
         <JFXTabPane fx:id="tabView" layoutX="14.0" layoutY="14.0" prefHeight="658.0" prefWidth="1080.0">
             <tabs>
@@ -179,11 +178,26 @@
                                     <children>
                                         <VBox layoutX="20.0" layoutY="14.0" prefHeight="380.0" prefWidth="415.0" spacing="10.0">
                                             <children>
-                                                <JFXTextField fx:id="txtName" focusColor="#00add8" promptText="Tên người dùng" unFocusColor="#868282" />
-                                                <JFXTextField fx:id="txttendangnhap" promptText="Tên đăng nhập" />
-                                                <JFXTextField fx:id="txtpassword" focusColor="#00add8" layoutX="10.0" layoutY="46.0" promptText="Password" unFocusColor="#868282" />
-                                                <JFXTextField fx:id="txtDiachi" focusColor="#00add8" layoutX="10.0" layoutY="82.0" promptText="Địa chỉ" unFocusColor="#868282" />
-                                                <JFXTextField fx:id="txtSdt" focusColor="#00add8" layoutX="10.0" layoutY="118.0" promptText="Sdt" unFocusColor="#868282" />
+                                                <JFXTextField fx:id="txtName" focusColor="#00add8" labelFloat="true" promptText="Tên người dùng" unFocusColor="#868282">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin></JFXTextField>
+                                                <JFXTextField fx:id="txttendangnhap" labelFloat="true" promptText="Tên đăng nhập">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin></JFXTextField>
+                                                <JFXTextField fx:id="txtpassword" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="46.0" promptText="Password" unFocusColor="#868282">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin></JFXTextField>
+                                                <JFXTextField fx:id="txtDiachi" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="82.0" promptText="Địa chỉ" unFocusColor="#868282">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin></JFXTextField>
+                                                <JFXTextField fx:id="txtSdt" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="118.0" promptText="Sdt" unFocusColor="#868282">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin></JFXTextField>
                                             </children>
                                             <padding>
                                                 <Insets left="20.0" top="10.0" />
@@ -213,7 +227,10 @@
                                                     <children>
                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                             <children>
-                                                                <JFXTextField fx:id="txtEmail" prefHeight="30.0" prefWidth="493.0" promptText="Email" />
+                                                                <JFXTextField fx:id="txtEmail" labelFloat="true" prefHeight="30.0" prefWidth="493.0" promptText="Email">
+                                                   <HBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </HBox.margin></JFXTextField>
                                                             </children>
                                                         </HBox>
                                                     </children>
@@ -222,17 +239,20 @@
                                                     <children>
                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                             <children>
-                                                                <JFXComboBox fx:id="comChucvu" prefHeight="31.0" prefWidth="185.0" promptText="Chức vụ">
+                                                                <JFXComboBox fx:id="comChucvu" labelFloat="true" prefHeight="31.0" prefWidth="185.0" promptText="Chức vụ">
                                                                     <items>
                                                                         <FXCollections fx:factory="observableArrayList">
-                                                                            <String fx:value="Giám đốc" />
+                                                                            <String fx:value="Quản Lý" />
                                                                             <String fx:value="Nhân viên" />
                                                                         </FXCollections>
                                                                     </items>
-                                                                </JFXComboBox>
-                                                <JFXTextField fx:id="txtRole" prefHeight="30.0" prefWidth="154.0" promptText="Role">
                                                    <HBox.margin>
-                                                      <Insets left="70.0" />
+                                                      <Insets top="10.0" />
+                                                   </HBox.margin>
+                                                                </JFXComboBox>
+                                                <JFXTextField fx:id="txtRole" labelFloat="true" prefHeight="30.0" prefWidth="154.0" promptText="Role">
+                                                   <HBox.margin>
+                                                      <Insets left="70.0" top="10.0" />
                                                    </HBox.margin>
                                                 </JFXTextField>
                                                             </children>
