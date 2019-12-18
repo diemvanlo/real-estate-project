@@ -20,13 +20,13 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
 <AnchorPane prefHeight="684.0" prefWidth="1105.0" stylesheets="@../assets/styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DuAnController">
     <children>
         <JFXTabPane fx:id="tabView" layoutX="14.0" layoutY="14.0" prefHeight="658.0" prefWidth="1080.0">
@@ -189,9 +189,18 @@
                                                         </FXCollections>
                                                     </items>
                                                 </JFXComboBox>
-                                                <JFXTextField fx:id="txtDiaChi" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="46.0" promptText="Đia chỉ" unFocusColor="#868282" />
-                                                <JFXTextField fx:id="txtDienTich" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="82.0" promptText="Diện tích" unFocusColor="#868282" />
-                                                <JFXTextField fx:id="txtVonDauTu" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="118.0" promptText="Vốn đâu tư" unFocusColor="#868282" />
+                                                <JFXTextField fx:id="txtDiaChi" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="46.0" promptText="Đia chỉ" unFocusColor="#868282">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin></JFXTextField>
+                                                <JFXTextField fx:id="txtDienTich" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="82.0" promptText="Diện tích" unFocusColor="#868282">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin></JFXTextField>
+                                                <JFXTextField fx:id="txtVonDauTu" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="118.0" promptText="Vốn đâu tư" unFocusColor="#868282">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin></JFXTextField>
                                                 <JFXDatePicker fx:id="dateStart" prefHeight="30.0" prefWidth="582.0" promptText="Ngày bắt đầu" />
                                                 <JFXDatePicker fx:id="dateEnd" layoutX="30.0" layoutY="260.0" prefHeight="30.0" prefWidth="582.0" promptText="Ngày kết thúc" />
                                             </children>
@@ -205,7 +214,7 @@
                                                     <children>
                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                             <children>
-                                                                <JFXComboBox fx:id="comHTQuanLy" prefHeight="40.0" prefWidth="480.0" promptText="Hình thức quản lý">
+                                                                <JFXComboBox fx:id="comHTQuanLy" labelFloat="true" prefHeight="40.0" prefWidth="480.0" promptText="Hình thức quản lý">
                                                                     <items>
                                                                         <FXCollections fx:factory="observableArrayList">
                                                                             <String fx:value="Căn hộ cho thuê" />
@@ -223,13 +232,16 @@
                                                     <children>
                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                             <children>
-                                                                <JFXComboBox fx:id="comHTDauTu" prefHeight="40.0" prefWidth="480.0" promptText="Hình thức đầu tư">
+                                                                <JFXComboBox fx:id="comHTDauTu" labelFloat="true" prefHeight="40.0" prefWidth="480.0" promptText="Hình thức đầu tư">
                                                                     <items>
                                                                         <FXCollections fx:factory="observableArrayList">
                                                                             <String fx:value="Góp vốn" />
                                                                             <String fx:value="Cùng xây dựng" />
                                                                         </FXCollections>
                                                                     </items>
+                                                   <HBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </HBox.margin>
                                                                 </JFXComboBox>
                                                             </children>
                                                         </HBox>
@@ -239,13 +251,16 @@
                                                     <children>
                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                             <children>
-                                                                <JFXComboBox fx:id="comIDDoiTac" prefHeight="40.0" prefWidth="480.0" promptText="Đối tác">
+                                                                <JFXComboBox fx:id="comIDDoiTac" labelFloat="true" prefHeight="40.0" prefWidth="480.0" promptText="Đối tác">
                                                                     <items>
                                                                         <FXCollections fx:factory="observableArrayList">
                                                                             <String fx:value="Góp vốn" />
                                                                             <String fx:value="Cùng xây dựng" />
                                                                         </FXCollections>
                                                                     </items>
+                                                   <HBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </HBox.margin>
                                                                 </JFXComboBox>
                                                             </children>
                                                         </HBox>
@@ -255,10 +270,13 @@
                                                     <children>
                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                             <children>
-                                                                <JFXTextField fx:id="txtMapX" labelFloat="true" promptText="MapX" />
+                                                                <JFXTextField fx:id="txtMapX" labelFloat="true" promptText="MapX">
+                                                   <HBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </HBox.margin></JFXTextField>
                                                                 <JFXTextField fx:id="txtMapY" labelFloat="true" layoutX="10.0" layoutY="10.0" promptText="MapX">
                                                                     <HBox.margin>
-                                                                        <Insets left="20.0" right="20.0" />
+                                                                        <Insets left="20.0" right="20.0" top="10.0" />
                                                                     </HBox.margin>
                                                                 </JFXTextField>
                                                             </children>
@@ -269,7 +287,10 @@
                                                     <children>
                                                         <HBox prefHeight="43.0" prefWidth="491.0">
                                                             <children>
-                                                                <JFXTextField fx:id="txtBanKinh" labelFloat="true" prefHeight="30.0" prefWidth="493.0" promptText="Bán kính" />
+                                                                <JFXTextField fx:id="txtBanKinh" labelFloat="true" prefHeight="30.0" prefWidth="493.0" promptText="Bán kính">
+                                                   <HBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </HBox.margin></JFXTextField>
                                                             </children>
                                                         </HBox>
                                                     </children>

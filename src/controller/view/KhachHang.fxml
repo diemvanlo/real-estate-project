@@ -23,8 +23,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
 <AnchorPane prefHeight="684.0" prefWidth="1105.0" stylesheets="@../assets/styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KhachHangController">
     <children>
         <JFXTabPane fx:id="tabView" layoutX="14.0" layoutY="14.0" prefHeight="658.0" prefWidth="1080.0">
@@ -173,9 +171,18 @@
                                         <VBox layoutX="20.0" layoutY="14.0" prefHeight="380.0" prefWidth="415.0" spacing="10.0">
                                             <children>
                                                 <JFXTextField fx:id="txtName" focusColor="#00add8" labelFloat="true" promptText="Tên dự án" unFocusColor="#868282" />
-                                                <JFXTextField fx:id="txtDiaChi" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="46.0" promptText="Đia chỉ" unFocusColor="#868282" />
-                                                <JFXTextField fx:id="txtSDT" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="82.0" promptText="Số điện thoại" unFocusColor="#868282" />
-                                                <JFXTextField fx:id="txtEmail" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="118.0" promptText="Email" unFocusColor="#868282" />
+                                                <JFXTextField fx:id="txtDiaChi" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="46.0" promptText="Đia chỉ" unFocusColor="#868282">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin></JFXTextField>
+                                                <JFXTextField fx:id="txtSDT" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="82.0" promptText="Số điện thoại" unFocusColor="#868282">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin></JFXTextField>
+                                                <JFXTextField fx:id="txtEmail" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="118.0" promptText="Email" unFocusColor="#868282">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin></JFXTextField>
                                             </children>
                                             <padding>
                                                 <Insets left="20.0" top="10.0" />

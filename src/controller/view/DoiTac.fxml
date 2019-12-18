@@ -58,7 +58,7 @@
                                                 <JFXButton fx:id="btnEdit" layoutX="233.0" layoutY="13.0" onAction="#edit" prefHeight="27.0" prefWidth="78.0" styleClass="cancel-button" text="Edit" />
                                                 <JFXButton fx:id="btnDelete" layoutX="343.0" layoutY="12.0" onAction="#deleteItem" prefHeight="37.0" prefWidth="100.0" styleClass="red-btn" text="Delete" />
                                                 <JFXButton fx:id="btnAdd" layoutX="126.0" layoutY="13.0" onAction="#creatNew" prefHeight="34.0" prefWidth="98.0" styleClass="blue-btn" text="New" />
-                                                <JFXButton fx:id="btnin" layoutX="460.0" onAction="#printIntoExcel" layoutY="12.0" prefHeight="37.0" prefWidth="100.0" styleClass="green-btn" text="In excel" />
+                                                <JFXButton fx:id="btnin" layoutX="460.0" layoutY="12.0" onAction="#printIntoExcel" prefHeight="37.0" prefWidth="100.0" styleClass="green-btn" text="In excel" />
                                                 <JFXButton layoutX="573.0" layoutY="12.0" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #e0852a;" styleClass="green-btn" text="Reload" />
                                             </children>
                                         </AnchorPane>
@@ -154,9 +154,18 @@
                                         <VBox layoutX="20.0" layoutY="14.0" prefHeight="380.0" prefWidth="415.0" spacing="10.0">
                                             <children>
                                                 <JFXTextField fx:id="txtName" focusColor="#00add8" labelFloat="true" promptText="Tên đối tác" unFocusColor="#868282" />
-                                                <JFXTextField fx:id="txtSDT" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="46.0" promptText="Số điện thoại" unFocusColor="#868282" />
-                                                <JFXTextField fx:id="txtEmail" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="82.0" promptText="Email" unFocusColor="#868282" />
-                                                <JFXTextField fx:id="txtVonDauTu" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="118.0" promptText="Vốn đâu tư" unFocusColor="#868282" />
+                                                <JFXTextField fx:id="txtSDT" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="46.0" promptText="Số điện thoại" unFocusColor="#868282">
+                                       <padding>
+                                          <Insets top="10.0" />
+                                       </padding></JFXTextField>
+                                                <JFXTextField fx:id="txtEmail" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="82.0" promptText="Email" unFocusColor="#868282">
+                                       <padding>
+                                          <Insets top="10.0" />
+                                       </padding></JFXTextField>
+                                                <JFXTextField fx:id="txtVonDauTu" focusColor="#00add8" labelFloat="true" layoutX="10.0" layoutY="118.0" promptText="Vốn đâu tư" unFocusColor="#868282">
+                                       <padding>
+                                          <Insets top="10.0" />
+                                       </padding></JFXTextField>
                                             </children>
                                             <padding>
                                                 <Insets left="20.0" top="10.0" />
@@ -185,7 +194,7 @@
                                                     <children>
                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                             <children>
-                                                                <JFXTextField fx:id="txtDiaChi" prefHeight="30.0" prefWidth="517.0" promptText="Địa chỉ" />
+                                                                <JFXTextField fx:id="txtDiaChi" labelFloat="true" prefHeight="30.0" prefWidth="517.0" promptText="Địa chỉ" />
                                                             </children>
                                                         </HBox>
                                                     </children>
