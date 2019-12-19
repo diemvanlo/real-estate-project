@@ -30,7 +30,7 @@
         <JFXButton fx:id="danhGiaBtn" accessibleText="danhGia" layoutX="10.0" layoutY="375.0" prefHeight="43.0"
                    prefWidth="200.0" styleClass="drawer-buttons" text="Đánh giá"/>
         <JFXButton fx:id="updateAnhBtn" accessibleText="updateAnh" layoutX="10.0" layoutY="375.0" prefHeight="43.0"
-                   prefWidth="200.0" styleClass="drawer-buttons" text="Image"/>
+                   prefWidth="200.0" styleClass="drawer-buttons" text="Ảnh 360"/>
         <JFXButton fx:id="logoutBtn" accessibleText="logoutMenu" layoutX="10.0" layoutY="182.0" onAction="#logOut"
                    prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Log out"/>
         <JFXButton fx:id="exitBtn" accessibleText="exitMenu" layoutX="10.0" layoutY="182.0" onAction="#exit"

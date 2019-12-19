@@ -132,7 +132,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <HBox layoutX="23.0" layoutY="33.0" prefHeight="135.0" prefWidth="1068.0" spacing="30.0">
+                                <HBox layoutX="18.0" layoutY="6.0" prefHeight="135.0" prefWidth="1068.0" spacing="30.0">
                                     <children>
                                         <AnchorPane prefHeight="110.0" prefWidth="393.0" style="-fx-background-color: #00ADD8;" styleClass="card-unpadded">
                                             <children>
@@ -175,7 +175,7 @@
                                         </AnchorPane>
                                     </children>
                                 </HBox>
-                                <AnchorPane layoutX="23.0" layoutY="224.0" prefHeight="413.0" prefWidth="1057.0" styleClass="card-unpadded">
+                                <AnchorPane layoutX="24.0" layoutY="185.0" prefHeight="413.0" prefWidth="1057.0" styleClass="card-unpadded">
                                     <children>
                                         <VBox layoutX="20.0" layoutY="14.0" prefHeight="380.0" prefWidth="415.0" spacing="10.0">
                                             <children>
